@@ -4,12 +4,21 @@ This guide walks through setting up GitHub Actions to automatically publish your
 
 ## Overview
 
-**Workflow triggers on**: GitHub Release Published
-**What it does**:
-1. ✅ Builds the extension
-2. 📦 Creates a zip file
-3. 🦊 Publishes to Firefox Add-ons
-4. 🎨 Uploads to Chrome Web Store
+**Workflow triggers on**: GitHub Release Published (on: release: types: [published])
+
+**Job Architecture**:
+```
+build
+  ├─ publish-firefox  (parallel, needs: build)
+  └─ publish-chrome   (parallel, needs: build)
+        └─ deploy-status (always runs, reports results)
+```
+
+**What each job does**:
+1. **build**: Checkout, lint, update manifest with version, build dist/, create zips, upload artifacts
+2. **publish-firefox**: Download dist artifact, sign with web-ext, submit source code to AMO for review
+3. **publish-chrome**: Download zip artifact, exchange refresh token for access token, upload and publish
+4. **deploy-status**: Update release notes with status table showing results of all jobs
 
 ## Prerequisites
 
@@ -23,7 +32,10 @@ This guide walks through setting up GitHub Actions to automatically publish your
 5. Copy the **API Key** and **API Secret**
 
 ### 2. Chrome Web Store
-Just follow this: https://developer.chrome.com/docs/webstore/using-api#beforeyoubegin
+
+1. Follow: https://developer.chrome.com/docs/webstore/using-api#beforeyoubegin
+2. Obtain Client ID, Client Secret, and Refresh Token
+3. Find your Extension ID in Chrome Web Store Dashboard
 
 ## GitHub Setup - Add Secrets to GitHub
 
@@ -33,12 +45,48 @@ Just follow this: https://developer.chrome.com/docs/webstore/using-api#beforeyou
 
 | Secret Name | Value | Where to Get |
 |---|---|---|
-| `FIREFOX_API_KEY` | Your Mozilla API Key | Firefox Add-ons Developer Hub |
-| `FIREFOX_API_SECRET` | Your Mozilla API Secret | Firefox Add-ons Developer Hub |
-| `CHROME_CLIENT_ID` | Your Google Client ID | Google Cloud Console |
-| `CHROME_CLIENT_SECRET` | Your Google Client Secret | Google Cloud Console |
-| `CHROME_REFRESH_TOKEN` | Your OAuth Refresh Token | Generated via curl command above |
+| `FIREFOX_API_KEY` | Your Mozilla API Key | Firefox Add-ons Developer Hub → Settings → API Keys |
+| `FIREFOX_API_SECRET` | Your Mozilla API Secret | Firefox Add-ons Developer Hub → Settings → API Keys |
+| `CHROME_CLIENT_ID` | Your Google Client ID | Google Cloud Console → OAuth credentials |
+| `CHROME_CLIENT_SECRET` | Your Google Client Secret | Google Cloud Console → OAuth credentials |
+| `CHROME_REFRESH_TOKEN` | Your OAuth Refresh Token | Generated via Google OAuth2 |
 | `CHROME_EXTENSION_ID` | Your Chrome Web Store Extension ID | Chrome Web Store Dashboard |
+
+## Workflow Architecture
+
+The publish workflow consists of **4 parallel/sequential jobs**:
+
+### 1. `build` Job
+- Extracts version from release tag (e.g., `v1.5.1` → `1.5.1`)
+- Runs linting **before any side effects** (fail fast if lint fails)
+- Updates `src/manifest.json` with version
+- Builds extension with `npm run build`
+- Creates two zip files:
+  - **Extension zip**: Contains only `dist/` directory (for stores)
+  - **Source zip**: Contains full source (for AMO review)
+- Commits manifest update with `[skip ci]` message
+- Uploads zips to GitHub Release
+
+### 2. `publish-firefox` Job (parallel with chrome)
+- Downloads built `dist/` from artifacts
+- Uses `web-ext sign` to sign the extension
+- Uploads source code to AMO for review
+- Status: `continue-on-error: true` (allows deploy-status to report partial success)
+
+### 3. `publish-chrome` Job (parallel with firefox)
+- Downloads zip from artifacts
+- Exchanges refresh token for access token via Google OAuth2
+- Uploads zip to Chrome Web Store
+- Publishes extension
+- Status: `continue-on-error: true`
+
+### 4. `deploy-status` Job (runs after all, always)
+- Reads results of build, publish-firefox, and publish-chrome
+- Updates the GitHub release notes with a status table:
+  - ✅ Success
+  - ❌ Failure
+  - ⏭️ Cancelled
+  - ⚠️ Other states
 
 ## Creating a Release
 
