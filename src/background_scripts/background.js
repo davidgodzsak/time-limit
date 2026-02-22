@@ -56,11 +56,15 @@ async function handleInstalled(details) {
 
     // Bootstrap default data on first install
     const hasSetup = await hasInitialSetupDone();
+    const onboardingState = await getOnboardingState();
     if (!hasSetup) {
       try {
         await bootstrapDefaultData();
         await markInitialSetupDone();
         console.log('[Background] Bootstrapped default data on first install');
+        if (!onboardingState.completed) {
+          await browser.runtime.openOptionsPage();
+        }
       } catch (error) {
         console.warn('[Background] Error bootstrapping default data:', error);
         // Don't fail installation if bootstrapping fails
