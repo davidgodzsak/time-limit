@@ -23,6 +23,7 @@
   },
   "background": {
     "scripts": [
+      "background_scripts/polyfill.js",
       "background_scripts/background.js"
     ],
     "type": "module"

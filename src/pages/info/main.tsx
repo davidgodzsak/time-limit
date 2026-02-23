@@ -1,3 +1,4 @@
+import "@/lib/polyfill";
 import { createRoot } from "react-dom/client";
 import InfoPage from "@/components/InfoPage";
 import "@/index.css"

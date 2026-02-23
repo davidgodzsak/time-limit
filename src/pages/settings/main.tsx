@@ -1,3 +1,4 @@
+import "@/lib/polyfill";
 import { createRoot } from "react-dom/client";
 import SettingsPage from "@/components/SettingsPage";
 import "@/index.css"
