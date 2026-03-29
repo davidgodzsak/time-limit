@@ -12,11 +12,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { t } from "@/lib/utils/i18n";
+import { getRatingUrl } from "@/lib/constants/rating";
+import * as api from "@/lib/api";
 import PageTemplate from "./PageTemplate";
+import { RatingCard } from "./RatingCard";
 import { getVersionFromManifest } from "@/lib/utils/manifestVersion";
+import { logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
+import { useToast } from "@/hooks/use-toast";
 
 const InfoPage = () => {
+  const { toast } = useToast();
   const [version, setVersion] = useState("");
+  const [hasRated, setHasRated] = useState(false);
 
   useEffect(() => {
     const loadVersion = async () => {
@@ -24,6 +31,20 @@ const InfoPage = () => {
       setVersion(ver);
     };
     loadVersion();
+  }, []);
+
+  useEffect(() => {
+    const loadRatingState = async () => {
+      try {
+        const ratingState = await api.getRatingState();
+        // Check for debug mode (debug-rating=true in URL) - show section if in debug mode
+        const debugMode = new URLSearchParams(window.location.search).get('debug-rating') === 'true';
+        setHasRated(ratingState.hasRated && !debugMode);
+      } catch (error) {
+        console.warn("Could not load rating state:", error);
+      }
+    };
+    loadRatingState();
   }, []);
 
   const values = [
@@ -81,6 +102,19 @@ const InfoPage = () => {
         url: browser.runtime.getURL("ui/settings/settings.html"),
       });
     });
+  };
+
+  const handleRateNow = async () => {
+    try {
+      await api.markRated();
+      const ratingUrl = getRatingUrl();
+      browser.tabs.create({ url: ratingUrl });
+      toast(getSuccessToastProps(t("settings_rating_thankYou")));
+      setHasRated(true);
+    } catch (error) {
+      logError("Error rating extension", error);
+      toast(getErrorToastProps(t("settings_rating_error")));
+    }
   };
 
   return (
@@ -152,6 +186,25 @@ const InfoPage = () => {
           </Button>
         </div>
       </div>
+
+      {/* Rating section */}
+      {!hasRated && (
+        <div className="max-w-2xl w-full mb-12">
+          <RatingCard
+            onRate={handleRateNow}
+            onAlreadyRated={async () => {
+              try {
+                await api.markRated();
+                toast(getSuccessToastProps(t("settings_rating_thankYou")));
+                setHasRated(true);
+              } catch (error) {
+                logError("Error marking rated", error);
+                toast(getErrorToastProps(t("settings_rating_error")));
+              }
+            }}
+          />
+        </div>
+      )}
 
       {/* Donation section */}
       <div className="max-w-2xl w-full mb-16">

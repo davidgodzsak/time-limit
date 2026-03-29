@@ -8,11 +8,14 @@ declare const browser: {
       removeListener(callback: (message: unknown) => void): void;
     };
     sendMessage(message: unknown): Promise<unknown>;
+    openOptionsPage(): Promise<void>;
+    getURL(path: string): string;
   };
   tabs: {
     get(tabId: number): Promise<{ id?: number; url?: string }>;
     query(options: Record<string, unknown>): Promise<Array<{ id?: number; url?: string }>>;
     update(tabId: number, updateProperties: Record<string, unknown>): Promise<unknown>;
+    create(options: Record<string, unknown>): Promise<{ id?: number; url?: string }>;
     onActivated: {
       addListener(callback: (activeInfo: { tabId: number }) => void): void;
     };

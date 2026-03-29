@@ -133,10 +133,11 @@ export function checkIfUrlIsDistracting(url) {
   for (const site of _distractingSitesCache) {
     // Ensure site.urlPattern exists and is a string before attempting to match
     if (site.urlPattern && typeof site.urlPattern === 'string') {
-      // The pattern should be a substring of the hostname, not the other way around
-      // This allows 'example.com' to match both 'example.com' and 'sub.example.com'
+      // Match if exact match OR if it's a valid subdomain match (with dot boundary)
+      // 'example.com' matches 'example.com' and 'sub.example.com' but not 'myexample.com'
       if (
-        currentHostname.includes(site.urlPattern) &&
+        (currentHostname === site.urlPattern ||
+          currentHostname.endsWith('.' + site.urlPattern)) &&
         site.isEnabled !== false
       ) {
         return {
@@ -172,8 +173,12 @@ export function checkIfUrlHasLimits(url) {
   for (const site of _distractingSitesCache) {
     // Ensure site.urlPattern exists and is a string before attempting to match
     if (site.urlPattern && typeof site.urlPattern === 'string') {
-      // Check if hostname matches (regardless of enabled status)
-      if (currentHostname.includes(site.urlPattern)) {
+      // Match if exact match OR if it's a valid subdomain match (with dot boundary)
+      // 'example.com' matches 'example.com' and 'sub.example.com' but not 'myexample.com'
+      if (
+        currentHostname === site.urlPattern ||
+        currentHostname.endsWith('.' + site.urlPattern)
+      ) {
         return {
           isMatch: true,
           siteId: site.id,

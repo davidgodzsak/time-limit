@@ -59,6 +59,14 @@ export interface UIGroup {
 }
 
 /**
+ * Message type for motivational timeout notes
+ */
+export interface Message {
+  id: string;
+  text: string;
+}
+
+/**
  * Converts a backend site to UI format.
  * Converts:
  * - dailyLimitSeconds -> timeLimit (in minutes)

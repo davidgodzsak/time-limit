@@ -286,6 +286,30 @@ export async function bootstrapDefaultData(): Promise<{
   return sendMessage('bootstrapDefaultData');
 }
 
+export interface RatingState {
+  hasRated: boolean;
+  declineCount: number;
+  lastPromptDate: string | null;
+  nextPromptAfter: string | null;
+  shouldShow: boolean;
+}
+
+export async function getRatingState(): Promise<RatingState> {
+  return sendMessage('getRatingState');
+}
+
+export async function markRated(): Promise<void> {
+  await sendMessage('markRated');
+}
+
+export async function declineRating(): Promise<void> {
+  await sendMessage('declineRating');
+}
+
+export async function recordRatingPromptShown(): Promise<void> {
+  await sendMessage('recordRatingPromptShown');
+}
+
 export function listenForBroadcasts(
   callback: (event: string, data: unknown) => void
 ): () => void {

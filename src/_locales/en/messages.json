@@ -4,7 +4,7 @@
     "description": "Extension name shown in browser and stores"
   },
   "extensionDescription": {
-    "message": "Helps users limit time spent on distracting websites by monitoring usage and blocking sites when daily limits are reached. Features customizable time limits, motivational timeout notes, and clean modern UI.",
+    "message": "Helps users limit time spent on distracting websites by monitoring usage and blocking sites when daily limits are reached.",
     "description": "Extension description in store listing"
   },
   "extensionActionTitle": {
@@ -1226,5 +1226,65 @@
   "error_site_noLimit": {
     "message": "At least one limit (time or opens) must be specified",
     "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Love Mindful Browse?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Help us grow by leaving a 5-star review",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Rate Now",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Already Rated",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Later →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Enjoying Mindful Browse?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Your feedback helps us improve. Leave a quick review!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Rate Now",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Already Rated",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Later →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Thank you! ♥ Support development via donations.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Error processing rating. Please try again.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Thank you for your support!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Error processing rating. Please try again.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Rate Us",
+    "description": "Button to rate from popup info view"
   }
 }

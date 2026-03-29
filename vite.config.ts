@@ -3,7 +3,7 @@ import { fileURLToPath} from 'node:url'
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { readdirSync, copyFileSync, mkdirSync, statSync } from 'node:fs';
+import { readdirSync, copyFileSync, mkdirSync, statSync, readFileSync, writeFileSync } from 'node:fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -44,10 +44,36 @@ function copyExtensionFilesPlugin(): Plugin {
         }
       });
 
-      // Copy manifest.json
-      copyFileSync(
-        resolve(srcDir, 'manifest.json'),
-        resolve(distDir, 'manifest.json')
+      // Generate browser-specific manifests
+      const manifestPath = resolve(srcDir, 'manifest.json');
+      const baseManifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+      const browserTarget = process.env.BROWSER_TARGET ?? 'firefox';
+
+      // Firefox manifest (with scripts array)
+      writeFileSync(
+        resolve(distDir, 'manifest.firefox.json'),
+        JSON.stringify(baseManifest, null, 2)
+      );
+
+      // Chrome manifest (with service_worker)
+      const chromeManifest = JSON.parse(JSON.stringify(baseManifest));
+      if (chromeManifest.background?.scripts) {
+        const scriptPath = chromeManifest.background.scripts[chromeManifest.background.scripts.length - 1];
+        chromeManifest.background = {
+          service_worker: scriptPath,
+          type: 'module'
+        };
+      }
+      writeFileSync(
+        resolve(distDir, 'manifest.chrome.json'),
+        JSON.stringify(chromeManifest, null, 2)
+      );
+
+      // Create default manifest.json based on BROWSER_TARGET (for local dev)
+      const defaultManifest = browserTarget === 'chrome' ? chromeManifest : baseManifest;
+      writeFileSync(
+        resolve(distDir, 'manifest.json'),
+        JSON.stringify(defaultManifest, null, 2)
       );
 
       // Copy _locales directory
@@ -77,11 +103,14 @@ function copyExtensionFilesPlugin(): Plugin {
   };
 }
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   root: "src",
   server: {
     host: "::",
     port: 8080,
+  },
+  define: {
+    __BROWSER_TARGET__: JSON.stringify(process.env.BROWSER_TARGET ?? 'firefox'),
   },
   plugins: [react(), copyExtensionFilesPlugin()],
   resolve: {

@@ -21,6 +21,13 @@ import {
   markInitialSetupDone,
   hasInitialSetupDone,
 } from './onboarding_storage.js';
+import {
+  getRatingState,
+  shouldShowRatingPrompt,
+  markRated,
+  declineRating,
+  recordPromptShown,
+} from './rating_storage.js';
 
 import {
   getDistractingSites,
@@ -909,11 +916,24 @@ async function handleMessage(message, _sender, _sendResponse) {
       // === Popup API ===
       case 'getCurrentPageLimitInfo': {
         try {
+          // Ensure cache is warm after a background service worker restart
+          await initializeDistractionDetector();
+
           // Get current active tab
-          const tabs = await browser.tabs.query({
+          let tabs = await browser.tabs.query({
             active: true,
             currentWindow: true,
           });
+
+          // Fallback: if no active tab found, get the most recently accessed non-extension tab
+          if (tabs.length === 0) {
+            const allTabs = await browser.tabs.query({
+              currentWindow: true,
+            });
+            // Filter out extension and browser pages
+            tabs = allTabs.filter(tab => tab.url && !tab.url.startsWith('about:') && !tab.url.startsWith('chrome://') && !tab.url.startsWith('moz-extension://'));
+          }
+
           if (tabs.length === 0) {
             return {
               success: false,
@@ -952,7 +972,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           }
 
           if (!isMatch || !siteId) {
-            return {
+            const result = {
               success: true,
               data: {
                 url: activeTab.url,
@@ -962,13 +982,14 @@ async function handleMessage(message, _sender, _sendResponse) {
               },
               error: null,
             };
+            console.log('[Background] Returning getCurrentPageLimitInfo (not limited):', result);
+            return result;
           }
 
           // Get site information and current usage data
-          const [sites, groups, { getUsageStats }] = await Promise.all([
+          const [sites, groups] = await Promise.all([
             getDistractingSites(),
             getGroups(),
-            import('./usage_storage.js'),
           ]);
 
           const site = sites.find((s) => s.id === siteId);
@@ -1899,6 +1920,75 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         } catch (error) {
           console.error('[Background] Error bootstrapping default data:', error);
+          return {
+            success: false,
+            error: categorizeError(error),
+          };
+        }
+      }
+
+      case 'getRatingState': {
+        try {
+          const state = await getRatingState();
+          const shouldShow = await shouldShowRatingPrompt();
+          return {
+            success: true,
+            data: { ...state, shouldShow },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error getting rating state:', error);
+          return {
+            success: false,
+            error: categorizeError(error),
+          };
+        }
+      }
+
+      case 'markRated': {
+        try {
+          await markRated();
+          return {
+            success: true,
+            data: null,
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error marking rated:', error);
+          return {
+            success: false,
+            error: categorizeError(error),
+          };
+        }
+      }
+
+      case 'declineRating': {
+        try {
+          await declineRating();
+          return {
+            success: true,
+            data: null,
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error declining rating:', error);
+          return {
+            success: false,
+            error: categorizeError(error),
+          };
+        }
+      }
+
+      case 'recordRatingPromptShown': {
+        try {
+          await recordPromptShown();
+          return {
+            success: true,
+            data: null,
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error recording prompt shown:', error);
           return {
             success: false,
             error: categorizeError(error),

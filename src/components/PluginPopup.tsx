@@ -8,6 +8,7 @@ import { useBroadcastUpdates } from "@/hooks/useBroadcastUpdates";
 import { useToggleSelection } from "@/lib/hooks/useToggleSelection";
 import { getErrorMessage, logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { t } from "@/lib/utils/i18n";
+import { getRatingUrl } from "@/lib/constants/rating";
 import { NormalPageView } from "./popup/NormalPageView";
 import { UnlimitedSiteView } from "./popup/UnlimitedSiteView";
 import { DisabledStateView } from "./popup/DisabledStateView";
@@ -15,6 +16,7 @@ import { TimeoutPageView } from "./popup/TimeoutPageView";
 import { SettingsPageView } from "./popup/SettingsPageView";
 import { InfoPageView } from "./popup/InfoPageView";
 import { FirstInstallView } from "./popup/FirstInstallView";
+import { RatingPromptView } from "./popup/RatingPromptView";
 
 const PluginPopup = () => {
   const { toast } = useToast();
@@ -53,6 +55,9 @@ const PluginPopup = () => {
   // Onboarding state
   const [onboardingCompleted, setOnboardingCompleted] = useState(true);
   const [skipFirstInstallView, setSkipFirstInstallView] = useState(false);
+
+  // Rating prompt state
+  const [showRatingPrompt, setShowRatingPrompt] = useState(false);
 
   // Load current page info on mount
   useEffect(() => {
@@ -147,6 +152,15 @@ const PluginPopup = () => {
             setTimeUsed(usedMinutes);
             setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
             setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
+
+            // Check if rating should show on limited sites (after 4+ days)
+            try {
+              const ratingState = await api.getRatingState();
+              if (ratingState.shouldShow) {
+                setShowRatingPrompt(true);
+                try { await api.recordRatingPromptShown(); } catch { /* non-critical */ }
+              }
+            } catch { /* non-critical */ }
           }
         } else {
           setIsLimited(false);
@@ -154,6 +168,7 @@ const PluginPopup = () => {
           setDisabledReason(null);
         }
       } catch (error) {
+        console.error('[PluginPopup] Exception in loadPageInfo:', error);
         logError("Error loading page info", error);
         toast(getErrorToastProps(t("popup_pageInfo_error")));
       } finally {
@@ -195,13 +210,13 @@ const PluginPopup = () => {
     }
   }, [pageType, siteId]);
 
+
   // Listen for real-time updates
   useBroadcastUpdates({
-    siteAdded: () => {
-
+    siteAdded: async () => {
       // Refresh page data when new site is added (might be current site)
-      setIsLoading(true);
-      api.getCurrentPageInfo().then((pageInfo) => {
+      try {
+        const pageInfo = await api.getCurrentPageInfo();
         if (pageInfo.isDistractingSite && pageInfo.siteInfo) {
           setIsLimited(true);
           const limitSeconds = pageInfo.siteInfo.dailyLimitSeconds || 0;
@@ -210,8 +225,9 @@ const PluginPopup = () => {
           setTimeLimit(limitMinutes);
           setTimeUsed(usedMinutes);
         }
-        setIsLoading(false);
-      });
+      } catch (error) {
+        console.warn("Could not refresh page info after site added:", error);
+      }
     },
     siteUpdated: (data) => {
       if (siteId && data.site.id === siteId) {
@@ -285,6 +301,15 @@ const PluginPopup = () => {
         setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
         setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
       }
+
+      // Check if rating prompt should be shown after successful limit add
+      try {
+        const ratingState = await api.getRatingState();
+        if (ratingState.shouldShow) {
+          setShowRatingPrompt(true);
+          try { await api.recordRatingPromptShown(); } catch { /* non-critical */ }
+        }
+      } catch { /* non-critical */ }
     } catch (error) {
       logError("Error adding limit", error);
       toast(getErrorToastProps(t("popup_addLimit_failed")));
@@ -437,6 +462,40 @@ const PluginPopup = () => {
     }
   };
 
+  const handleRateNow = async () => {
+    try {
+      await api.markRated();
+      const ratingUrl = getRatingUrl();
+      browser.tabs.create({ url: ratingUrl });
+      toast(getSuccessToastProps(t("popup_rating_thankYou")));
+      setShowRatingPrompt(false);
+    } catch (error) {
+      logError("Error rating extension", error);
+      toast(getErrorToastProps(t("popup_rating_error")));
+    }
+  };
+
+  const handleAlreadyRated = async () => {
+    try {
+      await api.markRated();
+      toast(getSuccessToastProps(t("popup_rating_thankYou")));
+      setShowRatingPrompt(false);
+    } catch (error) {
+      logError("Error marking rated", error);
+      toast(getErrorToastProps(t("popup_rating_error")));
+    }
+  };
+
+  const handleDismissRating = async () => {
+    try {
+      await api.declineRating();
+      setShowRatingPrompt(false);
+    } catch (error) {
+      logError("Error dismissing rating prompt", error);
+      toast(getErrorToastProps(t("popup_rating_error")));
+    }
+  };
+
   const timeRemaining = Math.max(0, timeLimit - timeUsed);
   const opensRemaining = opensLimit > 0 ? Math.max(0, opensLimit - opensUsed) : 0;
 
@@ -479,6 +538,17 @@ const PluginPopup = () => {
       <FirstInstallView
         onOpenSettings={handleOpenSettings}
         onAddLimit={() => setSkipFirstInstallView(true)}
+      />
+    );
+  }
+
+  // Show rating prompt if conditions are met
+  if (showRatingPrompt && pageType === 'normal') {
+    return (
+      <RatingPromptView
+        onRate={handleRateNow}
+        onAlreadyRated={handleAlreadyRated}
+        onDismiss={handleDismissRating}
       />
     );
   }
@@ -529,7 +599,18 @@ const PluginPopup = () => {
     );
   }
 
-  // Tracked site - show time/opens remaining
+  // Tracked site - check if rating should show first
+  if (showRatingPrompt && pageType === 'normal' && isLimited) {
+    return (
+      <RatingPromptView
+        onRate={handleRateNow}
+        onAlreadyRated={handleAlreadyRated}
+        onDismiss={handleDismissRating}
+      />
+    );
+  }
+
+  // Show time/opens remaining
   return (
     <NormalPageView
       siteName={siteName}

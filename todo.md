@@ -18,7 +18,11 @@
 - [x] Limit tab -> Add new site dialog -> Let's remove the quick presets, not needed
 - [x] Groups tab -> When removing the value from the time or open limit and clicking update nothing seems to happen, when I refresh the page then the limit is gone, we should update the card after saving the changes so we don't need to refresh the page manually to let the user know the changes have been stored.
 - [ ] Groups tab -> It's not possible to remove the time limit. When I remove the value from the input and update the group the time limit does not disappear. It should be possible to remove the time limit and only have a limit on number of opens instead (but at least one of hte two limits should be added)
--[ ] settings page background and header (with the name and icon) should be the same as the timout page one.
+- [x] settings page background and header (with the name and icon) should be the same as the timout page one.
+- [ ] info icon is cogwheel in header
+- [ ] group Quick add links should be platform dependent or removed (e.g. social media, news)
+- [ ] onboarading modal x icon does nothing 
+- [ ] I can add a page two times, I can also add a page to a group and as individual site, this is wrong
 
 ### Popup
 
@@ -37,12 +41,10 @@
 - [ ] Popup extending limits input always contains a 0 that is prefixed to whatever the user inputs. It should be a normal number input field.
 
 ### CICD
-- [ ] https://github.com/marketplace/actions/publish-an-extension-on-firefox-addons-store
-- [ ] https://github.com/marketplace/actions/publish-chrome-extension-to-chrome-web-store 
-- [ ] https://developer.chrome.com/docs/webstore/using-api#beforeyoubegin
+- [x] https://github.com/marketplace/actions/publish-an-extension-on-firefox-addons-store
+- [x] https://github.com/marketplace/actions/publish-chrome-extension-to-chrome-web-store 
+- [x] https://developer.chrome.com/docs/webstore/using-api#beforeyoubegin
 - **Consider renaming Firefox secrets for consistency**: Currently using `FIREFOX_ISSUER` and `FIREFOX_SECRET`. Mozilla docs call them "API Key" and "API Secret". Consider renaming to `FIREFOX_API_KEY` and `FIREFOX_API_SECRET` to match standard naming convention.
-- [ ]
-
 
 ## Improvements
 

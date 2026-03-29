@@ -3,7 +3,9 @@ import { Clock, Quote, Loader2, FolderOpen } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { t } from "@/lib/utils/i18n";
+import { getRatingUrl } from "@/lib/constants/rating";
 import PageTemplate from "./PageTemplate";
+import { RatingCard } from "./RatingCard";
 import AddSiteDialog from "./settings/AddSiteDialog";
 import CreateGroupDialog from "./settings/CreateGroupDialog";
 import AddSiteToGroupDialog from "./settings/AddSiteToGroupDialog";
@@ -21,7 +23,7 @@ import { useEditMode } from "@/lib/hooks/useEditMode";
 import { useOnboarding } from "@/lib/hooks/useOnboarding";
 import { logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { getVersionFromManifest } from "@/lib/utils/manifestVersion";
-import type { UISite, UIGroup } from "@/lib/storage";
+import type { UISite, UIGroup, Message } from "@/lib/storage";
 
 const SettingsPage = () => {
   const { toast } = useToast();
@@ -35,7 +37,7 @@ const SettingsPage = () => {
   // Real data from API
   const [groups, setGroups] = useState<(UIGroup & { sites: UISite[] })[]>([]);
   const [individualSites, setIndividualSites] = useState<UISite[]>([]);
-  const [motivationalMessages, setMotivationalMessages] = useState<Array<Record<string, unknown>>>([]);
+  const [motivationalMessages, setMotivationalMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
 
   // Loading states
@@ -52,6 +54,9 @@ const SettingsPage = () => {
 
   // Onboarding flow
   const onboarding = useOnboarding();
+
+  // Rating banner state
+  const [showRatingBanner, setShowRatingBanner] = useState(false);
 
   // Load version from manifest
   useEffect(() => {
@@ -82,7 +87,7 @@ const SettingsPage = () => {
             expanded: false, // Start collapsed
           }))
         );
-        setMotivationalMessages(messagesData);
+        setMotivationalMessages(messagesData as Message[]);
 
         // Load display preferences separately (optional)
         try {
@@ -105,6 +110,24 @@ const SettingsPage = () => {
 
     loadData();
   }, [toast]);
+
+  // Load rating state
+  useEffect(() => {
+    const loadRatingState = async () => {
+      try {
+        const ratingState = await api.getRatingState();
+        // Check for debug mode (debug-rating=true in URL)
+        const debugMode = new URLSearchParams(window.location.search).get('debug-rating') === 'true';
+        if (ratingState.shouldShow || debugMode) {
+          setShowRatingBanner(true); // set state first (non-blocking)
+          try { await api.recordRatingPromptShown(); } catch { /* non-critical */ }
+        }
+      } catch (error) {
+        console.warn("Could not load rating state:", error);
+      }
+    };
+    loadRatingState();
+  }, []);
 
   // Listen for real-time updates
   useBroadcastUpdates({
@@ -218,7 +241,7 @@ const SettingsPage = () => {
     try {
       setIsSaving(true);
       const createdMessage = await api.addMessage(newMessage.trim());
-      setMotivationalMessages([...motivationalMessages, createdMessage]);
+      setMotivationalMessages([...motivationalMessages, createdMessage as unknown as Message]);
       setNewMessage("");
       toast(getSuccessToastProps("Message added successfully"));
     } catch (error) {
@@ -398,6 +421,15 @@ const SettingsPage = () => {
         ) {
           onboarding.showSuccess("Yay! 🎉 You created a page limit!");
         }
+
+        // Check if rating prompt should be shown after this success
+        try {
+          const ratingState = await api.getRatingState();
+          if (ratingState.shouldShow) {
+            setShowRatingBanner(true);
+            try { await api.recordRatingPromptShown(); } catch { /* non-critical */ }
+          }
+        } catch { /* non-critical — don't break the add-site flow */ }
       }
       addSiteDialog.close();
     } catch (error) {
@@ -468,6 +500,15 @@ const SettingsPage = () => {
           { ...newGroup, expanded: true, sites: [] },
         ]);
         toast(getSuccessToastProps("Group created successfully"));
+
+        // Check if rating prompt should be shown after this success
+        try {
+          const ratingState = await api.getRatingState();
+          if (ratingState.shouldShow) {
+            setShowRatingBanner(true);
+            try { await api.recordRatingPromptShown(); } catch { /* non-critical */ }
+          }
+        } catch { /* non-critical */ }
       }
 
       createGroupDialog.close();
@@ -594,6 +635,40 @@ const SettingsPage = () => {
     );
   }
 
+  const handleRateNow = async () => {
+    try {
+      await api.markRated();
+      const ratingUrl = getRatingUrl();
+      browser.tabs.create({ url: ratingUrl });
+      toast(getSuccessToastProps(t("settings_rating_thankYou")));
+      setShowRatingBanner(false);
+    } catch (error) {
+      logError("Error rating extension", error);
+      toast(getErrorToastProps(t("settings_rating_error")));
+    }
+  };
+
+  const handleAlreadyRated = async () => {
+    try {
+      await api.markRated();
+      toast(getSuccessToastProps(t("settings_rating_thankYou")));
+      setShowRatingBanner(false);
+    } catch (error) {
+      logError("Error marking rated", error);
+      toast(getErrorToastProps(t("settings_rating_error")));
+    }
+  };
+
+  const handleDismissRating = async () => {
+    try {
+      await api.declineRating();
+      setShowRatingBanner(false);
+    } catch (error) {
+      logError("Error dismissing rating prompt", error);
+      toast(getErrorToastProps(t("settings_rating_error")));
+    }
+  };
+
   return (
     <>
       <PageTemplate
@@ -603,6 +678,15 @@ const SettingsPage = () => {
         showVersionBadge={true}
         logoSize="md"
       >
+        {showRatingBanner && (
+          <div className="max-w-4xl w-full mb-6">
+            <RatingCard
+              onRate={handleRateNow}
+              onAlreadyRated={handleAlreadyRated}
+              onDismiss={handleDismissRating}
+            />
+          </div>
+        )}
         <Tabs
           defaultValue="limits"
           className="w-full max-w-4xl space-y-6"

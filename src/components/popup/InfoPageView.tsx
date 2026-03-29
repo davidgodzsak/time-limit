@@ -1,14 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Info } from "lucide-react";
+import { Settings, Info, Star } from "lucide-react";
 import Logo from "../Logo";
 import { t } from "@/lib/utils/i18n";
+import { getRatingUrl } from "@/lib/constants/rating";
 
 interface InfoPageViewProps {
   onOpenSettings: () => void;
 }
 
 export function InfoPageView({ onOpenSettings }: InfoPageViewProps) {
+  const handleRateUs = () => {
+    const ratingUrl = getRatingUrl();
+    browser.tabs.create({ url: ratingUrl });
+  };
   return (
     <Card className="w-80 shadow-soft border-0 overflow-hidden">
       <div className="gradient-mint p-4">
@@ -47,6 +52,14 @@ export function InfoPageView({ onOpenSettings }: InfoPageViewProps) {
           >
             <Settings size={16} />
             {t("infoPageView_button")}
+          </Button>
+          <Button
+            onClick={handleRateUs}
+            variant="outline"
+            className="w-full rounded-full gap-2 border-emerald-200 hover:bg-emerald-50"
+          >
+            <Star size={16} />
+            {t("infoPageView_rateButton")}
           </Button>
         </div>
       </CardContent>

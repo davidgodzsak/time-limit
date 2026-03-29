@@ -61,9 +61,33 @@ jobs:
       - name: Build extension
         run: npm run build
 
-      - name: Create extension zip
+      - name: Prepare Firefox distribution
         run: |
-          zip -r "mindful-browse-${{ env.VERSION }}.zip" dist/
+          mkdir -p firefox-dist
+          cp -r dist/* firefox-dist/
+          cp firefox-dist/manifest.firefox.json firefox-dist/manifest.json
+          rm -f firefox-dist/manifest.*.json
+
+      - name: Prepare Chrome distribution
+        run: |
+          mkdir -p chrome-dist
+          cp -r dist/* chrome-dist/
+          cp chrome-dist/manifest.chrome.json chrome-dist/manifest.json
+          rm -f chrome-dist/manifest.*.json
+
+      - name: Create Firefox extension zip
+        run: |
+          zip -r "mindful-browse-${{ env.VERSION }}-firefox.zip" firefox-dist/
+          ls -lh "mindful-browse-${{ env.VERSION }}-firefox.zip"
+
+      - name: Create Chrome extension zip
+        run: |
+          zip -r "mindful-browse-${{ env.VERSION }}-chrome.zip" chrome-dist/
+          ls -lh "mindful-browse-${{ env.VERSION }}-chrome.zip"
+
+      - name: Create generic extension zip (for source release)
+        run: |
+          zip -r "mindful-browse-${{ env.VERSION }}.zip" firefox-dist/
           ls -lh "mindful-browse-${{ env.VERSION }}.zip"
 
       - name: Create source zip (for AMO review)
@@ -82,11 +106,18 @@ jobs:
             --exclude='*.log'
           ls -lh "mindful-browse-${{ env.VERSION }}-source.zip"
 
-      - name: Upload dist artifact
+      - name: Upload Firefox dist artifact
         uses: actions/upload-artifact@v4
         with:
-          name: extension-dist
-          path: dist/
+          name: firefox-dist
+          path: firefox-dist/
+          retention-days: 1
+
+      - name: Upload Chrome dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-dist
+          path: chrome-dist/
           retention-days: 1
 
       - name: Upload source zip artifact
@@ -102,6 +133,8 @@ jobs:
         run: |
           gh release upload ${{ github.event.release.tag_name }} \
             "mindful-browse-${{ env.VERSION }}.zip" \
+            "mindful-browse-${{ env.VERSION }}-firefox.zip" \
+            "mindful-browse-${{ env.VERSION }}-chrome.zip" \
             "mindful-browse-${{ env.VERSION }}-source.zip"
 
   publish-firefox:
@@ -110,11 +143,11 @@ jobs:
     continue-on-error: true
 
     steps:
-      - name: Download dist artifact
+      - name: Download Firefox dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: extension-dist
-          path: extension-dist/
+          name: firefox-dist
+          path: firefox-dist/
 
       - name: Download source zip artifact
         uses: actions/download-artifact@v4
@@ -132,7 +165,7 @@ jobs:
           RELEASE_NOTES="${{ github.event.release.body }}"
 
           web-ext sign \
-            --source-dir=extension-dist/ \
+            --source-dir=firefox-dist/ \
             --channel=listed \
             --api-key=${{ secrets.FIREFOX_API_KEY }} \
             --api-secret=${{ secrets.FIREFOX_API_SECRET }} \
@@ -148,17 +181,17 @@ jobs:
     continue-on-error: true
 
     steps:
-      - name: Download dist artifact
+      - name: Download Chrome dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: extension-dist
-          path: dist/
+          name: chrome-dist
+          path: chrome-dist/
 
-      - name: Create zip from dist
+      - name: Create zip from Chrome dist
         run: |
           VERSION="${{ needs.build.outputs.version }}"
-          zip -r "mindful-browse-$VERSION.zip" dist/
-          ls -lh "mindful-browse-$VERSION.zip"
+          zip -r "mindful-browse-chrome-$VERSION.zip" chrome-dist/
+          ls -lh "mindful-browse-chrome-$VERSION.zip"
 
       - name: Exchange refresh token for access token
         id: auth
@@ -182,7 +215,7 @@ jobs:
       - name: Upload zip to Chrome Web Store
         run: |
           VERSION="${{ needs.build.outputs.version }}"
-          ZIP_FILE="mindful-browse-$VERSION.zip"
+          ZIP_FILE="mindful-browse-chrome-$VERSION.zip"
           EXTENSION_ID="${{ secrets.CHROME_EXTENSION_ID }}"
           ACCESS_TOKEN="${{ steps.auth.outputs.access-token }}"
 
