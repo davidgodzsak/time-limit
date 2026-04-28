@@ -47,7 +47,7 @@ const Logo = ({ size = "md", showText = true }: LogoProps) => {
           <span
             className={`${textClasses[size]} font-bold tracking-tight text-foreground`}
           >
-            Mindful<span className="text-primary">Browse</span>
+            Time<span className="text-primary">Limit</span>
           </span>
           {size === "lg" && (
             <span className="text-sm text-muted-foreground">

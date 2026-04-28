@@ -1,4 +1,4 @@
-#  Mindful Browse
+# Time Limit
 
 A modern browser extension that helps you stay focused by limiting time spent on distracting websites.
 

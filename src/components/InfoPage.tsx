@@ -258,7 +258,7 @@ const InfoPage = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://github.com/davidgodzsak/mindful-browse/issues"
+            href="https://github.com/davidgodzsak/time-limit/issues"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -271,7 +271,7 @@ const InfoPage = () => {
             </Button>
           </a>
           <a
-            href="https://github.com/davidgodzsak/mindful-browse/discussions"
+            href="https://github.com/davidgodzsak/time-limit/discussions"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,8 +1,8 @@
 ```md
-# 🧠 Mindful Browse
+# 🧠 Time Limit
 
 ## Extension title
-Mindful Browse – Website Time Limits & Focus
+Time Limit – Website Time Limits & Focus
 
 ---
 
@@ -19,13 +19,13 @@ Stop mindless scrolling with daily website limits and focus tools — free, priv
 # Long description
 
 ## 🌿 Browse with intention, not impulse
-The internet is designed to keep you scrolling. Mindful Browse helps you pause, choose, and spend your time on what actually matters — whether that’s studying, working, or simply being present.
+The internet is designed to keep you scrolling. Time Limit helps you pause, choose, and spend your time on what actually matters — whether that’s studying, working, or simply being present.
 
-Instead of harsh blocking, Mindful Browse encourages mindful decisions and healthier digital habits, supporting better focus and digital wellbeing.
+Instead of harsh blocking, Time Limit encourages mindful decisions and healthier digital habits, supporting better focus and digital wellbeing.
 
 ---
 
-## ✨ What makes Mindful Browse different
+## ✨ What makes Time Limit different
 - 🧠 Gentle and non-punitive approach to screen time  
 - 🔒 100% privacy-first — no tracking, no data collection  
 - 💻 Built for students and people who work on computers  
@@ -58,7 +58,7 @@ Start building better habits and improving focus in under a minute.
 ---
 
 ## 🔒 Privacy first — always
-Mindful Browse does not track you, store your browsing history, or send any data to external servers.
+Time Limit does not track you, store your browsing history, or send any data to external servers.
 
 Everything is stored locally on your device and we don't have access to it.
 Your attention and the sites you visit is your business.
@@ -69,7 +69,7 @@ Your attention and the sites you visit is your business.
 A mindful digital life should be accessible to everyone.  
 Tools that support focus and healthier screen time habits should not be locked behind a paywall.
 
-Mindful Browse is completely free to use.  
+Time Limit is completely free to use.  
 If you find it helpful, you can support its development with small voluntary contributions.
 
 ---
@@ -83,4 +83,4 @@ If you find it helpful, you can support its development with small voluntary con
 ---
 
 ## ✅ Take back control of your time
-Install Mindful Browse and turn mindless browsing into mindful choice — one small pause at a time.
+Install Time Limit and turn mindless browsing into mindful choice — one small pause at a time.

@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Mindful Browse",
+    "message": "Time Limit",
     "description": "Extension name shown in browser and stores"
   },
   "extensionDescription": {
@@ -8,7 +8,7 @@
     "description": "Extension description in store listing"
   },
   "extensionActionTitle": {
-    "message": "Mindful Browse",
+    "message": "Time Limit",
     "description": "Tooltip when hovering over extension icon in toolbar"
   },
 
@@ -170,7 +170,7 @@
     "description": "Subtitle in popup info page view"
   },
   "infoPageView_description": {
-    "message": "Mindful Browse helps you stay focused by limiting time on distracting sites. Privacy-first, free, and open-source.",
+    "message": "Time Limit helps you stay focused by limiting time on distracting sites. Privacy-first, free, and open-source.",
     "description": "Extension description in popup info page view"
   },
   "infoPageView_button": {
@@ -266,7 +266,7 @@
   },
 
     "firstInstallView_title": {
-    "message": "Welcome to Mindful Browse",
+    "message": "Welcome to Time Limit",
     "description": "Welcome screen title for first time users"
   },
   "firstInstallView_subtitle": {
@@ -1035,7 +1035,7 @@
   },
 
     "onboarding_welcome_title": {
-    "message": "Welcome to Mindful Browse",
+    "message": "Welcome to Time Limit",
     "description": "Main title of the welcome screen dialog"
   },
   "onboarding_welcome_subtitle": {
@@ -1083,11 +1083,11 @@
     "description": "Title of completion screen"
   },
   "onboarding_completion_subtitle": {
-    "message": "Mindful Browse is ready to help you stay focused",
+    "message": "Time Limit is ready to help you stay focused",
     "description": "Subtitle of completion screen"
   },
   "onboarding_completion_message": {
-    "message": "You've successfully set up your first limit. Start browsing, and Mindful Browse will help you stay on track.",
+    "message": "You've successfully set up your first limit. Start browsing, and Time Limit will help you stay on track.",
     "description": "Main message text on completion screen"
   },
   "onboarding_completion_toolbar_title": {
@@ -1099,7 +1099,7 @@
     "description": "Description of how to use the toolbar icon"
   },
   "onboarding_completion_toolbar_image_alt": {
-    "message": "Browser toolbar showing Mindful Browse extension icon",
+    "message": "Browser toolbar showing Time Limit extension icon",
     "description": "Alt text for browser image (accessibility)"
   },
   "onboarding_completion_button_start": {
@@ -1228,7 +1228,7 @@
     "description": "Validation error when site has no limits"
   },
   "ratingBanner_title": {
-    "message": "Love Mindful Browse?",
+    "message": "Love Time Limit?",
     "description": "Title for rating banner in settings"
   },
   "ratingBanner_description": {
@@ -1248,7 +1248,7 @@
     "description": "Button to dismiss rating banner and ask again later"
   },
   "ratingPrompt_title": {
-    "message": "Enjoying Mindful Browse?",
+    "message": "Enjoying Time Limit?",
     "description": "Title for full-screen rating prompt in popup"
   },
   "ratingPrompt_description": {

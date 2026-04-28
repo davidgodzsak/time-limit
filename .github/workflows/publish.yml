@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ env.VERSION }}
-      source-zip-file: mindful-browse-${{ env.VERSION }}-source.zip
+      source-zip-file: time-limit-${{ env.VERSION }}-source.zip
 
     steps:
       - name: Checkout code
@@ -76,22 +76,22 @@ jobs:
 
       - name: Create Firefox extension zip
         run: |
-          zip -r "mindful-browse-${{ env.VERSION }}-firefox.zip" firefox-dist/
-          ls -lh "mindful-browse-${{ env.VERSION }}-firefox.zip"
+          zip -r "time-limit-${{ env.VERSION }}-firefox.zip" firefox-dist/
+          ls -lh "time-limit-${{ env.VERSION }}-firefox.zip"
 
       - name: Create Chrome extension zip
         run: |
-          zip -r "mindful-browse-${{ env.VERSION }}-chrome.zip" chrome-dist/
-          ls -lh "mindful-browse-${{ env.VERSION }}-chrome.zip"
+          zip -r "time-limit-${{ env.VERSION }}-chrome.zip" chrome-dist/
+          ls -lh "time-limit-${{ env.VERSION }}-chrome.zip"
 
       - name: Create generic extension zip (for source release)
         run: |
-          zip -r "mindful-browse-${{ env.VERSION }}.zip" firefox-dist/
-          ls -lh "mindful-browse-${{ env.VERSION }}.zip"
+          zip -r "time-limit-${{ env.VERSION }}.zip" firefox-dist/
+          ls -lh "time-limit-${{ env.VERSION }}.zip"
 
       - name: Create source zip (for AMO review)
         run: |
-          zip -r "mindful-browse-${{ env.VERSION }}-source.zip" . \
+          zip -r "time-limit-${{ env.VERSION }}-source.zip" . \
             --exclude='claude/*' \
             --exclude='marketing/*' \
             --exclude='public/*' \
@@ -103,7 +103,7 @@ jobs:
             --exclude='CLAUDE.md' \
             --exclude='todo.md' \
             --exclude='*.log'
-          ls -lh "mindful-browse-${{ env.VERSION }}-source.zip"
+          ls -lh "time-limit-${{ env.VERSION }}-source.zip"
 
       - name: Upload Firefox dist artifact
         uses: actions/upload-artifact@v4
@@ -123,7 +123,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extension-source
-          path: mindful-browse-${{ env.VERSION }}-source.zip
+          path: time-limit-${{ env.VERSION }}-source.zip
           retention-days: 1
 
       - name: Upload zips to GitHub release
@@ -131,10 +131,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ github.event.release.tag_name }} \
-            "mindful-browse-${{ env.VERSION }}.zip" \
-            "mindful-browse-${{ env.VERSION }}-firefox.zip" \
-            "mindful-browse-${{ env.VERSION }}-chrome.zip" \
-            "mindful-browse-${{ env.VERSION }}-source.zip"
+            "time-limit-${{ env.VERSION }}.zip" \
+            "time-limit-${{ env.VERSION }}-firefox.zip" \
+            "time-limit-${{ env.VERSION }}-chrome.zip" \
+            "time-limit-${{ env.VERSION }}-source.zip"
 
   publish-firefox:
     runs-on: ubuntu-latest
@@ -160,7 +160,7 @@ jobs:
       - name: Sign and submit extension to Firefox AMO
         run: |
           VERSION="${{ needs.build.outputs.version }}"
-          SOURCE_ZIP="mindful-browse-$VERSION-source.zip"
+          SOURCE_ZIP="time-limit-$VERSION-source.zip"
           RELEASE_NOTES="${{ github.event.release.body }}"
 
           web-ext sign \
@@ -188,8 +188,8 @@ jobs:
       - name: Create zip from Chrome dist
         run: |
           VERSION="${{ needs.build.outputs.version }}"
-          zip -r "mindful-browse-chrome-$VERSION.zip" chrome-dist/
-          ls -lh "mindful-browse-chrome-$VERSION.zip"
+          zip -r "time-limit-chrome-$VERSION.zip" chrome-dist/
+          ls -lh "time-limit-chrome-$VERSION.zip"
 
       - name: Exchange refresh token for access token
         id: auth
@@ -213,7 +213,7 @@ jobs:
       - name: Upload zip to Chrome Web Store
         run: |
           VERSION="${{ needs.build.outputs.version }}"
-          ZIP_FILE="mindful-browse-chrome-$VERSION.zip"
+          ZIP_FILE="time-limit-chrome-$VERSION.zip"
           EXTENSION_ID="${{ secrets.CHROME_EXTENSION_ID }}"
           ACCESS_TOKEN="${{ steps.auth.outputs.access-token }}"
 

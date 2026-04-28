@@ -892,7 +892,7 @@ const SettingsPage = () => {
         <SpotlightOverlay
           targetSelector='[data-testid="toolbar-icon"]'
           title="Quick Access"
-          message="You can also click the Mindful Browse icon in your toolbar to quickly add limits to any site you're currently viewing!"
+          message="You can also click the Time Limit icon in your toolbar to quickly add limits to any site you're currently viewing!"
           onSkip={onboarding.skipOnboarding}
           onFinish={onboarding.completeOnboarding}
           isLastStep={true}

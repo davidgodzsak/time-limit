@@ -301,8 +301,8 @@ The rating URLs differ by browser target (defined in `src/lib/constants/rating.t
 
 ```typescript
 RATING_URLS = {
-  firefox: 'https://addons.mozilla.org/firefox/addon/mindful-browse-/reviews/',
-  chrome: 'https://chromewebstore.google.com/detail/mindful-browse/PLACEHOLDER_ID/reviews'
+  firefox: 'https://addons.mozilla.org/firefox/addon/time-limit/reviews/',
+  chrome: 'https://chromewebstore.google.com/detail/time-limit/PLACEHOLDER_ID/reviews'
 }
 ```
 

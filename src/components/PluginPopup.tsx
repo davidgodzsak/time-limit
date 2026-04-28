@@ -504,7 +504,7 @@ const PluginPopup = () => {
       <Card className="w-80 shadow-soft border-0 overflow-hidden">
         <div className="gradient-mint p-4">
           <div className="flex items-center justify-between">
-            <div className="text-lg font-bold text-foreground">Mindful Browse</div>
+            <div className="text-lg font-bold text-foreground">Time Limit</div>
             <div className="w-6 h-6" />
           </div>
         </div>

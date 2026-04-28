@@ -131,7 +131,7 @@ If the automation fails, you can still publish manually:
 ```bash
 npm run build
 cd dist
-zip -r ../mindful-browse-1.5.1.zip .
+zip -r ../time-limit-1.5.1.zip .
 cd ..
 ```
 

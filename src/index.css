@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* MindfulBrowse - Fresh Green/Mint Theme */
+    /* Time Limit - Fresh Green/Mint Theme */
     --background: 150 30% 98%;
     --foreground: 160 25% 15%;
 
@@ -41,7 +41,7 @@
 
     --radius: 1rem;
 
-    /* Custom MindfulBrowse tokens */
+    /* Custom Time Limit tokens */
     --mint-50: 155 40% 96%;
     --mint-100: 155 38% 90%;
     --mint-200: 155 36% 82%;
