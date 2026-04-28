@@ -227,7 +227,7 @@ jobs:
           echo "Upload response: $UPLOAD_RESPONSE"
 
           # Check for errors
-          if echo "$UPLOAD_RESPONSE" | grep -q '"uploadStatus":"SUCCESS"'; then
+          if echo "$UPLOAD_RESPONSE" | jq -e '.uploadState == "SUCCESS"' > /dev/null; then
             echo "✅ Successfully uploaded to Chrome Web Store"
           else
             echo "❌ Upload failed or returned unexpected status"
