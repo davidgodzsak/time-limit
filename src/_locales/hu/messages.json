@@ -1,0 +1,1221 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Korlátozd a figyelemelterelő oldalakon töltött időt. Blokkold az időrabló oldalakat, kövesd nyomon a használatot, és maradj fókuszált a napi időkorlátokkal és látogatásszámlálókkal.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Betöltés...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Válassz legalább egy korláttípust",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Korlát hozzáadva: $SITENAME$",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Nem sikerült hozzáadni a korlátot. Kérlek, próbáld újra.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Siker",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Követés engedélyezve",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Nem sikerült engedélyezni a követést",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Nem sikerült betölteni a csoportokat. Kérlek, próbáld újra.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Az oldal sikeresen hozzáadva a csoporthoz",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Nem sikerült hozzáadni az oldalt a csoporthoz. Kérlek, próbáld újra.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Nem sikerült betölteni az oldal információit",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "Erről a bővítményről",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Megnyitások ma",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "$COUNT$ megnyitás maradt",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "perc maradt",
+    "description": "Short label for remaining time unit"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Nem követett",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_description": {
+    "message": "Állíts be korlátokat, hogy tudatosabban böngészd ezt az oldalt.",
+    "description": "Description in unlimited site view"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Időkorlát",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Megnyitáskorlát",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Korlát hozzáadása",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "vagy",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Válassz csoportot",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Nincs elérhető csoport. Hozz létre egyet a beállításokban.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Hozzáadás csoporthoz",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Mégse",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Letiltva",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Ennek az oldalnak a követése szünetel. Kattints alább a visszakapcsoláshoz.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Annak a csoportnak a követése szünetel, amelybe ez az oldal tartozik. Kattints alább az engedélyezéshez.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Ennek az oldalnak és a csoportjának a követése is szünetel. Kattints alább a visszakapcsoláshoz.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Követés bekapcsolása",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Beállítások oldal",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Korlátok kezelése",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Itt állíthatod be a korlátaidat, csoportjaidat és üzeneteidet.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "A bővítményről",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Ismerd meg és állítsd be",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "A Time Limit segít fókuszálni azzal, hogy korlátozza a figyelemelterelő oldalakon töltött időt. Az adatvédelmet helyezi előtérbe, ingyenes és nyílt forráskódú.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Beállítások megnyitása",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Időtúllépés oldal",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Korlát elérve",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Meghosszabbítás",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Elérted a korlátot. Tarts szünetet és térj vissza később.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Korlátok meghosszabbítása",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Korlát meghosszabbítása",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Időkorlát:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "perc",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Megnyitáskorlát:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "megnyitás",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "További percek (0–60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "További megnyitások (0–10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Miért van szükséged több időre?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Magyarázd el, miért kell meghosszabbítani ezt a korlátot...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 karakter",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "Az indoklásnak legalább 35 karakter hosszúnak kell lennie",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Meg kell hosszabbítani az időt vagy a megnyitásokat",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Mégse",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Meghosszabbítás",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Meghosszabbítás...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Üdvözöl a Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Kezdj neki az első oldalkorlátod beállításával",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Állítsd be az első oldalkorlátaidat a beállításokban, hogy követni tudd a figyelemelterelő oldalakon töltött idődet.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Beállítások megnyitása",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Vagy állíts be korlátot",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "A beállítás után innen gyorsan hozzáadhatsz új korlátokat",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Beállítások betöltése...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Korlátok",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Csoportok",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Üzenetek",
+    "description": "Tab label for messages section"
+  },
+  "sites_search_placeholder": {
+    "message": "Keresés oldalak és csoportok között...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Egyéni oldalak",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Oldal hozzáadása",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Nem követett",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "Engedélyezve",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Letiltva",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Csoportok",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "$LENGTH$ oldal",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Oldal hozzáadása csoporthoz",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Csoportok kezelése",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Csoportosítsd a kapcsolódó oldalakat, hogy ne válthass át egy másik hasonlóra",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Új csoport",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ oldal osztozik a korlátokon",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Hozzáadás",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ perc/nap",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ megnyitás/nap",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Csoport szerkesztése",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Csoport törlése",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Motivációs üzenetek",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "Ezek jelennek meg, amikor eléred a korlátaidat",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Új motivációs üzenet hozzáadása...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Megjelenítési beállítások",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Véletlenszerű üzenet megjelenítése",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Minden alkalommal véletlenszerű üzenetet jelenít meg",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Tevékenységi javaslatok megjelenítése",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Kártyák megjelenítése alternatív tevékenységekkel",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Üzenet szerkesztése",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Üzenet törlése",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Új oldal hozzáadása",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Oldal szerkesztése",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Adj hozzá egy weboldalt idő- vagy megnyitáskorláttal való követéshez.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Frissítsd ennek a weboldalnak a korlátait.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Weboldal URL",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "pl. tiktok.com",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Időkorlát (perc)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "pl. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Megnyitáskorlát",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "pl. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Állíts be legalább egy időkorlátot vagy megnyitáskorlátot",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Mégse",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Oldal hozzáadása",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Oldal frissítése",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Új csoport létrehozása",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Csoport szerkesztése",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Hozz létre csoportot, hogy több oldal osztozzon ugyanazokon a korlátokon.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "A csoport beállításainak frissítése.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Csoport neve",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "pl. Közösségi média",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Szín",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Időkorlát (perc)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Megnyitáskorlát",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Állíts be legalább egy időkorlátot vagy megnyitáskorlátot",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Mégse",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Csoport létrehozása",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Csoport frissítése",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Oldal hozzáadása: $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Ez az oldal a csoport idő- és megnyitáskorlátain fog osztozni.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Weboldal URL",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "pl. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Gyors hozzáadás",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_quickAdd_tiktok": {
+    "message": "tiktok.com",
+    "description": "Quick add button for TikTok"
+  },
+  "dialog_addToGroup_quickAdd_linkedin": {
+    "message": "linkedin.com",
+    "description": "Quick add button for LinkedIn"
+  },
+  "dialog_addToGroup_quickAdd_pinterest": {
+    "message": "pinterest.com",
+    "description": "Quick add button for Pinterest"
+  },
+  "dialog_addToGroup_quickAdd_snapchat": {
+    "message": "snapchat.com",
+    "description": "Quick add button for Snapchat"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Mégse",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Hozzáadás csoporthoz",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Belégzés",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Kilégzés",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Még nincsenek motivációs üzenetek beállítva",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Adj hozzá üzeneteket a bővítmény beállításaiban, hogy itt lássad őket",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Beállítások megnyitása",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Mit tehetnél ehelyett...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Visszaáll: $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Szerezd vissza a fókuszt",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "Egy egyszerű böngészőbővítmény, amely az adatvédelmet helyezi előtérbe, és segít egészségesebb böngészési szokásokat kialakítani. Állíts be korlátokat a figyelmedet elterelő oldalakon, kapj kíméletes emlékeztetőket, amikor szünetre van szükséged, és legyél tudatos azzal kapcsolatban, mire fordítod az online idődet.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Amit kapsz",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Időt takarítasz meg",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Kövesd nyomon, hogyan töltöd az online idődet és szerezd vissza a fókuszt",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Légy tudatos",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Alakíts ki egészségesebb böngészési szokásokat szelíd, nem ítélkező korlátokkal",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Az adatvédelem az első",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Minden az eszközödön marad. Nincs követés, adatgyűjtés vagy szerver",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Örökre ingyenes",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Nincsenek hirdetések, nincs fizetős fal. Hiszünk abban, hogy az internetet mindenki számára egészségesebbé tehetjük",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Készen állsz a kezdésre?",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Nyisd meg a beállításokat, add hozzá az első oldalkorlátaidat, és szabd személyre a használatot a céljaidhoz.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Beállítások megnyitása",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Támogasd ezt a projektet",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Ha hasznosnak találod ezt a bővítményt, fontold meg a fejlesztés támogatását. Az adományod segít fenntartani ingyenesen, reklámmentesen és nyílt forráskódúan.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Egyszeri vagy ismétlődő adományok",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Gyors és biztonságos",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Támogasd munkánkat",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Légy patrónus",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Megnyitás",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Van visszajelzésed?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Hibát találtál, vagy van egy ötleted egy új funkcióhoz? Szívesen hallunk felőled!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Hiba bejelentése",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Funkció kérése",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Szeretettel ❤️ készült, hogy segítsen fókuszálni",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Olvass könyvet",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Merülj el abban a regényben, amelyet már rég el akartál olvasni",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Igyál vizet",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Maradj hidratált! Tested hálás lesz érte",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Menj sétálni",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Szellőztesd ki a fejed és kapj friss levegőt",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Hívj fel valakit",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Kapcsolódj egy baráthoz vagy családtaghoz",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Meditálj",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 perc tudatosság visszaadhatja a fókuszodat",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Tarts szünetet",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Nyújtózkodj, készíts teát és pihentesd a szemeidet",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "A művelet sikeresen befejeződött",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Valami hiba történt. Kérlek, próbáld újra.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Korlát hozzáadva: $SITENAME$",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Az oldal sikeresen frissítve",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Az oldal sikeresen eltávolítva",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "A csoport sikeresen létrehozva",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "A csoport sikeresen frissítve",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "A csoport sikeresen törölve",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Az üzenet sikeresen hozzáadva",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Az üzenet sikeresen frissítve",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Az üzenet sikeresen eltávolítva",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Az oldal sikeresen hozzáadva a csoporthoz",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Az oldal sikeresen eltávolítva a csoportból",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Követés engedélyezve",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Követés letiltva",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Beállítás mentve",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Korlát meghosszabbítva! Átirányítás...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Váratlan hiba történt",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Érvénytelen üzenetformátum",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "Az üzenethez művelet megadása szükséges",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Nem sikerült hozzáadni az oldalt. Ellenőrizd az URL formátumát és próbáld újra.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Nem sikerült frissíteni az oldalt. Az oldal esetleg nem létezik, vagy az adatok érvénytelenek.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Nem sikerült törölni az oldalt. Az oldal esetleg nem létezik.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Nem sikerült hozzáadni a megjegyzést. Ellenőrizd a szövegét és próbáld újra.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Nem sikerült frissíteni a megjegyzést. Esetleg nem létezik, vagy az adatok érvénytelenek.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Nem sikerült törölni a megjegyzést. Esetleg nem létezik.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Nem található aktív lap",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "Nem sikerült elérni az aktuális lap URL-jét",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Nem sikerült lekérni az aktuális oldal információit",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Nem sikerült frissíteni az oldal adatait",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Nem sikerült hozzáadni az oldal korlátját. Ellenőrizd az URL formátumát és próbáld újra.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Nem sikerült lekérni a jelvény információit",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Nem sikerült lekérni a rendszer állapotát",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Most már elérheted ezt az oldalt. Lépj vissza, vagy frissítsd a lapot.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "Túllépted az idő- ($1/$2 perc) és a megnyitáskorlátot ($3/$4 megnyitás) is $5 esetén ma.",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": { "content": "$1", "example": "45" },
+      "time_limit": { "content": "$2", "example": "30" },
+      "opens_count": { "content": "$3", "example": "15" },
+      "opens_limit": { "content": "$4", "example": "10" },
+      "context": { "content": "$5", "example": "this site" }
+    }
+  },
+  "block_reason_time": {
+    "message": "Ma $1 percet töltöttél $2-n, túllépve a $3 perces korlátot.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": { "content": "$1", "example": "45" },
+      "context": { "content": "$2", "example": "this site" },
+      "limit_minutes": { "content": "$3", "example": "30" }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Ma $1-t $2-szer nyitottad meg, túllépve a $3 megnyitásos korlátot.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": { "content": "$1", "example": "this site" },
+      "opens_count": { "content": "$2", "example": "15" },
+      "opens_limit": { "content": "$3", "example": "10" }
+    }
+  },
+  "block_reason_default": {
+    "message": "A napi korlát túllépve: $1.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": { "content": "$1", "example": "this site" }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Üdvözöl a Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Maradj fókuszált okos weboldalkorlátokkal",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Okos korlátok beállítása",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Állíts be idő- vagy megnyitáskorlátokat a figyelemelterelő oldalakon",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Szervezés csoportokkal",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Kapcsolódó oldalak csoportosítása és korlátok alkalmazása mindegyikre",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Maradj motivált",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Személyre szabhatod a motivációs üzeneteket, amelyek a korlátok elérésekor jelennek meg",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "A beállítás mindössze 2 percet vesz igénybe",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Kihagyás",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Start",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "Minden kész!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "A Time Limit készen áll, hogy segítsen fókuszálni",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "Sikeresen beállítottad az első korlátodat. Kezdj el böngészni, és a Time Limit segít, hogy a helyes úton maradj.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Gyors hozzáférés az eszköztárról",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Kattints a bővítmény ikonjára a böngésző eszköztárában, hogy gyorsan hozzáadj új korlátokat, vagy ellenőrizd a haladásodat",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "A böngésző eszköztára a Time Limit bővítmény ikonjával",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "Böngészés megkezdése",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Kihagyás",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Következő",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Befejezés",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Az URL mintának nem üres sztringnek kell lennie",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Az URL minta túl hosszú (max. 2000 karakter)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Érvénytelen URL formátum. Adj meg érvényes domaint (pl. example.com)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Az érvénytelen URL minta korlátozott protokollt tartalmaz",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Az időkorlátnak érvényes számnak kell lennie",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Az időkorlátnak 0-nál nagyobbnak kell lennie",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Az időkorlát nem haladhatja meg a 24 órát",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "A megjegyzés szövegének nem üres sztringnek kell lennie",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "A megjegyzés szövege túl hosszú (max. 1000 karakter)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Ismeretlen adattípus a tárolás érvényesítéséhez",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Elérted a maximális $1 számot ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": { "content": "$1", "example": "sites" },
+      "limit": { "content": "$2", "example": "500" }
+    }
+  },
+  "error_unknown": {
+    "message": "Ismeretlen hiba történt",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "A bővítmény újratöltődött. Kérlek, frissítsd ezt az oldalt.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Elérted a tárolási korlátot. Távolíts el néhány elemet, majd próbáld újra.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Kapcsolódási hiba. Ellenőrizd az internetkapcsolatodat, majd próbáld újra.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Böngésző API-hiba. Próbáld újra, vagy indítsd újra a böngészőt.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "Objektum szükséges",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "A kötelező '$1' mező hiányzik",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": { "content": "$1", "example": "urlPattern" }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "A megnyitáskorlátnak érvényes számnak kell lennie",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "A megnyitáskorlátnak 0-nál nagyobbnak kell lennie",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "A megnyitáskorlát nem haladhatja meg az 1000 megnyitást naponta",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Az oldalnak objektumnak kell lennie",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Legalább egy korlátot (idő vagy megnyitás) meg kell adni",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Szereted a Time Limitet?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Segíts, hogy egyre többekhez eljussunk egy 5 csillagos értékeléssel",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Értékelés most",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Már értékeltem",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Később →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Tetszik a Time Limit?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "A visszajelzésed segít, hogy jobbak legyünk. Írj egy gyors értékelést!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Értékelés most",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Már értékeltem",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Később →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Köszönjük! ♥ Támogasd a fejlesztést adományokkal.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Hiba az értékelés feldolgozásakor. Kérlek, próbáld újra.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Köszönjük a támogatásodat!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Hiba az értékelés feldolgozásakor. Kérlek, próbáld újra.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Értékelj minket",
+    "description": "Button to rate from popup info view"
+  }
+}
