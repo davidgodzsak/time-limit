@@ -2,6 +2,9 @@
 
 A modern browser extension that helps you stay focused by limiting time spent on distracting websites.
 
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox-Add--ons-FF7139?logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/time-limit-extension/)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Web%20Store-4285F4?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/mindful-browse/fhlebfafkdeiclbanmjjojjijdgllbbf)
+
 ## Features
 
 - ⏱️ **Time Limits**: Set daily time limits (in minutes) for any website
