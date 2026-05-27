@@ -4,6 +4,10 @@ A modern browser extension that helps you stay focused by limiting time spent on
 
 [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Add--ons-FF7139?logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/firefox/addon/time-limit-extension/)
 [![Chrome Web Store](https://img.shields.io/badge/Chrome-Web%20Store-4285F4?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/mindful-browse/fhlebfafkdeiclbanmjjojjijdgllbbf)
+[![Mozilla Add-on Users](https://img.shields.io/amo/users/time-limit-extension?label=Firefox%20users&color=FF7139)](https://addons.mozilla.org/firefox/addon/time-limit-extension/)
+[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/fhlebfafkdeiclbanmjjojjijdgllbbf?label=Chrome%20users&color=4285F4)](https://chromewebstore.google.com/detail/mindful-browse/fhlebfafkdeiclbanmjjojjijdgllbbf)
+[![GitHub release](https://img.shields.io/github/v/release/davidgodzsak/time-limit?label=version&color=6366f1)](https://github.com/davidgodzsak/time-limit/releases)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-davidgodzsak-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/davidgodzsak)
 
 ## Features
 
