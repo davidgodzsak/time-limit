@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Clock, Quote, Loader2, FolderOpen } from "lucide-react";
+import { Clock, Quote, Loader2, FolderOpen, SlidersHorizontal } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { t } from "@/lib/utils/i18n";
@@ -12,6 +12,7 @@ import AddSiteToGroupDialog from "./settings/AddSiteToGroupDialog";
 import { IndividualSitesTab } from "./settings/IndividualSitesTab";
 import { GroupsTab } from "./settings/GroupsTab";
 import { MessagesTab } from "./settings/MessagesTab";
+import { PreferencesTab } from "./settings/PreferencesTab";
 import { SpotlightOverlay } from "./onboarding/SpotlightOverlay";
 import { WelcomeScreen } from "./onboarding/WelcomeScreen";
 import { CompletionScreen } from "./onboarding/CompletionScreen";
@@ -48,6 +49,7 @@ const SettingsPage = () => {
   // Display preferences
   const [showRandomMessage, setShowRandomMessage] = useState(true);
   const [showActivitySuggestions, setShowActivitySuggestions] = useState(true);
+  const [preferredLanguage, setPreferredLanguage] = useState<string | null>(null);
 
   // Message editing using custom hook to reduce state duplication
   const messageEditor = useEditMode<{ id: string; text: string }>(null, (msg) => msg.id);
@@ -95,6 +97,9 @@ const SettingsPage = () => {
           if (preferencesData) {
             setShowRandomMessage(preferencesData.showRandomMessage !== false);
             setShowActivitySuggestions(preferencesData.showActivitySuggestions !== false);
+            setPreferredLanguage(
+              (preferencesData.preferredLanguage as string | null | undefined) ?? null
+            );
           }
         } catch (prefError) {
           console.warn("Could not load display preferences:", prefError);
@@ -302,6 +307,7 @@ const SettingsPage = () => {
       await api.updateDisplayPreferences({
         showRandomMessage: checked,
         showActivitySuggestions: showActivitySuggestions,
+        preferredLanguage: preferredLanguage,
       });
     } catch (error) {
       logError("Error updating preferences", error);
@@ -317,12 +323,30 @@ const SettingsPage = () => {
       await api.updateDisplayPreferences({
         showRandomMessage: showRandomMessage,
         showActivitySuggestions: checked,
+        preferredLanguage: preferredLanguage,
       });
     } catch (error) {
       logError("Error updating preferences", error);
       toast(getErrorToastProps("Failed to save preference. Please try again."));
       // Revert on error
       setShowActivitySuggestions(!checked);
+    }
+  };
+
+  const handleChangeLanguage = async (lang: string | null) => {
+    const previous = preferredLanguage;
+    setPreferredLanguage(lang);
+    try {
+      await api.updateDisplayPreferences({
+        showRandomMessage: showRandomMessage,
+        showActivitySuggestions: showActivitySuggestions,
+        preferredLanguage: lang,
+      });
+      window.location.reload();
+    } catch (error) {
+      logError("Error updating language", error);
+      toast(getErrorToastProps("Failed to change language. Please try again."));
+      setPreferredLanguage(previous);
     }
   };
 
@@ -707,7 +731,7 @@ const SettingsPage = () => {
             }
           }}
         >
-          <TabsList className="grid w-full grid-cols-3 rounded-2xl p-1 bg-muted/80">
+          <TabsList className="grid w-full grid-cols-4 rounded-2xl p-1 bg-muted/80">
             <TabsTrigger value="limits" className="rounded-xl">
               <Clock size={16} className="mr-2" />
               {t("settings_tab_limits")}
@@ -727,6 +751,10 @@ const SettingsPage = () => {
             >
               <Quote size={16} className="mr-2" />
               {t("settings_tab_messages")}
+            </TabsTrigger>
+            <TabsTrigger value="preferences" className="rounded-xl">
+              <SlidersHorizontal size={16} className="mr-2" />
+              {t("settings_tab_preferences")}
             </TabsTrigger>
           </TabsList>
 
@@ -771,10 +799,6 @@ const SettingsPage = () => {
               newMessage={newMessage}
               onNewMessageChange={setNewMessage}
               onAddMessage={addMessage}
-              showRandomMessage={showRandomMessage}
-              onToggleRandomMessage={handleToggleRandomMessage}
-              showActivitySuggestions={showActivitySuggestions}
-              onToggleActivitySuggestions={handleToggleActivitySuggestions}
               isSaving={isSaving}
               onRemoveMessage={removeMessage}
               onStartEditMessage={startEditingMessage}
@@ -783,6 +807,19 @@ const SettingsPage = () => {
               onEditMessageChange={(text) => messageEditor.updateData({ ...messageEditor.editingData!, text })}
               onSaveEditMessage={saveEditingMessage}
               onCancelEditMessage={cancelEditingMessage}
+            />
+          </TabsContent>
+
+          {/* Preferences Tab */}
+          <TabsContent value="preferences" className="space-y-6">
+            <PreferencesTab
+              showRandomMessage={showRandomMessage}
+              onToggleRandomMessage={handleToggleRandomMessage}
+              showActivitySuggestions={showActivitySuggestions}
+              onToggleActivitySuggestions={handleToggleActivitySuggestions}
+              preferredLanguage={preferredLanguage}
+              onChangeLanguage={handleChangeLanguage}
+              isSaving={isSaving}
             />
           </TabsContent>
         </Tabs>

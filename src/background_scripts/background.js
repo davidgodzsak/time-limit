@@ -1376,6 +1376,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           const preferences = storage.displayPreferences || {
             showRandomMessage: true,
             showActivitySuggestions: true,
+            preferredLanguage: null,
           };
           return {
             success: true,
@@ -1400,6 +1401,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           const preferences = message.payload || {
             showRandomMessage: true,
             showActivitySuggestions: true,
+            preferredLanguage: null,
           };
           await browser.storage.local.set({ displayPreferences: preferences });
           return {

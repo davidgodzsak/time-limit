@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Plus, Quote, Edit2, Trash2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
 import { t } from "@/lib/utils/i18n";
 
 interface Message {
@@ -16,10 +14,6 @@ interface MessagesTabProps {
   newMessage: string;
   onNewMessageChange: (text: string) => void;
   onAddMessage: () => void;
-  showRandomMessage: boolean;
-  onToggleRandomMessage: (checked: boolean) => void;
-  showActivitySuggestions: boolean;
-  onToggleActivitySuggestions: (checked: boolean) => void;
   isSaving: boolean;
   onRemoveMessage: (messageId: string) => void;
   onStartEditMessage: (message: Message) => void;
@@ -35,10 +29,6 @@ export function MessagesTab({
   newMessage,
   onNewMessageChange,
   onAddMessage,
-  showRandomMessage,
-  onToggleRandomMessage,
-  showActivitySuggestions,
-  onToggleActivitySuggestions,
   isSaving,
   onRemoveMessage,
   onStartEditMessage,
@@ -163,40 +153,6 @@ export function MessagesTab({
         </CardContent>
       </Card>
 
-      {/* Preferences */}
-      <Card className="shadow-soft border-0">
-        <CardHeader>
-          <CardTitle className="text-lg">{t("messages_display_options_title")}</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">{t("messages_option_randomMessage")}</p>
-              <p className="text-sm text-muted-foreground">
-                {t("messages_option_randomMessage_description")}
-              </p>
-            </div>
-            <Switch
-              checked={showRandomMessage}
-              onCheckedChange={onToggleRandomMessage}
-              disabled={isSaving}
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium">{t("messages_option_suggestions")}</p>
-              <p className="text-sm text-muted-foreground">
-                {t("messages_option_suggestions_description")}
-              </p>
-            </div>
-            <Switch
-              checked={showActivitySuggestions}
-              onCheckedChange={onToggleActivitySuggestions}
-              disabled={isSaving}
-            />
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
