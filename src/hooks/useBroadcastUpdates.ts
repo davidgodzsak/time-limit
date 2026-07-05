@@ -71,12 +71,13 @@ export function useBroadcastUpdates<K extends keyof BroadcastEventMap>(
   );
 
   useEffect(() => {
-    // Set up the listener
-    browser.runtime.onMessage.addListener(handleMessage);
+    const g = globalThis as unknown as { browser?: typeof browser; chrome?: typeof browser };
+    const runtime = (g.browser ?? g.chrome)?.runtime;
+    if (!runtime?.onMessage) return;
 
-    // Clean up the listener on unmount
+    runtime.onMessage.addListener(handleMessage);
     return () => {
-      browser.runtime.onMessage.removeListener(handleMessage);
+      runtime.onMessage.removeListener(handleMessage);
     };
   }, [handleMessage]);
 }

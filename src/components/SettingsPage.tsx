@@ -103,7 +103,9 @@ const SettingsPage = () => {
           }
         } catch (prefError) {
           console.warn("Could not load display preferences:", prefError);
-          // Use defaults if preferences can't be loaded
+          // In demo context, restore language from localStorage
+          const demoLang = localStorage.getItem('__demo_lang');
+          if (demoLang) setPreferredLanguage(demoLang);
         }
       } catch (error) {
         logError("Error loading settings", error);
@@ -336,6 +338,16 @@ const SettingsPage = () => {
   const handleChangeLanguage = async (lang: string | null) => {
     const previous = preferredLanguage;
     setPreferredLanguage(lang);
+
+    const g = globalThis as unknown as { browser?: unknown; chrome?: unknown };
+    if (!g.browser && !g.chrome) {
+      // Demo mode: persist choice in localStorage and reload so main.tsx re-seeds
+      if (lang) localStorage.setItem('__demo_lang', lang);
+      else localStorage.removeItem('__demo_lang');
+      window.location.reload();
+      return;
+    }
+
     try {
       await api.updateDisplayPreferences({
         showRandomMessage: showRandomMessage,

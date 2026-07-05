@@ -10,6 +10,7 @@
 
 interface MessageEntry {
   message: string;
+  description?: string;
   placeholders?: Record<string, { content: string }>;
 }
 
@@ -43,6 +44,12 @@ export const AVAILABLE_LANGUAGES: { code: string; name: string }[] = [
 
 let overrideMessages: MessageMap | null = null;
 let overrideLanguage: string | null = null;
+
+/** Seed translations directly — used by the demo/dev page where browser.i18n is unavailable. */
+export function seedMessages(messages: Record<string, unknown>, language = 'en'): void {
+  overrideMessages = messages as MessageMap;
+  overrideLanguage = language;
+}
 
 function getBrowserAPI(): BrowserGlobals | null {
   if (typeof globalThis === 'undefined') return null;
@@ -107,7 +114,6 @@ export function t(key: string, substitutions?: string | string[]): string {
 
   const api = getBrowserAPI();
   if (!api?.i18n) {
-    console.error('i18n API not available - browser/chrome object not found');
     return key;
   }
 
