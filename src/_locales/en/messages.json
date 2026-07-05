@@ -306,6 +306,30 @@
     "message": "Messages",
     "description": "Tab label for messages section"
   },
+  "settings_tab_preferences": {
+    "message": "Preferences",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Display Preferences",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Customize how the extension looks and behaves",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Language",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Override the browser's display language",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Browser default",
+    "description": "Option to use the browser's default language"
+  },
 
     "sites_search_placeholder": {
     "message": "Search sites and groups...",

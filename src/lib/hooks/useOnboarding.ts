@@ -34,20 +34,21 @@ export const useOnboarding = () => {
   // Load onboarding state from storage on mount
   useEffect(() => {
     const loadOnboardingState = async () => {
+      const g = globalThis as unknown as { browser?: unknown; chrome?: unknown };
+      if (!g.browser && !g.chrome) {
+        // Not in extension context (e.g. demo page) — skip onboarding entirely
+        setIsLoading(false);
+        return;
+      }
       try {
         const onboardingData = await api.getOnboardingState();
         setState((prev) => ({
           ...prev,
           hasCompletedOnboarding: onboardingData?.completed || false,
-          isVisible: !onboardingData?.completed, // Show if not completed
+          isVisible: !onboardingData?.completed,
         }));
       } catch (error) {
         console.warn("Could not load onboarding state:", error);
-        // Default: show onboarding if we can't load state
-        setState((prev) => ({
-          ...prev,
-          isVisible: true,
-        }));
       } finally {
         setIsLoading(false);
       }

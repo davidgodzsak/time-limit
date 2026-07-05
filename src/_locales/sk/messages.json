@@ -297,6 +297,30 @@
     "message": "Správy",
     "description": "Tab label for messages section"
   },
+  "settings_tab_preferences": {
+    "message": "Preferencie",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Predvoľby zobrazenia",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Prispôsobte vzhľad a správanie rozšírenia",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Jazyk",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Prepísať jazyk zobrazenia prehliadača",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Predvolené prehliadača",
+    "description": "Option to use the browser's default language"
+  },
   "sites_search_placeholder": {
     "message": "Hľadať stránky a skupiny...",
     "description": "Placeholder in search input for sites"
