@@ -41,13 +41,24 @@ export async function addGroup(groupObject) {
   if (
     !groupObject ||
     typeof groupObject.name !== 'string' ||
-    groupObject.name.trim() === '' ||
-    typeof groupObject.dailyLimitSeconds !== 'number' ||
-    groupObject.dailyLimitSeconds <= 0
+    groupObject.name.trim() === ''
   ) {
     console.error(
-      "Invalid groupObject provided to addGroup. 'name' (string) and 'dailyLimitSeconds' (positive number) are required.",
+      "Invalid groupObject provided to addGroup. 'name' (non-empty string) is required.",
       groupObject
+    );
+    return null;
+  }
+
+  // Validate dailyLimitSeconds if provided
+  if (
+    Object.prototype.hasOwnProperty.call(groupObject, 'dailyLimitSeconds') &&
+    (typeof groupObject.dailyLimitSeconds !== 'number' ||
+      groupObject.dailyLimitSeconds <= 0)
+  ) {
+    console.error(
+      'Invalid dailyLimitSeconds provided to addGroup. Must be a positive number if specified.',
+      groupObject.dailyLimitSeconds
     );
     return null;
   }
@@ -65,17 +76,31 @@ export async function addGroup(groupObject) {
     return null;
   }
 
+  // A group must have at least one limit (time or opens).
+  if (
+    typeof groupObject.dailyLimitSeconds !== 'number' &&
+    typeof groupObject.dailyOpenLimit !== 'number'
+  ) {
+    console.error(
+      'addGroup requires at least one of dailyLimitSeconds or dailyOpenLimit.',
+      groupObject
+    );
+    return null;
+  }
+
   const newGroup = {
     id: crypto.randomUUID(),
     name: groupObject.name.trim(),
     color: groupObject.color || '#6366f1', // Default to indigo
-    dailyLimitSeconds: groupObject.dailyLimitSeconds,
     isEnabled:
       typeof groupObject.isEnabled === 'boolean' ? groupObject.isEnabled : true,
     siteIds: [], // Initialize empty site IDs array
   };
 
-  // Add dailyOpenLimit if provided
+  // Add limits if provided
+  if (typeof groupObject.dailyLimitSeconds === 'number') {
+    newGroup.dailyLimitSeconds = groupObject.dailyLimitSeconds;
+  }
   if (Object.prototype.hasOwnProperty.call(groupObject, 'dailyOpenLimit')) {
     newGroup.dailyOpenLimit = groupObject.dailyOpenLimit;
   }
@@ -134,6 +159,7 @@ export async function updateGroup(groupId, updates) {
   }
   if (
     Object.prototype.hasOwnProperty.call(updates, 'dailyLimitSeconds') &&
+    updates.dailyLimitSeconds !== null &&
     (typeof updates.dailyLimitSeconds !== 'number' ||
       updates.dailyLimitSeconds <= 0)
   ) {
@@ -177,9 +203,23 @@ export async function updateGroup(groupId, updates) {
     // Create the updated group object by merging current group with validated updates
     const updatedGroup = { ...groups[groupIndex], ...updates };
 
-    // Remove dailyOpenLimit if it's null (explicit removal)
+    // Remove limits that were explicitly cleared (passed as null)
     if (updates.dailyOpenLimit === null) {
       delete updatedGroup.dailyOpenLimit;
+    }
+    if (updates.dailyLimitSeconds === null) {
+      delete updatedGroup.dailyLimitSeconds;
+    }
+
+    // A group must always keep at least one limit (time or opens).
+    if (
+      typeof updatedGroup.dailyLimitSeconds !== 'number' &&
+      typeof updatedGroup.dailyOpenLimit !== 'number'
+    ) {
+      console.error(
+        `Cannot remove all limits from group "${groupId}". At least one of dailyLimitSeconds or dailyOpenLimit is required.`
+      );
+      return null;
     }
 
     groups[groupIndex] = updatedGroup;

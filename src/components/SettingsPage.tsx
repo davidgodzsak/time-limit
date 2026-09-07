@@ -495,7 +495,7 @@ const SettingsPage = () => {
   const handleCreateGroup = async (groupData: {
     name: string;
     color: string;
-    timeLimit: number;
+    timeLimit?: number;
     opensLimit?: number;
   }) => {
     try {

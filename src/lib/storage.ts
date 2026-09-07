@@ -38,7 +38,7 @@ export interface BackendGroup {
   id: string;
   name: string;
   color: string;
-  dailyLimitSeconds: number;
+  dailyLimitSeconds?: number;
   dailyOpenLimit?: number;
   isEnabled: boolean;
   siteIds: string[];
@@ -166,7 +166,9 @@ export function groupFromStorage(
     id: storageGroup.id,
     name: storageGroup.name,
     color: storageGroup.color,
-    timeLimit: Math.ceil(storageGroup.dailyLimitSeconds / 60),
+    timeLimit: storageGroup.dailyLimitSeconds
+      ? Math.ceil(storageGroup.dailyLimitSeconds / 60)
+      : 0,
     sites,
     isEnabled: storageGroup.isEnabled,
   };
@@ -190,10 +192,13 @@ export function groupToStorage(uiGroup: UIGroup): BackendGroup {
     id: uiGroup.id,
     name: uiGroup.name,
     color: uiGroup.color,
-    dailyLimitSeconds: uiGroup.timeLimit * 60,
     isEnabled: uiGroup.isEnabled !== false,
     siteIds: uiGroup.sites?.map((s) => s.id) || [],
   };
+
+  if (uiGroup.timeLimit && uiGroup.timeLimit > 0) {
+    storageGroup.dailyLimitSeconds = uiGroup.timeLimit * 60;
+  }
 
   if (uiGroup.opensLimit) {
     storageGroup.dailyOpenLimit = uiGroup.opensLimit;

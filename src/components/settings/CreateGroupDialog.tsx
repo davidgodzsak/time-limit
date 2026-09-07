@@ -16,7 +16,7 @@ import { t } from "@/lib/utils/i18n";
 interface CreateGroupDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onCreate: (group: { name: string; color: string; timeLimit: number; opensLimit?: number }) => void;
+  onCreate: (group: { name: string; color: string; timeLimit?: number; opensLimit?: number }) => void;
   initialGroup?: { id: string; name: string; color: string; timeLimit: number; opensLimit?: number };
   isEditing?: boolean;
 }
@@ -42,7 +42,7 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
       if (initialGroup) {
         setGroupName(initialGroup.name);
         setSelectedColor(initialGroup.color);
-        setTimeLimit(initialGroup.timeLimit.toString());
+        setTimeLimit(initialGroup.timeLimit ? initialGroup.timeLimit.toString() : "");
         setOpensLimit((initialGroup.opensLimit || "").toString());
       } else {
         // Reset form for create mode
@@ -68,14 +68,13 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
       return;
     }
 
-    // For new groups, default timeLimit to 30 if not provided
-    const finalTimeLimit = parsedTimeLimit || (isEditing ? undefined : 30);
-
+    // A group can have only an opens limit (no time limit) in both create and
+    // edit modes, as long as at least one limit is set (validated above).
     onCreate({
       name: groupName.trim(),
       color: selectedColor,
-      timeLimit: finalTimeLimit || 30, // Ensure always a number for new groups
-      opensLimit: parsedOpensLimit, // Can be undefined
+      timeLimit: parsedTimeLimit, // undefined = no time limit
+      opensLimit: parsedOpensLimit, // undefined = no opens limit
     });
     setGroupName("");
     setSelectedColor("bg-blue-500");

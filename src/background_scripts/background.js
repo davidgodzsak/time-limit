@@ -1453,10 +1453,7 @@ async function handleMessage(message, _sender, _sendResponse) {
       }
 
       case 'addGroup': {
-        const validation = validateRequiredFields(message.payload, [
-          'name',
-          'dailyLimitSeconds',
-        ]);
+        const validation = validateRequiredFields(message.payload, ['name']);
         if (!validation.isValid) {
           return {
             success: false,
@@ -1465,6 +1462,23 @@ async function handleMessage(message, _sender, _sendResponse) {
               type: ERROR_TYPES.VALIDATION,
               isRetryable: false,
               field: validation.missingField,
+            },
+          };
+        }
+
+        // A group needs at least one limit, but either one on its own is valid.
+        if (
+          typeof message.payload.dailyLimitSeconds !== 'number' &&
+          typeof message.payload.dailyOpenLimit !== 'number'
+        ) {
+          return {
+            success: false,
+            error: {
+              message:
+                "A group needs at least one limit: 'dailyLimitSeconds' or 'dailyOpenLimit'.",
+              type: ERROR_TYPES.VALIDATION,
+              isRetryable: false,
+              field: 'dailyLimitSeconds',
             },
           };
         }
