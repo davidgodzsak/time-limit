@@ -111,61 +111,37 @@ export async function checkAndBlockSite(tabId, url) {
     }
 
     const extensions = await getExtensions(dateString);
-    const extension = extensions[matchingSite.id] || null;
+    // Extensions apply to the limit being enforced: the group (for grouped
+    // sites) or the individual site. limitConfig.id is exactly that key, so an
+    // extension made on any site in a group lifts the shared group limit.
+    const extension = extensions[limitConfig.id] || null;
 
     let totalExtendedMinutes = 0;
     let totalExtendedOpens = 0;
-    let usageAtExtensionTime = 0;
-
     if (extension) {
       totalExtendedMinutes = extension.extendedMinutes || 0;
       totalExtendedOpens = extension.extendedOpens || 0;
-      usageAtExtensionTime = extension.usageAtExtensionTime || 0;
     }
 
     let dailyLimitSeconds = limitConfig.dailyLimitSeconds || 0;
     let dailyOpenLimit = limitConfig.dailyOpenLimit || 0;
 
-    const baseDailyLimitSeconds = dailyLimitSeconds;
-    const baseDailyOpenLimit = dailyOpenLimit;
+    const hasTimeLimit = dailyLimitSeconds > 0;
+    const hasOpenLimit = dailyOpenLimit > 0;
 
-    let extensionApplied = false;
-    if (totalExtendedMinutes > 0 || totalExtendedOpens > 0) {
+    // An extension raises the total daily allowance (base + extension) for the
+    // rest of the day; usage is still measured as the day's running total.
+    if (totalExtendedMinutes > 0) {
       dailyLimitSeconds += totalExtendedMinutes * 60;
-      dailyOpenLimit += totalExtendedOpens;
-      extensionApplied = true;
     }
-
-    const hasTimeLimit = baseDailyLimitSeconds > 0;
-    const hasOpenLimit = baseDailyOpenLimit > 0;
-
-    // Calculate effective usage considering extension timing
-    // If extension exists, we measure usage from the point of extension
-    let effectiveTimeSpentSeconds = usageStats.timeSpentSeconds;
-    let effectiveOpens = usageStats.opens;
-
-    if (extensionApplied && usageAtExtensionTime > 0) {
-      // For opens: calculate usage since extension was applied
-      // usageAtExtensionTime has structure: { opens: X, timeSpentSeconds: Y }
-      const opensSinceExtension =
-        usageStats.opens -
-        (typeof usageAtExtensionTime === 'object'
-          ? usageAtExtensionTime.opens || 0
-          : 0);
-      const timeSpentSinceExtension =
-        usageStats.timeSpentSeconds -
-        (typeof usageAtExtensionTime === 'object'
-          ? usageAtExtensionTime.timeSpentSeconds || 0
-          : 0);
-
-      effectiveOpens = Math.max(0, opensSinceExtension);
-      effectiveTimeSpentSeconds = Math.max(0, timeSpentSinceExtension);
+    if (totalExtendedOpens > 0) {
+      dailyOpenLimit += totalExtendedOpens;
     }
 
     const timeExceeded =
-      hasTimeLimit && effectiveTimeSpentSeconds >= dailyLimitSeconds;
+      hasTimeLimit && usageStats.timeSpentSeconds >= dailyLimitSeconds;
     const opensExceeded =
-      hasOpenLimit && effectiveOpens >= dailyOpenLimit;
+      hasOpenLimit && usageStats.opens >= dailyOpenLimit;
 
     if (timeExceeded || opensExceeded) {
       let limitType = 'unknown';

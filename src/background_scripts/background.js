@@ -1065,13 +1065,33 @@ async function handleMessage(message, _sender, _sendResponse) {
             }
           }
 
+          // Apply any active extension so the popup reflects the extended
+          // limits. Keyed by limitConfig.id (group when grouped+enabled, else
+          // the site), matching site_blocker and the extendLimit handler.
+          const pageExtensions = await getExtensions(today);
+          const pageExtension = pageExtensions[limitConfig.id] || null;
+          const extendedMinutes = pageExtension?.extendedMinutes || 0;
+          const extendedOpens = pageExtension?.extendedOpens || 0;
+
+          let effectiveLimitSeconds = limitConfig.dailyLimitSeconds;
+          let effectiveOpenLimit = limitConfig.dailyOpenLimit;
+          if (extendedMinutes > 0 && typeof effectiveLimitSeconds === 'number') {
+            effectiveLimitSeconds += extendedMinutes * 60;
+          }
+          if (extendedOpens > 0 && typeof effectiveOpenLimit === 'number') {
+            effectiveOpenLimit += extendedOpens;
+          }
+
           // Enhanced site info with real usage data
           const enhancedSiteInfo = {
             ...site,
-            dailyLimitSeconds: limitConfig.dailyLimitSeconds,
-            dailyOpenLimit: limitConfig.dailyOpenLimit,
+            dailyLimitSeconds: effectiveLimitSeconds,
+            dailyOpenLimit: effectiveOpenLimit,
             todaySeconds: siteUsage.timeSpentSeconds,
             todayOpenCount: siteUsage.opens,
+            isExtended: !!pageExtension,
+            extendedMinutes,
+            extendedOpens,
             lastUpdated: Date.now(),
             groupInfo,
           };
@@ -1767,9 +1787,21 @@ async function handleMessage(message, _sender, _sendResponse) {
             .toISOString()
             .split('T')[0]; // YYYY-MM-DD
 
-          // 6. Check not already extended today
+          // 6. Determine the extension key: extensions apply to the group when
+          // the site belongs to an enabled group, otherwise to the site itself.
+          // Must match how site_blocker/getCurrentPageLimitInfo look it up.
+          const extGroups = await getGroups();
+          let extensionKey = siteId;
+          if (site.groupId) {
+            const extGroup = extGroups.find((g) => g.id === site.groupId);
+            if (extGroup && extGroup.isEnabled !== false) {
+              extensionKey = site.groupId;
+            }
+          }
+
+          // 7. Check not already extended today (per group/site)
           const alreadyExtended = await hasExtensionToday(
-            siteId,
+            extensionKey,
             dateString
           );
           if (alreadyExtended) {
@@ -1783,27 +1815,14 @@ async function handleMessage(message, _sender, _sendResponse) {
             };
           }
 
-          // 7. Get current usage stats for this site
-          // This is needed so we can calculate "fresh count" from extension time
-          const currentUsage = await getUsageStats(dateString);
-          const siteUsage = currentUsage[siteId] || {
-            timeSpentSeconds: 0,
-            opens: 0,
-          };
-
-          console.log(
-            `[Background] Current usage for site ${siteId} at extension time:`,
-            siteUsage
-          );
-
-          // 8. Store extension with usage stats at time of extension
+          // 8. Store the extension. The extended amount raises the total daily
+          // allowance (base + extension); usage stays the day's running total.
           const extensionData = {
             extendedMinutes,
             extendedOpens,
             excuse,
             timestamp: Date.now(),
             appliedCount: 1,
-            usageAtExtensionTime: siteUsage,
           };
 
           console.log(
@@ -1813,7 +1832,7 @@ async function handleMessage(message, _sender, _sendResponse) {
 
           const success = await setExtension(
             dateString,
-            siteId,
+            extensionKey,
             extensionData
           );
           if (!success) {

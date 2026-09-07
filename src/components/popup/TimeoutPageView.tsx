@@ -29,22 +29,24 @@ export function TimeoutPageView({
   onOpenInfo,
 }: TimeoutPageViewProps) {
   const [showExtendForm, setShowExtendForm] = useState(false);
-  const [extendMinutes, setExtendMinutes] = useState(0);
-  const [extendOpens, setExtendOpens] = useState(0);
+  const [extendMinutes, setExtendMinutes] = useState("");
+  const [extendOpens, setExtendOpens] = useState("");
   const [excuse, setExcuse] = useState("");
   const [isExtending, setIsExtending] = useState(false);
   const [extensionError, setExtensionError] = useState<string | null>(null);
   const [isExtended, setIsExtended] = useState(false);
 
-  const newTimeLimit = originalTimeLimit + extendMinutes;
-  const newOpensLimit = originalOpensLimit + extendOpens;
+  const extendMinutesNum = parseInt(extendMinutes) || 0;
+  const extendOpensNum = parseInt(extendOpens) || 0;
+  const newTimeLimit = originalTimeLimit + extendMinutesNum;
+  const newOpensLimit = originalOpensLimit + extendOpensNum;
 
   const handleExtend = async () => {
     if (excuse.length < 35) {
       setExtensionError(t("timeoutPageView_extend_error_minChars"));
       return;
     }
-    if (extendMinutes <= 0 && extendOpens <= 0) {
+    if (extendMinutesNum <= 0 && extendOpensNum <= 0) {
       setExtensionError(t("timeoutPageView_extend_error_noExtension"));
       return;
     }
@@ -52,10 +54,10 @@ export function TimeoutPageView({
     try {
       setIsExtending(true);
       setExtensionError(null);
-      await onExtendLimit(extendMinutes, extendOpens, excuse);
+      await onExtendLimit(extendMinutesNum, extendOpensNum, excuse);
       setShowExtendForm(false);
-      setExtendMinutes(0);
-      setExtendOpens(0);
+      setExtendMinutes("");
+      setExtendOpens("");
       setExcuse("");
       setIsExtended(true);
     } catch (error: unknown) {
@@ -138,7 +140,7 @@ export function TimeoutPageView({
                           <span className="text-muted-foreground text-[10px]">
                             {t("timeoutPageView_extend_timeLabel")}
                           </span>
-                          {extendMinutes > 0 && (
+                          {extendMinutesNum > 0 && (
                             <>
                               {" "}
                               → {newTimeLimit}{" "}
@@ -160,7 +162,7 @@ export function TimeoutPageView({
                           <span className="text-muted-foreground text-[10px]">
                             {t("timeoutPageView_extend_opensLabel")}
                           </span>
-                          {extendOpens > 0 && (
+                          {extendOpensNum > 0 && (
                             <>
                               {" "}
                               → {newOpensLimit}{" "}
@@ -183,8 +185,9 @@ export function TimeoutPageView({
                     type="number"
                     min={0}
                     max={60}
+                    placeholder="0"
                     value={extendMinutes}
-                    onChange={(e) => setExtendMinutes(parseInt(e.target.value) || 0)}
+                    onChange={(e) => setExtendMinutes(e.target.value)}
                     disabled={isExtending}
                     className="rounded-xl"
                   />
@@ -198,8 +201,9 @@ export function TimeoutPageView({
                     type="number"
                     min={0}
                     max={10}
+                    placeholder="0"
                     value={extendOpens}
-                    onChange={(e) => setExtendOpens(parseInt(e.target.value) || 0)}
+                    onChange={(e) => setExtendOpens(e.target.value)}
                     disabled={isExtending}
                     className="rounded-xl"
                   />
@@ -248,7 +252,7 @@ export function TimeoutPageView({
                     disabled={
                       isExtending ||
                       excuse.length < 35 ||
-                      (extendMinutes <= 0 && extendOpens <= 0)
+                      (extendMinutesNum <= 0 && extendOpensNum <= 0)
                     }
                     className="flex-1 rounded-xl"
                   >

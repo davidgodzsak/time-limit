@@ -36,6 +36,7 @@ const PluginPopup = () => {
   const [timeLimit, setTimeLimit] = useState(0);
   const [opensUsed, setOpensUsed] = useState(0);
   const [opensLimit, setOpensLimit] = useState(0);
+  const [isExtended, setIsExtended] = useState(false);
   const [pageType, setPageType] = useState<'normal' | 'timeout' | 'settings' | 'info'>('normal');
 
   // Preset selection state (using custom hook to reduce duplication)
@@ -152,6 +153,7 @@ const PluginPopup = () => {
             setTimeUsed(usedMinutes);
             setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
             setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
+            setIsExtended(!!pageInfo.siteInfo.isExtended);
 
             // Check if rating should show on limited sites (after 4+ days)
             try {
@@ -251,6 +253,7 @@ const PluginPopup = () => {
           const usedMinutes = Math.ceil((pageInfo.siteInfo.todaySeconds || 0) / 60);
           setTimeLimit(limitMinutes);
           setTimeUsed(usedMinutes);
+          setIsExtended(!!pageInfo.siteInfo.isExtended);
         }
       } catch (error) {
         console.warn("Could not update time remaining:", error);
@@ -621,6 +624,7 @@ const PluginPopup = () => {
       opensUsed={opensUsed}
       opensLimit={opensLimit}
       opensRemaining={opensRemaining}
+      isExtended={isExtended}
       onSettings={handleOpenSettings}
       onInfo={handleOpenInfo}
     />

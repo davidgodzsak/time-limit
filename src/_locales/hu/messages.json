@@ -83,6 +83,10 @@
     "message": "perc maradt",
     "description": "Short label for remaining time unit"
   },
+  "normalPageView_extended_badge": {
+    "message": "Kiterjesztett limit aktív",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
   "unlimitedSiteView_notTracked": {
     "message": "Nem követett",
     "description": "Status label for unlimited sites"

@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Settings, MousePointerClick, Info } from "lucide-react";
+import { Settings, MousePointerClick, Info, Zap } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import Logo from "../Logo";
 import CircularProgress from "../CircularProgress";
@@ -15,6 +16,7 @@ interface NormalPageViewProps {
   opensUsed: number;
   opensLimit: number;
   opensRemaining: number;
+  isExtended?: boolean;
   onSettings: () => void;
   onInfo?: () => void;
 }
@@ -28,6 +30,7 @@ export function NormalPageView({
   opensUsed,
   opensLimit,
   opensRemaining,
+  isExtended = false,
   onSettings,
   onInfo,
 }: NormalPageViewProps) {
@@ -72,6 +75,18 @@ export function NormalPageView({
             )}
           </div>
         </div>
+
+        {isExtended && (
+          <div className="flex justify-center mb-4">
+            <Badge
+              variant="secondary"
+              className="rounded-full gap-1 bg-amber-100 text-amber-700 hover:bg-amber-100"
+            >
+              <Zap size={12} />
+              {t("normalPageView_extended_badge")}
+            </Badge>
+          </div>
+        )}
 
         <div className="flex justify-center mb-5">
           <CircularProgress
