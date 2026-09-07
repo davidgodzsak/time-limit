@@ -1,4 +1,8 @@
-import { initializeDailyResetAlarm, performDailyReset } from './daily_reset.js';
+import {
+  initializeDailyResetAlarm,
+  performDailyReset,
+  getCurrentDateString,
+} from './daily_reset.js';
 import { handlePotentialRedirect, checkAndBlockSite } from './site_blocker.js';
 import {
   startTracking,
@@ -1008,7 +1012,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           }
 
           // Get today's usage stats for accurate progress bars
-          const today = new Date().toISOString().split('T')[0];
+          const today = getCurrentDateString();
           const todayUsage = await getUsageStats(today);
 
           // Check if site is in a group - if so, use group limits and aggregated usage
@@ -1170,10 +1174,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           }
 
           // Get current usage data and site info
-          const [sites, { getUsageStats }] = await Promise.all([
-            getDistractingSites(),
-            import('./usage_storage.js'),
-          ]);
+          const sites = await getDistractingSites();
 
           const site = sites.find((s) => s.id === siteId);
           if (!site || !site.isEnabled) {
@@ -1189,7 +1190,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           }
 
           // Get today's usage stats
-          const today = new Date().toISOString().split('T')[0];
+          const today = getCurrentDateString();
           const todayUsage = await getUsageStats(today);
           const siteUsage = todayUsage[siteId] || {
             timeSpentSeconds: 0,
@@ -1309,14 +1310,8 @@ async function handleMessage(message, _sender, _sendResponse) {
           }
 
           // Get site and usage information
-          const [sites, usageStatsModule] = await Promise.all([
-            getDistractingSites(),
-            import('./usage_storage.js'),
-          ]);
-
-          const usageStats = await usageStatsModule.getUsageStats(
-            new Date().toISOString().split('T')[0]
-          );
+          const sites = await getDistractingSites();
+          const usageStats = await getUsageStats(getCurrentDateString());
 
           const site = sites.find((s) => s.id === siteId);
           if (!site || !site.isEnabled) {
@@ -1796,10 +1791,8 @@ async function handleMessage(message, _sender, _sendResponse) {
           }
 
           // 5. Get current date string
-          const currentTime = new Date();
-          const dateString = currentTime
-            .toISOString()
-            .split('T')[0]; // YYYY-MM-DD
+          // Local date, matching usage_recorder/site_blocker daily keys.
+          const dateString = getCurrentDateString();
 
           // 6. Determine the extension key: extensions apply to the group when
           // the site belongs to an enabled group, otherwise to the site itself.

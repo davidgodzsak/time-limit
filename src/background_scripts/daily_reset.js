@@ -94,7 +94,9 @@ export async function initializeDailyResetAlarm() {
  */
 export async function performDailyReset() {
   const currentTime = new Date();
-  const currentDateString = currentTime.toISOString().split('T')[0]; // YYYY-MM-DD format
+  // Local date, so the day being preserved matches the daily storage keys
+  // written by usage_recorder/site_blocker.
+  const currentDateString = getCurrentDateString();
 
   console.log(
     `[DailyReset] Starting daily reset process at ${currentTime.toISOString()}`
