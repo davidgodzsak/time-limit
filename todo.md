@@ -2,7 +2,7 @@
 
 ## CRITICAL (Before Publishing)
 
-- [ ] **Chrome Extension ID**: Replace `PLACEHOLDER_ID` in `src/lib/constants/rating.ts:5` with the real Chrome Web Store extension ID before submitting to Chrome Web Store. Currently breaks the "Rate us" link for Chrome users.
+- [x] **Chrome Extension ID**: Replace `PLACEHOLDER_ID` in `src/lib/constants/rating.ts:5` with the real Chrome Web Store extension ID before submitting to Chrome Web Store. Currently breaks the "Rate us" link for Chrome users.
 
 ## Bugs
 
@@ -21,11 +21,11 @@
 - [x] Limits tab -> when adding a new item to a group then it adds an empty item to the individual sites as well, when refreshing the page then htey disappear
 - [x] Limit tab -> Add new site dialog -> Let's remove the quick presets, not needed
 - [x] Groups tab -> When removing the value from the time or open limit and clicking update nothing seems to happen, when I refresh the page then the limit is gone, we should update the card after saving the changes so we don't need to refresh the page manually to let the user know the changes have been stored.
-- [ ] Groups tab -> It's not possible to remove the time limit. When I remove the value from the input and update the group the time limit does not disappear. It should be possible to remove the time limit and only have a limit on number of opens instead (but at least one of hte two limits should be added)
+- [x] Groups tab -> It's not possible to remove the time limit. When I remove the value from the input and update the group the time limit does not disappear. It should be possible to remove the time limit and only have a limit on number of opens instead (but at least one of hte two limits should be added)
 - [x] settings page background and header (with the name and icon) should be the same as the timout page one.
-- [ ] info icon is cogwheel in header
-- [ ] group Quick add links should be platform dependent or removed (e.g. social media, news)
-- [ ] onboarading modal x icon does nothing 
+- [x] info icon is cogwheel in header
+- [ ] group Quick add links should be context dependent or removed (e.g. social media, news)
+- [x] onboarading modal x icon does nothing
 - [ ] I can add a page two times, I can also add a page to a group and as individual site, this is wrong
 
 ### Popup
@@ -38,11 +38,11 @@
 - [x] Add to group should show a selector where the options are the available groups. When selecting an option it should add the page to the group and have the popup to refresh to show the limit
 - [x] When we select an open and a time limit for a page in the popup quick add -> it should store both of the limits. Currently it only stores the limit for the time.
 - [x] When I click add to group for a non-limited site and click on a specific group's button nothing happens. It does not add the site to the group. It should add it and refresh the popup to show the correct state of the group.
-- [ ] When I click on the add to group button, then the groups appear as buttons that makes the popup be bigger than the allocated size and it introduces vertical and horizontal scrollbars. This is a bad experience so let's make sure the popup window can grow horizontally so the content fits inside.
-- [ ] when extending limits for a site in a group, it does not actually get extended for said site
-- [ ] after extending a sites limits, on the site the popup shows the original limits and not the extended limits
-- [ ] after extending a sites limits, there should be an indication that we are spending extension time, not regular 
-- [ ] Popup extending limits input always contains a 0 that is prefixed to whatever the user inputs. It should be a normal number input field.
+- [x] When I click on the add to group button, then the groups appear as buttons that makes the popup be bigger than the allocated size and it introduces vertical and horizontal scrollbars. This is a bad experience so let's make sure the popup window can grow horizontally so the content fits inside.
+- [x] when extending limits for a site in a group, it does not actually get extended for said site
+- [x] after extending a sites limits, on the site the popup shows the original limits and not the extended limits
+- [x] after extending a sites limits, there should be an indication that we are spending extension time, not regular 
+- [x] Popup extending limits input always contains a 0 that is prefixed to whatever the user inputs. It should be a normal number input field.
 
 ### CICD
 - [x] https://github.com/marketplace/actions/publish-an-extension-on-firefox-addons-store
@@ -58,7 +58,7 @@
 - [x] Clean clutter: Simplify code, create a "mental map document" and check what can be reused across pages, Delete dead code, delete unnecessary logging and error handling, delete mock data
 - [x] Refactor to actually use locales, remove every hardcoded string in favor of this. 
 - [ ] Be able to limit just a subdomain or a subpage (e.g. shorts.youtube.com or reddit.com/r/hungary or youtube.com/shorts)
-- [ ] Add to every page a link to the plugin page review -> on successful things add a popup to ask the user if they like the user and rate it
+- [x] Add to every page a link to the plugin page review -> on successful things add a popup to ask the user if they like the user and rate it
 
 ### Settings page
 - [x] be able to turn limits on or off by having a "switch" button next to each page in the limits tab (even on pages individually that are in a group) (reuse the one in the settings -> messages tab -> display options)

@@ -17,7 +17,7 @@ interface WelcomeScreenProps {
 export function WelcomeScreen({ onStart, onSkip }: WelcomeScreenProps) {
   return (
     <Dialog open={true}>
-      <DialogContent className="sm:max-w-md rounded-2xl">
+      <DialogContent hideCloseButton className="sm:max-w-md rounded-2xl">
         <DialogHeader className="text-center">
           <DialogTitle className="text-2xl">{t("onboarding_welcome_title")}</DialogTitle>
           <DialogDescription className="text-base">
