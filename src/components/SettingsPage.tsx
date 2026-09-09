@@ -420,6 +420,25 @@ const SettingsPage = () => {
     }
   };
 
+  /**
+   * Reports a failed add/edit. A page that is already limited gets its own
+   * message naming the clashing rule, since retrying will never help.
+   */
+  const reportSiteFailure = (error: unknown, pattern: string, fallback: string) => {
+    if (api.isDuplicateSiteError(error)) {
+      const groupName = error.details?.groupName;
+      toast(
+        getErrorToastProps(
+          groupName
+            ? t("error_site_duplicateInGroup", [pattern, groupName])
+            : t("error_site_duplicate", pattern)
+        )
+      );
+      return;
+    }
+    toast(getErrorToastProps(fallback));
+  };
+
   const handleAddSite = async (site: {
     name: string;
     timeLimit?: number;
@@ -468,7 +487,11 @@ const SettingsPage = () => {
       addSiteDialog.close();
     } catch (error) {
       logError("Error adding/editing site", error);
-      toast(getErrorToastProps(`Failed to ${addSiteDialog.data ? "update" : "add"} site. Please try again.`));
+      reportSiteFailure(
+        error,
+        site.name,
+        `Failed to ${addSiteDialog.data ? "update" : "add"} site. Please try again.`
+      );
     } finally {
       setIsSaving(false);
     }
@@ -592,7 +615,11 @@ const SettingsPage = () => {
       }
     } catch (error) {
       logError("Error adding site to group", error);
-      toast(getErrorToastProps("Failed to add site to group. Please try again."));
+      reportSiteFailure(
+        error,
+        siteName,
+        "Failed to add site to group. Please try again."
+      );
     } finally {
       setIsSaving(false);
     }
@@ -657,7 +684,7 @@ const SettingsPage = () => {
     return (
       <PageTemplate
         version={version}
-        onOpenInfo={handleOpenInfo}
+        onHeaderAction={handleOpenInfo}
         layout="centered"
         showVersionBadge={false}
       >
@@ -707,7 +734,7 @@ const SettingsPage = () => {
     <>
       <PageTemplate
         version={version}
-        onOpenInfo={handleOpenInfo}
+        onHeaderAction={handleOpenInfo}
         layout="normal"
         showVersionBadge={true}
         logoSize="md"
@@ -861,6 +888,7 @@ const SettingsPage = () => {
         open={addToGroupDialog.isOpen}
         onOpenChange={addToGroupDialog.setIsOpen}
         groupName={addToGroupDialog.data?.name || ""}
+        existingPatterns={(addToGroupDialog.data?.sites || []).map((site) => site.name)}
         onAdd={handleAddSiteToGroup}
       />
 

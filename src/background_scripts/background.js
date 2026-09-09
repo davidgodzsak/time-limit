@@ -38,6 +38,7 @@ import {
   addDistractingSite,
   updateDistractingSite,
   deleteDistractingSite,
+  findSiteByPattern,
 } from './site_storage.js';
 import {
   getTimeoutNotes,
@@ -57,10 +58,70 @@ import {
 import {
   categorizeError,
   validateRequiredFields,
+  validateUrlPattern,
   ERROR_TYPES,
 } from './validation_utils.js';
 
-async function handleInstalled(details) {
+/**
+ * Validates a URL pattern and checks that no other site already limits it.
+ * Keeps the "one rule per page" guarantee in one place for every add/edit path,
+ * and hands the UI a `code` plus the clashing site so it can explain the clash
+ * in the user's own language.
+ *
+ * @private
+ * @param {string} urlPattern - The raw pattern from the request payload.
+ * @param {string} [excludeSiteId] - Site to ignore, e.g. the one being edited.
+ * @returns {Promise<{error: Object|null, normalizedPattern: string|null}>}
+ */
+async function _checkPatternAvailable(urlPattern, excludeSiteId) {
+  const validation = validateUrlPattern(urlPattern);
+  if (!validation.isValid) {
+    return {
+      error: {
+        message: validation.error,
+        type: ERROR_TYPES.VALIDATION,
+        isRetryable: false,
+        code: 'INVALID_PATTERN',
+        field: 'urlPattern',
+      },
+      normalizedPattern: null,
+    };
+  }
+
+  const existing = await findSiteByPattern(
+    validation.normalizedPattern,
+    excludeSiteId
+  );
+  if (existing) {
+    let groupName = null;
+    if (existing.groupId) {
+      const groups = await getGroups();
+      groupName = groups.find((g) => g.id === existing.groupId)?.name || null;
+    }
+    return {
+      error: {
+        message: groupName
+          ? `"${existing.urlPattern}" is already limited in the group "${groupName}".`
+          : `"${existing.urlPattern}" is already limited.`,
+        type: ERROR_TYPES.VALIDATION,
+        isRetryable: false,
+        code: 'DUPLICATE_SITE',
+        field: 'urlPattern',
+        details: {
+          pattern: existing.urlPattern,
+          siteId: existing.id,
+          groupId: existing.groupId || null,
+          groupName,
+        },
+      },
+      normalizedPattern: null,
+    };
+  }
+
+  return { error: null, normalizedPattern: validation.normalizedPattern };
+}
+
+async function handleInstalled() {
   try {
     await initializeDailyResetAlarm();
     await initializeDistractionDetector();
@@ -72,7 +133,6 @@ async function handleInstalled(details) {
       try {
         await bootstrapDefaultData();
         await markInitialSetupDone();
-        console.log('[Background] Bootstrapped default data on first install');
         if (!onboardingState.completed) {
           await browser.runtime.openOptionsPage();
         }
@@ -95,7 +155,6 @@ async function bootstrapDefaultData() {
       dailyLimitSeconds: 30 * 60, // 30 minutes
       dailyOpenLimit: 30,
     });
-    console.log('[Background] Created default Social Media group:', defaultGroup.id);
 
     // Add default motivational messages
     const defaultMessages = [
@@ -114,11 +173,6 @@ async function bootstrapDefaultData() {
       }
     }
 
-    console.log(
-      '[Background] Added',
-      defaultMessages.length,
-      'default motivational messages'
-    );
 
     return {
       groupAdded: !!defaultGroup,
@@ -130,23 +184,16 @@ async function bootstrapDefaultData() {
   }
 }
 async function handleAlarm(alarm) {
-  console.log(
-    `[Background] Alarm "${alarm.name}" triggered at ${new Date(alarm.scheduledTime).toISOString()}`
-  );
 
   try {
     switch (alarm.name) {
       case 'dailyResetAlarm':
         await performDailyReset();
-        console.log('[Background] Daily reset completed successfully');
         break;
 
       case 'usageTimer': {
         // Update usage for currently tracked site
         const totalTimeSeconds = await updateUsage();
-        console.log(
-          `[Background] Usage updated via alarm. Total time: ${totalTimeSeconds}s`
-        );
 
         // Update badge for current tracking info and broadcast usage update
         try {
@@ -156,9 +203,6 @@ async function handleAlarm(alarm) {
             trackingInfo.tabId &&
             trackingInfo.siteId
           ) {
-            console.log(
-              `[Background] Updating badge for tracked tab ${trackingInfo.tabId} after usage update`
-            );
             await updateBadge(trackingInfo.tabId);
 
             // QA FIX: Check if current site should be blocked due to time limit being exceeded
@@ -170,17 +214,11 @@ async function handleAlarm(alarm) {
                 tab.url &&
                 !tab.url.includes('pages/timeout/index.html')
               ) {
-                console.log(
-                  `[Background] Checking if current site should be blocked after usage update`
-                );
                 const wasRedirected = await handlePotentialRedirect(
                   trackingInfo.tabId,
                   tab.url
                 );
                 if (wasRedirected) {
-                  console.log(
-                    `[Background] Automatically redirected tab ${trackingInfo.tabId} to timeout page due to time limit`
-                  );
                   // Stop tracking since we're redirecting to timeout page
                   await stopTracking();
                   await browser.alarms.clear('usageTimer');
@@ -201,10 +239,6 @@ async function handleAlarm(alarm) {
               totalTimeSeconds: totalTimeSeconds,
               tabId: trackingInfo.tabId,
             });
-          } else {
-            console.log(
-              `[Background] No active tracking found during alarm, skipping badge update`
-            );
           }
         } catch (error) {
           console.warn(
@@ -245,7 +279,6 @@ async function handleBeforeNavigate(details) {
   }
 
   const { tabId, url } = details;
-  console.log(`[Background] Navigation detected: tab ${tabId} -> ${url}`);
 
   // Validate inputs
   if (!tabId || !url) {
@@ -258,9 +291,6 @@ async function handleBeforeNavigate(details) {
     // This ensures we have the most current usage data for limit checks
     const currentTrackingInfo = await getCurrentTrackingInfo();
     if (currentTrackingInfo.isTracking && currentTrackingInfo.tabId === tabId) {
-      console.log(
-        `[Background] Updating usage for current tracking before navigation blocking check`
-      );
       await updateUsage();
     }
 
@@ -268,14 +298,10 @@ async function handleBeforeNavigate(details) {
     const wasRedirected = await handlePotentialRedirect(tabId, url);
 
     if (wasRedirected) {
-      console.log(
-        `[Background] Successfully blocked navigation to ${url} in tab ${tabId}`
-      );
       // Stop any current tracking since we're redirecting to timeout page
       await stopTracking();
       try {
         await browser.alarms.clear('usageTimer');
-        console.log('[Background] Cleared usage timer after blocking redirect');
       } catch (error) {
         console.warn(
           '[Background] Error clearing usage timer after blocking:',
@@ -300,7 +326,6 @@ async function handleBeforeNavigate(details) {
  */
 async function handleTabActivated(activeInfo) {
   const { tabId } = activeInfo;
-  console.log(`[Background] Tab activated: ${tabId}`);
 
   try {
     // Get the tab details
@@ -342,7 +367,6 @@ async function handleTabUpdated(tabId, changeInfo, tab) {
     return;
   }
 
-  console.log(`[Background] Tab updated: ${tabId} -> ${newUrl}`);
 
   try {
     // Check if this tab is currently active
@@ -383,13 +407,11 @@ async function handleTabUpdated(tabId, changeInfo, tab) {
  * @param {number} windowId - The ID of the focused window (-1 if no window is focused)
  */
 async function handleWindowFocusChanged(windowId) {
-  console.log(`[Background] Window focus changed: ${windowId}`);
 
   try {
     if (windowId === browser.windows.WINDOW_ID_NONE) {
       // No window focused, stop tracking
       await stopTracking();
-      console.log('[Background] Stopped tracking due to window focus loss');
     } else {
       // Window focused, check if we should resume tracking
       const [activeTab] = await browser.tabs.query({
@@ -413,9 +435,6 @@ async function handleWindowFocusChanged(windowId) {
  * @param {boolean} shouldTrack - Whether tracking should be active
  */
 async function handleTabActivity(tabId, url, shouldTrack) {
-  console.log(
-    `[Background] handleTabActivity: tab=${tabId}, url=${url}, shouldTrack=${shouldTrack}`
-  );
 
   try {
     // Ensure distraction detector is initialized before checking
@@ -432,22 +451,13 @@ async function handleTabActivity(tabId, url, shouldTrack) {
     const distractionCheck = checkIfUrlIsDistracting(url);
     const { isMatch, siteId } = distractionCheck;
 
-    console.log(`[Background] Distraction check result:`, {
-      isMatch,
-      siteId,
-      url,
-    });
 
     if (!shouldTrack || !isMatch || !siteId) {
       // Stop tracking if we're not supposed to track or if it's not a distracting site
-      console.log(
-        '[Background] Stopping tracking (not shouldTrack or not distracting site)'
-      );
       await stopTracking();
       // Clear any existing usage timer
       try {
         await browser.alarms.clear('usageTimer');
-        console.log('[Background] Cleared usage timer alarm');
       } catch (error) {
         console.warn('[Background] Error clearing usage timer:', error);
       }
@@ -464,7 +474,6 @@ async function handleTabActivity(tabId, url, shouldTrack) {
       return;
     }
 
-    console.log(`[Background] Detected distracting site: ${siteId} (${url})`);
 
     // FIXED: Check if we're already tracking the same site in the same tab
     const currentTrackingInfo = await getCurrentTrackingInfo();
@@ -473,9 +482,6 @@ async function handleTabActivity(tabId, url, shouldTrack) {
       currentTrackingInfo.siteId === siteId &&
       currentTrackingInfo.tabId === tabId
     ) {
-      console.log(
-        `[Background] Already tracking site ${siteId} in tab ${tabId}, continuing existing session`
-      );
       // Update badge but don't restart tracking
       try {
         await updateBadge(tabId);
@@ -490,7 +496,6 @@ async function handleTabActivity(tabId, url, shouldTrack) {
 
     // Start tracking for this site and tab
     const trackingStarted = await startTracking(tabId, siteId);
-    console.log(`[Background] Tracking started: ${trackingStarted}`);
 
     if (trackingStarted) {
       // Create recurring alarm for usage updates
@@ -500,9 +505,6 @@ async function handleTabActivity(tabId, url, shouldTrack) {
         // QA FIX: Use 2-second intervals for real-time badge updates as per QA requirements
         // This provides responsive badge updates while maintaining good performance
         await browser.alarms.create('usageTimer', { periodInMinutes: 2 / 60 }); // 2 seconds (2/60 = 0.033 minutes)
-        console.log(
-          '[Background] Created usage timer alarm (2 second intervals)'
-        );
       } catch (error) {
         console.warn('[Background] Error creating usage timer alarm:', error);
       }
@@ -535,11 +537,6 @@ async function handleTabActivity(tabId, url, shouldTrack) {
  * @returns {Promise<any>|boolean} Response data or boolean indicating async response
  */
 async function handleMessage(message, _sender, _sendResponse) {
-  console.log(
-    '[Background] Received message:',
-    message.action,
-    message.payload
-  );
 
   // Validate basic message structure
   if (!message || typeof message !== 'object') {
@@ -600,7 +597,17 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         }
 
-        const newSite = await addDistractingSite(message.payload);
+        const patternCheck = await _checkPatternAvailable(
+          message.payload.urlPattern
+        );
+        if (patternCheck.error) {
+          return { success: false, error: patternCheck.error };
+        }
+
+        const newSite = await addDistractingSite({
+          ...message.payload,
+          urlPattern: patternCheck.normalizedPattern,
+        });
         if (!newSite) {
           return {
             success: false,
@@ -622,7 +629,7 @@ async function handleMessage(message, _sender, _sendResponse) {
         // QA FIX: Re-evaluate ALL tabs for new site blocking status
         // A newly added site might now block currently open tabs
         try {
-          await _reEvaluateAllTabsForSite(newSite, 'add');
+          await _reEvaluateAllTabs();
         } catch (error) {
           console.warn(
             '[Background] Error re-evaluating all tabs after site addition:',
@@ -658,9 +665,24 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         }
 
+        const updates = { ...message.payload.updates };
+        if (
+          Object.prototype.hasOwnProperty.call(updates, 'urlPattern') &&
+          updates.urlPattern
+        ) {
+          const renameCheck = await _checkPatternAvailable(
+            updates.urlPattern,
+            message.payload.id
+          );
+          if (renameCheck.error) {
+            return { success: false, error: renameCheck.error };
+          }
+          updates.urlPattern = renameCheck.normalizedPattern;
+        }
+
         const updatedSite = await updateDistractingSite(
           message.payload.id,
-          message.payload.updates
+          updates
         );
         if (!updatedSite) {
           return {
@@ -682,13 +704,13 @@ async function handleMessage(message, _sender, _sendResponse) {
         // Broadcast the update to all UI components
         await broadcastToUIComponents('siteUpdated', {
           site: updatedSite,
-          updates: message.payload.updates,
+          updates,
         });
 
         // QA FIX: Re-evaluate ALL tabs for blocking status immediately after limit update
         // This ensures users can access sites immediately after updating limits in any tab
         try {
-          await _reEvaluateAllTabsForSite(updatedSite, 'update');
+          await _reEvaluateAllTabs();
         } catch (error) {
           console.warn(
             '[Background] Error re-evaluating all tabs after limit update:',
@@ -738,13 +760,7 @@ async function handleMessage(message, _sender, _sendResponse) {
         // QA FIX: Re-evaluate ALL tabs for blocking status immediately after site deletion
         // This ensures users can access sites immediately after removing limits from any tab
         try {
-          // Use the deleted site's data for re-evaluation (pass the site that was just deleted)
-          const deletedSiteData = {
-            id: message.payload.id,
-            urlPattern: '*', // We don't have the pattern anymore, so check all tabs
-            isEnabled: false // Deleted sites are effectively disabled
-          };
-          await _reEvaluateAllTabsForSite(deletedSiteData, 'delete');
+          await _reEvaluateAllTabs();
         } catch (error) {
           console.warn(
             '[Background] Error re-evaluating all tabs after site deletion:',
@@ -965,14 +981,12 @@ async function handleMessage(message, _sender, _sendResponse) {
           // First check for enabled sites
           let distractionCheck = checkIfUrlIsDistracting(activeTab.url);
           let { isMatch, siteId } = distractionCheck;
-          let isDisabled = false;
 
           // If not enabled, check for disabled sites
           if (!isMatch || !siteId) {
             distractionCheck = checkIfUrlHasLimits(activeTab.url);
             isMatch = distractionCheck.isMatch;
             siteId = distractionCheck.siteId;
-            isDisabled = isMatch && !distractionCheck.isEnabled;
           }
 
           if (!isMatch || !siteId) {
@@ -986,7 +1000,6 @@ async function handleMessage(message, _sender, _sendResponse) {
               },
               error: null,
             };
-            console.log('[Background] Returning getCurrentPageLimitInfo (not limited):', result);
             return result;
           }
 
@@ -1247,7 +1260,17 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         }
 
-        const newSite = await addDistractingSite(message.payload);
+        const quickPatternCheck = await _checkPatternAvailable(
+          message.payload.urlPattern
+        );
+        if (quickPatternCheck.error) {
+          return { success: false, error: quickPatternCheck.error };
+        }
+
+        const newSite = await addDistractingSite({
+          ...message.payload,
+          urlPattern: quickPatternCheck.normalizedPattern,
+        });
         if (!newSite) {
           return {
             success: false,
@@ -1832,10 +1855,6 @@ async function handleMessage(message, _sender, _sendResponse) {
             appliedCount: 1,
           };
 
-          console.log(
-            `[Background] About to store extension for site ${siteId} on date ${dateString}:`,
-            extensionData
-          );
 
           const success = await setExtension(
             dateString,
@@ -1853,18 +1872,6 @@ async function handleMessage(message, _sender, _sendResponse) {
               },
             };
           }
-
-          // Verify extension was stored
-          const verifyExtensions = await getExtensions(dateString);
-          console.log(
-            `[Background] Extension verified in storage for site ${siteId}. All extensions:`,
-            verifyExtensions
-          );
-
-          console.log(
-            `[Background] Limit extended for site ${siteId}:`,
-            extensionData
-          );
 
           // 9. Reload distraction detector cache and re-evaluate tabs
           await _reloadDistractionDetectorCache();
@@ -2058,7 +2065,6 @@ async function handleMessage(message, _sender, _sendResponse) {
  * @param {Object} tab - The tab where the action was clicked
  */
 async function handleActionClick(tab) {
-  console.log('[Background] Toolbar action clicked for tab:', tab.id, tab.url);
 
   try {
     // If popup fails to open for any reason, we could implement fallback behavior here
@@ -2083,9 +2089,6 @@ async function _reloadDistractionDetectorCache() {
   try {
     // The distraction detector has a method to reload from storage
     await loadDistractingSitesFromStorage();
-    console.log(
-      '[Background] Reloaded distraction detector cache after sites change'
-    );
   } catch (error) {
     console.error(
       '[Background] Error reloading distraction detector cache:',
@@ -2115,19 +2118,15 @@ async function _refreshCurrentTabBadge() {
 }
 
 /**
- * QA FIX: Re-evaluates all tabs for blocking status after site configuration changes.
- * This ensures immediate cache invalidation and proper blocking behavior across all tabs.
+ * Re-evaluates every tab's blocking status after limits change, so a tab sitting
+ * on the timeout page is released (and its badge refreshed) without a manual reload.
  * @private
- * @param {Object} siteData - The site data that was modified
- * @param {string} operation - The type of operation ('update', 'delete')
  */
-async function _reEvaluateAllTabsForSite(siteData, operation) {
+async function _reEvaluateAllTabs() {
   try {
-    console.log(`[Background] Re-evaluating all tabs after site ${operation}`);
 
     // Get all tabs
     const allTabs = await browser.tabs.query({});
-    console.log(`[Background] Found ${allTabs.length} tabs to re-evaluate`);
 
     let notificationsShown = 0;
     const MAX_NOTIFICATIONS = 2; // Limit notifications to avoid spam
@@ -2147,11 +2146,6 @@ async function _reEvaluateAllTabsForSite(siteData, operation) {
         // For updates, we check the specific site
         const blockResult = await checkAndBlockSite(tab.id, tab.url);
 
-        console.log(`[Background] Tab ${tab.id} (${tab.url}) - Block result:`, {
-          shouldBlock: blockResult.shouldBlock,
-          siteId: blockResult.siteId,
-          reason: blockResult.reason
-        });
 
         // Update badge for this tab
         await updateBadge(tab.id);
@@ -2159,7 +2153,6 @@ async function _reEvaluateAllTabsForSite(siteData, operation) {
         // Special handling for timeout pages
         if (tab.url.includes('pages/timeout/index.html')) {
           if (!blockResult.shouldBlock) {
-            console.log(`[Background] Tab ${tab.id} no longer needs to be blocked`);
 
             // Show notification to user (limited to avoid spam)
             if (notificationsShown < MAX_NOTIFICATIONS) {
@@ -2184,10 +2177,9 @@ async function _reEvaluateAllTabsForSite(siteData, operation) {
       }
     }
 
-    console.log(`[Background] Completed re-evaluation of all tabs. Notifications shown: ${notificationsShown}`);
 
   } catch (error) {
-    console.error('[Background] Error in _reEvaluateAllTabsForSite:', error);
+    console.error('[Background] Error in _reEvaluateAllTabs:', error);
     throw error; // Re-throw to let caller handle
   }
 }
@@ -2207,16 +2199,12 @@ async function broadcastToUIComponents(event, data) {
       timestamp: Date.now(),
     };
 
-    console.log(`[Background] Broadcasting update: ${event}`, data);
 
     // Try to send to popup (if open)
     try {
       await browser.runtime.sendMessage(message);
     } catch {
       // Popup probably not open, which is fine
-      console.log(
-        '[Background] Popup not available for broadcast (expected if closed)'
-      );
     }
 
     // Get all extension pages (settings, timeout) and send message

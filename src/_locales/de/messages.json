@@ -482,7 +482,7 @@
     "description": "Label for website URL input"
   },
   "dialog_addSite_placeholder_websiteUrl": {
-    "message": "z.B. tiktok.com",
+    "message": "z. B. tiktok.com oder youtube.com/shorts",
     "description": "Placeholder for website URL input"
   },
   "dialog_addSite_label_timeLimit": {
@@ -594,22 +594,6 @@
   "dialog_addToGroup_quickAdd_label": {
     "message": "Schnell hinzufügen",
     "description": "Label for quick add section in dialog"
-  },
-  "dialog_addToGroup_quickAdd_tiktok": {
-    "message": "tiktok.com",
-    "description": "Quick add button for TikTok"
-  },
-  "dialog_addToGroup_quickAdd_linkedin": {
-    "message": "linkedin.com",
-    "description": "Quick add button for LinkedIn"
-  },
-  "dialog_addToGroup_quickAdd_pinterest": {
-    "message": "pinterest.com",
-    "description": "Quick add button for Pinterest"
-  },
-  "dialog_addToGroup_quickAdd_snapchat": {
-    "message": "snapchat.com",
-    "description": "Quick add button for Snapchat"
   },
   "dialog_addToGroup_button_cancel": {
     "message": "Abbrechen",
@@ -1245,5 +1229,29 @@
   "infoPageView_rateButton": {
     "message": "Bewerte uns",
     "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Begrenze eine ganze Website (youtube.com), eine Subdomain (shorts.youtube.com) oder einen einzelnen Bereich (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "„$1“ ist bereits begrenzt. Bearbeite stattdessen das bestehende Limit.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "„$1“ ist bereits in der Gruppe „$2“ begrenzt.",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "popup_scope_label": {
+    "message": "Was begrenzen",
+    "description": "Label above the popup scope selector"
+  },
+  "popup_scope_wholeSite": {
+    "message": "Ganze Website",
+    "description": "Popup scope option: limit the entire domain"
+  },
+  "popup_scope_thisSection": {
+    "message": "Dieser Bereich",
+    "description": "Popup scope option: limit only the current path"
   }
 }
