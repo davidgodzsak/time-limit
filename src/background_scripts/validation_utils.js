@@ -11,6 +11,12 @@
  * - Improved user feedback with meaningful error messages
  */
 
+import {
+  hasRestrictedProtocol,
+  isValidUrlPattern,
+  normalizeUrlPattern,
+} from './url_matcher.js';
+
 /**
  * Error types for categorizing different kinds of validation failures
  */
@@ -72,36 +78,21 @@ export function validateUrlPattern(urlPattern) {
     };
   }
 
-  // Remove protocol if present for normalization
-  let normalized = trimmed.toLowerCase();
-  normalized = normalized.replace(/^https?:\/\//, '');
-  normalized = normalized.replace(/^www\./, '');
-
-  // Basic hostname validation
-  const hostnameRegex = /^[a-z0-9.-]+[a-z0-9]$/;
-  if (!hostnameRegex.test(normalized.split('/')[0])) {
+  if (hasRestrictedProtocol(trimmed)) {
     return {
       isValid: false,
-      error:
-        'Invalid URL format. Please enter a valid domain (e.g., example.com)',
+      error: 'Invalid URL pattern contains restricted protocol',
       normalizedPattern: null,
     };
   }
 
-  // Check for potentially dangerous patterns
-  const dangerousPatterns = [
-    'javascript:',
-    'data:',
-    'file:',
-    'chrome:',
-    'moz-extension:',
-  ];
-  if (
-    dangerousPatterns.some((pattern) => trimmed.toLowerCase().includes(pattern))
-  ) {
+  const normalized = normalizeUrlPattern(trimmed);
+
+  if (!normalized || !isValidUrlPattern(normalized)) {
     return {
       isValid: false,
-      error: 'Invalid URL pattern contains restricted protocol',
+      error:
+        'Invalid URL format. Please enter a domain, subdomain or path (e.g., example.com, mail.example.com, example.com/section)',
       normalizedPattern: null,
     };
   }
