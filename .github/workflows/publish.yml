@@ -29,6 +29,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Test
+        run: npm test
+
       - name: Update manifest.json with release version
         run: |
           TAG="${{ github.event.release.tag_name }}"
