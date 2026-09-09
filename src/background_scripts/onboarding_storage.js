@@ -45,7 +45,7 @@ async function hasInitialSetupDone() {
   try {
     const data = await browser.storage.local.get([INITIAL_SETUP_KEY]);
     return data[INITIAL_SETUP_KEY] === true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

@@ -36,7 +36,9 @@ function copyExtensionFilesPlugin(): Plugin {
       const distBgScriptsDir = resolve(distDir, 'background_scripts');
       mkdirSync(distBgScriptsDir, { recursive: true });
       readdirSync(bgScriptsDir).forEach(file => {
-        if (file.endsWith('.js')) {
+        // Ship the modules only — test files live next to them but must not
+        // end up in the packaged extension.
+        if (file.endsWith('.js') && !file.includes('.test.')) {
           copyFileSync(
             resolve(bgScriptsDir, file),
             resolve(distBgScriptsDir, file)

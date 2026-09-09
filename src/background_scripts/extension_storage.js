@@ -26,7 +26,6 @@ export async function getExtensions(dateString) {
   try {
     const result = await browser.storage.local.get(key);
     const extensions = result[key] || {};
-    console.log(`[ExtensionStorage] getExtensions(${key}):`, extensions);
     return extensions;
   } catch (error) {
     console.error(`Error getting extensions for date ${dateString}:`, error);
@@ -65,13 +64,9 @@ export async function setExtension(dateString, siteId, extensionData) {
 
   const key = `extensions-${dateString}`;
   try {
-    console.log(`[ExtensionStorage] About to set extension for ${siteId} on ${dateString}`);
     const extensions = await getExtensions(dateString);
-    console.log(`[ExtensionStorage] Current extensions before update:`, extensions);
     extensions[siteId] = extensionData;
-    console.log(`[ExtensionStorage] Extensions after update:`, extensions);
     await browser.storage.local.set({ [key]: extensions });
-    console.log(`[ExtensionStorage] Successfully stored extension for site ${siteId} on ${dateString}:`, extensionData);
     return true;
   } catch (error) {
     console.error(
@@ -159,7 +154,6 @@ export async function removeExtension(dateString, siteId) {
     if (extensions[siteId]) {
       delete extensions[siteId];
       await browser.storage.local.set({ [key]: extensions });
-      console.log(`[ExtensionStorage] Extension removed for site ${siteId} on ${dateString}`);
       return true;
     }
     return false;
