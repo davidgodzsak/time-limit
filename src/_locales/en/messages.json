@@ -495,7 +495,7 @@
     "description": "Label for website URL input"
   },
   "dialog_addSite_placeholder_websiteUrl": {
-    "message": "e.g. tiktok.com",
+    "message": "e.g. tiktok.com or youtube.com/shorts",
     "description": "Placeholder for website URL input"
   },
   "dialog_addSite_label_timeLimit": {
@@ -609,22 +609,6 @@
   "dialog_addToGroup_quickAdd_label": {
     "message": "Quick add",
     "description": "Label for quick add section in dialog"
-  },
-  "dialog_addToGroup_quickAdd_tiktok": {
-    "message": "tiktok.com",
-    "description": "Quick add button for TikTok"
-  },
-  "dialog_addToGroup_quickAdd_linkedin": {
-    "message": "linkedin.com",
-    "description": "Quick add button for LinkedIn"
-  },
-  "dialog_addToGroup_quickAdd_pinterest": {
-    "message": "pinterest.com",
-    "description": "Quick add button for Pinterest"
-  },
-  "dialog_addToGroup_quickAdd_snapchat": {
-    "message": "snapchat.com",
-    "description": "Quick add button for Snapchat"
   },
   "dialog_addToGroup_button_cancel": {
     "message": "Cancel",
@@ -1314,5 +1298,29 @@
   "infoPageView_rateButton": {
     "message": "Rate Us",
     "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Limit a whole site (youtube.com), one subdomain (shorts.youtube.com) or one section (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "\"$1\" is already limited. Edit the existing limit instead.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "\"$1\" is already limited in the group \"$2\".",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "popup_scope_label": {
+    "message": "What to limit",
+    "description": "Label above the popup scope selector"
+  },
+  "popup_scope_wholeSite": {
+    "message": "Whole site",
+    "description": "Popup scope option: limit the entire domain"
+  },
+  "popup_scope_thisSection": {
+    "message": "This section",
+    "description": "Popup scope option: limit only the current path"
   }
 }

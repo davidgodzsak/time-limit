@@ -6,7 +6,6 @@
  * as part of the event-driven architecture.
  */
 
-import { getUsageStats } from './usage_storage.js';
 
 // Name for the daily reset alarm - updated to match background.js
 const DAILY_USAGE_RESET_ALARM_NAME = 'dailyResetAlarm';
@@ -62,13 +61,9 @@ export async function initializeDailyResetAlarm() {
       periodInMinutes: 24 * 60, // Every 24 hours
     });
 
-    // Confirm and log scheduled time
+    // Warn if the alarm could not be read back after scheduling
     const alarm = await browser.alarms.get(DAILY_USAGE_RESET_ALARM_NAME);
-    if (alarm) {
-      console.log(
-        `[DailyReset] Alarm "${DAILY_USAGE_RESET_ALARM_NAME}" created/updated. Next scheduled run at: ${new Date(alarm.scheduledTime).toLocaleString()}`
-      );
-    } else {
+    if (!alarm) {
       console.warn(
         `[DailyReset] Alarm "${DAILY_USAGE_RESET_ALARM_NAME}" was scheduled, but could not be retrieved immediately for logging its scheduled time. Intended first run was for: ${new Date(nextRunTime).toLocaleString()}`
       );
@@ -93,14 +88,10 @@ export async function initializeDailyResetAlarm() {
  * @throws {Error} If reset operation fails
  */
 export async function performDailyReset() {
-  const currentTime = new Date();
   // Local date, so the day being preserved matches the daily storage keys
   // written by usage_recorder/site_blocker.
   const currentDateString = getCurrentDateString();
 
-  console.log(
-    `[DailyReset] Starting daily reset process at ${currentTime.toISOString()}`
-  );
 
   try {
     // Get all storage keys to find usage statistics and extensions
@@ -119,13 +110,7 @@ export async function performDailyReset() {
     });
 
     if (usageKeysToRemove.length > 0) {
-      console.log(
-        `[DailyReset] Removing ${usageKeysToRemove.length} old usage statistics entries:`,
-        usageKeysToRemove
-      );
       await browser.storage.local.remove(usageKeysToRemove);
-    } else {
-      console.log('[DailyReset] No old usage statistics found to remove');
     }
 
     // Identify extension keys that are not for today
@@ -135,23 +120,9 @@ export async function performDailyReset() {
     });
 
     if (extensionKeysToRemove.length > 0) {
-      console.log(
-        `[DailyReset] Removing ${extensionKeysToRemove.length} old extension entries:`,
-        extensionKeysToRemove
-      );
       await browser.storage.local.remove(extensionKeysToRemove);
-    } else {
-      console.log('[DailyReset] No old extensions found to remove');
     }
 
-    // Verify current day's stats still exist (should be preserved)
-    const currentDayStats = await getUsageStats(currentDateString);
-    const sitesCount = Object.keys(currentDayStats).length;
-    console.log(
-      `[DailyReset] Current day (${currentDateString}) has ${sitesCount} site(s) with usage data - preserved`
-    );
-
-    console.log('[DailyReset] Daily reset completed successfully');
   } catch (error) {
     console.error('[DailyReset] Error during daily reset:', error);
     throw error;

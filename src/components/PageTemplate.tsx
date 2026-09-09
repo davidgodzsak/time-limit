@@ -1,13 +1,19 @@
 import { ReactNode } from "react";
-import { Info } from "lucide-react";
+import { Info, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { t } from "@/lib/utils/i18n";
 import Logo from "./Logo";
 
 interface PageTemplateProps {
   children: ReactNode;
   version?: string;
-  onOpenInfo: () => void;
+  /**
+   * Which page the header shortcut leads to. The info page points back at
+   * settings (cogwheel); every other page points at the info page.
+   */
+  headerAction?: "info" | "settings";
+  onHeaderAction: () => void;
   layout?: "centered" | "normal"; // "centered" = TimeoutPage, "normal" = SettingsPage/InfoPage
   showVersionBadge?: boolean;
   logoSize?: "sm" | "md";
@@ -17,7 +23,8 @@ interface PageTemplateProps {
 const PageTemplate = ({
   children,
   version,
-  onOpenInfo,
+  headerAction = "info",
+  onHeaderAction,
   layout = "normal",
   showVersionBadge = true,
   logoSize = "md",
@@ -25,6 +32,25 @@ const PageTemplate = ({
 }: PageTemplateProps) => {
   const isCentered = layout === "centered";
   const isMinimal = headerStyle === "minimal";
+  const HeaderIcon = headerAction === "settings" ? Settings : Info;
+  const headerTitle =
+    headerAction === "settings"
+      ? t("firstInstallView_button_openSettings")
+      : t("normalPageView_button_tooltip");
+
+  // One definition for all three header layouts, so the icon and its target
+  // cannot drift apart per layout.
+  const headerButton = (
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={onHeaderAction}
+      className="hover:bg-white/20 text-foreground"
+      title={headerTitle}
+    >
+      <HeaderIcon size={20} />
+    </Button>
+  );
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -47,15 +73,7 @@ const PageTemplate = ({
           // Centered layout: Absolute positioned header (TimeoutPage style)
           <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
             <Logo size={logoSize} />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onOpenInfo}
-              className="hover:bg-white/20 text-foreground"
-              title="About this extension"
-            >
-              <Info size={20} />
-            </Button>
+            {headerButton}
           </div>
         ) : isMinimal ? (
           // Normal layout with minimal header style
@@ -67,15 +85,7 @@ const PageTemplate = ({
                   v{version}
                 </Badge>
               )}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={onOpenInfo}
-                className="hover:bg-white/20 text-foreground"
-                title="About this extension"
-              >
-                <Info size={20} />
-              </Button>
+              {headerButton}
             </div>
           </header>
         ) : (
@@ -89,15 +99,7 @@ const PageTemplate = ({
                     v{version}
                   </Badge>
                 )}
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={onOpenInfo}
-                  className="hover:bg-white/20"
-                  title="About this extension"
-                >
-                  <Info size={20} />
-                </Button>
+                {headerButton}
               </div>
             </div>
           </header>

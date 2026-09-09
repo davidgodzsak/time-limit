@@ -482,7 +482,7 @@
     "description": "Label for website URL input"
   },
   "dialog_addSite_placeholder_websiteUrl": {
-    "message": "np. tiktok.com",
+    "message": "np. tiktok.com lub youtube.com/shorts",
     "description": "Placeholder for website URL input"
   },
   "dialog_addSite_label_timeLimit": {
@@ -594,22 +594,6 @@
   "dialog_addToGroup_quickAdd_label": {
     "message": "Szybkie dodawanie",
     "description": "Label for quick add section in dialog"
-  },
-  "dialog_addToGroup_quickAdd_tiktok": {
-    "message": "tiktok.com",
-    "description": "Quick add button for TikTok"
-  },
-  "dialog_addToGroup_quickAdd_linkedin": {
-    "message": "linkedin.com",
-    "description": "Quick add button for LinkedIn"
-  },
-  "dialog_addToGroup_quickAdd_pinterest": {
-    "message": "pinterest.com",
-    "description": "Quick add button for Pinterest"
-  },
-  "dialog_addToGroup_quickAdd_snapchat": {
-    "message": "snapchat.com",
-    "description": "Quick add button for Snapchat"
   },
   "dialog_addToGroup_button_cancel": {
     "message": "Anuluj",
@@ -1245,5 +1229,29 @@
   "infoPageView_rateButton": {
     "message": "Oceń nas",
     "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Ogranicz całą witrynę (youtube.com), subdomenę (shorts.youtube.com) lub jedną sekcję (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "„$1” ma już limit. Edytuj istniejący limit.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "„$1” ma już limit w grupie „$2”.",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "popup_scope_label": {
+    "message": "Co ograniczyć",
+    "description": "Label above the popup scope selector"
+  },
+  "popup_scope_wholeSite": {
+    "message": "Cała witryna",
+    "description": "Popup scope option: limit the entire domain"
+  },
+  "popup_scope_thisSection": {
+    "message": "Ta sekcja",
+    "description": "Popup scope option: limit only the current path"
   }
 }

@@ -144,7 +144,7 @@ const TimeoutPage = () => {
   return (
     <PageTemplate
       version=""
-      onOpenInfo={handleOpenInfo}
+      onHeaderAction={handleOpenInfo}
       layout="centered"
       showVersionBadge={false}
       logoSize="sm"

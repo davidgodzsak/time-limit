@@ -109,7 +109,7 @@
   "dialog_addSite_description_create": { "message": "Додайте сайт для відстеження з лімітами часу або відкрить.", "description": "Dialog description when creating a site" },
   "dialog_addSite_description_edit": { "message": "Оновіть ліміти для цього сайту.", "description": "Dialog description when editing a site" },
   "dialog_addSite_label_websiteUrl": { "message": "URL сайту", "description": "Label for website URL input" },
-  "dialog_addSite_placeholder_websiteUrl": { "message": "напр. tiktok.com", "description": "Placeholder for website URL input" },
+  "dialog_addSite_placeholder_websiteUrl": { "message": "напр. tiktok.com або youtube.com/shorts", "description": "Placeholder for website URL input" },
   "dialog_addSite_label_timeLimit": { "message": "Ліміт часу (хв)", "description": "Label for time limit input" },
   "dialog_addSite_placeholder_timeLimit": { "message": "напр. 30", "description": "Placeholder for time limit input" },
   "dialog_addSite_label_opensLimit": { "message": "Ліміт відкрить", "description": "Label for opens limit input" },
@@ -136,10 +136,6 @@
   "dialog_addToGroup_label_websiteUrl": { "message": "URL сайту", "description": "Label for website URL input in add to group dialog" },
   "dialog_addToGroup_placeholder_websiteUrl": { "message": "напр. tiktok.com", "description": "Placeholder for website URL input in add to group dialog" },
   "dialog_addToGroup_quickAdd_label": { "message": "Швидке додавання", "description": "Label for quick add section in dialog" },
-  "dialog_addToGroup_quickAdd_tiktok": { "message": "tiktok.com", "description": "Quick add button for TikTok" },
-  "dialog_addToGroup_quickAdd_linkedin": { "message": "linkedin.com", "description": "Quick add button for LinkedIn" },
-  "dialog_addToGroup_quickAdd_pinterest": { "message": "pinterest.com", "description": "Quick add button for Pinterest" },
-  "dialog_addToGroup_quickAdd_snapchat": { "message": "snapchat.com", "description": "Quick add button for Snapchat" },
   "dialog_addToGroup_button_cancel": { "message": "Скасувати", "description": "Cancel button in add to group dialog" },
   "dialog_addToGroup_button_add": { "message": "Додати до групи", "description": "Submit button in add to group dialog" },
   "timeout_breathing_in": { "message": "Вдих", "description": "Label for breathing circle during inhale" },
@@ -287,5 +283,11 @@
   "popup_rating_error": { "message": "Помилка обробки оцінки. Спробуйте ще раз.", "description": "Error message when rating fails in popup" },
   "settings_rating_thankYou": { "message": "Дякуємо за вашу підтримку!", "description": "Thank you message after rating from settings" },
   "settings_rating_error": { "message": "Помилка обробки оцінки. Спробуйте ще раз.", "description": "Error message when rating fails in settings" },
-  "infoPageView_rateButton": { "message": "Оцінити нас", "description": "Button to rate from popup info view" }
+  "infoPageView_rateButton": { "message": "Оцінити нас", "description": "Button to rate from popup info view" },
+  "dialog_addSite_hint_scope": { "message": "Обмежте весь сайт (youtube.com), субдомен (shorts.youtube.com) або лише один розділ (youtube.com/shorts).", "description": "Hint under the URL field explaining domain, subdomain and path limits" },
+  "error_site_duplicate": { "message": "«$1» вже обмежено. Змініть наявне обмеження.", "description": "Shown when adding a site that already has a limit" },
+  "error_site_duplicateInGroup": { "message": "«$1» вже обмежено в групі «$2».", "description": "Shown when adding a site that is already limited inside a group" },
+  "popup_scope_label": { "message": "Що обмежити", "description": "Label above the popup scope selector" },
+  "popup_scope_wholeSite": { "message": "Весь сайт", "description": "Popup scope option: limit the entire domain" },
+  "popup_scope_thisSection": { "message": "Цей розділ", "description": "Popup scope option: limit only the current path" }
 }

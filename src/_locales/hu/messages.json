@@ -482,7 +482,7 @@
     "description": "Label for website URL input"
   },
   "dialog_addSite_placeholder_websiteUrl": {
-    "message": "pl. tiktok.com",
+    "message": "pl. tiktok.com vagy youtube.com/shorts",
     "description": "Placeholder for website URL input"
   },
   "dialog_addSite_label_timeLimit": {
@@ -594,22 +594,6 @@
   "dialog_addToGroup_quickAdd_label": {
     "message": "Gyors hozzáadás",
     "description": "Label for quick add section in dialog"
-  },
-  "dialog_addToGroup_quickAdd_tiktok": {
-    "message": "tiktok.com",
-    "description": "Quick add button for TikTok"
-  },
-  "dialog_addToGroup_quickAdd_linkedin": {
-    "message": "linkedin.com",
-    "description": "Quick add button for LinkedIn"
-  },
-  "dialog_addToGroup_quickAdd_pinterest": {
-    "message": "pinterest.com",
-    "description": "Quick add button for Pinterest"
-  },
-  "dialog_addToGroup_quickAdd_snapchat": {
-    "message": "snapchat.com",
-    "description": "Quick add button for Snapchat"
   },
   "dialog_addToGroup_button_cancel": {
     "message": "Mégse",
@@ -1245,5 +1229,29 @@
   "infoPageView_rateButton": {
     "message": "Értékelj minket",
     "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Korlátozhatsz egy teljes oldalt (youtube.com), egy aldomaint (shorts.youtube.com) vagy csak egy szakaszt (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "„$1” már korlátozva van. Szerkeszd a meglévő korlátot.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "„$1” már korlátozva van a(z) „$2” csoportban.",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "popup_scope_label": {
+    "message": "Mit korlátozzunk",
+    "description": "Label above the popup scope selector"
+  },
+  "popup_scope_wholeSite": {
+    "message": "Teljes oldal",
+    "description": "Popup scope option: limit the entire domain"
+  },
+  "popup_scope_thisSection": {
+    "message": "Ez a szakasz",
+    "description": "Popup scope option: limit only the current path"
   }
 }

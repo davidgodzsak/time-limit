@@ -7,7 +7,25 @@ export interface BackgroundError {
     type: string;
     isRetryable: boolean;
     field?: string;
+    code?: string;
+    details?: Record<string, unknown>;
   };
+}
+
+/** Machine-readable error codes the background attaches to recoverable failures. */
+export const ERROR_CODES = {
+  /** The page is already limited — as an individual site or inside a group. */
+  DUPLICATE_SITE: 'DUPLICATE_SITE',
+  /** The URL pattern could not be parsed into a domain or path. */
+  INVALID_PATTERN: 'INVALID_PATTERN',
+} as const;
+
+/** Details sent alongside a DUPLICATE_SITE error. */
+export interface DuplicateSiteDetails {
+  pattern: string;
+  siteId: string;
+  groupId: string | null;
+  groupName: string | null;
 }
 
 export interface BackgroundSuccess<T> {
@@ -22,11 +40,20 @@ export class APIError extends Error {
   constructor(
     message: string,
     public isRetryable: boolean = false,
-    public originalError?: unknown
+    public originalError?: unknown,
+    public code?: string,
+    public details?: Record<string, unknown>
   ) {
     super(message);
     this.name = 'APIError';
   }
+}
+
+/** Narrows an unknown catch value to a duplicate-site failure. */
+export function isDuplicateSiteError(
+  error: unknown
+): error is APIError & { details?: DuplicateSiteDetails } {
+  return error instanceof APIError && error.code === ERROR_CODES.DUPLICATE_SITE;
 }
 
 async function sendMessage<T = unknown>(
@@ -42,7 +69,10 @@ async function sendMessage<T = unknown>(
     if (!response.success) {
       throw new APIError(
         response.error?.message || 'Unknown error from background script',
-        response.error?.isRetryable || false
+        response.error?.isRetryable || false,
+        undefined,
+        response.error?.code,
+        response.error?.details
       );
     }
 

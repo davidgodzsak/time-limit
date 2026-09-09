@@ -24,9 +24,11 @@
 - [x] Groups tab -> It's not possible to remove the time limit. When I remove the value from the input and update the group the time limit does not disappear. It should be possible to remove the time limit and only have a limit on number of opens instead (but at least one of hte two limits should be added)
 - [x] settings page background and header (with the name and icon) should be the same as the timout page one.
 - [x] info icon is cogwheel in header
-- [ ] group Quick add links should be context dependent or removed (e.g. social media, news)
+- [x] group Quick add links should be context dependent or removed (e.g. social media, news)
 - [x] onboarading modal x icon does nothing
-- [ ] I can add a page two times, I can also add a page to a group and as individual site, this is wrong
+- [x] I can add a page two times, I can also add a page to a group and as individual site, this is wrong
+- [x] Individual site: removing the time limit and keeping only the opens limit silently failed (`updateDistractingSite` rejected `dailyLimitSeconds: null` — the group-side equivalent was fixed in 97a23f0, the site side was not)
+- [x] Extending a limit never re-checked open tabs: the extend flow called `_reEvaluateAllTabs()`, which did not exist (only `_reEvaluateAllTabsForSite`), so the ReferenceError was swallowed by its catch and the timeout tab was left stranded until a manual reload
 
 ### Popup
 
@@ -48,7 +50,7 @@
 - [x] https://github.com/marketplace/actions/publish-an-extension-on-firefox-addons-store
 - [x] https://github.com/marketplace/actions/publish-chrome-extension-to-chrome-web-store 
 - [x] https://developer.chrome.com/docs/webstore/using-api#beforeyoubegin
-- **Consider renaming Firefox secrets for consistency**: Currently using `FIREFOX_ISSUER` and `FIREFOX_SECRET`. Mozilla docs call them "API Key" and "API Secret". Consider renaming to `FIREFOX_API_KEY` and `FIREFOX_API_SECRET` to match standard naming convention.
+- [x] **Renamed Firefox secrets for consistency**: now `FIREFOX_API_KEY` / `FIREFOX_API_SECRET`, matching Mozilla's own naming.
 
 ## Improvements
 
@@ -57,8 +59,11 @@
 - [x] Be able to extend current limit for a day, but needs an explanation of at least 35 characters this is somewhere not obvious on the timout page and the popup.
 - [x] Clean clutter: Simplify code, create a "mental map document" and check what can be reused across pages, Delete dead code, delete unnecessary logging and error handling, delete mock data
 - [x] Refactor to actually use locales, remove every hardcoded string in favor of this. 
-- [ ] Be able to limit just a subdomain or a subpage (e.g. shorts.youtube.com or reddit.com/r/hungary or youtube.com/shorts)
+- [x] Be able to limit just a subdomain or a subpage (e.g. shorts.youtube.com or reddit.com/r/hungary or youtube.com/shorts)
 - [x] Add to every page a link to the plugin page review -> on successful things add a popup to ask the user if they like the user and rate it
+- [x] Test suite: vitest was configured but never installed and there were no tests. Added `npm test` with 58 tests over url matching, site storage, and a detector+blocker integration test
+- [x] ESLint now covers `src/background_scripts/**/*.js` (it only linted ts/tsx before, which is how the `_reEvaluateAllTabs` typo survived)
+- [x] Removed all 89 `console.log` calls from the background scripts — they are copied to dist verbatim, so esbuild's `drop: ['console']` never applied and they shipped to users
 
 ### Settings page
 - [x] be able to turn limits on or off by having a "switch" button next to each page in the limits tab (even on pages individually that are in a group) (reuse the one in the settings -> messages tab -> display options)

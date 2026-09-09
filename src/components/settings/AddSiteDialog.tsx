@@ -83,6 +83,9 @@ const AddSiteDialog = ({ open, onOpenChange, onAdd, initialSite, isEditing }: Ad
               onChange={(e) => setSiteName(e.target.value)}
               className="rounded-xl"
             />
+            <p className="text-xs text-muted-foreground">
+              {t("dialog_addSite_hint_scope")}
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">

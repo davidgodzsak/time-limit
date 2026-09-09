@@ -2,7 +2,32 @@
  * @file site_storage.js
  * @description Manages CRUD operations for distracting sites in browser.storage.local.
  * Updated to support both time limits and open count limits.
+ *
+ * Patterns are normalized on the way in (see url_matcher.js) and every site
+ * must hold a unique pattern, so the same page cannot be limited twice — not as
+ * two individual sites, and not as an individual site plus a group member.
  */
+
+import {
+  findSiteWithSamePattern,
+  isValidUrlPattern,
+  normalizeUrlPattern,
+} from './url_matcher.js';
+
+/**
+ * Finds the site that already limits a pattern, if any.
+ * Used before adding or renaming a site so callers can explain the clash.
+ *
+ * @async
+ * @function findSiteByPattern
+ * @param {string} pattern - The pattern to look for (raw input is fine; it gets normalized).
+ * @param {string} [excludeSiteId] - Site to ignore, e.g. the one being edited.
+ * @returns {Promise<Object|null>} The conflicting site, or null when the pattern is unused.
+ */
+export async function findSiteByPattern(pattern, excludeSiteId) {
+  const sites = await getDistractingSites();
+  return findSiteWithSamePattern(pattern, sites, excludeSiteId);
+}
 
 /**
  * Retrieves the list of distracting sites from storage.
@@ -90,9 +115,18 @@ export async function addDistractingSite(siteObject) {
     return null;
   }
 
+  const normalizedPattern = normalizeUrlPattern(siteObject.urlPattern);
+  if (!normalizedPattern || !isValidUrlPattern(normalizedPattern)) {
+    console.error(
+      'Invalid urlPattern provided to addDistractingSite.',
+      siteObject.urlPattern
+    );
+    return null;
+  }
+
   const newSite = {
     id: crypto.randomUUID(),
-    urlPattern: siteObject.urlPattern.trim(),
+    urlPattern: normalizedPattern,
     dailyLimitSeconds: siteObject.dailyLimitSeconds,
     isEnabled:
       typeof siteObject.isEnabled === 'boolean' ? siteObject.isEnabled : true,
@@ -110,6 +144,15 @@ export async function addDistractingSite(siteObject) {
 
   try {
     const sites = await getDistractingSites();
+
+    const conflict = findSiteWithSamePattern(normalizedPattern, sites);
+    if (conflict) {
+      console.warn(
+        `Site "${normalizedPattern}" is already limited (site ID "${conflict.id}"); refusing to add a duplicate.`
+      );
+      return null;
+    }
+
     sites.push(newSite);
     await browser.storage.local.set({ distractingSites: sites });
     return newSite;
@@ -165,6 +208,7 @@ export async function updateDistractingSite(siteId, updates) {
   }
   if (
     Object.prototype.hasOwnProperty.call(updates, 'dailyLimitSeconds') &&
+    updates.dailyLimitSeconds !== null &&
     (typeof updates.dailyLimitSeconds !== 'number' ||
       updates.dailyLimitSeconds <= 0)
   ) {
@@ -207,6 +251,18 @@ export async function updateDistractingSite(siteId, updates) {
     return null;
   }
 
+  let normalizedPattern = null;
+  if (Object.prototype.hasOwnProperty.call(updates, 'urlPattern')) {
+    normalizedPattern = normalizeUrlPattern(updates.urlPattern);
+    if (!normalizedPattern || !isValidUrlPattern(normalizedPattern)) {
+      console.error(
+        'Invalid urlPattern in updates for updateDistractingSite.',
+        updates.urlPattern
+      );
+      return null;
+    }
+  }
+
   try {
     const sites = await getDistractingSites();
     const siteIndex = sites.findIndex((site) => site.id === siteId);
@@ -216,12 +272,45 @@ export async function updateDistractingSite(siteId, updates) {
       return null;
     }
 
+    if (normalizedPattern) {
+      const conflict = findSiteWithSamePattern(
+        normalizedPattern,
+        sites,
+        siteId
+      );
+      if (conflict) {
+        console.warn(
+          `Cannot rename site "${siteId}" to "${normalizedPattern}": already limited by site ID "${conflict.id}".`
+        );
+        return null;
+      }
+    }
+
     // Create the updated site object by merging current site with validated updates
     const updatedSite = { ...sites[siteIndex], ...updates };
+    if (normalizedPattern) {
+      updatedSite.urlPattern = normalizedPattern;
+    }
 
-    // Remove dailyOpenLimit if it's null (explicit removal)
+    // Remove limits that were explicitly cleared (passed as null)
     if (updates.dailyOpenLimit === null) {
       delete updatedSite.dailyOpenLimit;
+    }
+    if (updates.dailyLimitSeconds === null) {
+      delete updatedSite.dailyLimitSeconds;
+    }
+
+    // A site in a group inherits the group's limits, so it may hold none of its
+    // own. A standalone site must keep at least one limit (time or opens).
+    if (
+      !updatedSite.groupId &&
+      typeof updatedSite.dailyLimitSeconds !== 'number' &&
+      typeof updatedSite.dailyOpenLimit !== 'number'
+    ) {
+      console.error(
+        `Cannot remove all limits from site "${siteId}". At least one of dailyLimitSeconds or dailyOpenLimit is required.`
+      );
+      return null;
     }
 
     sites[siteIndex] = updatedSite;

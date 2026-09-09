@@ -7,6 +7,21 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   { ignores: ["dist"] },
   {
+    // Background scripts are plain ESM copied straight into dist, so they are
+    // never type-checked or bundled — lint them here or nothing checks them.
+    extends: [js.configs.recommended],
+    files: ["src/background_scripts/**/*.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: { ...globals.browser, ...globals.webextensions },
+    },
+    rules: {
+      // `_`-prefixed names mark deliberately unused callback parameters.
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+    },
+  },
+  {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {

@@ -2,6 +2,7 @@ import { getDistractingSites } from './site_storage.js';
 import { getGroups } from './group_storage.js';
 import { getUsageStats } from './usage_storage.js';
 import { getExtensions } from './extension_storage.js';
+import { findMatchingSite } from './url_matcher.js';
 
 function _getCurrentDateString() {
   const now = new Date();
@@ -60,17 +61,11 @@ export async function checkAndBlockSite(tabId, url) {
       getGroups(),
     ]);
 
-    const matchingSite = distractingSites.find((site) => {
-      if (!site.isEnabled) return false;
-      try {
-        const urlObj = new URL(url);
-        const hostname = urlObj.hostname;
-        return hostname === site.urlPattern || hostname.endsWith('.' + site.urlPattern);
-      } catch (error) {
-        console.warn(`[SiteBlocker] Error parsing URL '${url}':`, error.message);
-        return false;
-      }
-    });
+    const matchingSite = findMatchingSite(
+      url,
+      distractingSites,
+      (site) => site.isEnabled !== false
+    );
 
     if (!matchingSite) {
       return {
@@ -193,20 +188,11 @@ export async function checkOpenLimitBeforeAccess(url) {
     const distractingSites = await getDistractingSites();
 
     // Find a matching site that is enabled and has an open limit
-    const matchingSite = distractingSites.find((site) => {
-      if (!site.isEnabled || !site.dailyOpenLimit) return false;
-      try {
-        const urlObj = new URL(url);
-        const hostname = urlObj.hostname;
-        return hostname === site.urlPattern || hostname.endsWith('.' + site.urlPattern);
-      } catch (error) {
-        console.warn(
-          `[SiteBlocker] Error parsing URL '${url}':`,
-          error.message
-        );
-        return false;
-      }
-    });
+    const matchingSite = findMatchingSite(
+      url,
+      distractingSites,
+      (site) => site.isEnabled !== false && !!site.dailyOpenLimit
+    );
 
     if (!matchingSite) {
       return { wouldExceed: false, siteId: null, currentOpens: 0, limit: 0 };

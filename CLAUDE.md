@@ -23,7 +23,8 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`site_storage.js`**: CRUD operations for sites and limits
 - **`group_storage.js`**: CRUD operations for site groups
 - **`usage_recorder.js`**: Tracks time spent and visits per site via alarms
-- **`distraction_detector.js`**: Detects if current URL matches any limited sites (flexible pattern matching)
+- **`distraction_detector.js`**: Detects if current URL matches any limited sites (delegates matching to `url_matcher.js`)
+- **`url_matcher.js`**: Single source of truth for URL patterns — normalization, host/subdomain/path matching, specificity ranking, duplicate detection
 - **`site_blocker.js`**: Blocks/redirects users to timeout page when limits are reached
 - **`badge_manager.js`**: Updates toolbar badge with remaining time
 - **`daily_reset.js`**: Triggers daily reset of usage stats via alarms
@@ -177,11 +178,19 @@ interface Message {
 ```
 
 ### Site Matching
-Flexible URL pattern matching:
-- Domain: `facebook.com` matches any path/subdomain
-- Subdomain: `mail.google.com` matches exact subdomain
-- Protocol: `https://twitter.com` includes protocol
-- Case-insensitive matching
+All matching goes through `url_matcher.js`. Patterns are stored normalized —
+lowercase, no protocol, no leading `www.`, no query/hash/trailing slash — as
+either `host` or `host/path`:
+- Domain: `facebook.com` matches the domain and any subdomain, but not `notfacebook.com`
+- Subdomain: `shorts.youtube.com` matches only that subdomain (and its own subdomains)
+- Path: `youtube.com/shorts` matches `/shorts` and `/shorts/abc`, but not `/shortsomething` or `/watch`
+- Case-insensitive; input like `HTTPS://www.YouTube.com/Shorts/?t=1` normalizes to `youtube.com/shorts`
+- **Most specific pattern wins**: with both `youtube.com` and `youtube.com/shorts`
+  stored, a shorts URL is enforced against the shorts limit (`patternSpecificity`
+  ranks path depth first, then host length)
+- **One rule per page**: `addDistractingSite`/`updateDistractingSite` refuse a
+  pattern another site already holds (individual or group member); the background
+  returns a `DUPLICATE_SITE` error code with the clashing site and group name
 
 ### Limit Types
 - **Time Limits**: Minutes (1-1440), tracked via daily alarms checking chrome.storage
@@ -263,20 +272,30 @@ When a component exceeds ~400 lines:
 4. Pass data and callbacks as props to children
 
 ### Testing
-- Unit test background scripts in isolation
-- Integration tests verify message passing between components
-- Test storage operations with mock storage
-- Test custom hooks with React Testing Library
+`npm test` (vitest). Background scripts are neither bundled nor type-checked, so
+tests are the only safety net there — extend them when touching matching or storage.
+
+Current coverage:
+- `url_matcher.test.js` — normalization, host/subdomain/path matching, specificity, duplicate detection
+- `site_storage.test.js` — pattern normalization, duplicate refusal, clearing limits (fake `browser.storage.local`)
+- `path_limits.integration.test.js` — detector + blocker together: a path limit blocks its section and leaves the rest of the domain reachable
+- `urlScope.test.ts`, `groupSuggestions.test.ts` — popup scope patterns and group-aware suggestions
+
+Conventions: colocate `*.test.js`/`*.test.ts` next to the module; stub
+`browser.storage.local` with a plain object; `vi.stubGlobal('crypto', ...)` for
+deterministic IDs. Test files in `background_scripts/` are excluded from the
+packaged extension by the vite copy plugin.
 
 ## Storage Schema
 
 ```
-chrome.storage.local keys:
-- distracting_sites: Site[] (array of site objects with limits)
-- site_groups: Group[] (array of group objects)
-- usage_data: { [siteId]: UsageEntry } (daily tracking)
-- timeout_notes: { [siteId]: string } (motivational messages)
-- extension_version: string (for migrations)
+browser.storage.local keys:
+- distractingSites: Site[] (array of site objects with limits)
+- groups: Group[] (array of group objects)
+- usageStats-YYYY-MM-DD: { [siteId]: { timeSpentSeconds, opens } } (one key per local day)
+- extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
+- timeoutNotes: Note[] (motivational messages)
+- displayPreferences: { showActivitySuggestions, preferredLanguage, ... }
 ```
 
 ## Building & Running
@@ -285,7 +304,9 @@ chrome.storage.local keys:
 # From root directory
 npm run build          # Build dist/
 npm run dev           # Dev server with HMR
-npm run lint          # ESLint check
+npm run lint          # ESLint check (covers src/**/*.{ts,tsx} and background_scripts/**/*.js)
+npm test              # Run the vitest suite
+npm run test:watch    # Vitest in watch mode
 npm run preview       # Preview production build
 
 # To load in Firefox:
@@ -339,13 +360,14 @@ npm run preview       # Preview production build
 
 ## Common Gotchas
 
-1. **State Management**: Don't try to store state in background script variables; always use chrome.storage
-2. **Event Handlers**: Each event listener should be defined at top-level in background.js
-3. **Alarms**: Create alarms in initialization; they persist across extension reloads
-4. **Cache Invalidation**: Changes to sites/limits need to update badge, re-check blocked tabs
-5. **URL Matching**: The same URL pattern may match multiple sites; extension blocks based on highest match priority
-6. **Hook Dependencies**: Custom hooks must return consistent types; use generics for flexibility
-7. **Dialog Management**: Always reset dialog state when closing to prevent data leaks between operations
+1. **Background scripts are copied, not bundled**: the vite plugin copies `src/background_scripts/*.js` into `dist` verbatim. They are not type-checked, not minified, and `esbuild`'s `drop: ['console']` does NOT apply to them — a `console.log` there ships to users. Keep `console.warn`/`console.error` for real problems only.
+2. **State Management**: Don't try to store state in background script variables; always use chrome.storage
+3. **Event Handlers**: Each event listener should be defined at top-level in background.js
+4. **Alarms**: Create alarms in initialization; they persist across extension reloads
+5. **Cache Invalidation**: Changes to sites/limits need to update badge, re-check blocked tabs
+6. **URL Matching**: The same URL pattern may match multiple sites; extension blocks based on highest match priority
+7. **Hook Dependencies**: Custom hooks must return consistent types; use generics for flexibility
+8. **Dialog Management**: Always reset dialog state when closing to prevent data leaks between operations
 
 ## UI Component Library
 

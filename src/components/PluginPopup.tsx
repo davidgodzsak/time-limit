@@ -8,6 +8,7 @@ import { useBroadcastUpdates } from "@/hooks/useBroadcastUpdates";
 import { useToggleSelection } from "@/lib/hooks/useToggleSelection";
 import { getErrorMessage, logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { t } from "@/lib/utils/i18n";
+import { getSectionPattern, getSitePattern } from "@/lib/utils/urlScope";
 import { getRatingUrl } from "@/lib/constants/rating";
 import { NormalPageView } from "./popup/NormalPageView";
 import { UnlimitedSiteView } from "./popup/UnlimitedSiteView";
@@ -29,6 +30,11 @@ const PluginPopup = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [disabledReason, setDisabledReason] = useState<'site' | 'group' | 'both' | null>(null);
   const [siteName, setSiteName] = useState<string>("");
+  // What a new quick limit should cover: the whole site, or just the section
+  // of it the user is currently in (e.g. youtube.com vs youtube.com/shorts).
+  const [sitePattern, setSitePattern] = useState<string>("");
+  const [sectionPattern, setSectionPattern] = useState<string | null>(null);
+  const [limitScope, setLimitScope] = useState<'site' | 'section'>('site');
   const [groupName, setGroupName] = useState<string | null>(null);
   const [siteId, setSiteId] = useState<string | null>(null);
   const [groupId, setGroupId] = useState<string | null>(null);
@@ -106,10 +112,15 @@ const PluginPopup = () => {
           }
 
           setSiteName(url.hostname);
+          setSitePattern(getSitePattern(url.href) ?? url.hostname);
+          setSectionPattern(getSectionPattern(url.href));
           setPageType('normal');
         } catch {
+          const fallbackHostname = String(pageInfo.hostname || "unknown");
           setCurrentUrl(pageInfo.url);
-          setSiteName(pageInfo.hostname || "unknown");
+          setSiteName(fallbackHostname);
+          setSitePattern(fallbackHostname === "unknown" ? "" : fallbackHostname);
+          setSectionPattern(null);
           setPageType('normal');
         }
 
@@ -263,6 +274,26 @@ const PluginPopup = () => {
     return () => clearInterval(updateInterval);
   }, [isLimited]);
 
+  // The pattern a new limit will be stored under, following the scope choice.
+  const targetPattern =
+    limitScope === 'section' && sectionPattern ? sectionPattern : sitePattern || siteName;
+
+  /** Shows the right toast for a failed add: duplicates get their own message. */
+  const reportAddFailure = (error: unknown, fallbackKey: string) => {
+    if (api.isDuplicateSiteError(error)) {
+      const groupName = error.details?.groupName;
+      toast(
+        getErrorToastProps(
+          groupName
+            ? t("error_site_duplicateInGroup", [targetPattern, groupName])
+            : t("error_site_duplicate", targetPattern)
+        )
+      );
+      return;
+    }
+    toast(getErrorToastProps(t(fallbackKey)));
+  };
+
   const handleSelectTimeLimit = (minutes: number) => {
     toggleTimeLimit(minutes);
   };
@@ -281,12 +312,12 @@ const PluginPopup = () => {
       setIsSaving(true);
       // Add site with both time and opens limits
       await api.addSite({
-        name: siteName,
+        name: targetPattern,
         timeLimit: selectedTimeLimit ?? undefined,
         opensLimit: selectedOpensLimit ?? undefined,
       });
 
-      toast(getSuccessToastProps(t("popup_addLimit_success", siteName)));
+      toast(getSuccessToastProps(t("popup_addLimit_success", targetPattern)));
 
       // Reset selection
       resetTimeLimitSelection();
@@ -315,7 +346,7 @@ const PluginPopup = () => {
       } catch { /* non-critical */ }
     } catch (error) {
       logError("Error adding limit", error);
-      toast(getErrorToastProps(t("popup_addLimit_failed")));
+      reportAddFailure(error, "popup_addLimit_failed");
     } finally {
       setIsSaving(false);
     }
@@ -401,7 +432,7 @@ const PluginPopup = () => {
 
       // Determine which site to add to group
       const siteToAddId = siteId || (await api.addSite({
-        name: siteName,
+        name: targetPattern,
         // Don't set any limits, just add the site
       })).id;
 
@@ -431,7 +462,7 @@ const PluginPopup = () => {
       resetOpensLimitSelection();
     } catch (error) {
       logError("Error adding site to group", error);
-      toast(getErrorToastProps(t("popup_addToGroup_failed")));
+      reportAddFailure(error, "popup_addToGroup_failed");
     } finally {
       setIsSaving(false);
     }
@@ -584,6 +615,10 @@ const PluginPopup = () => {
     return (
       <UnlimitedSiteView
         siteName={siteName}
+        sitePattern={sitePattern || siteName}
+        sectionPattern={sectionPattern}
+        limitScope={limitScope}
+        onSelectScope={setLimitScope}
         selectedTimeLimit={selectedTimeLimit}
         selectedOpensLimit={selectedOpensLimit}
         showGroupSelector={showGroupSelector}
