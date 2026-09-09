@@ -118,7 +118,8 @@ const InfoPage = () => {
   return (
     <PageTemplate
       version={version}
-      onOpenInfo={handleOpenSettings}
+      headerAction="settings"
+      onHeaderAction={handleOpenSettings}
       layout="normal"
       showVersionBadge={true}
       logoSize="sm"
