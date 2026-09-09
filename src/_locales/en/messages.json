@@ -11,8 +11,7 @@
     "message": "Time Limit",
     "description": "Tooltip when hovering over extension icon in toolbar"
   },
-
-    "popup_loading_message": {
+  "popup_loading_message": {
     "message": "Loading...",
     "description": "Loading state message in popup"
   },
@@ -62,8 +61,7 @@
     "message": "Failed to load page information",
     "description": "Error when page info cannot be loaded"
   },
-
-    "normalPageView_button_tooltip": {
+  "normalPageView_button_tooltip": {
     "message": "About this extension",
     "description": "Tooltip for info button in normal page view"
   },
@@ -89,8 +87,7 @@
     "message": "Extended limit active",
     "description": "Badge shown on a limited site when the daily limit has been extended for today"
   },
-
-    "unlimitedSiteView_notTracked": {
+  "unlimitedSiteView_notTracked": {
     "message": "Not tracked",
     "description": "Status label for unlimited sites"
   },
@@ -130,8 +127,7 @@
     "message": "Cancel",
     "description": "Cancel button in unlimited site view"
   },
-
-    "disabledStateView_disabled": {
+  "disabledStateView_disabled": {
     "message": "Disabled",
     "description": "Status label for disabled tracking"
   },
@@ -151,8 +147,7 @@
     "message": "Turn on tracking",
     "description": "Button to enable tracking"
   },
-
-    "settingsPageView_title": {
+  "settingsPageView_title": {
     "message": "Settings Page",
     "description": "Page identification in popup when on settings page"
   },
@@ -164,8 +159,7 @@
     "message": "Configure your limits, groups, and messages here.",
     "description": "Informational text in popup settings page view"
   },
-
-    "infoPageView_title": {
+  "infoPageView_title": {
     "message": "About This Extension",
     "description": "Page identification in popup when on info page"
   },
@@ -181,8 +175,7 @@
     "message": "Go to Settings",
     "description": "Button to navigate to settings from popup"
   },
-
-    "timeoutPageView_title": {
+  "timeoutPageView_title": {
     "message": "Timeout Page",
     "description": "Page identification in popup when on timeout page"
   },
@@ -268,8 +261,7 @@
     "message": "Extending...",
     "description": "Button label during extension submission"
   },
-
-    "firstInstallView_title": {
+  "firstInstallView_title": {
     "message": "Welcome to Time Limit",
     "description": "Welcome screen title for first time users"
   },
@@ -293,8 +285,7 @@
     "message": "You'll be able to add quick limits from here once set up",
     "description": "Footer note on welcome screen"
   },
-
-    "settings_loading": {
+  "settings_loading": {
     "message": "Loading settings...",
     "description": "Loading state message in settings page"
   },
@@ -334,8 +325,7 @@
     "message": "Browser default",
     "description": "Option to use the browser's default language"
   },
-
-    "sites_search_placeholder": {
+  "sites_search_placeholder": {
     "message": "Search sites and groups...",
     "description": "Placeholder in search input for sites"
   },
@@ -377,8 +367,7 @@
     "message": "Add site to group",
     "description": "Button to add site to group"
   },
-
-    "groups_section_title": {
+  "groups_section_title": {
     "message": "Manage Groups",
     "description": "Title of groups management section"
   },
@@ -432,8 +421,7 @@
     "message": "Delete group",
     "description": "Tooltip for delete group button"
   },
-
-    "messages_section_title": {
+  "messages_section_title": {
     "message": "Motivational Messages",
     "description": "Title of messages section"
   },
@@ -473,8 +461,7 @@
     "message": "Delete message",
     "description": "Tooltip for delete message button"
   },
-
-    "dialog_addSite_title_create": {
+  "dialog_addSite_title_create": {
     "message": "Add New Site",
     "description": "Dialog title when creating a new site"
   },
@@ -515,7 +502,7 @@
     "description": "Placeholder for opens limit input"
   },
   "dialog_addSite_validation": {
-    "message": "Please set at least a time limit or an opens limit",
+    "message": "Please set at least a time limit, an opens limit or a pause",
     "description": "Validation alert message for add site dialog"
   },
   "dialog_addSite_button_cancel": {
@@ -530,8 +517,7 @@
     "message": "Update Site",
     "description": "Submit button in add site dialog (edit mode)"
   },
-
-    "dialog_createGroup_title_create": {
+  "dialog_createGroup_title_create": {
     "message": "Create New Group",
     "description": "Dialog title when creating a new group"
   },
@@ -568,7 +554,7 @@
     "description": "Label for group opens limit input"
   },
   "dialog_createGroup_validation": {
-    "message": "Please set at least a time limit or an opens limit",
+    "message": "Please set at least a time limit, an opens limit or a pause",
     "description": "Validation alert message for create group dialog"
   },
   "dialog_createGroup_button_cancel": {
@@ -583,8 +569,7 @@
     "message": "Update Group",
     "description": "Submit button in create group dialog (edit mode)"
   },
-
-    "dialog_addToGroup_title": {
+  "dialog_addToGroup_title": {
     "message": "Add Site to $GROUPNAME$",
     "description": "Dialog title when adding site to group",
     "placeholders": {
@@ -618,8 +603,7 @@
     "message": "Add to Group",
     "description": "Submit button in add to group dialog"
   },
-
-    "timeout_breathing_in": {
+  "timeout_breathing_in": {
     "message": "Breathe",
     "description": "Label for breathing circle during inhale"
   },
@@ -657,8 +641,7 @@
       }
     }
   },
-
-    "info_title": {
+  "info_title": {
     "message": "Reclaim Your Focus",
     "description": "Main heading on info page"
   },
@@ -778,8 +761,7 @@
     "message": "Made with ❤️ to help you stay focused",
     "description": "Footer text on info page"
   },
-
-    "suggestion_readBook_title": {
+  "suggestion_readBook_title": {
     "message": "Read a book",
     "description": "Activity suggestion title"
   },
@@ -827,8 +809,7 @@
     "message": "Stretch, make tea, and rest your eyes",
     "description": "Activity suggestion description"
   },
-
-    "notification_success_default": {
+  "notification_success_default": {
     "message": "Operation completed successfully",
     "description": "Default success message"
   },
@@ -902,13 +883,11 @@
     "message": "Limit extended! Redirecting...",
     "description": "Notification when limit extension succeeds"
   },
-
-    "error_unexpected": {
+  "error_unexpected": {
     "message": "An unexpected error occurred",
     "description": "Generic error fallback message"
   },
-
-    "error_invalid_message_format": {
+  "error_invalid_message_format": {
     "message": "Invalid message format",
     "description": "Error when message structure is invalid"
   },
@@ -972,8 +951,7 @@
     "message": "You can now access this site. Go back or refresh the page.",
     "description": "Notification when site limit is removed and access is restored"
   },
-
-    "block_reason_both": {
+  "block_reason_both": {
     "message": "You've exceeded both your time limit ($1/$2 minutes) and open limit ($3/$4 opens) for $5 today.",
     "description": "Blocking reason when both time and opens limits exceeded",
     "placeholders": {
@@ -1045,8 +1023,7 @@
       }
     }
   },
-
-    "onboarding_welcome_title": {
+  "onboarding_welcome_title": {
     "message": "Welcome to Time Limit",
     "description": "Main title of the welcome screen dialog"
   },
@@ -1130,8 +1107,7 @@
     "message": "Finish",
     "description": "Button to complete spotlight tutorial"
   },
-
-    "error_urlPattern_empty": {
+  "error_urlPattern_empty": {
     "message": "URL pattern must be a non-empty string",
     "description": "Validation error for empty URL"
   },
@@ -1322,5 +1298,129 @@
   "popup_scope_thisSection": {
     "message": "This section",
     "description": "Popup scope option: limit only the current path"
+  },
+  "reflection_option_off": {
+    "message": "Off",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1s",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "$1s pause",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pause before opening",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Counts down, then asks whether you still want to open the site. Works on its own, without a daily limit.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pause before opening",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Every site in this group gets the same countdown before it opens.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "$1s pause",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pause before opening",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "$1s pause before this opens",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "No daily limit here — just a moment to check you meant to come.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Take a breath",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Your call",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "seconds",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "A few seconds is usually enough to notice whether you actually meant to come here.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Do you still want to open this?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Yes, open it",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "No, not now",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Opened $1 times today · stopped here $2 times",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Reflection pause",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Decide on the page",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "The countdown is running in the tab. Choose there whether to open the site or do something else.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "You chose not to open this right now.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 is still there whenever you want it — this was your call, not a limit.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Worth a limit?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "You have opened $1 $2 times today.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pause $1s before opening",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Not for this site",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 will now pause before it opens",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Suggest limits",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Notice sites you open over and over, and offer a gentle limit. At most one suggestion a day, never twice for the same site.",
+    "description": "Explains the limit suggestion preference"
   }
 }

@@ -16,7 +16,7 @@ const TimeoutPage = () => {
   // URL params
   const [blockedUrl, setBlockedUrl] = useState<string>("");
   const [siteName, setSiteName] = useState<string>("this site");
-  const [limitType, setLimitType] = useState<"time" | "opens">("time");
+  const [limitType, setLimitType] = useState<"time" | "opens" | "reflection">("time");
   const [blockingReason, setBlockingReason] = useState<string>(
     "You've reached your daily limit"
   );
@@ -35,8 +35,15 @@ const TimeoutPage = () => {
     const params = new URLSearchParams(window.location.search);
 
     const url = params.get("blockedUrl") || "";
-    const reason = params.get("reason") || "You've reached your daily limit";
-    const type = (params.get("limitType") as "time" | "opens") || "time";
+    const type =
+      (params.get("limitType") as "time" | "opens" | "reflection") || "time";
+
+    // Arriving from the reflection page is a choice, not a limit being hit, so
+    // it gets its own line instead of the background's "you've exceeded…".
+    const reason =
+      type === "reflection"
+        ? t("timeout_reflection_reason")
+        : params.get("reason") || "You've reached your daily limit";
 
     setBlockedUrl(url);
     setBlockingReason(reason);
@@ -298,7 +305,9 @@ const TimeoutPage = () => {
             {blockingReason}
           </p>
           <p className="text-xs">
-            {t("timeout_resetTime", [siteName, resetTime])}
+            {limitType === "reflection"
+              ? t("timeout_reflection_hint", siteName)
+              : t("timeout_resetTime", [siteName, resetTime])}
           </p>
       </div>
     </PageTemplate>

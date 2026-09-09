@@ -25,6 +25,10 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`usage_recorder.js`**: Tracks time spent and visits per site via alarms
 - **`distraction_detector.js`**: Detects if current URL matches any limited sites (delegates matching to `url_matcher.js`)
 - **`url_matcher.js`**: Single source of truth for URL patterns — normalization, host/subdomain/path matching, specificity ranking, duplicate detection
+- **`reflection_gate.js`**: Decides whether a navigation gets a countdown before the page opens, and documents how the delay sits next to the hard limits
+- **`reflection_storage.js`**: Reflection passes (a "yes" quiets the countdown for 20 minutes) and the daily yes/no tally
+- **`visit_tracker.js`**: Rolling per-host open counts for *unlimited* sites (hostnames only, 7 day window)
+- **`suggestion_engine.js`**: Decides when a frequently opened site is worth offering a limit for, and remembers the answer forever
 - **`site_blocker.js`**: Blocks/redirects users to timeout page when limits are reached
 - **`badge_manager.js`**: Updates toolbar badge with remaining time
 - **`daily_reset.js`**: Triggers daily reset of usage stats via alarms
@@ -38,6 +42,7 @@ React components that run in isolated contexts:
 - **`pages/popup/`**: Toolbar popup component (PluginPopup.tsx) with quick limit setup
 - **`pages/settings/`**: Settings page (SettingsPage.tsx) for managing sites, groups, and limits
 - **`pages/timeout/`**: Timeout page (TimeoutPage.tsx) shown when users hit their limits
+- **`pages/reflect/`**: Reflection page (ReflectionPage.tsx) — the countdown and the "do you still want to open this?" question
 
 ### 3. Shared Libraries (`src/lib/`)
 - **`api.ts`**: Type-safe message passing wrapper for background script communication
@@ -195,7 +200,35 @@ either `host` or `host/path`:
 ### Limit Types
 - **Time Limits**: Minutes (1-1440), tracked via daily alarms checking chrome.storage
 - **Open Count Limits**: Site visits (1-100), tracked on webNavigation.onBeforeNavigate
-- **Combined**: Sites can have both; blocked when ANY limit reached
+- **Reflection Delay**: Seconds (5/10/15 in the UI) of countdown before the page
+  opens, then "do you still want to open this?". Yes restores the exact original
+  URL; No goes to the timeout page. It is a rule in its own right — a site or
+  group may have only this and no hard limit.
+- **Combined**: Sites can have all three; blocked when ANY hard limit is reached
+
+### Reflection Delay Rules (all decided in `reflection_gate.js`)
+- **Block first, pause second**: `handleBeforeNavigate` runs the block check, and
+  only sends a still-openable page through the countdown. A used-up limit goes
+  straight to the timeout page.
+- **Group beats site, but does not erase it**: the group's delay applies when it
+  sets one, otherwise the site keeps its own. (Time/opens limits work
+  differently — there the group replaces the site's config entirely.)
+- **Passes**: answering "yes" stores a 20 minute pass under the enforced rule's
+  id (group id when grouped, else site id), so clicking around inside the site
+  does not restart the countdown. "No" clears the pass.
+- **Answers are counted** per site per day in `reflections-YYYY-MM-DD`.
+
+### Limit Suggestions
+- Opens of sites with no rule are counted per host per day in `visitTracking`
+  (hostnames only, 7 day window, 5 minute debounce, 300 hosts max).
+- `suggestion_engine.js` offers a limit when a known distracting host passes 4
+  opens in a day (or 8 in the window), or any other host passes 10 in a day (or
+  25 across 3+ days). Work-shaped hosts are never offered.
+- Non-nagging by construction: one suggestion a day, one pending at a time, each
+  host offered at most once ever, and a `showLimitSuggestions` preference.
+- The nudge is `browser.action.openPopup()` where allowed, a notification
+  otherwise, plus an amber `!` badge on that tab. The popup turns it into one
+  click that adds a 10 second pause.
 
 ## Common Development Tasks
 
@@ -279,6 +312,9 @@ Current coverage:
 - `url_matcher.test.js` — normalization, host/subdomain/path matching, specificity, duplicate detection
 - `site_storage.test.js` — pattern normalization, duplicate refusal, clearing limits (fake `browser.storage.local`)
 - `path_limits.integration.test.js` — detector + blocker together: a path limit blocks its section and leaves the rest of the domain reachable
+- `reflection_gate.test.js` — which delay applies (site vs group vs specificity), passes, and the URL round trip
+- `suggestion_engine.test.js` — the work/distraction heuristic, thresholds, the one-a-day and once-ever rules, visit counting
+- `mindful_limits.integration.test.js` — blocker + gate together: a pause-only site never blocks, a spent limit skips the countdown, a group pause is answered once
 - `urlScope.test.ts`, `groupSuggestions.test.ts` — popup scope patterns and group-aware suggestions
 
 Conventions: colocate `*.test.js`/`*.test.ts` next to the module; stub
@@ -290,10 +326,14 @@ packaged extension by the vite copy plugin.
 
 ```
 browser.storage.local keys:
-- distractingSites: Site[] (array of site objects with limits)
+- distractingSites: Site[] (urlPattern, dailyLimitSeconds?, dailyOpenLimit?, reflectionDelaySeconds?, isEnabled, groupId?)
 - groups: Group[] (array of group objects)
 - usageStats-YYYY-MM-DD: { [siteId]: { timeSpentSeconds, opens } } (one key per local day)
 - extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
+- reflections-YYYY-MM-DD: { [siteId]: { proceeded, dismissed } } (7 day window)
+- reflectionPasses: { [siteId|groupId]: expiresAtMs } (cleared on daily reset)
+- visitTracking: { [host]: { days: { "YYYY-MM-DD": opens }, lastVisit } }
+- limitSuggestions: { handledHosts: string[], pending, lastSuggestedDate }
 - timeoutNotes: Note[] (motivational messages)
 - displayPreferences: { showActivitySuggestions, preferredLanguage, ... }
 ```

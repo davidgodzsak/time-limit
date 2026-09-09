@@ -1,9 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Plus, Globe, Loader2, Info } from "lucide-react";
+import { Settings, Plus, Globe, Loader2, Info, Hourglass, Lightbulb } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import { UIGroup } from "@/lib/storage";
+import type { LimitSuggestion } from "@/lib/api";
 import Logo from "../Logo";
+import { ReflectionDelayPicker } from "../ReflectionDelayPicker";
+
+/** The delay the suggestion banner offers — the lightest thing that helps. */
+const SUGGESTED_REFLECTION_SECONDS = 10;
 
 interface UnlimitedSiteViewProps {
   siteName: string;
@@ -15,12 +20,18 @@ interface UnlimitedSiteViewProps {
   onSelectScope: (scope: 'site' | 'section') => void;
   selectedTimeLimit: number | null;
   selectedOpensLimit: number | null;
+  selectedReflectionDelay: number | null;
+  /** Set when the extension noticed this site being opened over and over. */
+  suggestion?: LimitSuggestion | null;
   showGroupSelector: boolean;
   isLoadingGroups: boolean;
   availableGroups: UIGroup[];
   isSaving: boolean;
   onSelectTimeLimit: (minutes: number) => void;
   onSelectOpensLimit: (opens: number) => void;
+  onSelectReflectionDelay: (seconds: number | undefined) => void;
+  onAcceptSuggestion?: (seconds: number) => void;
+  onDismissSuggestion?: () => void;
   onAddLimit: () => void;
   onOpenSettings: () => void;
   onOpenGroupSelector: () => void;
@@ -37,12 +48,17 @@ export function UnlimitedSiteView({
   onSelectScope,
   selectedTimeLimit,
   selectedOpensLimit,
+  selectedReflectionDelay,
+  suggestion,
   showGroupSelector,
   isLoadingGroups,
   availableGroups,
   isSaving,
   onSelectTimeLimit,
   onSelectOpensLimit,
+  onSelectReflectionDelay,
+  onAcceptSuggestion,
+  onDismissSuggestion,
   onAddLimit,
   onOpenSettings,
   onOpenGroupSelector,
@@ -89,6 +105,43 @@ export function UnlimitedSiteView({
             <p className="text-sm text-muted-foreground">{t("unlimitedSiteView_notTracked")}</p>
           </div>
         </div>
+
+        {suggestion && onAcceptSuggestion && (
+          <div className="mb-5 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+            <div className="flex items-start gap-2 mb-3">
+              <Lightbulb size={16} className="text-amber-600 mt-0.5 shrink-0" />
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-amber-900">
+                  {t("suggestion_title")}
+                </p>
+                <p className="text-xs text-amber-800 mt-0.5">
+                  {t("suggestion_body", [
+                    suggestion.host,
+                    String(suggestion.opensToday),
+                  ])}
+                </p>
+              </div>
+            </div>
+            <Button
+              size="sm"
+              className="w-full rounded-xl bg-amber-600 hover:bg-amber-700 text-white"
+              onClick={() => onAcceptSuggestion(SUGGESTED_REFLECTION_SECONDS)}
+              disabled={isSaving}
+            >
+              <Hourglass size={14} className="mr-1.5" />
+              {t("suggestion_button_accept", String(SUGGESTED_REFLECTION_SECONDS))}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full rounded-xl text-xs text-amber-800 hover:bg-amber-100 mt-1"
+              onClick={onDismissSuggestion}
+              disabled={isSaving}
+            >
+              {t("suggestion_button_dismiss")}
+            </Button>
+          </div>
+        )}
 
         <p className="text-sm text-muted-foreground mb-5">
           {t("unlimitedSiteView_description")}
@@ -173,11 +226,25 @@ export function UnlimitedSiteView({
             </div>
           </div>
 
+          <div>
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
+              {t("unlimitedSiteView_reflectionDelay_label")}
+            </p>
+            <ReflectionDelayPicker
+              value={selectedReflectionDelay ?? undefined}
+              onChange={onSelectReflectionDelay}
+              disabled={isSaving}
+            />
+          </div>
+
           <Button
             className="w-full rounded-xl"
             size="sm"
             onClick={onAddLimit}
-            disabled={isSaving || (!selectedTimeLimit && !selectedOpensLimit)}
+            disabled={
+              isSaving ||
+              (!selectedTimeLimit && !selectedOpensLimit && !selectedReflectionDelay)
+            }
           >
             <Plus size={14} className="mr-1.5" />
             {t("unlimitedSiteView_button_addLimit")}

@@ -103,6 +103,20 @@ export async function addDistractingSite(siteObject) {
   }
 
 
+  // Validate reflectionDelaySeconds if provided (the pause shown before the
+  // site opens; a site may have this and no hard limit at all)
+  if (
+    Object.prototype.hasOwnProperty.call(siteObject, 'reflectionDelaySeconds') &&
+    (typeof siteObject.reflectionDelaySeconds !== 'number' ||
+      siteObject.reflectionDelaySeconds <= 0)
+  ) {
+    console.error(
+      'Invalid reflectionDelaySeconds provided to addDistractingSite. Must be a positive number if specified.',
+      siteObject.reflectionDelaySeconds
+    );
+    return null;
+  }
+
   // Validate groupId if provided
   if (
     Object.prototype.hasOwnProperty.call(siteObject, 'groupId') &&
@@ -135,6 +149,13 @@ export async function addDistractingSite(siteObject) {
   // Add dailyOpenLimit if provided
   if (Object.prototype.hasOwnProperty.call(siteObject, 'dailyOpenLimit')) {
     newSite.dailyOpenLimit = siteObject.dailyOpenLimit;
+  }
+
+  // Add reflectionDelaySeconds if provided
+  if (
+    Object.prototype.hasOwnProperty.call(siteObject, 'reflectionDelaySeconds')
+  ) {
+    newSite.reflectionDelaySeconds = siteObject.reflectionDelaySeconds;
   }
 
   // Add groupId if provided
@@ -230,6 +251,18 @@ export async function updateDistractingSite(siteId, updates) {
     return null;
   }
   if (
+    Object.prototype.hasOwnProperty.call(updates, 'reflectionDelaySeconds') &&
+    updates.reflectionDelaySeconds !== null &&
+    (typeof updates.reflectionDelaySeconds !== 'number' ||
+      updates.reflectionDelaySeconds <= 0)
+  ) {
+    console.error(
+      'Invalid reflectionDelaySeconds in updates for updateDistractingSite.',
+      updates.reflectionDelaySeconds
+    );
+    return null;
+  }
+  if (
     Object.prototype.hasOwnProperty.call(updates, 'isEnabled') &&
     typeof updates.isEnabled !== 'boolean'
   ) {
@@ -299,16 +332,21 @@ export async function updateDistractingSite(siteId, updates) {
     if (updates.dailyLimitSeconds === null) {
       delete updatedSite.dailyLimitSeconds;
     }
+    if (updates.reflectionDelaySeconds === null) {
+      delete updatedSite.reflectionDelaySeconds;
+    }
 
     // A site in a group inherits the group's limits, so it may hold none of its
-    // own. A standalone site must keep at least one limit (time or opens).
+    // own. A standalone site must keep at least one rule — a time limit, an
+    // opens limit, or a reflection delay, which stands on its own.
     if (
       !updatedSite.groupId &&
       typeof updatedSite.dailyLimitSeconds !== 'number' &&
-      typeof updatedSite.dailyOpenLimit !== 'number'
+      typeof updatedSite.dailyOpenLimit !== 'number' &&
+      typeof updatedSite.reflectionDelaySeconds !== 'number'
     ) {
       console.error(
-        `Cannot remove all limits from site "${siteId}". At least one of dailyLimitSeconds or dailyOpenLimit is required.`
+        `Cannot remove all limits from site "${siteId}". At least one of dailyLimitSeconds, dailyOpenLimit or reflectionDelaySeconds is required.`
       );
       return null;
     }

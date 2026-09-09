@@ -17,6 +17,26 @@ import {
   loadDistractingSitesFromStorage,
 } from './distraction_detector.js';
 import { updateBadge } from './badge_manager.js';
+import {
+  checkReflectionRequired,
+  buildReflectionUrl,
+} from './reflection_gate.js';
+import {
+  grantReflectionPass,
+  clearReflectionPass,
+  recordReflectionDecision,
+  getReflectionStats,
+} from './reflection_storage.js';
+import {
+  getVisitHost,
+  recordVisit,
+  forgetHost,
+} from './visit_tracker.js';
+import {
+  considerSuggestion,
+  getPendingSuggestionForHost,
+  retireSuggestion,
+} from './suggestion_engine.js';
 import { getExtensions, setExtension, hasExtensionToday } from './extension_storage.js';
 import { getUsageStats } from './usage_storage.js';
 import {
@@ -61,6 +81,7 @@ import {
   validateUrlPattern,
   ERROR_TYPES,
 } from './validation_utils.js';
+import { findMatchingSite } from './url_matcher.js';
 
 /**
  * Validates a URL pattern and checks that no other site already limits it.
@@ -308,7 +329,32 @@ async function handleBeforeNavigate(details) {
           error
         );
       }
+      return;
     }
+
+    // Not blocked: the site may still ask for a pause before it opens.
+    // Order matters — see reflection_gate.js: a used-up limit wins over the
+    // countdown, so this only runs for sites the user may still open.
+    const reflection = await checkReflectionRequired(url);
+    if (reflection.required) {
+      await browser.tabs.update(tabId, {
+        url: buildReflectionUrl(url, reflection),
+      });
+      await stopTracking();
+      try {
+        await browser.alarms.clear('usageTimer');
+      } catch (error) {
+        console.warn(
+          '[Background] Error clearing usage timer before reflection:',
+          error
+        );
+      }
+      return;
+    }
+
+    // Unlimited page: count the visit so we can offer a limit for the sites
+    // the user keeps coming back to.
+    await _trackVisitAndMaybeSuggest(tabId, url);
   } catch (error) {
     console.error(
       '[Background] Error during navigation blocking check:',
@@ -619,6 +665,10 @@ async function handleMessage(message, _sender, _sendResponse) {
             },
           };
         }
+
+        // The site now has a rule of its own, so stop counting it as a
+        // suggestion candidate and never offer it again.
+        await _retireSuggestionForPattern(newSite.urlPattern);
 
         // Reload distraction detector cache when sites change
         await _reloadDistractionDetectorCache();
@@ -1099,11 +1149,19 @@ async function handleMessage(message, _sender, _sendResponse) {
             effectiveOpenLimit += extendedOpens;
           }
 
+          // The delay that actually applies: the group's when it sets one,
+          // otherwise the site's own (see reflection_gate.js).
+          const effectiveReflectionDelay =
+            (limitConfig !== site && limitConfig.reflectionDelaySeconds) ||
+            site.reflectionDelaySeconds ||
+            0;
+
           // Enhanced site info with real usage data
           const enhancedSiteInfo = {
             ...site,
             dailyLimitSeconds: effectiveLimitSeconds,
             dailyOpenLimit: effectiveOpenLimit,
+            reflectionDelaySeconds: effectiveReflectionDelay,
             todaySeconds: siteUsage.timeSpentSeconds,
             todayOpenCount: siteUsage.opens,
             isExtended: !!pageExtension,
@@ -1283,6 +1341,8 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         }
 
+        await _retireSuggestionForPattern(newSite.urlPattern);
+
         // Reload distraction detector cache when sites change
         await _reloadDistractionDetectorCache();
 
@@ -1411,10 +1471,12 @@ async function handleMessage(message, _sender, _sendResponse) {
       case 'getDisplayPreferences': {
         try {
           const storage = await browser.storage.local.get('displayPreferences');
-          const preferences = storage.displayPreferences || {
+          const preferences = {
             showRandomMessage: true,
             showActivitySuggestions: true,
+            showLimitSuggestions: true,
             preferredLanguage: null,
+            ...(storage.displayPreferences || {}),
           };
           return {
             success: true,
@@ -1439,6 +1501,7 @@ async function handleMessage(message, _sender, _sendResponse) {
           const preferences = message.payload || {
             showRandomMessage: true,
             showActivitySuggestions: true,
+            showLimitSuggestions: true,
             preferredLanguage: null,
           };
           await browser.storage.local.set({ displayPreferences: preferences });
@@ -1905,6 +1968,207 @@ async function handleMessage(message, _sender, _sendResponse) {
         }
       }
 
+      // === Reflection Delay ===
+      case 'getReflectionInfo': {
+        try {
+          const validation = validateRequiredFields(message.payload, ['siteId']);
+          if (!validation.isValid) {
+            return {
+              success: false,
+              error: {
+                message: validation.error,
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+                field: validation.missingField,
+              },
+            };
+          }
+
+          const { siteId } = message.payload;
+          const [sites, groups] = await Promise.all([
+            getDistractingSites(),
+            getGroups(),
+          ]);
+          const site = sites.find((s) => s.id === siteId);
+          if (!site) {
+            return {
+              success: false,
+              error: {
+                message: 'Site not found',
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+              },
+            };
+          }
+
+          const group =
+            site.groupId && groups.find((g) => g.id === site.groupId && g.isEnabled !== false);
+          const today = getCurrentDateString();
+          const [usage, reflections] = await Promise.all([
+            getUsageStats(today),
+            getReflectionStats(today),
+          ]);
+          const siteReflections = reflections[siteId] || {
+            proceeded: 0,
+            dismissed: 0,
+          };
+
+          return {
+            success: true,
+            data: {
+              siteId,
+              urlPattern: site.urlPattern,
+              groupName: group ? group.name : null,
+              delaySeconds:
+                (group && group.reflectionDelaySeconds) ||
+                site.reflectionDelaySeconds ||
+                0,
+              opensToday: usage[siteId]?.opens || 0,
+              proceededToday: siteReflections.proceeded,
+              dismissedToday: siteReflections.dismissed,
+            },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error getting reflection info:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'recordReflectionAnswer': {
+        try {
+          const validation = validateRequiredFields(message.payload, [
+            'siteId',
+            'decision',
+          ]);
+          if (!validation.isValid) {
+            return {
+              success: false,
+              error: {
+                message: validation.error,
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+                field: validation.missingField,
+              },
+            };
+          }
+
+          const { siteId, decision } = message.payload;
+          if (decision !== 'proceeded' && decision !== 'dismissed') {
+            return {
+              success: false,
+              error: {
+                message: 'Decision must be "proceeded" or "dismissed"',
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+                field: 'decision',
+              },
+            };
+          }
+
+          const [sites, groups] = await Promise.all([
+            getDistractingSites(),
+            getGroups(),
+          ]);
+          const site = sites.find((s) => s.id === siteId);
+          if (!site) {
+            return {
+              success: false,
+              error: {
+                message: 'Site not found',
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+              },
+            };
+          }
+
+          // The pass follows whichever rule is being enforced, so a group with
+          // a delay asks once for the whole group.
+          const group =
+            site.groupId &&
+            groups.find((g) => g.id === site.groupId && g.isEnabled !== false);
+          const limitId = group ? group.id : site.id;
+
+          await recordReflectionDecision(
+            getCurrentDateString(),
+            siteId,
+            decision
+          );
+
+          if (decision === 'proceeded') {
+            await grantReflectionPass(limitId);
+          } else {
+            await clearReflectionPass(limitId);
+          }
+
+          return {
+            success: true,
+            data: { siteId, decision, limitId },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error recording reflection answer:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      // === Limit Suggestions ===
+      case 'getLimitSuggestion': {
+        try {
+          if (!(await _suggestionsEnabled())) {
+            return { success: true, data: { suggestion: null }, error: null };
+          }
+
+          let host = message.payload?.host || null;
+          if (!host) {
+            const tabs = await browser.tabs.query({
+              active: true,
+              currentWindow: true,
+            });
+            host = tabs.length > 0 ? getVisitHost(tabs[0].url) : null;
+          }
+
+          const suggestion = host
+            ? await getPendingSuggestionForHost(host)
+            : null;
+
+          return { success: true, data: { suggestion }, error: null };
+        } catch (error) {
+          console.error('[Background] Error getting limit suggestion:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'dismissLimitSuggestion': {
+        try {
+          const validation = validateRequiredFields(message.payload, ['host']);
+          if (!validation.isValid) {
+            return {
+              success: false,
+              error: {
+                message: validation.error,
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+                field: validation.missingField,
+              },
+            };
+          }
+
+          await retireSuggestion(message.payload.host);
+          await forgetHost(message.payload.host);
+          await _refreshCurrentTabBadge();
+
+          return {
+            success: true,
+            data: { dismissed: true, host: message.payload.host },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error dismissing suggestion:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
       // === Onboarding ===
       case 'getOnboardingState': {
         try {
@@ -2076,6 +2340,108 @@ async function handleActionClick(tab) {
     }
   } catch (actionError) {
     console.error('[Background] Error handling action click:', actionError);
+  }
+}
+
+/**
+ * Retires the suggestion for a freshly limited pattern, so a site the user has
+ * just taken care of is never offered again.
+ *
+ * @private
+ * @param {string} urlPattern - The stored pattern, e.g. `youtube.com/shorts`.
+ */
+async function _retireSuggestionForPattern(urlPattern) {
+  try {
+    if (!urlPattern || typeof urlPattern !== 'string') return;
+    const host = urlPattern.split('/')[0];
+    await retireSuggestion(host);
+    await forgetHost(host);
+  } catch (error) {
+    console.warn('[Background] Error retiring suggestion for pattern:', error);
+  }
+}
+
+/**
+ * Reads the user's "suggest limits" preference (on unless switched off).
+ * @private
+ * @returns {Promise<boolean>}
+ */
+async function _suggestionsEnabled() {
+  try {
+    const storage = await browser.storage.local.get('displayPreferences');
+    return storage.displayPreferences?.showLimitSuggestions !== false;
+  } catch {
+    return true;
+  }
+}
+
+/**
+ * Counts a visit to an unlimited page and, when the same site keeps coming
+ * back, raises a suggestion and nudges the user towards the toolbar popup
+ * where the site is pre-filled and one click away from a limit.
+ *
+ * @private
+ * @param {number} tabId - The tab being navigated.
+ * @param {string} url - The URL being opened.
+ */
+async function _trackVisitAndMaybeSuggest(tabId, url) {
+  try {
+    if (!(await _suggestionsEnabled())) return;
+
+    const host = getVisitHost(url);
+    if (!host) return;
+
+    // Sites that already have a rule are not candidates — limited or not,
+    // the user has made their decision about them.
+    const sites = await getDistractingSites();
+    if (findMatchingSite(url, sites)) return;
+
+    await recordVisit(host, getCurrentDateString());
+
+    const suggestion = await considerSuggestion(host, getCurrentDateString());
+    if (!suggestion) return;
+
+    await _nudgeAboutSuggestion(tabId, suggestion);
+  } catch (error) {
+    console.warn('[Background] Error tracking visit for suggestions:', error);
+  }
+}
+
+/**
+ * Brings a fresh suggestion to the user's attention: the toolbar popup if the
+ * browser lets us open it, and a one-off notification plus the badge dot when
+ * it does not. Never more than once per suggestion.
+ *
+ * @private
+ * @param {number} tabId - The tab the suggestion is about.
+ * @param {Object} suggestion - The suggestion raised by the engine.
+ */
+async function _nudgeAboutSuggestion(tabId, suggestion) {
+  try {
+    await updateBadge(tabId);
+  } catch (error) {
+    console.warn('[Background] Error showing suggestion badge:', error);
+  }
+
+  try {
+    if (browser.action && typeof browser.action.openPopup === 'function') {
+      await browser.action.openPopup();
+      return;
+    }
+  } catch {
+    // Opening the popup without a user gesture is not allowed everywhere;
+    // the notification below is the fallback.
+  }
+
+  try {
+    await browser.notifications.create(`limit-suggestion-${suggestion.host}`, {
+      type: 'basic',
+      iconUrl: 'assets/icons/icon-48.png',
+      title: 'Time Limit',
+      message: `You've opened ${suggestion.host} ${suggestion.opensToday} times today. Open the toolbar icon to add a gentle limit.`,
+    });
+  } catch (error) {
+    console.warn('[Background] Could not create suggestion notification:', error);
   }
 }
 

@@ -5,6 +5,7 @@ import {
   MousePointerClick,
   Trash2,
   Edit2,
+  Hourglass,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -118,6 +119,17 @@ export function GroupsTab({
                       />
                       <span className="font-medium">
                         {t("groups_opensLimit_label", String(group.opensLimit))}
+                      </span>
+                    </div>
+                  )}
+                  {group.reflectionDelay && group.reflectionDelay > 0 && (
+                    <div className="flex items-center gap-2 text-sm justify-end">
+                      <Hourglass size={14} className="text-muted-foreground" />
+                      <span className="font-medium">
+                        {t(
+                          "groups_reflectionDelay_label",
+                          String(group.reflectionDelay)
+                        )}
                       </span>
                     </div>
                   )}

@@ -14,6 +14,8 @@ export interface BackendSite {
   urlPattern: string;
   dailyLimitSeconds?: number;
   dailyOpenLimit?: number;
+  /** Seconds of pause shown before the site opens; usable without a hard limit. */
+  reflectionDelaySeconds?: number;
   isEnabled?: boolean;
   groupId?: string;
 }
@@ -27,6 +29,8 @@ export interface UISite {
   favicon?: string;
   timeLimit?: number;
   opensLimit?: number;
+  /** Reflection delay in seconds (same unit as storage — it is always short). */
+  reflectionDelay?: number;
   isEnabled?: boolean;
   groupId?: string;
 }
@@ -40,6 +44,7 @@ export interface BackendGroup {
   color: string;
   dailyLimitSeconds?: number;
   dailyOpenLimit?: number;
+  reflectionDelaySeconds?: number;
   isEnabled: boolean;
   siteIds: string[];
 }
@@ -53,6 +58,7 @@ export interface UIGroup {
   color: string;
   timeLimit: number;
   opensLimit?: number;
+  reflectionDelay?: number;
   sites: UISite[];
   isEnabled?: boolean;
   expanded?: boolean;
@@ -93,6 +99,11 @@ export function siteFromStorage(
     site.opensLimit = storageSite.dailyOpenLimit;
   }
 
+  // Add the reflection delay if present
+  if (storageSite.reflectionDelaySeconds) {
+    site.reflectionDelay = storageSite.reflectionDelaySeconds;
+  }
+
   // Add groupId if present
   if (storageSite.groupId) {
     site.groupId = storageSite.groupId;
@@ -129,6 +140,11 @@ export function siteToStorage(uiSite: UISite): BackendSite {
   // Add opensLimit if present
   if (uiSite.opensLimit && uiSite.opensLimit > 0) {
     storageSite.dailyOpenLimit = uiSite.opensLimit;
+  }
+
+  // Add the reflection delay if present
+  if (uiSite.reflectionDelay && uiSite.reflectionDelay > 0) {
+    storageSite.reflectionDelaySeconds = uiSite.reflectionDelay;
   }
 
   // Add enabled status if explicitly set
@@ -177,6 +193,10 @@ export function groupFromStorage(
     group.opensLimit = storageGroup.dailyOpenLimit;
   }
 
+  if (storageGroup.reflectionDelaySeconds) {
+    group.reflectionDelay = storageGroup.reflectionDelaySeconds;
+  }
+
   return group;
 }
 
@@ -202,6 +222,10 @@ export function groupToStorage(uiGroup: UIGroup): BackendGroup {
 
   if (uiGroup.opensLimit) {
     storageGroup.dailyOpenLimit = uiGroup.opensLimit;
+  }
+
+  if (uiGroup.reflectionDelay && uiGroup.reflectionDelay > 0) {
+    storageGroup.reflectionDelaySeconds = uiGroup.reflectionDelay;
   }
 
   return storageGroup;

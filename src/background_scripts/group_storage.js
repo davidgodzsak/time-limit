@@ -76,13 +76,28 @@ export async function addGroup(groupObject) {
     return null;
   }
 
-  // A group must have at least one limit (time or opens).
+  // Validate reflectionDelaySeconds if provided
   if (
-    typeof groupObject.dailyLimitSeconds !== 'number' &&
-    typeof groupObject.dailyOpenLimit !== 'number'
+    Object.prototype.hasOwnProperty.call(groupObject, 'reflectionDelaySeconds') &&
+    (typeof groupObject.reflectionDelaySeconds !== 'number' ||
+      groupObject.reflectionDelaySeconds <= 0)
   ) {
     console.error(
-      'addGroup requires at least one of dailyLimitSeconds or dailyOpenLimit.',
+      'Invalid reflectionDelaySeconds provided to addGroup. Must be a positive number if specified.',
+      groupObject.reflectionDelaySeconds
+    );
+    return null;
+  }
+
+  // A group must have at least one rule: a time limit, an opens limit, or a
+  // reflection delay (which is usable on its own).
+  if (
+    typeof groupObject.dailyLimitSeconds !== 'number' &&
+    typeof groupObject.dailyOpenLimit !== 'number' &&
+    typeof groupObject.reflectionDelaySeconds !== 'number'
+  ) {
+    console.error(
+      'addGroup requires at least one of dailyLimitSeconds, dailyOpenLimit or reflectionDelaySeconds.',
       groupObject
     );
     return null;
@@ -103,6 +118,11 @@ export async function addGroup(groupObject) {
   }
   if (Object.prototype.hasOwnProperty.call(groupObject, 'dailyOpenLimit')) {
     newGroup.dailyOpenLimit = groupObject.dailyOpenLimit;
+  }
+  if (
+    Object.prototype.hasOwnProperty.call(groupObject, 'reflectionDelaySeconds')
+  ) {
+    newGroup.reflectionDelaySeconds = groupObject.reflectionDelaySeconds;
   }
 
   try {
@@ -181,6 +201,18 @@ export async function updateGroup(groupId, updates) {
     return null;
   }
   if (
+    Object.prototype.hasOwnProperty.call(updates, 'reflectionDelaySeconds') &&
+    updates.reflectionDelaySeconds !== null &&
+    (typeof updates.reflectionDelaySeconds !== 'number' ||
+      updates.reflectionDelaySeconds <= 0)
+  ) {
+    console.error(
+      'Invalid reflectionDelaySeconds in updates for updateGroup.',
+      updates.reflectionDelaySeconds
+    );
+    return null;
+  }
+  if (
     Object.prototype.hasOwnProperty.call(updates, 'isEnabled') &&
     typeof updates.isEnabled !== 'boolean'
   ) {
@@ -210,14 +242,18 @@ export async function updateGroup(groupId, updates) {
     if (updates.dailyLimitSeconds === null) {
       delete updatedGroup.dailyLimitSeconds;
     }
+    if (updates.reflectionDelaySeconds === null) {
+      delete updatedGroup.reflectionDelaySeconds;
+    }
 
-    // A group must always keep at least one limit (time or opens).
+    // A group must always keep at least one rule (time, opens or a delay).
     if (
       typeof updatedGroup.dailyLimitSeconds !== 'number' &&
-      typeof updatedGroup.dailyOpenLimit !== 'number'
+      typeof updatedGroup.dailyOpenLimit !== 'number' &&
+      typeof updatedGroup.reflectionDelaySeconds !== 'number'
     ) {
       console.error(
-        `Cannot remove all limits from group "${groupId}". At least one of dailyLimitSeconds or dailyOpenLimit is required.`
+        `Cannot remove all limits from group "${groupId}". At least one of dailyLimitSeconds, dailyOpenLimit or reflectionDelaySeconds is required.`
       );
       return null;
     }

@@ -71,9 +71,23 @@
 ### Timeout page
 - [x] when opening the timeout page randomize the order of the displayed messages (don't shuffle them in the storage) so we always see a different order when opening it, not always the same.
 
+### Mindful limiting (softer, user-in-control alternatives to a hard block)
+- [x] **Reflection delay**: a third limit kind next to time/opens, where instead of blocking the page we interrupt it. Opening a site with a reflection delay shows a countdown screen (configurable 5 / 10 / 15 seconds); when it runs out, ask "do you still want to open this?" — **Yes** continues to the *exact* original URL (query params, hash and all, so a deep link is not lost), **No** shows the usual timeout/motivational page with the "what else could I do" suggestions.
+  - Set per site and per group (dialogs, popup quick add), and usable on its own: the "at least one limit" rule in `site_storage`/`group_storage` now counts a delay as a rule
+  - The original URL travels in the `url` query param of `pages/reflect/index.html` and is restored verbatim; only http(s) destinations are ever followed
+  - **Order decided**: the hard block check runs first, the delay second — counting to ten in front of a door that is locked anyway is pure friction. Written down in `reflection_gate.js` and covered by `mindful_limits.integration.test.js`
+  - **Whose delay applies**: the group's when it sets one, otherwise the site's own (unlike time/opens, where the group replaces the site config) — so adding a site to a group never silently drops its pause
+  - Answering "yes" grants a 20 minute pass for that rule, so browsing inside the site does not restart the countdown on every click; "no" clears it
+  - Both answers are counted per site per day in `reflections-YYYY-MM-DD`, kept for a 7 day window as raw material for the statistics page
+- [x] **Smart suggestions for limits**: opens of unlimited sites are counted per host per day (`visitTracking`, 7 day window, 5 minute debounce, max 300 hosts, hostnames only). When a site crosses the threshold the extension nudges: it tries to open the toolbar popup, falls back to a notification, and marks the toolbar badge amber. The popup then shows the site pre-filled with a one-click "pause 10s before opening".
+  - Non-nagging: at most one suggestion a day, only one waiting at a time, a host is offered at most once ever, and dismissing or accepting retires it permanently. A preference switches the whole thing off.
+  - Work-shaped hosts (jira/atlassian, github/gitlab, mail, docs, calendars, localhost, IPs, `.local`/`.internal`) are never suggested; known attention traps qualify after 4 opens in a day, anything else needs 10 in a day or 25 across the week
+  - The offer is a reflection delay, the lightest rule available — not a hard limit
+
 ### Statistic pages
 - [ ] Track how much time we spend on each site and how many times we open each site
 - [ ] Track which page we try to open even after the limit is hit
+- [ ] Show how many times the user tried to open an already blocked site (per site, per day) — the "how hard was this limit to keep" number
 - [ ] Make visualisations of tracked data
 - [ ] Display changes or trends over days/weeks/months
 - [ ] Suggest distracting pages to add limits to (but remember it's ok to spend time on pages that are not distracting: e.g. jira, github, etc.), if the user cancels a suggestion then let's remember and not try to suggest it again
