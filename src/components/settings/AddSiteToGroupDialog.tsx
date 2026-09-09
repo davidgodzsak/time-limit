@@ -12,16 +12,26 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { t } from "@/lib/utils/i18n";
+import { getGroupSiteSuggestions } from "@/lib/constants/groupSuggestions";
 
 interface AddSiteToGroupDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   groupName: string;
+  /** Patterns already limited in this group, so they are not suggested again. */
+  existingPatterns?: string[];
   onAdd: (siteName: string) => void;
 }
 
-const AddSiteToGroupDialog = ({ open, onOpenChange, groupName, onAdd }: AddSiteToGroupDialogProps) => {
+const AddSiteToGroupDialog = ({
+  open,
+  onOpenChange,
+  groupName,
+  existingPatterns = [],
+  onAdd,
+}: AddSiteToGroupDialogProps) => {
   const [siteName, setSiteName] = useState("");
+  const suggestions = getGroupSiteSuggestions(groupName, existingPatterns);
 
   const handleAdd = () => {
     if (siteName.trim()) {
@@ -52,29 +62,26 @@ const AddSiteToGroupDialog = ({ open, onOpenChange, groupName, onAdd }: AddSiteT
               className="rounded-xl"
             />
           </div>
-          {/* Common suggestions */}
-          <div className="space-y-2">
-            <Label>{t("dialog_addToGroup_quickAdd_label")}</Label>
-            <div className="flex flex-wrap gap-2">
-              {[
-                { key: "tiktok", value: "dialog_addToGroup_quickAdd_tiktok" },
-                { key: "linkedin", value: "dialog_addToGroup_quickAdd_linkedin" },
-                { key: "pinterest", value: "dialog_addToGroup_quickAdd_pinterest" },
-                { key: "snapchat", value: "dialog_addToGroup_quickAdd_snapchat" },
-              ].map((site) => (
-                <Button
-                  key={site.key}
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full text-xs"
-                  onClick={() => setSiteName(t(site.value))}
-                >
-                  {t(site.value)}
-                </Button>
-              ))}
+          {/* Suggestions matching this group's theme; hidden when none fit */}
+          {suggestions.length > 0 && (
+            <div className="space-y-2">
+              <Label>{t("dialog_addToGroup_quickAdd_label")}</Label>
+              <div className="flex flex-wrap gap-2">
+                {suggestions.map((site) => (
+                  <Button
+                    key={site}
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full text-xs"
+                    onClick={() => setSiteName(site)}
+                  >
+                    {site}
+                  </Button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} className="rounded-xl">
