@@ -1287,18 +1287,6 @@
     "message": "„$1” ma już limit w grupie „$2”.",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Co ograniczyć",
-    "description": "Label above the popup scope selector"
-  },
-  "popup_scope_wholeSite": {
-    "message": "Cała witryna",
-    "description": "Popup scope option: limit the entire domain"
-  },
-  "popup_scope_thisSection": {
-    "message": "Ta sekcja",
-    "description": "Popup scope option: limit only the current path"
-  },
   "reflection_option_off": {
     "message": "Brak",
     "description": "Off choice in the reflection delay picker"
@@ -1422,5 +1410,45 @@
   "preferences_option_limitSuggestions_description": {
     "message": "Zauważa strony otwierane w kółko i proponuje łagodny limit. Najwyżej jedna propozycja dziennie, nigdy dwa razy dla tej samej strony.",
     "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Co nowego",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Właśnie zaktualizowano. Oto co się zmieniło.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Jasne",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pauza przed otwarciem",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Krótkie odliczanie, a potem „nadal chcesz to otworzyć?”. Łagodniejsze niż blokada i działa bez dziennego limitu.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Podpowiadane limity",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Jeśli w kółko otwierasz tę samą stronę, rozszerzenie zaproponuje dla niej pauzę. Najwyżej jedna propozycja dziennie i nigdy dwa razy dla tej samej strony.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Darmowe, prywatne i bez reklam",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Jeśli pomaga Ci na co dzień, mała wpłata pozwala go rozwijać.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Wesprzyj rozwój",
+    "description": "Opens the donation section of the info page"
   }
 }

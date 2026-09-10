@@ -33,6 +33,14 @@ const InfoPage = () => {
     loadVersion();
   }, []);
 
+  // The popup links straight here with #donate; React renders after the
+  // browser has already tried (and failed) to jump to the anchor.
+  useEffect(() => {
+    if (window.location.hash !== "#donate") return;
+    const target = document.getElementById("donate");
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [version]);
+
   useEffect(() => {
     const loadRatingState = async () => {
       try {
@@ -206,7 +214,7 @@ const InfoPage = () => {
       )}
 
       {/* Donation section */}
-      <div className="max-w-2xl w-full mb-16">
+      <div id="donate" className="max-w-2xl w-full mb-16 scroll-mt-24">
         <div className="text-center mb-8">
           <h3 className="text-2xl font-semibold text-foreground mb-2">
             {t("info_donation_title")}

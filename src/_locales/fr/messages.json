@@ -1287,18 +1287,6 @@
     "message": "« $1 » est déjà limité dans le groupe « $2 ».",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Quoi limiter",
-    "description": "Label above the popup scope selector"
-  },
-  "popup_scope_wholeSite": {
-    "message": "Tout le site",
-    "description": "Popup scope option: limit the entire domain"
-  },
-  "popup_scope_thisSection": {
-    "message": "Cette section",
-    "description": "Popup scope option: limit only the current path"
-  },
   "reflection_option_off": {
     "message": "Non",
     "description": "Off choice in the reflection delay picker"
@@ -1422,5 +1410,45 @@
   "preferences_option_limitSuggestions_description": {
     "message": "Repère les sites que vous ouvrez sans cesse et propose une limite douce. Une suggestion par jour au maximum, jamais deux fois pour le même site.",
     "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Nouveautés",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Vous venez de mettre à jour. Voici ce qui a changé.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "C’est noté",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pause avant ouverture",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Un court décompte, puis « voulez-vous toujours l’ouvrir ? ». Plus doux qu’un blocage, et sans limite quotidienne.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Limites suggérées",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Si vous ouvrez sans cesse le même site, l’extension vous propose une pause. Une suggestion par jour au maximum, jamais deux fois pour le même site.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Gratuit, privé et sans publicité",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "S’il vous rend service au quotidien, un petit don l’aide à grandir.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Soutenir le développement",
+    "description": "Opens the donation section of the info page"
   }
 }

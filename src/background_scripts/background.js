@@ -46,6 +46,11 @@ import {
   hasInitialSetupDone,
 } from './onboarding_storage.js';
 import {
+  getWhatsNewState,
+  flagUpdate,
+  markWhatsNewSeen,
+} from './whats_new_storage.js';
+import {
   getRatingState,
   shouldShowRatingPrompt,
   markRated,
@@ -142,10 +147,20 @@ async function _checkPatternAvailable(urlPattern, excludeSiteId) {
   return { error: null, normalizedPattern: validation.normalizedPattern };
 }
 
-async function handleInstalled() {
+async function handleInstalled(details) {
   try {
     await initializeDailyResetAlarm();
     await initializeDistractionDetector();
+
+    // An update earns a short release note in the popup; a fresh install gets
+    // onboarding instead, since there is no "before" to compare against.
+    if (details && details.reason === 'update') {
+      const version = browser.runtime.getManifest().version;
+      if (version !== details.previousVersion) {
+        await flagUpdate(version, details.previousVersion || null);
+        await _openPopupIfAllowed();
+      }
+    }
 
     // Bootstrap default data on first install
     const hasSetup = await hasInitialSetupDone();
@@ -2169,6 +2184,36 @@ async function handleMessage(message, _sender, _sendResponse) {
         }
       }
 
+      // === Release Notes ===
+      case 'getWhatsNewState': {
+        try {
+          const state = await getWhatsNewState();
+          const ratingState = await getRatingState();
+          return {
+            success: true,
+            data: {
+              ...state,
+              currentVersion: browser.runtime.getManifest().version,
+              hasRated: ratingState.hasRated === true,
+            },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error getting release note state:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'markWhatsNewSeen': {
+        try {
+          await markWhatsNewSeen();
+          return { success: true, data: { pending: false }, error: null };
+        } catch (error) {
+          console.error('[Background] Error marking release note seen:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
       // === Onboarding ===
       case 'getOnboardingState': {
         try {
@@ -2344,6 +2389,26 @@ async function handleActionClick(tab) {
 }
 
 /**
+ * Opens the toolbar popup where the browser allows it. Firefox and Chrome both
+ * refuse this in some contexts (no user gesture, older versions), which is not
+ * an error — callers fall back to something quieter.
+ *
+ * @private
+ * @returns {Promise<boolean>} True when the popup actually opened.
+ */
+async function _openPopupIfAllowed() {
+  try {
+    if (browser.action && typeof browser.action.openPopup === 'function') {
+      await browser.action.openPopup();
+      return true;
+    }
+  } catch {
+    // Not allowed here; the caller decides what to do instead.
+  }
+  return false;
+}
+
+/**
  * Retires the suggestion for a freshly limited pattern, so a site the user has
  * just taken care of is never offered again.
  *
@@ -2423,15 +2488,7 @@ async function _nudgeAboutSuggestion(tabId, suggestion) {
     console.warn('[Background] Error showing suggestion badge:', error);
   }
 
-  try {
-    if (browser.action && typeof browser.action.openPopup === 'function') {
-      await browser.action.openPopup();
-      return;
-    }
-  } catch {
-    // Opening the popup without a user gesture is not allowed everywhere;
-    // the notification below is the fallback.
-  }
+  if (await _openPopupIfAllowed()) return;
 
   try {
     await browser.notifications.create(`limit-suggestion-${suggestion.host}`, {

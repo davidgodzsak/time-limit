@@ -28,6 +28,7 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`reflection_gate.js`**: Decides whether a navigation gets a countdown before the page opens, and documents how the delay sits next to the hard limits
 - **`reflection_storage.js`**: Reflection passes (a "yes" quiets the countdown for 20 minutes) and the daily yes/no tally
 - **`visit_tracker.js`**: Rolling per-host open counts for *unlimited* sites (hostnames only, 7 day window)
+- **`whats_new_storage.js`**: Flags that the extension was updated, so the popup can show the release note once
 - **`suggestion_engine.js`**: Decides when a frequently opened site is worth offering a limit for, and remembers the answer forever
 - **`site_blocker.js`**: Blocks/redirects users to timeout page when limits are reached
 - **`badge_manager.js`**: Updates toolbar badge with remaining time
@@ -182,6 +183,16 @@ interface Message {
 }
 ```
 
+### Translations
+Every user-visible string goes through `t()` in `src/lib/utils/i18n.ts` and lives
+in all eight `src/_locales/*/messages.json` files. `t()` resolves in this order:
+the user's language override (fetched by `initI18n`) → `browser.i18n` → the
+bundled **English fallback** (also fetched by `initI18n`) → the raw key. The
+fallback matters because `browser.i18n` reads the *installed* package's locales
+and caches them: right after an update — and after reloading a temporary add-on
+in Firefox, which keeps the old cache — new keys can come back empty. If strings
+still render as raw keys during development, remove and re-add the add-on.
+
 ### Site Matching
 All matching goes through `url_matcher.js`. Patterns are stored normalized —
 lowercase, no protocol, no leading `www.`, no query/hash/trailing slash — as
@@ -217,6 +228,18 @@ either `host` or `host/path`:
   id (group id when grouped, else site id), so clicking around inside the site
   does not restart the countdown. "No" clears the pass.
 - **Answers are counted** per site per day in `reflections-YYYY-MM-DD`.
+
+### Release Notes ("What's new")
+- `onInstalled` with `reason === 'update'` flags `whatsNewState.pending` and
+  tries `browser.action.openPopup()`; a fresh install never sets it (new users
+  get onboarding instead).
+- The popup shows `WhatsNewView` ahead of every other state — including the page
+  type — until the user dismisses it, which clears the flag for good.
+- **The note's content lives in `src/lib/constants/whatsNew.ts`**: edit that list
+  (and its `whatsNew_*` locale keys) as part of preparing a release. Whatever it
+  holds is what users see after their next update.
+- The note also carries the rating card (only for users who have not rated) and
+  a link to `pages/info/index.html#donate`.
 
 ### Limit Suggestions
 - Opens of sites with no rule are counted per host per day in `visitTracking`
@@ -315,7 +338,8 @@ Current coverage:
 - `reflection_gate.test.js` — which delay applies (site vs group vs specificity), passes, and the URL round trip
 - `suggestion_engine.test.js` — the work/distraction heuristic, thresholds, the one-a-day and once-ever rules, visit counting
 - `mindful_limits.integration.test.js` — blocker + gate together: a pause-only site never blocks, a spent limit skips the countdown, a group pause is answered once
-- `urlScope.test.ts`, `groupSuggestions.test.ts` — popup scope patterns and group-aware suggestions
+- `whats_new_storage.test.js` — the release-note flag is set by updates only and stays dismissed
+- `urlScope.test.ts`, `groupSuggestions.test.ts` — popup quick-add pattern and group-aware suggestions
 
 Conventions: colocate `*.test.js`/`*.test.ts` next to the module; stub
 `browser.storage.local` with a plain object; `vi.stubGlobal('crypto', ...)` for
@@ -332,6 +356,7 @@ browser.storage.local keys:
 - extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
 - reflections-YYYY-MM-DD: { [siteId]: { proceeded, dismissed } } (7 day window)
 - reflectionPasses: { [siteId|groupId]: expiresAtMs } (cleared on daily reset)
+- whatsNewState: { pending, version, previousVersion } (release note, updates only)
 - visitTracking: { [host]: { days: { "YYYY-MM-DD": opens }, lastVisit } }
 - limitSuggestions: { handledHosts: string[], pending, lastSuggestedDate }
 - timeoutNotes: Note[] (motivational messages)

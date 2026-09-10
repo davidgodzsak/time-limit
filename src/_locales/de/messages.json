@@ -1287,18 +1287,6 @@
     "message": "„$1“ ist bereits in der Gruppe „$2“ begrenzt.",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Was begrenzen",
-    "description": "Label above the popup scope selector"
-  },
-  "popup_scope_wholeSite": {
-    "message": "Ganze Website",
-    "description": "Popup scope option: limit the entire domain"
-  },
-  "popup_scope_thisSection": {
-    "message": "Dieser Bereich",
-    "description": "Popup scope option: limit only the current path"
-  },
   "reflection_option_off": {
     "message": "Aus",
     "description": "Off choice in the reflection delay picker"
@@ -1422,5 +1410,45 @@
   "preferences_option_limitSuggestions_description": {
     "message": "Erkennt Seiten, die du immer wieder öffnest, und schlägt ein sanftes Limit vor. Höchstens ein Vorschlag pro Tag, nie zweimal für dieselbe Seite.",
     "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Was ist neu",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Gerade aktualisiert. Das hat sich geändert.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Alles klar",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pause vor dem Öffnen",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Ein kurzer Countdown, dann „Willst du das immer noch öffnen?“. Sanfter als eine Sperre — und ganz ohne Tageslimit.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Vorgeschlagene Limits",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Öffnest du dieselbe Seite immer wieder, schlägt die Erweiterung eine Pause dafür vor. Höchstens ein Vorschlag pro Tag, nie zweimal dieselbe Seite.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Kostenlos, privat und werbefrei",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Wenn es dir den Tag erleichtert, hilft eine kleine Spende bei der Weiterentwicklung.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Entwicklung unterstützen",
+    "description": "Opens the donation section of the info page"
   }
 }

@@ -60,6 +60,9 @@
 - [x] Clean clutter: Simplify code, create a "mental map document" and check what can be reused across pages, Delete dead code, delete unnecessary logging and error handling, delete mock data
 - [x] Refactor to actually use locales, remove every hardcoded string in favor of this. 
 - [x] Be able to limit just a subdomain or a subpage (e.g. shorts.youtube.com or reddit.com/r/hungary or youtube.com/shorts)
+- [x] **"What's new" after an update**: `onInstalled` with `reason: 'update'` flags it, the popup opens itself where the browser allows and otherwise shows the note on its next open, ahead of every other state. Content lives in `src/lib/constants/whatsNew.ts` (edit per release). Carries the rating card for users who have not rated and a link to the info page's donation section.
+- [x] Popup quick add covers the whole site only — the section/whole-site chooser was cramming a settings-page job into a two-decision surface, so it is gone (`getSectionPattern` deleted with it)
+- [x] `t()` now falls back to the bundled English string before showing a raw key, so a locale cache that is a version behind degrades to English
 - [x] Add to every page a link to the plugin page review -> on successful things add a popup to ask the user if they like the user and rate it
 - [x] Test suite: vitest was configured but never installed and there were no tests. Added `npm test` with 58 tests over url matching, site storage, and a detector+blocker integration test
 - [x] ESLint now covers `src/background_scripts/**/*.js` (it only linted ts/tsx before, which is how the `_reEvaluateAllTabs` typo survived)

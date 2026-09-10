@@ -45,10 +45,34 @@ export const AVAILABLE_LANGUAGES: { code: string; name: string }[] = [
 let overrideMessages: MessageMap | null = null;
 let overrideLanguage: string | null = null;
 
+/**
+ * English messages, loaded once as the last resort before showing a raw key.
+ * `browser.i18n` reads `_locales` from the *installed* package and caches it,
+ * so right after an update (or a temporary add-on reload, where Firefox keeps
+ * the old cache) new keys can come back empty. A missing translation should
+ * degrade to English, never to `unlimitedSiteView_reflectionDelay_label`.
+ */
+let fallbackMessages: MessageMap | null = null;
+
 /** Seed translations directly — used by the demo/dev page where browser.i18n is unavailable. */
 export function seedMessages(messages: Record<string, unknown>, language = 'en'): void {
   overrideMessages = messages as MessageMap;
   overrideLanguage = language;
+}
+
+/** Fetches a `_locales/<lang>/messages.json` from the extension package. */
+async function loadMessages(
+  api: BrowserGlobals,
+  language: string
+): Promise<MessageMap | null> {
+  try {
+    if (!api.runtime?.getURL) return null;
+    const res = await fetch(api.runtime.getURL(`_locales/${language}/messages.json`));
+    if (!res.ok) return null;
+    return (await res.json()) as MessageMap;
+  } catch {
+    return null;
+  }
 }
 
 function getBrowserAPI(): BrowserGlobals | null {
@@ -87,16 +111,17 @@ export async function initI18n(): Promise<void> {
     const api = getBrowserAPI();
     if (!api?.storage?.local || !api?.runtime?.getURL) return;
 
+    fallbackMessages = await loadMessages(api, 'en');
+
     const stored = await api.storage.local.get('displayPreferences');
     const prefs = stored.displayPreferences as { preferredLanguage?: string } | undefined;
     const lang = prefs?.preferredLanguage;
     if (!lang) return;
 
-    const url = api.runtime.getURL(`_locales/${lang}/messages.json`);
-    const res = await fetch(url);
-    if (!res.ok) return;
+    const messages = await loadMessages(api, lang);
+    if (!messages) return;
 
-    overrideMessages = (await res.json()) as MessageMap;
+    overrideMessages = messages;
     overrideLanguage = lang;
   } catch (error) {
     console.warn('i18n override init failed, using browser locale:', error);
@@ -113,21 +138,19 @@ export function t(key: string, substitutions?: string | string[]): string {
   }
 
   const api = getBrowserAPI();
-  if (!api?.i18n) {
-    return key;
-  }
 
   try {
-    const message = api.i18n.getMessage(key, substitutions);
-    if (!message) {
-      console.warn(`Missing translation for key: ${key}`);
-      return key;
-    }
-    return message;
+    const message = api?.i18n?.getMessage(key, substitutions);
+    if (message) return message;
   } catch (error) {
     console.error(`Error getting translation for key ${key}:`, error);
-    return key;
   }
+
+  const fallback = fallbackMessages?.[key];
+  if (fallback?.message) return applySubstitutions(fallback, substitutions);
+
+  console.warn(`Missing translation for key: ${key}`);
+  return key;
 }
 
 /**

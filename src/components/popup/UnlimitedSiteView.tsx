@@ -12,12 +12,8 @@ const SUGGESTED_REFLECTION_SECONDS = 10;
 
 interface UnlimitedSiteViewProps {
   siteName: string;
-  /** Pattern covering the whole site, e.g. `youtube.com`. */
+  /** Pattern a new limit will be stored under, e.g. `youtube.com`. */
   sitePattern: string;
-  /** Pattern covering just the current section, e.g. `youtube.com/shorts`; null when the URL has no path. */
-  sectionPattern: string | null;
-  limitScope: 'site' | 'section';
-  onSelectScope: (scope: 'site' | 'section') => void;
   selectedTimeLimit: number | null;
   selectedOpensLimit: number | null;
   selectedReflectionDelay: number | null;
@@ -43,9 +39,6 @@ interface UnlimitedSiteViewProps {
 export function UnlimitedSiteView({
   siteName,
   sitePattern,
-  sectionPattern,
-  limitScope,
-  onSelectScope,
   selectedTimeLimit,
   selectedOpensLimit,
   selectedReflectionDelay,
@@ -148,36 +141,6 @@ export function UnlimitedSiteView({
         </p>
 
         <div className="space-y-4">
-          {sectionPattern && (
-            <div>
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-                {t("popup_scope_label")}
-              </p>
-              <div className="grid grid-cols-2 gap-2">
-                {([
-                  { scope: 'site' as const, label: t("popup_scope_wholeSite"), pattern: sitePattern },
-                  { scope: 'section' as const, label: t("popup_scope_thisSection"), pattern: sectionPattern },
-                ]).map(({ scope, label, pattern }) => (
-                  <Button
-                    key={scope}
-                    variant={limitScope === scope ? "default" : "outline"}
-                    size="sm"
-                    className={`rounded-xl h-auto py-2 flex flex-col items-start gap-0.5 ${
-                      limitScope === scope
-                        ? ""
-                        : "border-primary/30 hover:bg-primary/10 hover:border-primary"
-                    }`}
-                    onClick={() => onSelectScope(scope)}
-                    disabled={isSaving}
-                    title={pattern}
-                  >
-                    <span className="text-xs font-medium">{label}</span>
-                    <span className="text-[10px] opacity-70 max-w-full truncate">{pattern}</span>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          )}
           <div>
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
               {t("unlimitedSiteView_timeLimit_label")}

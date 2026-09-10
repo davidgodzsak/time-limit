@@ -420,6 +420,23 @@ export async function dismissLimitSuggestion(host: string): Promise<void> {
   await sendMessage('dismissLimitSuggestion', { host });
 }
 
+/** Release-note state: set by the background when the extension updates. */
+export interface WhatsNewState {
+  pending: boolean;
+  version: string | null;
+  previousVersion: string | null;
+  currentVersion: string;
+  hasRated: boolean;
+}
+
+export async function getWhatsNewState(): Promise<WhatsNewState> {
+  return sendMessage('getWhatsNewState');
+}
+
+export async function markWhatsNewSeen(): Promise<void> {
+  await sendMessage('markWhatsNewSeen');
+}
+
 export function listenForBroadcasts(
   callback: (event: string, data: unknown) => void
 ): () => void {

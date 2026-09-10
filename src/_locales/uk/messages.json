@@ -287,9 +287,6 @@
   "dialog_addSite_hint_scope": { "message": "Обмежте весь сайт (youtube.com), субдомен (shorts.youtube.com) або лише один розділ (youtube.com/shorts).", "description": "Hint under the URL field explaining domain, subdomain and path limits" },
   "error_site_duplicate": { "message": "«$1» вже обмежено. Змініть наявне обмеження.", "description": "Shown when adding a site that already has a limit" },
   "error_site_duplicateInGroup": { "message": "«$1» вже обмежено в групі «$2».", "description": "Shown when adding a site that is already limited inside a group" },
-  "popup_scope_label": { "message": "Що обмежити", "description": "Label above the popup scope selector" },
-  "popup_scope_wholeSite": { "message": "Весь сайт", "description": "Popup scope option: limit the entire domain" },
-  "popup_scope_thisSection": { "message": "Цей розділ", "description": "Popup scope option: limit only the current path" },
   "reflection_option_off": { "message": "Вимк.", "description": "Off choice in the reflection delay picker" },
   "reflection_option_seconds": { "message": "$1 с", "description": "A reflection delay option, e.g. 10s" },
   "badge_reflectionDelay": { "message": "пауза $1 с", "description": "Badge showing the pause length before a site opens" },
@@ -320,5 +317,15 @@
   "suggestion_button_dismiss": { "message": "Не для цього сайту", "description": "Dismisses the suggestion permanently for that site" },
   "suggestion_accepted": { "message": "$1 тепер робитиме паузу перед відкриттям", "description": "Toast after accepting a suggestion" },
   "preferences_option_limitSuggestions": { "message": "Пропонувати ліміти", "description": "Preference toggle for proactive limit suggestions" },
-  "preferences_option_limitSuggestions_description": { "message": "Помічає сайти, які ви відкриваєте знову й знову, і пропонує м’який ліміт. Не більше однієї пропозиції на день і ніколи двічі для того самого сайту.", "description": "Explains the limit suggestion preference" }
+  "preferences_option_limitSuggestions_description": { "message": "Помічає сайти, які ви відкриваєте знову й знову, і пропонує м’який ліміт. Не більше однієї пропозиції на день і ніколи двічі для того самого сайту.", "description": "Explains the limit suggestion preference" },
+  "whatsNew_title": { "message": "Що нового", "description": "Heading of the release note shown in the popup after an update" },
+  "whatsNew_subtitle": { "message": "Щойно оновлено. Ось що змінилося.", "description": "Line under the release note heading" },
+  "whatsNew_button_continue": { "message": "Зрозуміло", "description": "Closes the release note and returns to the normal popup" },
+  "whatsNew_reflection_title": { "message": "Пауза перед відкриттям", "description": "Release note highlight: the reflection delay" },
+  "whatsNew_reflection_body": { "message": "Короткий відлік, а потім: «Ви все ще хочете це відкрити?». М’якше за блокування і працює без денного ліміту.", "description": "Release note body: the reflection delay" },
+  "whatsNew_suggestions_title": { "message": "Запропоновані ліміти", "description": "Release note highlight: limit suggestions" },
+  "whatsNew_suggestions_body": { "message": "Якщо ви знову й знову відкриваєте той самий сайт, розширення запропонує для нього паузу. Не більше однієї пропозиції на день і ніколи двічі для того самого сайту.", "description": "Release note body: limit suggestions" },
+  "whatsNew_support_title": { "message": "Безкоштовно, приватно й без реклами", "description": "Heading of the donation block in the release note" },
+  "whatsNew_support_description": { "message": "Якщо він щодня стає у пригоді, невеликий внесок допоможе його розвивати.", "description": "Body of the donation block in the release note" },
+  "whatsNew_support_button": { "message": "Підтримати розробку", "description": "Opens the donation section of the info page" }
 }

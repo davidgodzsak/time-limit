@@ -9,7 +9,7 @@ import { useBroadcastUpdates } from "@/hooks/useBroadcastUpdates";
 import { useToggleSelection } from "@/lib/hooks/useToggleSelection";
 import { getErrorMessage, logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { t } from "@/lib/utils/i18n";
-import { getSectionPattern, getSitePattern } from "@/lib/utils/urlScope";
+import { getSitePattern } from "@/lib/utils/urlScope";
 import { getRatingUrl } from "@/lib/constants/rating";
 import { NormalPageView } from "./popup/NormalPageView";
 import { UnlimitedSiteView } from "./popup/UnlimitedSiteView";
@@ -20,6 +20,7 @@ import { InfoPageView } from "./popup/InfoPageView";
 import { FirstInstallView } from "./popup/FirstInstallView";
 import { RatingPromptView } from "./popup/RatingPromptView";
 import { ReflectPageView } from "./popup/ReflectPageView";
+import { WhatsNewView } from "./popup/WhatsNewView";
 
 const PluginPopup = () => {
   const { toast } = useToast();
@@ -32,11 +33,9 @@ const PluginPopup = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [disabledReason, setDisabledReason] = useState<'site' | 'group' | 'both' | null>(null);
   const [siteName, setSiteName] = useState<string>("");
-  // What a new quick limit should cover: the whole site, or just the section
-  // of it the user is currently in (e.g. youtube.com vs youtube.com/shorts).
+  // The pattern a quick limit from the popup is stored under: always the whole
+  // site. Narrower rules (youtube.com/shorts) are a settings-page job.
   const [sitePattern, setSitePattern] = useState<string>("");
-  const [sectionPattern, setSectionPattern] = useState<string | null>(null);
-  const [limitScope, setLimitScope] = useState<'site' | 'section'>('site');
   const [groupName, setGroupName] = useState<string | null>(null);
   const [siteId, setSiteId] = useState<string | null>(null);
   const [groupId, setGroupId] = useState<string | null>(null);
@@ -73,6 +72,9 @@ const PluginPopup = () => {
 
   // Rating prompt state
   const [showRatingPrompt, setShowRatingPrompt] = useState(false);
+
+  // Release note, shown once after an update ahead of everything else
+  const [whatsNew, setWhatsNew] = useState<api.WhatsNewState | null>(null);
 
   // Load current page info on mount
   useEffect(() => {
@@ -127,14 +129,12 @@ const PluginPopup = () => {
 
           setSiteName(url.hostname);
           setSitePattern(getSitePattern(url.href) ?? url.hostname);
-          setSectionPattern(getSectionPattern(url.href));
           setPageType('normal');
         } catch {
           const fallbackHostname = String(pageInfo.hostname || "unknown");
           setCurrentUrl(pageInfo.url);
           setSiteName(fallbackHostname);
           setSitePattern(fallbackHostname === "unknown" ? "" : fallbackHostname);
-          setSectionPattern(null);
           setPageType('normal');
         }
 
@@ -228,6 +228,19 @@ const PluginPopup = () => {
     };
 
     checkOnboardingState();
+
+    // The release note outranks every other popup state, so it is loaded
+    // alongside the page info rather than after it.
+    const checkWhatsNew = async () => {
+      try {
+        const state = await api.getWhatsNewState();
+        if (state.pending) setWhatsNew(state);
+      } catch (error) {
+        console.warn("Could not check release note state:", error);
+      }
+    };
+
+    checkWhatsNew();
   }, [toast]);
 
   // When on timeout page with siteId, fetch the site limits to show original values
@@ -300,9 +313,8 @@ const PluginPopup = () => {
     return () => clearInterval(updateInterval);
   }, [isLimited]);
 
-  // The pattern a new limit will be stored under, following the scope choice.
-  const targetPattern =
-    limitScope === 'section' && sectionPattern ? sectionPattern : sitePattern || siteName;
+  // The pattern a new limit will be stored under.
+  const targetPattern = sitePattern || siteName;
 
   /** Shows the right toast for a failed add: duplicates get their own message. */
   const reportAddFailure = (error: unknown, fallbackKey: string) => {
@@ -418,6 +430,21 @@ const PluginPopup = () => {
       logError("Error dismissing limit suggestion", error);
     }
     setSuggestion(null);
+  };
+
+  const handleCloseWhatsNew = async () => {
+    setWhatsNew(null);
+    try {
+      await api.markWhatsNewSeen();
+    } catch (error) {
+      logError("Error dismissing release note", error);
+    }
+  };
+
+  const handleOpenDonations = () => {
+    browser.tabs.create({
+      url: browser.runtime.getURL("pages/info/index.html#donate"),
+    });
   };
 
   const handleOpenSettings = () => {
@@ -620,6 +647,26 @@ const PluginPopup = () => {
     );
   }
 
+  // A fresh update gets told about itself first, whatever page the user is on.
+  if (whatsNew) {
+    return (
+      <WhatsNewView
+        version={whatsNew.version || whatsNew.currentVersion}
+        showRating={!whatsNew.hasRated}
+        onRate={async () => {
+          await handleRateNow();
+          setWhatsNew({ ...whatsNew, hasRated: true });
+        }}
+        onAlreadyRated={async () => {
+          await handleAlreadyRated();
+          setWhatsNew({ ...whatsNew, hasRated: true });
+        }}
+        onDonate={handleOpenDonations}
+        onClose={handleCloseWhatsNew}
+      />
+    );
+  }
+
   // Show UI for disabled sites/groups (turn-on option)
   if (isDisabled && siteId) {
     return (
@@ -688,9 +735,6 @@ const PluginPopup = () => {
       <UnlimitedSiteView
         siteName={siteName}
         sitePattern={sitePattern || siteName}
-        sectionPattern={sectionPattern}
-        limitScope={limitScope}
-        onSelectScope={setLimitScope}
         selectedTimeLimit={selectedTimeLimit}
         selectedOpensLimit={selectedOpensLimit}
         selectedReflectionDelay={selectedReflectionDelay}
