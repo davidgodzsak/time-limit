@@ -502,7 +502,7 @@
     "description": "Placeholder for opens limit input"
   },
   "dialog_addSite_validation": {
-    "message": "Nastavte aspoň časový limit alebo limit otvorení",
+    "message": "Nastav aspoň časový limit, limit otvorení alebo pauzu",
     "description": "Validation alert message for add site dialog"
   },
   "dialog_addSite_button_cancel": {
@@ -554,7 +554,7 @@
     "description": "Label for group opens limit input"
   },
   "dialog_createGroup_validation": {
-    "message": "Nastavte aspoň časový limit alebo limit otvorení",
+    "message": "Nastav aspoň časový limit, limit otvorení alebo pauzu",
     "description": "Validation alert message for create group dialog"
   },
   "dialog_createGroup_button_cancel": {
@@ -1287,16 +1287,168 @@
     "message": "„$1“ už má limit v skupine „$2“.",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Čo obmedziť",
-    "description": "Label above the popup scope selector"
+  "reflection_option_off": {
+    "message": "Žiadna",
+    "description": "Off choice in the reflection delay picker"
   },
-  "popup_scope_wholeSite": {
-    "message": "Celá stránka",
-    "description": "Popup scope option: limit the entire domain"
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
   },
-  "popup_scope_thisSection": {
-    "message": "Táto sekcia",
-    "description": "Popup scope option: limit only the current path"
+  "badge_reflectionDelay": {
+    "message": "pauza $1 s",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pauza pred otvorením",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Odpočíta a potom sa spýta, či stránku naozaj chceš otvoriť. Funguje aj bez denného limitu.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pauza pred otvorením",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Každá stránka v tejto skupine dostane rovnaké odpočítavanie pred otvorením.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "pauza $1 s",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pauza pred otvorením",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "Pauza $1 s pred otvorením",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Žiadny denný limit — len chvíľa na overenie, či si sem naozaj chcel ísť.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Nadýchni sa",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Tvoje rozhodnutie",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "sekúnd",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Pár sekúnd zvyčajne stačí na to, aby si si všimol, či si sem naozaj chcel ísť.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Stále to chceš otvoriť?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Áno, otvoriť",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Nie, teraz nie",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Dnes otvorené $1×  · zastavil si sa tu $2×",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Pauza na zamyslenie",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Rozhodni sa na stránke",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Odpočítavanie beží na karte. Tam sa rozhodni, či stránku otvoríš, alebo urobíš niečo iné.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Rozhodol si sa to teraz neotvoriť.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 tam stále je, kedykoľvek budeš chcieť — bolo to tvoje rozhodnutie, nie limit.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Stojí to za limit?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Dnes si $1 otvoril $2×.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pauza $1 s pred otvorením",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Pre túto stránku nie",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 teraz pred otvorením urobí pauzu",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Navrhovať limity",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Všimne si stránky, ktoré otváraš stále dokola, a ponúkne mierny limit. Najviac jeden návrh denne, nikdy dvakrát pre tú istú stránku.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Čo je nové",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Práve aktualizované. Toto sa zmenilo.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Rozumiem",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pauza pred otvorením",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Krátke odpočítavanie a potom „stále to chceš otvoriť?“. Jemnejšie než blokovanie a funguje aj bez denného limitu.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Navrhované limity",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Ak stále dokola otváraš tú istú stránku, rozšírenie pre ňu ponúkne pauzu. Najviac jeden návrh denne a nikdy dvakrát pre tú istú stránku.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Zadarmo, súkromne a bez reklám",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Ak ti pomáha každý deň, malý príspevok pomôže s ďalším vývojom.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Podporiť vývoj",
+    "description": "Opens the donation section of the info page"
   }
 }

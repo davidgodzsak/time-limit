@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Settings, MousePointerClick, Info, Zap } from "lucide-react";
+import { Settings, MousePointerClick, Info, Zap, Hourglass } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import Logo from "../Logo";
 import CircularProgress from "../CircularProgress";
@@ -17,6 +17,8 @@ interface NormalPageViewProps {
   opensLimit: number;
   opensRemaining: number;
   isExtended?: boolean;
+  /** Seconds of pause shown before this site opens, 0 when it opens directly. */
+  reflectionDelay?: number;
   onSettings: () => void;
   onInfo?: () => void;
 }
@@ -31,6 +33,7 @@ export function NormalPageView({
   opensLimit,
   opensRemaining,
   isExtended = false,
+  reflectionDelay = 0,
   onSettings,
   onInfo,
 }: NormalPageViewProps) {
@@ -76,31 +79,59 @@ export function NormalPageView({
           </div>
         </div>
 
-        {isExtended && (
-          <div className="flex justify-center mb-4">
-            <Badge
-              variant="secondary"
-              className="rounded-full gap-1 bg-amber-100 text-amber-700 hover:bg-amber-100"
-            >
-              <Zap size={12} />
-              {t("normalPageView_extended_badge")}
-            </Badge>
+        {(isExtended || reflectionDelay > 0) && (
+          <div className="flex justify-center gap-2 mb-4">
+            {isExtended && (
+              <Badge
+                variant="secondary"
+                className="rounded-full gap-1 bg-amber-100 text-amber-700 hover:bg-amber-100"
+              >
+                <Zap size={12} />
+                {t("normalPageView_extended_badge")}
+              </Badge>
+            )}
+            {reflectionDelay > 0 && (
+              <Badge
+                variant="secondary"
+                className="rounded-full gap-1 bg-emerald-100 text-emerald-700 hover:bg-emerald-100"
+              >
+                <Hourglass size={12} />
+                {t("badge_reflectionDelay", String(reflectionDelay))}
+              </Badge>
+            )}
           </div>
         )}
 
-        <div className="flex justify-center mb-5">
-          <CircularProgress
-            value={timeUsed}
-            max={timeLimit}
-            size={140}
-            strokeWidth={10}
-          >
-            <span className="text-3xl font-bold text-foreground">
-              {timeRemaining}
-            </span>
-            <span className="text-sm text-muted-foreground">{t("normalPageView_minLeft")}</span>
-          </CircularProgress>
-        </div>
+        {timeLimit > 0 ? (
+          <div className="flex justify-center mb-5">
+            <CircularProgress
+              value={timeUsed}
+              max={timeLimit}
+              size={140}
+              strokeWidth={10}
+            >
+              <span className="text-3xl font-bold text-foreground">
+                {timeRemaining}
+              </span>
+              <span className="text-sm text-muted-foreground">{t("normalPageView_minLeft")}</span>
+            </CircularProgress>
+          </div>
+        ) : (
+          reflectionDelay > 0 &&
+          opensLimit === 0 && (
+            // A site can be limited by the pause alone — there is no daily
+            // allowance to count down, so show what actually happens instead.
+            <div className="bg-muted/50 rounded-2xl p-4 mb-4 text-center">
+              <Hourglass size={20} className="mx-auto mb-2 text-primary" />
+              <p className="text-sm font-medium">
+                {t("normalPageView_reflectionOnly_title", String(reflectionDelay))}
+              </p>
+              <p className="text-xs text-muted-foreground mt-1">
+                {t("normalPageView_reflectionOnly_description")}
+              </p>
+            </div>
+          )
+        )}
 
         {opensLimit > 0 && (
           <div className="bg-muted/50 rounded-2xl p-4 mb-4">

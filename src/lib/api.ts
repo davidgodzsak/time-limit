@@ -134,6 +134,10 @@ export async function updateSite(
   if ('opensLimit' in updates) {
     backendUpdates.dailyOpenLimit = updates.opensLimit && updates.opensLimit > 0 ? updates.opensLimit : null;
   }
+  if ('reflectionDelay' in updates) {
+    backendUpdates.reflectionDelaySeconds =
+      updates.reflectionDelay && updates.reflectionDelay > 0 ? updates.reflectionDelay : null;
+  }
   if (updates.isEnabled !== undefined) {
     backendUpdates.isEnabled = updates.isEnabled;
   }
@@ -197,6 +201,10 @@ export async function updateGroup(
       backendUpdates.dailyOpenLimit = null;
     }
   }
+  if ('reflectionDelay' in updates) {
+    backendUpdates.reflectionDelaySeconds =
+      updates.reflectionDelay && updates.reflectionDelay > 0 ? updates.reflectionDelay : null;
+  }
   if (updates.isEnabled !== undefined) {
     backendUpdates.isEnabled = updates.isEnabled;
   }
@@ -243,7 +251,32 @@ export async function removeSiteFromGroup(
   return groupFromStorage(result as Record<string, unknown> & { id: string }, sitesMap);
 }
 
-export async function getCurrentPageInfo(): Promise<Record<string, unknown>> {
+/** The site's rules and today's usage, as the popup needs them. */
+export interface CurrentPageSiteInfo {
+  id: string;
+  urlPattern: string;
+  dailyLimitSeconds?: number;
+  dailyOpenLimit?: number;
+  reflectionDelaySeconds?: number;
+  todaySeconds?: number;
+  todayOpenCount?: number;
+  isExtended?: boolean;
+  extendedMinutes?: number;
+  extendedOpens?: number;
+  isEnabled?: boolean;
+  groupId?: string;
+  groupInfo?: { id: string; name: string; isEnabled: boolean } | null;
+}
+
+/** What the background reports about the tab the popup was opened on. */
+export interface CurrentPageInfo {
+  url: string;
+  hostname: string;
+  isDistractingSite: boolean;
+  siteInfo: CurrentPageSiteInfo | null;
+}
+
+export async function getCurrentPageInfo(): Promise<CurrentPageInfo> {
   return sendMessage('getCurrentPageLimitInfo');
 }
 
@@ -338,6 +371,70 @@ export async function declineRating(): Promise<void> {
 
 export async function recordRatingPromptShown(): Promise<void> {
   await sendMessage('recordRatingPromptShown');
+}
+
+/** What the reflection page needs to show while the countdown runs. */
+export interface ReflectionInfo {
+  siteId: string;
+  urlPattern: string;
+  groupName: string | null;
+  delaySeconds: number;
+  opensToday: number;
+  proceededToday: number;
+  dismissedToday: number;
+}
+
+export async function getReflectionInfo(siteId: string): Promise<ReflectionInfo> {
+  return sendMessage('getReflectionInfo', { siteId });
+}
+
+/**
+ * Records the answer to a reflection prompt. "proceeded" also buys a few
+ * minutes of quiet so the countdown does not return on the next click.
+ */
+export async function recordReflectionAnswer(
+  siteId: string,
+  decision: 'proceeded' | 'dismissed'
+): Promise<{ siteId: string; decision: string; limitId: string }> {
+  return sendMessage('recordReflectionAnswer', { siteId, decision });
+}
+
+/** A limit the extension would like to offer for a site opened often. */
+export interface LimitSuggestion {
+  host: string;
+  reason: 'knownDistracting' | 'frequent';
+  opensToday: number;
+  opensWindow: number;
+  createdAt: number;
+}
+
+export async function getLimitSuggestion(host?: string): Promise<LimitSuggestion | null> {
+  const result = await sendMessage<{ suggestion: LimitSuggestion | null }>(
+    'getLimitSuggestion',
+    host ? { host } : undefined
+  );
+  return result?.suggestion ?? null;
+}
+
+export async function dismissLimitSuggestion(host: string): Promise<void> {
+  await sendMessage('dismissLimitSuggestion', { host });
+}
+
+/** Release-note state: set by the background when the extension updates. */
+export interface WhatsNewState {
+  pending: boolean;
+  version: string | null;
+  previousVersion: string | null;
+  currentVersion: string;
+  hasRated: boolean;
+}
+
+export async function getWhatsNewState(): Promise<WhatsNewState> {
+  return sendMessage('getWhatsNewState');
+}
+
+export async function markWhatsNewSeen(): Promise<void> {
+  await sendMessage('markWhatsNewSeen');
 }
 
 export function listenForBroadcasts(

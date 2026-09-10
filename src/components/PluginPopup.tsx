@@ -4,11 +4,12 @@ import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import * as api from "@/lib/api";
 import { UIGroup } from "@/lib/storage";
+import type { LimitSuggestion } from "@/lib/api";
 import { useBroadcastUpdates } from "@/hooks/useBroadcastUpdates";
 import { useToggleSelection } from "@/lib/hooks/useToggleSelection";
 import { getErrorMessage, logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { t } from "@/lib/utils/i18n";
-import { getSectionPattern, getSitePattern } from "@/lib/utils/urlScope";
+import { getSitePattern } from "@/lib/utils/urlScope";
 import { getRatingUrl } from "@/lib/constants/rating";
 import { NormalPageView } from "./popup/NormalPageView";
 import { UnlimitedSiteView } from "./popup/UnlimitedSiteView";
@@ -18,6 +19,8 @@ import { SettingsPageView } from "./popup/SettingsPageView";
 import { InfoPageView } from "./popup/InfoPageView";
 import { FirstInstallView } from "./popup/FirstInstallView";
 import { RatingPromptView } from "./popup/RatingPromptView";
+import { ReflectPageView } from "./popup/ReflectPageView";
+import { WhatsNewView } from "./popup/WhatsNewView";
 
 const PluginPopup = () => {
   const { toast } = useToast();
@@ -30,11 +33,9 @@ const PluginPopup = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [disabledReason, setDisabledReason] = useState<'site' | 'group' | 'both' | null>(null);
   const [siteName, setSiteName] = useState<string>("");
-  // What a new quick limit should cover: the whole site, or just the section
-  // of it the user is currently in (e.g. youtube.com vs youtube.com/shorts).
+  // The pattern a quick limit from the popup is stored under: always the whole
+  // site. Narrower rules (youtube.com/shorts) are a settings-page job.
   const [sitePattern, setSitePattern] = useState<string>("");
-  const [sectionPattern, setSectionPattern] = useState<string | null>(null);
-  const [limitScope, setLimitScope] = useState<'site' | 'section'>('site');
   const [groupName, setGroupName] = useState<string | null>(null);
   const [siteId, setSiteId] = useState<string | null>(null);
   const [groupId, setGroupId] = useState<string | null>(null);
@@ -43,11 +44,17 @@ const PluginPopup = () => {
   const [opensUsed, setOpensUsed] = useState(0);
   const [opensLimit, setOpensLimit] = useState(0);
   const [isExtended, setIsExtended] = useState(false);
-  const [pageType, setPageType] = useState<'normal' | 'timeout' | 'settings' | 'info'>('normal');
+  const [reflectionDelay, setReflectionDelay] = useState(0);
+  const [pageType, setPageType] = useState<'normal' | 'timeout' | 'settings' | 'info' | 'reflect'>('normal');
+
+  // A site the extension noticed being opened again and again; the banner in
+  // the unlimited view turns it into one click.
+  const [suggestion, setSuggestion] = useState<LimitSuggestion | null>(null);
 
   // Preset selection state (using custom hook to reduce duplication)
   const [selectedTimeLimit, toggleTimeLimit, resetTimeLimitSelection] = useToggleSelection<number>(null);
   const [selectedOpensLimit, toggleOpensLimit, resetOpensLimitSelection] = useToggleSelection<number>(null);
+  const [selectedReflectionDelay, setSelectedReflectionDelay] = useState<number | null>(null);
 
   // Group selection state
   const [showGroupSelector, setShowGroupSelector] = useState(false);
@@ -65,6 +72,9 @@ const PluginPopup = () => {
 
   // Rating prompt state
   const [showRatingPrompt, setShowRatingPrompt] = useState(false);
+
+  // Release note, shown once after an update ahead of everything else
+  const [whatsNew, setWhatsNew] = useState<api.WhatsNewState | null>(null);
 
   // Load current page info on mount
   useEffect(() => {
@@ -98,6 +108,12 @@ const PluginPopup = () => {
 
             return;
           }
+          if (pageInfo.url.includes('reflect/index.html')) {
+            setSiteName('Reflection');
+            setPageType('reflect');
+            setIsLimited(false);
+            return;
+          }
           if (pageInfo.url.includes('settings.html') || pageInfo.url.includes('settings/index.html')) {
             setSiteName('Settings Page');
             setPageType('settings');
@@ -113,14 +129,12 @@ const PluginPopup = () => {
 
           setSiteName(url.hostname);
           setSitePattern(getSitePattern(url.href) ?? url.hostname);
-          setSectionPattern(getSectionPattern(url.href));
           setPageType('normal');
         } catch {
           const fallbackHostname = String(pageInfo.hostname || "unknown");
           setCurrentUrl(pageInfo.url);
           setSiteName(fallbackHostname);
           setSitePattern(fallbackHostname === "unknown" ? "" : fallbackHostname);
-          setSectionPattern(null);
           setPageType('normal');
         }
 
@@ -134,7 +148,9 @@ const PluginPopup = () => {
 
           setSiteId(pageInfo.siteInfo.id);
           setGroupId(pageInfo.siteInfo.groupId || null);
-          setGroupName(pageInfo.siteInfo.groupId ? pageInfo.siteInfo.groupInfo?.name : null);
+          setGroupName(
+            pageInfo.siteInfo.groupId ? pageInfo.siteInfo.groupInfo?.name ?? null : null
+          );
 
           // Determine disabled reason
           if (siteDisabled || groupDisabled) {
@@ -165,6 +181,7 @@ const PluginPopup = () => {
             setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
             setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
             setIsExtended(!!pageInfo.siteInfo.isExtended);
+            setReflectionDelay(pageInfo.siteInfo.reflectionDelaySeconds || 0);
 
             // Check if rating should show on limited sites (after 4+ days)
             try {
@@ -179,6 +196,15 @@ const PluginPopup = () => {
           setIsLimited(false);
           setIsDisabled(false);
           setDisabledReason(null);
+
+          // Only unlimited pages can be suggested; ask by host so a stale
+          // suggestion for another site never shows up here.
+          try {
+            const host = new URL(pageInfo.url).hostname
+              .toLowerCase()
+              .replace(/^www\./, '');
+            setSuggestion(await api.getLimitSuggestion(host));
+          } catch { /* non-critical */ }
         }
       } catch (error) {
         console.error('[PluginPopup] Exception in loadPageInfo:', error);
@@ -202,6 +228,19 @@ const PluginPopup = () => {
     };
 
     checkOnboardingState();
+
+    // The release note outranks every other popup state, so it is loaded
+    // alongside the page info rather than after it.
+    const checkWhatsNew = async () => {
+      try {
+        const state = await api.getWhatsNewState();
+        if (state.pending) setWhatsNew(state);
+      } catch (error) {
+        console.warn("Could not check release note state:", error);
+      }
+    };
+
+    checkWhatsNew();
   }, [toast]);
 
   // When on timeout page with siteId, fetch the site limits to show original values
@@ -274,9 +313,8 @@ const PluginPopup = () => {
     return () => clearInterval(updateInterval);
   }, [isLimited]);
 
-  // The pattern a new limit will be stored under, following the scope choice.
-  const targetPattern =
-    limitScope === 'section' && sectionPattern ? sectionPattern : sitePattern || siteName;
+  // The pattern a new limit will be stored under.
+  const targetPattern = sitePattern || siteName;
 
   /** Shows the right toast for a failed add: duplicates get their own message. */
   const reportAddFailure = (error: unknown, fallbackKey: string) => {
@@ -303,18 +341,19 @@ const PluginPopup = () => {
   };
 
   const handleAddLimit = async () => {
-    if (!selectedTimeLimit && !selectedOpensLimit) {
+    if (!selectedTimeLimit && !selectedOpensLimit && !selectedReflectionDelay) {
       toast(getErrorToastProps(t("popup_addLimit_validation")));
       return;
     }
 
     try {
       setIsSaving(true);
-      // Add site with both time and opens limits
+      // Add site with whichever of the three rules the user picked
       await api.addSite({
         name: targetPattern,
         timeLimit: selectedTimeLimit ?? undefined,
         opensLimit: selectedOpensLimit ?? undefined,
+        reflectionDelay: selectedReflectionDelay ?? undefined,
       });
 
       toast(getSuccessToastProps(t("popup_addLimit_success", targetPattern)));
@@ -322,6 +361,7 @@ const PluginPopup = () => {
       // Reset selection
       resetTimeLimitSelection();
       resetOpensLimitSelection();
+      setSelectedReflectionDelay(null);
 
       // Refresh page info
       const pageInfo = await api.getCurrentPageInfo();
@@ -334,7 +374,9 @@ const PluginPopup = () => {
         setTimeUsed(usedMinutes);
         setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
         setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
+        setReflectionDelay(pageInfo.siteInfo.reflectionDelaySeconds || 0);
       }
+      setSuggestion(null);
 
       // Check if rating prompt should be shown after successful limit add
       try {
@@ -350,6 +392,59 @@ const PluginPopup = () => {
     } finally {
       setIsSaving(false);
     }
+  };
+
+  /**
+   * Accepts a suggestion with the lightest rule that helps: a pause before the
+   * site opens, on the whole site, in one click.
+   */
+  const handleAcceptSuggestion = async (seconds: number) => {
+    const pattern = suggestion?.host || sitePattern || siteName;
+    try {
+      setIsSaving(true);
+      await api.addSite({ name: pattern, reflectionDelay: seconds });
+      toast(getSuccessToastProps(t("suggestion_accepted", pattern)));
+      setSuggestion(null);
+
+      const pageInfo = await api.getCurrentPageInfo();
+      if (pageInfo.isDistractingSite && pageInfo.siteInfo) {
+        setIsLimited(true);
+        setSiteId(pageInfo.siteInfo.id);
+        setReflectionDelay(pageInfo.siteInfo.reflectionDelaySeconds || 0);
+        setTimeLimit(0);
+        setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
+      }
+    } catch (error) {
+      logError("Error accepting limit suggestion", error);
+      reportAddFailure(error, "popup_addLimit_failed");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleDismissSuggestion = async () => {
+    if (!suggestion) return;
+    try {
+      await api.dismissLimitSuggestion(suggestion.host);
+    } catch (error) {
+      logError("Error dismissing limit suggestion", error);
+    }
+    setSuggestion(null);
+  };
+
+  const handleCloseWhatsNew = async () => {
+    setWhatsNew(null);
+    try {
+      await api.markWhatsNewSeen();
+    } catch (error) {
+      logError("Error dismissing release note", error);
+    }
+  };
+
+  const handleOpenDonations = () => {
+    browser.tabs.create({
+      url: browser.runtime.getURL("pages/info/index.html#donate"),
+    });
   };
 
   const handleOpenSettings = () => {
@@ -552,6 +647,26 @@ const PluginPopup = () => {
     );
   }
 
+  // A fresh update gets told about itself first, whatever page the user is on.
+  if (whatsNew) {
+    return (
+      <WhatsNewView
+        version={whatsNew.version || whatsNew.currentVersion}
+        showRating={!whatsNew.hasRated}
+        onRate={async () => {
+          await handleRateNow();
+          setWhatsNew({ ...whatsNew, hasRated: true });
+        }}
+        onAlreadyRated={async () => {
+          await handleAlreadyRated();
+          setWhatsNew({ ...whatsNew, hasRated: true });
+        }}
+        onDonate={handleOpenDonations}
+        onClose={handleCloseWhatsNew}
+      />
+    );
+  }
+
   // Show UI for disabled sites/groups (turn-on option)
   if (isDisabled && siteId) {
     return (
@@ -603,6 +718,10 @@ const PluginPopup = () => {
       );
     }
 
+    if (pageType === 'reflect') {
+      return <ReflectPageView onOpenSettings={handleOpenSettings} onOpenInfo={handleOpenInfo} />;
+    }
+
     if (pageType === 'settings') {
       return <SettingsPageView onOpenSettings={handleOpenSettings} onOpenInfo={handleOpenInfo} />;
     }
@@ -616,17 +735,19 @@ const PluginPopup = () => {
       <UnlimitedSiteView
         siteName={siteName}
         sitePattern={sitePattern || siteName}
-        sectionPattern={sectionPattern}
-        limitScope={limitScope}
-        onSelectScope={setLimitScope}
         selectedTimeLimit={selectedTimeLimit}
         selectedOpensLimit={selectedOpensLimit}
+        selectedReflectionDelay={selectedReflectionDelay}
+        suggestion={suggestion}
         showGroupSelector={showGroupSelector}
         isLoadingGroups={isLoadingGroups}
         availableGroups={availableGroups}
         isSaving={isSaving}
         onSelectTimeLimit={handleSelectTimeLimit}
         onSelectOpensLimit={handleSelectOpensLimit}
+        onSelectReflectionDelay={(seconds) => setSelectedReflectionDelay(seconds ?? null)}
+        onAcceptSuggestion={handleAcceptSuggestion}
+        onDismissSuggestion={handleDismissSuggestion}
         onAddLimit={handleAddLimit}
         onOpenGroupSelector={openGroupSelector}
         onAddToGroup={handleAddToGroup}
@@ -660,6 +781,7 @@ const PluginPopup = () => {
       opensLimit={opensLimit}
       opensRemaining={opensRemaining}
       isExtended={isExtended}
+      reflectionDelay={reflectionDelay}
       onSettings={handleOpenSettings}
       onInfo={handleOpenInfo}
     />

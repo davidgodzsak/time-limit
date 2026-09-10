@@ -502,7 +502,7 @@
     "description": "Placeholder for opens limit input"
   },
   "dialog_addSite_validation": {
-    "message": "Ustaw co najmniej limit czasu lub limit otwarć",
+    "message": "Ustaw przynajmniej limit czasu, limit otwarć albo pauzę",
     "description": "Validation alert message for add site dialog"
   },
   "dialog_addSite_button_cancel": {
@@ -554,7 +554,7 @@
     "description": "Label for group opens limit input"
   },
   "dialog_createGroup_validation": {
-    "message": "Ustaw co najmniej limit czasu lub limit otwarć",
+    "message": "Ustaw przynajmniej limit czasu, limit otwarć albo pauzę",
     "description": "Validation alert message for create group dialog"
   },
   "dialog_createGroup_button_cancel": {
@@ -955,36 +955,72 @@
     "message": "Dzisiaj przekroczono zarówno limit czasu ($1/$2 min), jak i limit otwarć ($3/$4) dla $5.",
     "description": "Blocking reason when both time and opens limits exceeded",
     "placeholders": {
-      "time_spent": { "content": "$1", "example": "45" },
-      "time_limit": { "content": "$2", "example": "30" },
-      "opens_count": { "content": "$3", "example": "15" },
-      "opens_limit": { "content": "$4", "example": "10" },
-      "context": { "content": "$5", "example": "this site" }
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
     }
   },
   "block_reason_time": {
     "message": "Dzisiaj na $2 spędzono $1 min, co przekracza limit $3 min.",
     "description": "Blocking reason when time limit exceeded",
     "placeholders": {
-      "minutes_spent": { "content": "$1", "example": "45" },
-      "context": { "content": "$2", "example": "this site" },
-      "limit_minutes": { "content": "$3", "example": "30" }
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
     }
   },
   "block_reason_opens": {
     "message": "Dzisiaj otwarto $1 $2 razy, co przekracza limit $3 otwarć.",
     "description": "Blocking reason when opens limit exceeded",
     "placeholders": {
-      "context": { "content": "$1", "example": "this site" },
-      "opens_count": { "content": "$2", "example": "15" },
-      "opens_limit": { "content": "$3", "example": "10" }
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
     }
   },
   "block_reason_default": {
     "message": "Dzienny limit przekroczony dla $1.",
     "description": "Default blocking reason",
     "placeholders": {
-      "context": { "content": "$1", "example": "this site" }
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
     }
   },
   "onboarding_welcome_title": {
@@ -1115,8 +1151,14 @@
     "message": "Osiągnięto maksymalną liczbę $1 ($2)",
     "description": "Validation error when storage limit exceeded",
     "placeholders": {
-      "datatype": { "content": "$1", "example": "sites" },
-      "limit": { "content": "$2", "example": "500" }
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
     }
   },
   "error_unknown": {
@@ -1147,7 +1189,10 @@
     "message": "Brak wymaganego pola '$1'",
     "description": "Validation error when required field missing",
     "placeholders": {
-      "field": { "content": "$1", "example": "urlPattern" }
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
     }
   },
   "error_openLimit_notNumber": {
@@ -1242,16 +1287,168 @@
     "message": "„$1” ma już limit w grupie „$2”.",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Co ograniczyć",
-    "description": "Label above the popup scope selector"
+  "reflection_option_off": {
+    "message": "Brak",
+    "description": "Off choice in the reflection delay picker"
   },
-  "popup_scope_wholeSite": {
-    "message": "Cała witryna",
-    "description": "Popup scope option: limit the entire domain"
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
   },
-  "popup_scope_thisSection": {
-    "message": "Ta sekcja",
-    "description": "Popup scope option: limit only the current path"
+  "badge_reflectionDelay": {
+    "message": "pauza $1 s",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pauza przed otwarciem",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Odlicza, a potem pyta, czy nadal chcesz otworzyć stronę. Działa też bez dziennego limitu.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pauza przed otwarciem",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Każda strona w tej grupie dostanie takie samo odliczanie przed otwarciem.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "pauza $1 s",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pauza przed otwarciem",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "Pauza $1 s przed otwarciem",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Brak dziennego limitu — tylko chwila na sprawdzenie, czy naprawdę tu chciałeś wejść.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Weź oddech",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Twoja decyzja",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "sekund",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Kilka sekund zwykle wystarczy, by zauważyć, czy naprawdę chciałeś tu wejść.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Nadal chcesz to otworzyć?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Tak, otwórz",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Nie, nie teraz",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Dziś otwarte $1 razy · zatrzymanie tutaj $2 razy",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Pauza na refleksję",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Zdecyduj na stronie",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Odliczanie trwa w karcie. Tam zdecyduj, czy otworzyć stronę, czy zrobić coś innego.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Zdecydowałeś, żeby tego teraz nie otwierać.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 nadal tam jest, kiedy zechcesz — to była Twoja decyzja, nie limit.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Warto ustawić limit?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Dziś otworzyłeś $1 $2 razy.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pauza $1 s przed otwarciem",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Nie dla tej strony",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 będzie teraz robić pauzę przed otwarciem",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Proponuj limity",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Zauważa strony otwierane w kółko i proponuje łagodny limit. Najwyżej jedna propozycja dziennie, nigdy dwa razy dla tej samej strony.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Co nowego",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Właśnie zaktualizowano. Oto co się zmieniło.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Jasne",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pauza przed otwarciem",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Krótkie odliczanie, a potem „nadal chcesz to otworzyć?”. Łagodniejsze niż blokada i działa bez dziennego limitu.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Podpowiadane limity",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Jeśli w kółko otwierasz tę samą stronę, rozszerzenie zaproponuje dla niej pauzę. Najwyżej jedna propozycja dziennie i nigdy dwa razy dla tej samej strony.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Darmowe, prywatne i bez reklam",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Jeśli pomaga Ci na co dzień, mała wpłata pozwala go rozwijać.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Wesprzyj rozwój",
+    "description": "Opens the donation section of the info page"
   }
 }

@@ -502,7 +502,7 @@
     "description": "Placeholder for opens limit input"
   },
   "dialog_addSite_validation": {
-    "message": "Állíts be legalább egy időkorlátot vagy megnyitáskorlátot",
+    "message": "Állíts be legalább idő- vagy megnyitási limitet, vagy egy szünetet",
     "description": "Validation alert message for add site dialog"
   },
   "dialog_addSite_button_cancel": {
@@ -554,7 +554,7 @@
     "description": "Label for group opens limit input"
   },
   "dialog_createGroup_validation": {
-    "message": "Állíts be legalább egy időkorlátot vagy megnyitáskorlátot",
+    "message": "Állíts be legalább idő- vagy megnyitási limitet, vagy egy szünetet",
     "description": "Validation alert message for create group dialog"
   },
   "dialog_createGroup_button_cancel": {
@@ -955,36 +955,72 @@
     "message": "Túllépted az idő- ($1/$2 perc) és a megnyitáskorlátot ($3/$4 megnyitás) is $5 esetén ma.",
     "description": "Blocking reason when both time and opens limits exceeded",
     "placeholders": {
-      "time_spent": { "content": "$1", "example": "45" },
-      "time_limit": { "content": "$2", "example": "30" },
-      "opens_count": { "content": "$3", "example": "15" },
-      "opens_limit": { "content": "$4", "example": "10" },
-      "context": { "content": "$5", "example": "this site" }
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
     }
   },
   "block_reason_time": {
     "message": "Ma $1 percet töltöttél $2-n, túllépve a $3 perces korlátot.",
     "description": "Blocking reason when time limit exceeded",
     "placeholders": {
-      "minutes_spent": { "content": "$1", "example": "45" },
-      "context": { "content": "$2", "example": "this site" },
-      "limit_minutes": { "content": "$3", "example": "30" }
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
     }
   },
   "block_reason_opens": {
     "message": "Ma $1-t $2-szer nyitottad meg, túllépve a $3 megnyitásos korlátot.",
     "description": "Blocking reason when opens limit exceeded",
     "placeholders": {
-      "context": { "content": "$1", "example": "this site" },
-      "opens_count": { "content": "$2", "example": "15" },
-      "opens_limit": { "content": "$3", "example": "10" }
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
     }
   },
   "block_reason_default": {
     "message": "A napi korlát túllépve: $1.",
     "description": "Default blocking reason",
     "placeholders": {
-      "context": { "content": "$1", "example": "this site" }
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
     }
   },
   "onboarding_welcome_title": {
@@ -1115,8 +1151,14 @@
     "message": "Elérted a maximális $1 számot ($2)",
     "description": "Validation error when storage limit exceeded",
     "placeholders": {
-      "datatype": { "content": "$1", "example": "sites" },
-      "limit": { "content": "$2", "example": "500" }
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
     }
   },
   "error_unknown": {
@@ -1147,7 +1189,10 @@
     "message": "A kötelező '$1' mező hiányzik",
     "description": "Validation error when required field missing",
     "placeholders": {
-      "field": { "content": "$1", "example": "urlPattern" }
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
     }
   },
   "error_openLimit_notNumber": {
@@ -1242,16 +1287,168 @@
     "message": "„$1” már korlátozva van a(z) „$2” csoportban.",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Mit korlátozzunk",
-    "description": "Label above the popup scope selector"
+  "reflection_option_off": {
+    "message": "Nincs",
+    "description": "Off choice in the reflection delay picker"
   },
-  "popup_scope_wholeSite": {
-    "message": "Teljes oldal",
-    "description": "Popup scope option: limit the entire domain"
+  "reflection_option_seconds": {
+    "message": "$1 mp",
+    "description": "A reflection delay option, e.g. 10s"
   },
-  "popup_scope_thisSection": {
-    "message": "Ez a szakasz",
-    "description": "Popup scope option: limit only the current path"
+  "badge_reflectionDelay": {
+    "message": "$1 mp szünet",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Szünet megnyitás előtt",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Visszaszámol, majd megkérdezi, tényleg meg akarod-e nyitni az oldalt. Napi limit nélkül is működik.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Szünet megnyitás előtt",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "A csoport minden oldala ugyanazt a visszaszámlálást kapja megnyitás előtt.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "$1 mp szünet",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Szünet megnyitás előtt",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "$1 mp szünet a megnyitás előtt",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Nincs napi limit — csak egy pillanat, hogy átgondold, tényleg ide akartál-e jönni.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Vegyél egy levegőt",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Rajtad áll",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "másodperc",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Pár másodperc általában elég, hogy észrevedd, tényleg ide akartál-e jönni.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Még mindig meg akarod nyitni?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Igen, megnyitom",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Nem, most nem",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Ma $1 alkalommal nyitottad meg · $2 alkalommal álltál meg itt",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Gondolkodási szünet",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Az oldalon dönthetsz",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "A visszaszámlálás a lapon fut. Ott döntheted el, megnyitod-e az oldalt, vagy mást csinálsz.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Úgy döntöttél, hogy most nem nyitod meg.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 továbbra is elérhető, amikor csak akarod — ez a te döntésed volt, nem limit.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Megérné limitálni?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Ma $2 alkalommal nyitottad meg: $1.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "$1 mp szünet megnyitás előtt",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Ezt az oldalt ne",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 mostantól szünetet tart megnyitás előtt",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Limitek javaslata",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Észreveszi az újra és újra megnyitott oldalakat, és finom limitet ajánl. Naponta legfeljebb egy javaslat, ugyanarra az oldalra soha kétszer.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Újdonságok",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Most frissült. Ez változott.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Értem",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Szünet megnyitás előtt",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Rövid visszaszámlálás, majd: „Még mindig meg akarod nyitni?” Finomabb a tiltásnál, és napi limit nélkül is működik.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Javasolt limitek",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Ha újra és újra megnyitod ugyanazt az oldalt, a kiegészítő szünetet ajánl rá. Naponta legfeljebb egy javaslat, ugyanarra az oldalra soha kétszer.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Ingyenes, privát és reklámmentes",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Ha hasznosnak találod a mindennapokban, egy kis támogatás segíti a fejlesztést.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Fejlesztés támogatása",
+    "description": "Opens the donation section of the info page"
   }
 }

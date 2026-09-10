@@ -502,7 +502,7 @@
     "description": "Placeholder for opens limit input"
   },
   "dialog_addSite_validation": {
-    "message": "Veuillez définir au moins une limite de temps ou une limite d'ouvertures",
+    "message": "Définissez au moins une limite de temps, d’ouvertures ou une pause",
     "description": "Validation alert message for add site dialog"
   },
   "dialog_addSite_button_cancel": {
@@ -554,7 +554,7 @@
     "description": "Label for group opens limit input"
   },
   "dialog_createGroup_validation": {
-    "message": "Veuillez définir au moins une limite de temps ou une limite d'ouvertures",
+    "message": "Définissez au moins une limite de temps, d’ouvertures ou une pause",
     "description": "Validation alert message for create group dialog"
   },
   "dialog_createGroup_button_cancel": {
@@ -1287,16 +1287,168 @@
     "message": "« $1 » est déjà limité dans le groupe « $2 ».",
     "description": "Shown when adding a site that is already limited inside a group"
   },
-  "popup_scope_label": {
-    "message": "Quoi limiter",
-    "description": "Label above the popup scope selector"
+  "reflection_option_off": {
+    "message": "Non",
+    "description": "Off choice in the reflection delay picker"
   },
-  "popup_scope_wholeSite": {
-    "message": "Tout le site",
-    "description": "Popup scope option: limit the entire domain"
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
   },
-  "popup_scope_thisSection": {
-    "message": "Cette section",
-    "description": "Popup scope option: limit only the current path"
+  "badge_reflectionDelay": {
+    "message": "pause de $1 s",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pause avant ouverture",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Décompte, puis demande si vous voulez toujours ouvrir le site. Fonctionne sans limite quotidienne.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pause avant ouverture",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Tous les sites de ce groupe auront le même décompte avant de s’ouvrir.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "pause de $1 s",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pause avant ouverture",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "Pause de $1 s avant l’ouverture",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Pas de limite quotidienne — juste un instant pour vérifier que c’est voulu.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Respirez",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "À vous de voir",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "secondes",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Quelques secondes suffisent souvent pour voir si vous vouliez vraiment venir ici.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Voulez-vous toujours l’ouvrir ?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Oui, ouvrir",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Non, pas maintenant",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Ouvert $1 fois aujourd’hui · arrêté ici $2 fois",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Pause de réflexion",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Décidez sur la page",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Le décompte tourne dans l’onglet. Choisissez là-bas d’ouvrir le site ou de faire autre chose.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Vous avez choisi de ne pas l’ouvrir maintenant.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 reste accessible quand vous voulez — c’était votre choix, pas une limite.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Une limite ?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Vous avez ouvert $1 $2 fois aujourd’hui.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pause de $1 s avant ouverture",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Pas pour ce site",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 marquera désormais une pause avant de s’ouvrir",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Suggérer des limites",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Repère les sites que vous ouvrez sans cesse et propose une limite douce. Une suggestion par jour au maximum, jamais deux fois pour le même site.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Nouveautés",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Vous venez de mettre à jour. Voici ce qui a changé.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "C’est noté",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pause avant ouverture",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Un court décompte, puis « voulez-vous toujours l’ouvrir ? ». Plus doux qu’un blocage, et sans limite quotidienne.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Limites suggérées",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Si vous ouvrez sans cesse le même site, l’extension vous propose une pause. Une suggestion par jour au maximum, jamais deux fois pour le même site.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Gratuit, privé et sans publicité",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "S’il vous rend service au quotidien, un petit don l’aide à grandir.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Soutenir le développement",
+    "description": "Opens the donation section of the info page"
   }
 }

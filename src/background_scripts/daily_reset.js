@@ -6,6 +6,8 @@
  * as part of the event-driven architecture.
  */
 
+import { getWindowDates, pruneOldVisits } from './visit_tracker.js';
+
 
 // Name for the daily reset alarm - updated to match background.js
 const DAILY_USAGE_RESET_ALARM_NAME = 'dailyResetAlarm';
@@ -122,6 +124,23 @@ export async function performDailyReset() {
     if (extensionKeysToRemove.length > 0) {
       await browser.storage.local.remove(extensionKeysToRemove);
     }
+
+    // Reflection answers are kept for the same rolling window as visit counts,
+    // because they are the raw material of the statistics page rather than a
+    // per-day allowance.
+    const keptDates = new Set(getWindowDates(currentDateString));
+    const reflectionKeysToRemove = Object.keys(allStorage)
+      .filter((key) => key.startsWith('reflections-'))
+      .filter((key) => !keptDates.has(key.replace('reflections-', '')));
+
+    if (reflectionKeysToRemove.length > 0) {
+      await browser.storage.local.remove(reflectionKeysToRemove);
+    }
+
+    // Passes are short-lived by design; none of yesterday's can still be valid.
+    await browser.storage.local.remove('reflectionPasses');
+
+    await pruneOldVisits(currentDateString);
 
   } catch (error) {
     console.error('[DailyReset] Error during daily reset:', error);

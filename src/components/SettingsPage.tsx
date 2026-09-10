@@ -50,6 +50,7 @@ const SettingsPage = () => {
   const [showRandomMessage, setShowRandomMessage] = useState(true);
   const [showActivitySuggestions, setShowActivitySuggestions] = useState(true);
   const [preferredLanguage, setPreferredLanguage] = useState<string | null>(null);
+  const [showLimitSuggestions, setShowLimitSuggestions] = useState(true);
 
   // Message editing using custom hook to reduce state duplication
   const messageEditor = useEditMode<{ id: string; text: string }>(null, (msg) => msg.id);
@@ -97,6 +98,7 @@ const SettingsPage = () => {
           if (preferencesData) {
             setShowRandomMessage(preferencesData.showRandomMessage !== false);
             setShowActivitySuggestions(preferencesData.showActivitySuggestions !== false);
+            setShowLimitSuggestions(preferencesData.showLimitSuggestions !== false);
             setPreferredLanguage(
               (preferencesData.preferredLanguage as string | null | undefined) ?? null
             );
@@ -303,14 +305,23 @@ const SettingsPage = () => {
     messageEditor.cancelEdit();
   };
 
+  /**
+   * Preferences are stored as one object, so every write has to carry the
+   * whole set — sending only the changed field would wipe the others.
+   */
+  const savePreferences = (changes: Record<string, unknown>) =>
+    api.updateDisplayPreferences({
+      showRandomMessage,
+      showActivitySuggestions,
+      showLimitSuggestions,
+      preferredLanguage,
+      ...changes,
+    });
+
   const handleToggleRandomMessage = async (checked: boolean) => {
     setShowRandomMessage(checked);
     try {
-      await api.updateDisplayPreferences({
-        showRandomMessage: checked,
-        showActivitySuggestions: showActivitySuggestions,
-        preferredLanguage: preferredLanguage,
-      });
+      await savePreferences({ showRandomMessage: checked });
     } catch (error) {
       logError("Error updating preferences", error);
       toast(getErrorToastProps("Failed to save preference. Please try again."));
@@ -322,16 +333,23 @@ const SettingsPage = () => {
   const handleToggleActivitySuggestions = async (checked: boolean) => {
     setShowActivitySuggestions(checked);
     try {
-      await api.updateDisplayPreferences({
-        showRandomMessage: showRandomMessage,
-        showActivitySuggestions: checked,
-        preferredLanguage: preferredLanguage,
-      });
+      await savePreferences({ showActivitySuggestions: checked });
     } catch (error) {
       logError("Error updating preferences", error);
       toast(getErrorToastProps("Failed to save preference. Please try again."));
       // Revert on error
       setShowActivitySuggestions(!checked);
+    }
+  };
+
+  const handleToggleLimitSuggestions = async (checked: boolean) => {
+    setShowLimitSuggestions(checked);
+    try {
+      await savePreferences({ showLimitSuggestions: checked });
+    } catch (error) {
+      logError("Error updating preferences", error);
+      toast(getErrorToastProps("Failed to save preference. Please try again."));
+      setShowLimitSuggestions(!checked);
     }
   };
 
@@ -349,11 +367,7 @@ const SettingsPage = () => {
     }
 
     try {
-      await api.updateDisplayPreferences({
-        showRandomMessage: showRandomMessage,
-        showActivitySuggestions: showActivitySuggestions,
-        preferredLanguage: lang,
-      });
+      await savePreferences({ preferredLanguage: lang });
       window.location.reload();
     } catch (error) {
       logError("Error updating language", error);
@@ -443,6 +457,7 @@ const SettingsPage = () => {
     name: string;
     timeLimit?: number;
     opensLimit?: number;
+    reflectionDelay?: number;
   }) => {
     try {
       setIsSaving(true);
@@ -453,6 +468,7 @@ const SettingsPage = () => {
           name: site.name,
           timeLimit: site.timeLimit,
           opensLimit: site.opensLimit,
+          reflectionDelay: site.reflectionDelay,
         });
         setIndividualSites(individualSites.map(s => s.id === siteData.id ? updatedSite : s));
         toast(getSuccessToastProps("Site updated successfully"));
@@ -462,6 +478,7 @@ const SettingsPage = () => {
           name: site.name,
           timeLimit: site.timeLimit,
           opensLimit: site.opensLimit,
+          reflectionDelay: site.reflectionDelay,
         });
         setIndividualSites([...individualSites, newSite]);
         toast(getSuccessToastProps("Site added successfully"));
@@ -520,6 +537,7 @@ const SettingsPage = () => {
     color: string;
     timeLimit?: number;
     opensLimit?: number;
+    reflectionDelay?: number;
   }) => {
     try {
       setIsSaving(true);
@@ -532,6 +550,7 @@ const SettingsPage = () => {
           color: groupData.color,
           timeLimit: groupData.timeLimit,
           opensLimit: groupData.opensLimit,
+          reflectionDelay: groupData.reflectionDelay,
         });
 
         // Refetch groups to ensure UI shows latest data (especially for removed limits)
@@ -551,6 +570,7 @@ const SettingsPage = () => {
           color: groupData.color,
           timeLimit: groupData.timeLimit,
           opensLimit: groupData.opensLimit,
+          reflectionDelay: groupData.reflectionDelay,
         });
         setGroups([
           ...groups,
@@ -856,6 +876,8 @@ const SettingsPage = () => {
               onToggleRandomMessage={handleToggleRandomMessage}
               showActivitySuggestions={showActivitySuggestions}
               onToggleActivitySuggestions={handleToggleActivitySuggestions}
+              showLimitSuggestions={showLimitSuggestions}
+              onToggleLimitSuggestions={handleToggleLimitSuggestions}
               preferredLanguage={preferredLanguage}
               onChangeLanguage={handleChangeLanguage}
               isSaving={isSaving}

@@ -68,6 +68,17 @@ describe('addDistractingSite', () => {
     expect(await getDistractingSites()).toHaveLength(2);
   });
 
+  it('accepts a site limited only by a reflection delay', async () => {
+    installFakeStorage();
+    const site = await addDistractingSite({
+      urlPattern: 'youtube.com',
+      reflectionDelaySeconds: 10,
+    });
+    expect(site).not.toBeNull();
+    expect(site.reflectionDelaySeconds).toBe(10);
+    expect(site.dailyLimitSeconds).toBeUndefined();
+  });
+
   it('rejects patterns that are not usable', async () => {
     installFakeStorage();
     expect(
@@ -114,6 +125,37 @@ describe('updateDistractingSite', () => {
     expect(
       await updateDistractingSite('1', { dailyLimitSeconds: null })
     ).toBeNull();
+  });
+
+  it('lets a reflection delay stand in for the last hard limit', async () => {
+    installFakeStorage([
+      {
+        id: '1',
+        urlPattern: 'facebook.com',
+        dailyLimitSeconds: 600,
+        reflectionDelaySeconds: 10,
+      },
+    ]);
+    const updated = await updateDistractingSite('1', { dailyLimitSeconds: null });
+    expect(updated).not.toBeNull();
+    expect(updated.dailyLimitSeconds).toBeUndefined();
+    expect(updated.reflectionDelaySeconds).toBe(10);
+  });
+
+  it('clears the reflection delay when asked', async () => {
+    installFakeStorage([
+      {
+        id: '1',
+        urlPattern: 'facebook.com',
+        dailyOpenLimit: 5,
+        reflectionDelaySeconds: 10,
+      },
+    ]);
+    const updated = await updateDistractingSite('1', {
+      reflectionDelaySeconds: null,
+    });
+    expect(updated.reflectionDelaySeconds).toBeUndefined();
+    expect(updated.dailyOpenLimit).toBe(5);
   });
 
   it('allows a grouped site to hold no limits of its own', async () => {

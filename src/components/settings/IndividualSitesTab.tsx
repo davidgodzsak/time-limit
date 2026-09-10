@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ChevronRight,
   GripVertical,
+  Hourglass,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -117,6 +118,12 @@ export function IndividualSitesTab({
                   {site.opensLimit} opens
                 </Badge>
               )}
+              {site.reflectionDelay && (
+                <Badge variant="outline" className="rounded-full gap-1">
+                  <Hourglass size={12} />
+                  {t("badge_reflectionDelay", String(site.reflectionDelay))}
+                </Badge>
+              )}
               <Switch
                 checked={site.isEnabled !== false}
                 onCheckedChange={() =>
@@ -190,6 +197,12 @@ export function IndividualSitesTab({
                         {group.opensLimit}
                       </Badge>
                     )}
+                    {group.reflectionDelay && group.reflectionDelay > 0 && (
+                      <Badge variant="outline" className="rounded-full gap-1">
+                        <Hourglass size={12} />
+                        {t("badge_reflectionDelay", String(group.reflectionDelay))}
+                      </Badge>
+                    )}
                     <Badge variant="secondary" className="rounded-full">
                       {t("sites_groups_badge", String((group.sites || []).length))}
                     </Badge>
@@ -219,6 +232,18 @@ export function IndividualSitesTab({
                       >
                         <span className="text-lg">{site.favicon}</span>
                         <span className="flex-1 text-sm">{site.name}</span>
+                        {site.reflectionDelay && (
+                          <Badge
+                            variant="outline"
+                            className="rounded-full gap-1 text-xs"
+                          >
+                            <Hourglass size={10} />
+                            {t(
+                              "badge_reflectionDelay",
+                              String(site.reflectionDelay)
+                            )}
+                          </Badge>
+                        )}
                         <Switch
                           checked={site.isEnabled !== false}
                           onCheckedChange={() =>

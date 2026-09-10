@@ -16,6 +16,8 @@ interface PreferencesTabProps {
   onToggleRandomMessage: (checked: boolean) => void;
   showActivitySuggestions: boolean;
   onToggleActivitySuggestions: (checked: boolean) => void;
+  showLimitSuggestions: boolean;
+  onToggleLimitSuggestions: (checked: boolean) => void;
   preferredLanguage: string | null;
   onChangeLanguage: (lang: string | null) => void;
   isSaving: boolean;
@@ -26,6 +28,8 @@ export function PreferencesTab({
   onToggleRandomMessage,
   showActivitySuggestions,
   onToggleActivitySuggestions,
+  showLimitSuggestions,
+  onToggleLimitSuggestions,
   preferredLanguage,
   onChangeLanguage,
   isSaving,
@@ -65,6 +69,19 @@ export function PreferencesTab({
             <Switch
               checked={showActivitySuggestions}
               onCheckedChange={onToggleActivitySuggestions}
+              disabled={isSaving}
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-medium">{t("preferences_option_limitSuggestions")}</p>
+              <p className="text-sm text-muted-foreground">
+                {t("preferences_option_limitSuggestions_description")}
+              </p>
+            </div>
+            <Switch
+              checked={showLimitSuggestions}
+              onCheckedChange={onToggleLimitSuggestions}
               disabled={isSaving}
             />
           </div>

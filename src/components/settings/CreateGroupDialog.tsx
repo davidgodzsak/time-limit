@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Plus, Clock, MousePointerClick } from "lucide-react";
+import { Plus, Clock, MousePointerClick, Hourglass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,12 +12,26 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { t } from "@/lib/utils/i18n";
+import { ReflectionDelayPicker } from "@/components/ReflectionDelayPicker";
 
 interface CreateGroupDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onCreate: (group: { name: string; color: string; timeLimit?: number; opensLimit?: number }) => void;
-  initialGroup?: { id: string; name: string; color: string; timeLimit: number; opensLimit?: number };
+  onCreate: (group: {
+    name: string;
+    color: string;
+    timeLimit?: number;
+    opensLimit?: number;
+    reflectionDelay?: number;
+  }) => void;
+  initialGroup?: {
+    id: string;
+    name: string;
+    color: string;
+    timeLimit: number;
+    opensLimit?: number;
+    reflectionDelay?: number;
+  };
   isEditing?: boolean;
 }
 
@@ -35,6 +49,9 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
   const [selectedColor, setSelectedColor] = useState(initialGroup?.color || "bg-blue-500");
   const [timeLimit, setTimeLimit] = useState((initialGroup?.timeLimit || 30).toString());
   const [opensLimit, setOpensLimit] = useState((initialGroup?.opensLimit || "").toString());
+  const [reflectionDelay, setReflectionDelay] = useState<number | undefined>(
+    initialGroup?.reflectionDelay
+  );
 
   // Update form when dialog opens with initialGroup data
   useEffect(() => {
@@ -44,12 +61,14 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
         setSelectedColor(initialGroup.color);
         setTimeLimit(initialGroup.timeLimit ? initialGroup.timeLimit.toString() : "");
         setOpensLimit((initialGroup.opensLimit || "").toString());
+        setReflectionDelay(initialGroup.reflectionDelay || undefined);
       } else {
         // Reset form for create mode
         setGroupName("");
         setSelectedColor("bg-blue-500");
         setTimeLimit("30");
         setOpensLimit("");
+        setReflectionDelay(undefined);
       }
     }
   }, [open, initialGroup]);
@@ -62,8 +81,9 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
     const parsedTimeLimit = timeLimit ? parseInt(timeLimit) : undefined;
     const parsedOpensLimit = opensLimit ? parseInt(opensLimit) : undefined;
 
-    // Ensure at least one limit is set
-    if (!parsedTimeLimit && !parsedOpensLimit) {
+    // A reflection delay counts as a rule of its own, so any one of the three
+    // is enough.
+    if (!parsedTimeLimit && !parsedOpensLimit && !reflectionDelay) {
       alert(t("dialog_createGroup_validation"));
       return;
     }
@@ -75,11 +95,13 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
       color: selectedColor,
       timeLimit: parsedTimeLimit, // undefined = no time limit
       opensLimit: parsedOpensLimit, // undefined = no opens limit
+      reflectionDelay, // undefined = opens straight away
     });
     setGroupName("");
     setSelectedColor("bg-blue-500");
     setTimeLimit("30");
     setOpensLimit("");
+    setReflectionDelay(undefined);
     onOpenChange(false);
   };
 
@@ -152,6 +174,21 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
               />
             </div>
           </div>
+
+          <div className="space-y-2">
+            <Label className="flex items-center gap-2">
+              <Hourglass size={14} />
+              {t("dialog_createGroup_label_reflectionDelay")}
+            </Label>
+            <ReflectionDelayPicker
+              value={reflectionDelay}
+              onChange={setReflectionDelay}
+              includeOff
+            />
+            <p className="text-xs text-muted-foreground">
+              {t("dialog_createGroup_hint_reflectionDelay")}
+            </p>
+          </div>
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)} className="rounded-xl">
@@ -159,7 +196,9 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
           </Button>
           <Button
             onClick={handleCreate}
-            disabled={!groupName.trim() || (!timeLimit && !opensLimit)}
+            disabled={
+              !groupName.trim() || (!timeLimit && !opensLimit && !reflectionDelay)
+            }
             className="rounded-xl"
           >
             {isEditing ? (

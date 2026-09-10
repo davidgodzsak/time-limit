@@ -13,6 +13,13 @@ import {
   initializeDistractionDetector,
 } from './distraction_detector.js';
 import { findMatchingSite } from './url_matcher.js';
+import { getPendingSuggestionForHost } from './suggestion_engine.js';
+import { getVisitHost } from './visit_tracker.js';
+
+/** Badge shown on an unlimited site the extension would like to suggest a limit for. */
+const SUGGESTION_BADGE_TEXT = '!';
+const SUGGESTION_BADGE_COLOR = [245, 158, 11, 255]; // amber
+const DEFAULT_BADGE_COLOR = [0, 122, 255, 255]; // blue
 
 // Ensure detector is initialized
 let _detectorInitialized = false;
@@ -148,7 +155,7 @@ function _manualDistractionCheck(url, sites) {
  * @param {number} tabId - The tab ID to update
  * @param {string} text - The badge text to display
  */
-async function _setBadgeText(tabId, text) {
+async function _setBadgeText(tabId, text, color = DEFAULT_BADGE_COLOR) {
   try {
     await browser.action.setBadgeText({
       text: text,
@@ -158,7 +165,7 @@ async function _setBadgeText(tabId, text) {
     // Set badge background color for better visibility
     if (text) {
       await browser.action.setBadgeBackgroundColor({
-        color: [0, 122, 255, 255], // Blue background
+        color,
         tabId: tabId,
       });
     }
@@ -220,8 +227,17 @@ export async function updateBadge(tabId) {
     }
 
     if (!distractionCheck.isMatch || !distractionCheck.siteId) {
-      // Not a distracting site, clear badge
-      await _setBadgeText(tabId, '');
+      // Not a distracting site. It may still be one the extension wants to
+      // suggest a limit for — that nudge lives on the badge so it can be
+      // ignored, and disappears as soon as the suggestion is answered.
+      const suggestion = await getPendingSuggestionForHost(
+        getVisitHost(tab.url)
+      );
+      await _setBadgeText(
+        tabId,
+        suggestion ? SUGGESTION_BADGE_TEXT : '',
+        SUGGESTION_BADGE_COLOR
+      );
       return;
     }
 

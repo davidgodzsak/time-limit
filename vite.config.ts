@@ -132,6 +132,7 @@ export default defineConfig(() => ({
         popup: resolve (__dirname , 'src/pages/popup/index.html'),
         settings: resolve (__dirname , 'src/pages/settings/index.html'),
         timeout: resolve (__dirname , 'src/pages/timeout/index.html'),
+        reflect: resolve (__dirname , 'src/pages/reflect/index.html'),
         info: resolve (__dirname , 'src/pages/info/index.html')
       },
       output: {

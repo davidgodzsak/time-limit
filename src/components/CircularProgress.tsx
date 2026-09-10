@@ -5,6 +5,11 @@ interface CircularProgressProps {
   strokeWidth?: number;
   children?: React.ReactNode;
   variant?: "time" | "opens";
+  /**
+   * Overrides the usage colouring (green → amber → red). The reflection
+   * countdown uses it: filling up there means "nearly ready", not "nearly out".
+   */
+  color?: string;
 }
 
 const CircularProgress = ({
@@ -14,6 +19,7 @@ const CircularProgress = ({
   strokeWidth = 8,
   children,
   variant = "time",
+  color,
 }: CircularProgressProps) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
@@ -21,6 +27,7 @@ const CircularProgress = ({
   const offset = circumference - (percentage / 100) * circumference;
 
   const getColor = () => {
+    if (color) return color;
     if (percentage > 75) return "hsl(var(--destructive))";
     if (percentage > 50) return "hsl(var(--warning))";
     return "hsl(var(--primary))";
