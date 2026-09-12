@@ -4,6 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time Limit - Don't waste your time doomscrolling.</title>
+    <style>
+      /*
+       * The popup is the one page whose window is sized by its content, and a
+       * browser gives it at most 600x800 before it takes over: past that it
+       * adds a document scrollbar and widens the window to fit it, so a view
+       * that is a few pixels too tall looks like it grew in both directions.
+       *
+       * Pinning the frame here keeps that from ever happening: the window is
+       * always exactly as wide as the cards (w-80 = 320px), and anything too
+       * tall for one scrolls inside the frame instead of resizing it. Views
+       * should still be built to fit — this is the safety net for the locales
+       * whose labels wrap onto a second line.
+       */
+      html {
+        width: 320px;
+        overflow: hidden;
+      }
+
+      body {
+        width: 320px;
+        max-height: 598px;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

@@ -126,21 +126,14 @@ export function TimeoutPageView({
           </div>
         </div>
 
-        {/* A block is not an allowance, so there is nothing to extend: offer
-            the settings page, which is the only honest way back. */}
+        {/* A block is not an allowance, so there is nothing to extend — and
+            nothing to say beyond that. Someone who blocked a site does not
+            need this screen pointing out where the off switch lives; the gear
+            in the header is there for anyone who genuinely goes looking. */}
         {isFullyBlocked ? (
-          <>
-            <p className="text-sm text-muted-foreground mb-4">
-              {t("timeoutPageView_blocked_message")}
-            </p>
-            <Button
-              variant="outline"
-              className="w-full rounded-xl"
-              onClick={onOpenSettings}
-            >
-              {t("timeoutPageView_button_openSettings")}
-            </Button>
-          </>
+          <p className="text-sm text-muted-foreground">
+            {t("timeoutPageView_blocked_message")}
+          </p>
         ) : (
           <>
           {!showExtendForm && !isExtended && (

@@ -139,11 +139,13 @@ export function UnlimitedSiteView({
           </div>
         )}
 
-        <p className="text-sm text-muted-foreground mb-5">
+        <p className="text-sm text-muted-foreground mb-4">
           {t("unlimitedSiteView_description")}
         </p>
 
-        <div className="space-y-4">
+        {/* space-y-3, not -4: this stack now carries four ways to limit a site
+            plus the group option, and the whole card has to stay under 600px. */}
+        <div className="space-y-3">
           <div>
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
               {t("unlimitedSiteView_timeLimit_label")}
@@ -216,25 +218,22 @@ export function UnlimitedSiteView({
             {t("unlimitedSiteView_button_addLimit")}
           </Button>
 
-          {/* The block is its own action rather than a fourth preset: it
-              replaces every limit above instead of combining with them. */}
-          <div>
-            <Button
-              variant="outline"
-              className="w-full rounded-xl border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
-              size="sm"
-              onClick={onBlockSite}
-              disabled={isSaving}
-            >
-              <Ban size={14} className="mr-1.5" />
-              {t("unlimitedSiteView_button_blockSite")}
-            </Button>
-            <p className="text-xs text-muted-foreground mt-1.5 text-center">
-              {t("unlimitedSiteView_blockSite_hint")}
-            </p>
-          </div>
+          {/* A peer of "add limit" rather than a fourth preset: it replaces the
+              limits above instead of combining with them. Kept to one line —
+              this whole view has to stay inside the 600px a browser gives a
+              popup, and the labels are long in several locales. */}
+          <Button
+            variant="outline"
+            className="w-full rounded-xl border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
+            size="sm"
+            onClick={onBlockSite}
+            disabled={isSaving}
+          >
+            <Ban size={14} className="mr-1.5" />
+            {t("unlimitedSiteView_button_blockSite")}
+          </Button>
 
-          <div className="relative py-2">
+          <div className="relative py-1">
             <div className="absolute inset-x-0 top-1/2 h-px bg-border" />
             <div className="relative flex justify-center">
               <span className="px-2 bg-card text-xs text-muted-foreground">

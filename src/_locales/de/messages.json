@@ -1479,10 +1479,6 @@
     "message": "Diese Seite blockieren",
     "description": "Popup button that blocks the current site outright"
   },
-  "unlimitedSiteView_blockSite_hint": {
-    "message": "Blockiert sie vollständig. Du kannst das in den Einstellungen rückgängig machen.",
-    "description": "Explains that a block can be undone in settings"
-  },
   "popup_blockSite_success": {
     "message": "$1 ist jetzt blockiert",
     "description": "Toast after blocking a site from the popup"
@@ -1496,7 +1492,7 @@
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "Sie öffnet sich erst, wenn du die Blockierung in den Einstellungen ausschaltest.",
+    "message": "Nichts, das herunterzählt, und nichts zu verlängern.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
@@ -1508,7 +1504,7 @@
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 bleibt blockiert, bis du die Blockierung in den Einstellungen ausschaltest — sie wird über Nacht nicht zurückgesetzt.",
+    "message": "$1 ist blockiert — anders als ein Tageslimit wird das um Mitternacht nicht zurückgesetzt.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
@@ -1516,12 +1512,8 @@
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Diese Seite ist vollständig blockiert, es gibt also kein Limit zum Verlängern. Schalte die Blockierung in den Einstellungen aus, wenn du sie wirklich brauchst.",
+    "message": "Diese Seite ist vollständig blockiert, es gibt also kein Limit zum Verlängern.",
     "description": "Popup text explaining a blocked site has no limit to extend"
-  },
-  "timeoutPageView_button_openSettings": {
-    "message": "Einstellungen öffnen",
-    "description": "Popup button opening the settings page"
   },
   "groups_blocked_label": {
     "message": "Blockiert",

@@ -356,10 +356,6 @@
     "message": "Заблокувати цей сайт",
     "description": "Popup button that blocks the current site outright"
   },
-  "unlimitedSiteView_blockSite_hint": {
-    "message": "Блокує його повністю. Скасувати можна в налаштуваннях.",
-    "description": "Explains that a block can be undone in settings"
-  },
   "popup_blockSite_success": {
     "message": "$1 тепер заблоковано",
     "description": "Toast after blocking a site from the popup"
@@ -373,7 +369,7 @@
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "Він не відкриється, доки ви не вимкнете блокування в налаштуваннях.",
+    "message": "Немає чого відлічувати й немає чого продовжувати.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
@@ -385,7 +381,7 @@
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 залишатиметься заблокованим, доки ви не вимкнете блокування в налаштуваннях — воно не скидається опівночі.",
+    "message": "$1 заблоковано — на відміну від денного ліміту, це не скидається опівночі.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
@@ -393,12 +389,8 @@
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Цей сайт заблоковано повністю, тож жодного ліміту продовжувати немає. Якщо він справді потрібен, вимкніть блокування в налаштуваннях.",
+    "message": "Цей сайт заблоковано повністю, тож продовжувати немає чого.",
     "description": "Popup text explaining a blocked site has no limit to extend"
-  },
-  "timeoutPageView_button_openSettings": {
-    "message": "Відкрити налаштування",
-    "description": "Popup button opening the settings page"
   },
   "groups_blocked_label": {
     "message": "Заблоковано",

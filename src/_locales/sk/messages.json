@@ -1479,10 +1479,6 @@
     "message": "Zablokovať túto stránku",
     "description": "Popup button that blocks the current site outright"
   },
-  "unlimitedSiteView_blockSite_hint": {
-    "message": "Zablokuje ju úplne. V nastaveniach to môžeš vrátiť späť.",
-    "description": "Explains that a block can be undone in settings"
-  },
   "popup_blockSite_success": {
     "message": "$1 je teraz zablokovaná",
     "description": "Toast after blocking a site from the popup"
@@ -1496,7 +1492,7 @@
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "Neotvorí sa, kým blokovanie nevypneš v nastaveniach.",
+    "message": "Nie je čo odpočítavať ani predlžovať.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
@@ -1508,7 +1504,7 @@
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 zostane zablokovaná, kým blokovanie nevypneš v nastaveniach — toto sa cez noc neobnoví.",
+    "message": "$1 je zablokovaná — na rozdiel od denného limitu sa toto o polnoci neobnoví.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
@@ -1516,12 +1512,8 @@
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Táto stránka je úplne zablokovaná, takže niet limit, ktorý by sa dal predĺžiť. Ak ju naozaj potrebuješ, vypni blokovanie v nastaveniach.",
+    "message": "Táto stránka je úplne zablokovaná, takže nie je čo predlžovať.",
     "description": "Popup text explaining a blocked site has no limit to extend"
-  },
-  "timeoutPageView_button_openSettings": {
-    "message": "Otvoriť nastavenia",
-    "description": "Popup button opening the settings page"
   },
   "groups_blocked_label": {
     "message": "Zablokované",

@@ -1479,10 +1479,6 @@
     "message": "Bloquer ce site",
     "description": "Popup button that blocks the current site outright"
   },
-  "unlimitedSiteView_blockSite_hint": {
-    "message": "Le bloque complètement. Vous pouvez annuler dans les Réglages.",
-    "description": "Explains that a block can be undone in settings"
-  },
   "popup_blockSite_success": {
     "message": "$1 est maintenant bloqué",
     "description": "Toast after blocking a site from the popup"
@@ -1496,7 +1492,7 @@
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "Il ne s'ouvrira pas tant que vous n'aurez pas désactivé le blocage dans les Réglages.",
+    "message": "Rien à décompter, rien à prolonger.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
@@ -1508,7 +1504,7 @@
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 reste bloqué jusqu'à ce que vous désactiviez le blocage dans les Réglages — il ne se réinitialise pas la nuit.",
+    "message": "$1 est bloqué — contrairement à une limite quotidienne, cela ne se réinitialise pas à minuit.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
@@ -1516,12 +1512,8 @@
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Ce site est entièrement bloqué : il n'y a donc aucune limite à prolonger. Désactivez le blocage dans les Réglages si vous en avez vraiment besoin.",
+    "message": "Ce site est entièrement bloqué : il n'y a donc aucune limite à prolonger.",
     "description": "Popup text explaining a blocked site has no limit to extend"
-  },
-  "timeoutPageView_button_openSettings": {
-    "message": "Ouvrir les réglages",
-    "description": "Popup button opening the settings page"
   },
   "groups_blocked_label": {
     "message": "Bloqué",

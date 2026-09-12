@@ -1479,10 +1479,6 @@
     "message": "Bloquear este sitio",
     "description": "Popup button that blocks the current site outright"
   },
-  "unlimitedSiteView_blockSite_hint": {
-    "message": "Lo bloquea por completo. Puedes deshacerlo en Ajustes.",
-    "description": "Explains that a block can be undone in settings"
-  },
   "popup_blockSite_success": {
     "message": "$1 ya está bloqueado",
     "description": "Toast after blocking a site from the popup"
@@ -1496,7 +1492,7 @@
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "No se abrirá hasta que desactives el bloqueo en Ajustes.",
+    "message": "Nada que contar atrás y nada que ampliar.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
@@ -1508,7 +1504,7 @@
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 seguirá bloqueado hasta que desactives el bloqueo en Ajustes: este no se reinicia por la noche.",
+    "message": "$1 está bloqueado: a diferencia de un límite diario, esto no se reinicia a medianoche.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
@@ -1516,12 +1512,8 @@
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Este sitio está bloqueado por completo, así que no hay ningún límite que ampliar. Desactiva el bloqueo en Ajustes si de verdad lo necesitas.",
+    "message": "Este sitio está bloqueado por completo, así que no hay ningún límite que ampliar.",
     "description": "Popup text explaining a blocked site has no limit to extend"
-  },
-  "timeoutPageView_button_openSettings": {
-    "message": "Abrir ajustes",
-    "description": "Popup button opening the settings page"
   },
   "groups_blocked_label": {
     "message": "Bloqueado",

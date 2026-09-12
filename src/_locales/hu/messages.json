@@ -1479,10 +1479,6 @@
     "message": "Oldal letiltása",
     "description": "Popup button that blocks the current site outright"
   },
-  "unlimitedSiteView_blockSite_hint": {
-    "message": "Teljesen letiltja. A beállításokban vonhatod vissza.",
-    "description": "Explains that a block can be undone in settings"
-  },
   "popup_blockSite_success": {
     "message": "$1 mostantól le van tiltva",
     "description": "Toast after blocking a site from the popup"
@@ -1496,7 +1492,7 @@
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "Addig nem nyílik meg, amíg a beállításokban ki nem kapcsolod a letiltást.",
+    "message": "Nincs mit visszaszámolni, és nincs mit meghosszabbítani.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
@@ -1508,7 +1504,7 @@
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 letiltva marad, amíg a beállításokban ki nem kapcsolod — ez éjfélkor nem áll vissza.",
+    "message": "$1 le van tiltva — a napi korláttal ellentétben ez éjfélkor nem áll vissza.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
@@ -1516,12 +1512,8 @@
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Ez az oldal teljesen le van tiltva, így nincs meghosszabbítható korlát. Ha tényleg szükséged van rá, kapcsold ki a letiltást a beállításokban.",
+    "message": "Ez az oldal teljesen le van tiltva, így nincs meghosszabbítható korlát.",
     "description": "Popup text explaining a blocked site has no limit to extend"
-  },
-  "timeoutPageView_button_openSettings": {
-    "message": "Beállítások megnyitása",
-    "description": "Popup button opening the settings page"
   },
   "groups_blocked_label": {
     "message": "Letiltva",
