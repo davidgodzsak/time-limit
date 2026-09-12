@@ -16,6 +16,8 @@ export interface BackendSite {
   dailyOpenLimit?: number;
   /** Seconds of pause shown before the site opens; usable without a hard limit. */
   reflectionDelaySeconds?: number;
+  /** Full block: the site never opens. Outranks every other rule. */
+  isBlocked?: boolean;
   isEnabled?: boolean;
   groupId?: string;
 }
@@ -31,6 +33,8 @@ export interface UISite {
   opensLimit?: number;
   /** Reflection delay in seconds (same unit as storage — it is always short). */
   reflectionDelay?: number;
+  /** Full block: the site never opens. Outranks every other rule. */
+  isBlocked?: boolean;
   isEnabled?: boolean;
   groupId?: string;
 }
@@ -45,6 +49,8 @@ export interface BackendGroup {
   dailyLimitSeconds?: number;
   dailyOpenLimit?: number;
   reflectionDelaySeconds?: number;
+  /** Full block: every site in the group is blocked outright. */
+  isBlocked?: boolean;
   isEnabled: boolean;
   siteIds: string[];
 }
@@ -59,6 +65,8 @@ export interface UIGroup {
   timeLimit: number;
   opensLimit?: number;
   reflectionDelay?: number;
+  /** Full block: every site in the group is blocked outright. */
+  isBlocked?: boolean;
   sites: UISite[];
   isEnabled?: boolean;
   expanded?: boolean;
@@ -104,6 +112,11 @@ export function siteFromStorage(
     site.reflectionDelay = storageSite.reflectionDelaySeconds;
   }
 
+  // A block is only ever stored when it is on
+  if (storageSite.isBlocked) {
+    site.isBlocked = true;
+  }
+
   // Add groupId if present
   if (storageSite.groupId) {
     site.groupId = storageSite.groupId;
@@ -145,6 +158,10 @@ export function siteToStorage(uiSite: UISite): BackendSite {
   // Add the reflection delay if present
   if (uiSite.reflectionDelay && uiSite.reflectionDelay > 0) {
     storageSite.reflectionDelaySeconds = uiSite.reflectionDelay;
+  }
+
+  if (uiSite.isBlocked) {
+    storageSite.isBlocked = true;
   }
 
   // Add enabled status if explicitly set
@@ -197,6 +214,10 @@ export function groupFromStorage(
     group.reflectionDelay = storageGroup.reflectionDelaySeconds;
   }
 
+  if (storageGroup.isBlocked) {
+    group.isBlocked = true;
+  }
+
   return group;
 }
 
@@ -226,6 +247,10 @@ export function groupToStorage(uiGroup: UIGroup): BackendGroup {
 
   if (uiGroup.reflectionDelay && uiGroup.reflectionDelay > 0) {
     storageGroup.reflectionDelaySeconds = uiGroup.reflectionDelay;
+  }
+
+  if (uiGroup.isBlocked) {
+    storageGroup.isBlocked = true;
   }
 
   return storageGroup;

@@ -458,6 +458,7 @@ const SettingsPage = () => {
     timeLimit?: number;
     opensLimit?: number;
     reflectionDelay?: number;
+    isBlocked?: boolean;
   }) => {
     try {
       setIsSaving(true);
@@ -469,6 +470,7 @@ const SettingsPage = () => {
           timeLimit: site.timeLimit,
           opensLimit: site.opensLimit,
           reflectionDelay: site.reflectionDelay,
+          isBlocked: site.isBlocked === true,
         });
         setIndividualSites(individualSites.map(s => s.id === siteData.id ? updatedSite : s));
         toast(getSuccessToastProps("Site updated successfully"));
@@ -479,6 +481,7 @@ const SettingsPage = () => {
           timeLimit: site.timeLimit,
           opensLimit: site.opensLimit,
           reflectionDelay: site.reflectionDelay,
+          isBlocked: site.isBlocked,
         });
         setIndividualSites([...individualSites, newSite]);
         toast(getSuccessToastProps("Site added successfully"));
@@ -538,6 +541,7 @@ const SettingsPage = () => {
     timeLimit?: number;
     opensLimit?: number;
     reflectionDelay?: number;
+    isBlocked?: boolean;
   }) => {
     try {
       setIsSaving(true);
@@ -551,6 +555,7 @@ const SettingsPage = () => {
           timeLimit: groupData.timeLimit,
           opensLimit: groupData.opensLimit,
           reflectionDelay: groupData.reflectionDelay,
+          isBlocked: groupData.isBlocked === true,
         });
 
         // Refetch groups to ensure UI shows latest data (especially for removed limits)
@@ -571,6 +576,7 @@ const SettingsPage = () => {
           timeLimit: groupData.timeLimit,
           opensLimit: groupData.opensLimit,
           reflectionDelay: groupData.reflectionDelay,
+          isBlocked: groupData.isBlocked,
         });
         setGroups([
           ...groups,

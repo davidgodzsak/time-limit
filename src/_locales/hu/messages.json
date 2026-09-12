@@ -91,10 +91,6 @@
     "message": "Nem követett",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Állíts be korlátokat, hogy tudatosabban böngészd ezt az oldalt.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Időkorlát",
     "description": "Section label for time limit selection"
@@ -1450,5 +1446,81 @@
   "whatsNew_support_button": {
     "message": "Fejlesztés támogatása",
     "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Letiltva",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Teljes letiltás",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Ez az oldal soha nem nyílik meg — nincs napi keret, nincs visszaszámlálás, nincs mit meghosszabbítani. Itt kapcsolhatod ki, ha vissza szeretnéd kapni.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Megmarad, de a letiltás alatt nincs hatása.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Teljes letiltás",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "A csoport minden oldala teljesen le van tiltva, függetlenül a saját korlátaiktól.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Oldal letiltása",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 mostantól le van tiltva",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Az oldal letiltása nem sikerült. Próbáld újra.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Ez az oldal le van tiltva",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Nincs mit visszaszámolni, és nincs mit meghosszabbítani.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "A(z) „$1” csoport tiltja le.",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Ez az oldal le van tiltva.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 le van tiltva — a napi korláttal ellentétben ez éjfélkor nem áll vissza.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Letiltott oldal",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Ez az oldal teljesen le van tiltva, így nincs meghosszabbítható korlát.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Letiltva",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Oldal teljes letiltása",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Igazi letiltás az egyperces korlát helyett, ami eddig helyettesítette. Oldalanként vagy egész csoportra működik, és nincs mit meghosszabbítani.",
+    "description": "Release note sentence explaining the full block"
   }
 }

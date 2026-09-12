@@ -44,7 +44,10 @@ export function WhatsNewView({
         </div>
       </div>
 
-      <CardContent className="p-5 max-h-[520px] overflow-y-auto">
+      {/* 500, not 520: the mint header above is 72px, and the card as a whole
+          has to clear the ~584px a browser actually hands a popup — otherwise
+          the document scrolls on top of this region's own scrolling. */}
+      <CardContent className="p-5 max-h-[500px] overflow-y-auto">
         <div className="flex items-center gap-2 mb-1">
           <Sparkles size={18} className="text-primary" />
           <h2 className="text-lg font-semibold text-foreground">

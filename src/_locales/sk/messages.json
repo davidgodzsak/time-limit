@@ -91,10 +91,6 @@
     "message": "Nesledované",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Pridajte limity, aby ste si pri prehliadaní tejto stránky udržali prehľad.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Časový limit",
     "description": "Section label for time limit selection"
@@ -1450,5 +1446,81 @@
   "whatsNew_support_button": {
     "message": "Podporiť vývoj",
     "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Zablokované",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Úplne zablokovať",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Táto stránka sa nikdy neotvorí — žiadny denný limit, žiadne odpočítavanie, niet čo predĺžiť. Tu to vypneš, ak ju chceš späť.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Zostáva uložené, ale počas blokovania sa nepoužíva.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Úplne zablokovať",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Každá stránka v tejto skupine je úplne zablokovaná bez ohľadu na jej vlastné limity.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Zablokovať túto stránku",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 je teraz zablokovaná",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Stránku sa nepodarilo zablokovať. Skús to znova.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Táto stránka je zablokovaná",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Nie je čo odpočítavať ani predlžovať.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Zablokované skupinou „$1“.",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Táto stránka je zablokovaná.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 je zablokovaná — na rozdiel od denného limitu sa toto o polnoci neobnoví.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Zablokovaná stránka",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Táto stránka je úplne zablokovaná, takže nie je čo predlžovať.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Zablokované",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Úplne zablokuj stránku",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Skutočné blokovanie namiesto jednominútového limitu, ktorý ho dosiaľ zastupoval. Funguje pre stránku aj pre celú skupinu a niet čo predlžovať.",
+    "description": "Release note sentence explaining the full block"
   }
 }

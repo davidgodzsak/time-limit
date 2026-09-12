@@ -87,6 +87,29 @@
   - Work-shaped hosts (jira/atlassian, github/gitlab, mail, docs, calendars, localhost, IPs, `.local`/`.internal`) are never suggested; known attention traps qualify after 4 opens in a day, anything else needs 10 in a day or 25 across the week
   - The offer is a reflection delay, the lightest rule available — not a hard limit
 
+### Full block (a rule that simply never opens the page)
+- [x] **Block a site outright** (`isBlocked`), instead of faking it with a 1 minute / 1 open limit. A fourth rule next to time, opens and the pause, settable per site and per group (settings dialogs and a one-click "Block this site" in the popup), and usable on its own.
+  - **It outranks everything**: `checkAndBlockSite` answers `limitType: 'blocked'` before reading usage — no allowance to measure, no countdown, nothing to extend. `extendLimit` refuses it (`SITE_FULLY_BLOCKED`) and the timeout page swaps the extend form for a link to Settings
+  - **Whose block applies**: the group's *or* the site's (`resolveFullBlock`). Unlike time/opens, where a group replaces its members' config, a site keeps its own block inside an unblocked group — grouping must never silently unblock a page
+  - `isEnabled: false` lifts it like any other rule, and pattern specificity still holds: `reddit.com` blocked with `reddit.com/r/rust` limited leaves the section reachable
+  - Other limits are kept (not cleared) while the block is on — the dialogs grey them out and say so, so turning it off restores them
+  - Fixed on the way: `_reEvaluateAllTabs` computed a block for every open tab and then did nothing with it, so a newly blocking rule only took effect on the next navigation. It now sends those tabs to the timeout page
+
+### Localisation (languages the installed base actually uses)
+Real user languages, taken from the store dashboards on 2026-09-10 (18 locales):
+en-US, en-GB, de, fr, en-CA, es-ES, pl, pt-BR, sk, es-AR, sv-SE, cs, es-MX, ru,
+it, ja, el, nb-NO. We ship 8 locale folders (`src/_locales/`): en, de, es, fr,
+hu, pl, sk, uk — so `en-*` and `es-*` variants are covered by `en`/`es`, and
+`hu`/`uk` serve nobody in that list but stay (they cost nothing and the author
+speaks them).
+
+- [ ] Add the 8 missing locales, in descending order of the user counts above: `pt-BR`, `sv`, `cs`, `ru`, `it`, `ja`, `el`, `nb`
+  - Each is a full copy of `src/_locales/en/messages.json` — **329 keys**, translated; a partial file is fine at runtime (`t()` falls back to the bundled English string) but not fine to ship as "translated"
+  - Register each in `AVAILABLE_LANGUAGES` in `src/lib/utils/i18n.ts` (the manual language override picker in Settings → Messages) with its endonym: Português (Brasil), Svenska, Čeština, Русский, Italiano, 日本語, Ελληνικά, Norsk bokmål
+  - `manifest.json` keeps `"default_locale": "en"`; use the short codes Firefox/Chrome resolve regional variants against (`pt-BR` and `nb` are the two that need care — `pt_BR` folder naming for the store, `nb` covers `nb-NO`)
+  - Watch the length-sensitive surfaces when translating: the popup is ~360px wide, the toolbar badge takes 4 characters, and the extend-limit reason needs its 35-character minimum wording to stay accurate
+  - [ ] Also translate the store listings (name, summary, description, screenshots' captions) — separate from `_locales`, done in the AMO/Chrome dashboards
+
 ### Statistic pages
 - [ ] Track how much time we spend on each site and how many times we open each site
 - [ ] Track which page we try to open even after the limit is hit

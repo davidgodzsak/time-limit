@@ -30,7 +30,7 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`visit_tracker.js`**: Rolling per-host open counts for *unlimited* sites (hostnames only, 7 day window)
 - **`whats_new_storage.js`**: Flags that the extension was updated, so the popup can show the release note once
 - **`suggestion_engine.js`**: Decides when a frequently opened site is worth offering a limit for, and remembers the answer forever
-- **`site_blocker.js`**: Blocks/redirects users to timeout page when limits are reached
+- **`site_blocker.js`**: Blocks/redirects users to timeout page when limits are reached; `resolveFullBlock` is the single source of truth for "is this page blocked outright" (site vs group)
 - **`badge_manager.js`**: Updates toolbar badge with remaining time
 - **`daily_reset.js`**: Triggers daily reset of usage stats via alarms
 - **`note_storage.js`**: Stores motivational messages for blocked sites
@@ -215,7 +215,29 @@ either `host` or `host/path`:
   opens, then "do you still want to open this?". Yes restores the exact original
   URL; No goes to the timeout page. It is a rule in its own right — a site or
   group may have only this and no hard limit.
-- **Combined**: Sites can have all three; blocked when ANY hard limit is reached
+- **Full Block** (`isBlocked: true`): the page never opens. A rule in its own
+  right, and the strictest one — see below.
+- **Combined**: Sites can have all four; blocked when ANY hard limit is reached
+
+### Full Block Rules (decided in `site_blocker.js`, `resolveFullBlock`)
+- **It outranks everything.** `checkAndBlockSite` answers `limitType: 'blocked'`
+  before it even reads usage: there is no allowance to measure, no countdown to
+  sit through and nothing an extension could add to.
+- **Group and site both count** (`group.isBlocked || site.isBlocked`). Unlike
+  time/opens — where the group *replaces* its members' config — a site keeps its
+  own block inside a group that has none, so grouping never silently unblocks a
+  page. A blocked group blocks every member.
+- **`isEnabled: false` still lifts it**, on the site or on the group, like any
+  other rule.
+- **Specificity still applies**: with `reddit.com` blocked and
+  `reddit.com/r/rust` limited, the section keeps its own (looser) rule.
+- **Not extendable.** `extendLimit` refuses with `SITE_FULLY_BLOCKED`, the
+  timeout page hides the extend form, and the only way back is turning the block
+  off in Settings.
+- **Other limits are kept, not cleared**, when the block goes on — the dialogs
+  disable those inputs and say so, so turning the block off restores them.
+- **Storage stores only an active block**: turning it off deletes the flag
+  rather than writing `false`, so `isBlocked !== true` everywhere means "no".
 
 ### Reflection Delay Rules (all decided in `reflection_gate.js`)
 - **Block first, pause second**: `handleBeforeNavigate` runs the block check, and
@@ -338,6 +360,7 @@ Current coverage:
 - `reflection_gate.test.js` — which delay applies (site vs group vs specificity), passes, and the URL round trip
 - `suggestion_engine.test.js` — the work/distraction heuristic, thresholds, the one-a-day and once-ever rules, visit counting
 - `mindful_limits.integration.test.js` — blocker + gate together: a pause-only site never blocks, a spent limit skips the countdown, a group pause is answered once
+- `full_block.test.js` — the full block: it outranks usage, extensions and the countdown; group vs site ownership; `isEnabled` lifts it; specificity exceptions; a block counts as a rule in site/group storage
 - `whats_new_storage.test.js` — the release-note flag is set by updates only and stays dismissed
 - `urlScope.test.ts`, `groupSuggestions.test.ts` — popup quick-add pattern and group-aware suggestions
 
@@ -350,8 +373,8 @@ packaged extension by the vite copy plugin.
 
 ```
 browser.storage.local keys:
-- distractingSites: Site[] (urlPattern, dailyLimitSeconds?, dailyOpenLimit?, reflectionDelaySeconds?, isEnabled, groupId?)
-- groups: Group[] (array of group objects)
+- distractingSites: Site[] (urlPattern, dailyLimitSeconds?, dailyOpenLimit?, reflectionDelaySeconds?, isBlocked?, isEnabled, groupId?)
+- groups: Group[] (array of group objects; same limit fields plus isBlocked?)
 - usageStats-YYYY-MM-DD: { [siteId]: { timeSpentSeconds, opens } } (one key per local day)
 - extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
 - reflections-YYYY-MM-DD: { [siteId]: { proceeded, dismissed } } (7 day window)

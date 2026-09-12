@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Plus, Globe, Loader2, Info, Hourglass, Lightbulb } from "lucide-react";
+import { Settings, Plus, Globe, Loader2, Info, Hourglass, Lightbulb, Ban } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import { UIGroup } from "@/lib/storage";
 import type { LimitSuggestion } from "@/lib/api";
@@ -29,6 +29,8 @@ interface UnlimitedSiteViewProps {
   onAcceptSuggestion?: (seconds: number) => void;
   onDismissSuggestion?: () => void;
   onAddLimit: () => void;
+  /** Blocks the site outright, without any of the presets above. */
+  onBlockSite: () => void;
   onOpenSettings: () => void;
   onOpenGroupSelector: () => void;
   onAddToGroup: (groupId: string) => void;
@@ -53,6 +55,7 @@ export function UnlimitedSiteView({
   onAcceptSuggestion,
   onDismissSuggestion,
   onAddLimit,
+  onBlockSite,
   onOpenSettings,
   onOpenGroupSelector,
   onAddToGroup,
@@ -136,11 +139,12 @@ export function UnlimitedSiteView({
           </div>
         )}
 
-        <p className="text-sm text-muted-foreground mb-5">
-          {t("unlimitedSiteView_description")}
-        </p>
-
-        <div className="space-y-4">
+        {/* No standfirst here: "Not tracked" above and the three labelled
+            sections below already say what this screen is for, and those two
+            wrapped lines were the difference between fitting and scrolling.
+            space-y-3 rather than -4 for the same reason — this stack carries
+            four ways to limit a site plus the group option. */}
+        <div className="space-y-3">
           <div>
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
               {t("unlimitedSiteView_timeLimit_label")}
@@ -213,7 +217,22 @@ export function UnlimitedSiteView({
             {t("unlimitedSiteView_button_addLimit")}
           </Button>
 
-          <div className="relative py-2">
+          {/* A peer of "add limit" rather than a fourth preset: it replaces the
+              limits above instead of combining with them. Kept to one line —
+              this whole view has to stay inside the 600px a browser gives a
+              popup, and the labels are long in several locales. */}
+          <Button
+            variant="outline"
+            className="w-full rounded-xl border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
+            size="sm"
+            onClick={onBlockSite}
+            disabled={isSaving}
+          >
+            <Ban size={14} className="mr-1.5" />
+            {t("unlimitedSiteView_button_blockSite")}
+          </Button>
+
+          <div className="relative py-1">
             <div className="absolute inset-x-0 top-1/2 h-px bg-border" />
             <div className="relative flex justify-center">
               <span className="px-2 bg-card text-xs text-muted-foreground">

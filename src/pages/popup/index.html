@@ -4,6 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time Limit - Don't waste your time doomscrolling.</title>
+    <style>
+      /*
+       * The popup is the one page whose window is sized by its own content.
+       * Width is pinned to the cards (w-80 = 320px) so that a view which
+       * overruns the height cannot also make the window wider: a browser that
+       * needs a vertical scrollbar will otherwise widen the popup to fit it,
+       * which reads as the popup growing in both directions at once.
+       *
+       * Height is deliberately left alone. Never set it in viewport units:
+       * vh resolves against a viewport that this page's content is itself
+       * about to define, so `max-height: 100vh` collapses the popup to
+       * nothing. A fixed pixel cap would be a guess at a number only the
+       * browser knows (Firefox hands over noticeably less than the 600px it
+       * documents). Letting the content size the window is correct — the job
+       * of fitting belongs to the views, which are built to stay well inside
+       * ~580px.
+       */
+      html,
+      body {
+        width: 320px;
+        overflow-x: hidden;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

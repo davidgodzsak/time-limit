@@ -8,7 +8,7 @@
  * info page.
  */
 
-import { Hourglass, Lightbulb, type LucideIcon } from 'lucide-react';
+import { Ban, Hourglass, Lightbulb, type LucideIcon } from 'lucide-react';
 
 export interface WhatsNewHighlight {
   icon: LucideIcon;
@@ -19,6 +19,13 @@ export interface WhatsNewHighlight {
 }
 
 export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
+  {
+    icon: Ban,
+    titleKey: 'whatsNew_fullBlock_title',
+    bodyKey: 'whatsNew_fullBlock_body',
+  },
+  // The two below shipped in 1.11.0 and stay for now: this release follows it
+  // closely enough that many users will see both notes as one.
   {
     icon: Hourglass,
     titleKey: 'whatsNew_reflection_title',

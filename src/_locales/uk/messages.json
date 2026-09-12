@@ -19,7 +19,6 @@
   "normalPageView_minLeft": { "message": "хв залишилось", "description": "Short label for remaining time unit" },
   "normalPageView_extended_badge": { "message": "Розширений ліміт активний", "description": "Badge shown on a limited site when the daily limit has been extended for today" },
   "unlimitedSiteView_notTracked": { "message": "Не відстежується", "description": "Status label for unlimited sites" },
-  "unlimitedSiteView_description": { "message": "Додайте ліміти, щоб залишатися уважними під час перегляду цього сайту.", "description": "Description in unlimited site view" },
   "unlimitedSiteView_timeLimit_label": { "message": "Ліміт часу", "description": "Section label for time limit selection" },
   "unlimitedSiteView_opensLimit_label": { "message": "Ліміт відкрить", "description": "Section label for opens limit selection" },
   "unlimitedSiteView_button_addLimit": { "message": "Додати ліміт", "description": "Button to add a limit to the site" },
@@ -327,5 +326,81 @@
   "whatsNew_suggestions_body": { "message": "Якщо ви знову й знову відкриваєте той самий сайт, розширення запропонує для нього паузу. Не більше однієї пропозиції на день і ніколи двічі для того самого сайту.", "description": "Release note body: limit suggestions" },
   "whatsNew_support_title": { "message": "Безкоштовно, приватно й без реклами", "description": "Heading of the donation block in the release note" },
   "whatsNew_support_description": { "message": "Якщо він щодня стає у пригоді, невеликий внесок допоможе його розвивати.", "description": "Body of the donation block in the release note" },
-  "whatsNew_support_button": { "message": "Підтримати розробку", "description": "Opens the donation section of the info page" }
+  "whatsNew_support_button": { "message": "Підтримати розробку", "description": "Opens the donation section of the info page" },
+  "badge_blocked": {
+    "message": "Заблоковано",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Заблокувати повністю",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Цей сайт ніколи не відкриється — жодного денного ліміту, жодного відліку, нічого продовжувати. Вимкніть тут, щоб повернути сайт.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Зберігається, але не діє, поки увімкнено блокування.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Заблокувати повністю",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Кожен сайт у цій групі заблоковано повністю, незалежно від його власних лімітів.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Заблокувати цей сайт",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 тепер заблоковано",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Не вдалося заблокувати цей сайт. Спробуйте ще раз.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Цей сайт заблоковано",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Немає чого відлічувати й немає чого продовжувати.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Заблоковано групою «$1».",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Цей сайт заблоковано.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 заблоковано — на відміну від денного ліміту, це не скидається опівночі.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Заблокований сайт",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Цей сайт заблоковано повністю, тож продовжувати немає чого.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Заблоковано",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Блокуйте сайт повністю",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Справжнє блокування замість однохвилинного ліміту, який його замінював. Працює для окремого сайту або цілої групи, і продовжувати нічого.",
+    "description": "Release note sentence explaining the full block"
+  }
 }

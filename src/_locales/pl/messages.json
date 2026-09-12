@@ -91,10 +91,6 @@
     "message": "Nieśledzona",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Dodaj limity, aby świadomiej korzystać z tej strony.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Limit czasu",
     "description": "Section label for time limit selection"
@@ -1450,5 +1446,81 @@
   "whatsNew_support_button": {
     "message": "Wesprzyj rozwój",
     "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Zablokowane",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Zablokuj całkowicie",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Ta strona nigdy się nie otworzy — bez dziennego limitu, bez odliczania, bez możliwości przedłużenia. Wyłącz tutaj, aby ją odzyskać.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Zachowane, ale nieużywane, dopóki blokada jest włączona.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Zablokuj całkowicie",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Każda strona w tej grupie jest całkowicie zablokowana, niezależnie od własnych limitów.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Zablokuj tę stronę",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 jest teraz zablokowana",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Nie udało się zablokować tej strony. Spróbuj ponownie.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Ta strona jest zablokowana",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Nie ma czego odliczać ani przedłużać.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Zablokowane przez grupę „$1”.",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Ta strona jest zablokowana.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 jest zablokowana — w przeciwieństwie do limitu dziennego to nie resetuje się o północy.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Zablokowana strona",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Ta strona jest całkowicie zablokowana, więc nie ma limitu do przedłużenia.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Zablokowane",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Zablokuj stronę całkowicie",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Prawdziwa blokada zamiast jednominutowego limitu udającego blokadę. Działa dla pojedynczej strony lub całej grupy i nie ma czego przedłużać.",
+    "description": "Release note sentence explaining the full block"
   }
 }

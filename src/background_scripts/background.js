@@ -3,7 +3,12 @@ import {
   performDailyReset,
   getCurrentDateString,
 } from './daily_reset.js';
-import { handlePotentialRedirect, checkAndBlockSite } from './site_blocker.js';
+import {
+  handlePotentialRedirect,
+  checkAndBlockSite,
+  resolveFullBlock,
+  buildTimeoutUrl,
+} from './site_blocker.js';
 import {
   startTracking,
   stopTracking,
@@ -1171,12 +1176,22 @@ async function handleMessage(message, _sender, _sendResponse) {
             site.reflectionDelaySeconds ||
             0;
 
+          // A full block outranks every other rule, so the popup needs to know
+          // about it before it draws any progress. Same resolution as the
+          // blocker uses (see resolveFullBlock).
+          const fullBlock = resolveFullBlock(
+            site,
+            site.groupId ? groups.find((g) => g.id === site.groupId) : null
+          );
+
           // Enhanced site info with real usage data
           const enhancedSiteInfo = {
             ...site,
             dailyLimitSeconds: effectiveLimitSeconds,
             dailyOpenLimit: effectiveOpenLimit,
             reflectionDelaySeconds: effectiveReflectionDelay,
+            isBlocked: fullBlock.isBlocked,
+            blockedByGroup: fullBlock.byGroup,
             todaySeconds: siteUsage.timeSpentSeconds,
             todayOpenCount: siteUsage.opens,
             isExtended: !!pageExtension,
@@ -1907,6 +1922,26 @@ async function handleMessage(message, _sender, _sendResponse) {
             }
           }
 
+          // 6b. A full block is not an allowance, so there is nothing to
+          // extend: the honest way back is turning the block off in settings.
+          const extBlock = resolveFullBlock(
+            site,
+            site.groupId ? extGroups.find((g) => g.id === site.groupId) : null
+          );
+          if (extBlock.isBlocked) {
+            return {
+              success: false,
+              error: {
+                message: extBlock.byGroup
+                  ? `This site is blocked as part of the group "${extBlock.groupName}". Turn the block off in Settings to open it again.`
+                  : 'This site is blocked. Turn the block off in Settings to open it again.',
+                type: ERROR_TYPES.VALIDATION,
+                isRetryable: false,
+                code: 'SITE_FULLY_BLOCKED',
+              },
+            };
+          }
+
           // 7. Check not already extended today (per group/site)
           const alreadyExtended = await hasExtensionToday(
             extensionKey,
@@ -2572,6 +2607,20 @@ async function _reEvaluateAllTabs() {
 
         // Update badge for this tab
         await updateBadge(tab.id);
+
+        // A rule that was just added or tightened can block a tab the user is
+        // sitting on — a full block always does. Send it to the timeout page
+        // now rather than waiting for the next navigation.
+        if (
+          blockResult.shouldBlock &&
+          blockResult.siteId &&
+          !tab.url.includes('pages/timeout/index.html')
+        ) {
+          await browser.tabs.update(tab.id, {
+            url: buildTimeoutUrl(tab.url, blockResult),
+          });
+          continue;
+        }
 
         // Special handling for timeout pages
         if (tab.url.includes('pages/timeout/index.html')) {

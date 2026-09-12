@@ -6,6 +6,7 @@ import {
   Trash2,
   Edit2,
   Hourglass,
+  Ban,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -103,7 +104,17 @@ export function GroupsTab({
                   </div>
                 </div>
                 <div className="flex-1 text-right space-y-1">
-                  {group.timeLimit > 0 && (
+                  {/* A blocked group has no allowance, so the numbers below
+                      would only be noise — show the block on its own. */}
+                  {group.isBlocked && (
+                    <div className="flex items-center gap-2 text-sm justify-end text-destructive">
+                      <Ban size={14} />
+                      <span className="font-medium">
+                        {t("groups_blocked_label")}
+                      </span>
+                    </div>
+                  )}
+                  {!group.isBlocked && group.timeLimit > 0 && (
                     <div className="flex items-center gap-2 text-sm justify-end">
                       <Clock size={14} className="text-muted-foreground" />
                       <span className="font-medium">
@@ -111,7 +122,7 @@ export function GroupsTab({
                       </span>
                     </div>
                   )}
-                  {group.opensLimit && group.opensLimit > 0 && (
+                  {!group.isBlocked && group.opensLimit && group.opensLimit > 0 && (
                     <div className="flex items-center gap-2 text-sm justify-end">
                       <MousePointerClick
                         size={14}
@@ -122,7 +133,7 @@ export function GroupsTab({
                       </span>
                     </div>
                   )}
-                  {group.reflectionDelay && group.reflectionDelay > 0 && (
+                  {!group.isBlocked && group.reflectionDelay && group.reflectionDelay > 0 && (
                     <div className="flex items-center gap-2 text-sm justify-end">
                       <Hourglass size={14} className="text-muted-foreground" />
                       <span className="font-medium">

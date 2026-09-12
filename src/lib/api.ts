@@ -138,6 +138,9 @@ export async function updateSite(
     backendUpdates.reflectionDelaySeconds =
       updates.reflectionDelay && updates.reflectionDelay > 0 ? updates.reflectionDelay : null;
   }
+  if ('isBlocked' in updates) {
+    backendUpdates.isBlocked = updates.isBlocked === true;
+  }
   if (updates.isEnabled !== undefined) {
     backendUpdates.isEnabled = updates.isEnabled;
   }
@@ -205,6 +208,9 @@ export async function updateGroup(
     backendUpdates.reflectionDelaySeconds =
       updates.reflectionDelay && updates.reflectionDelay > 0 ? updates.reflectionDelay : null;
   }
+  if ('isBlocked' in updates) {
+    backendUpdates.isBlocked = updates.isBlocked === true;
+  }
   if (updates.isEnabled !== undefined) {
     backendUpdates.isEnabled = updates.isEnabled;
   }
@@ -258,6 +264,10 @@ export interface CurrentPageSiteInfo {
   dailyLimitSeconds?: number;
   dailyOpenLimit?: number;
   reflectionDelaySeconds?: number;
+  /** The site never opens: set by the site itself or by its group. */
+  isBlocked?: boolean;
+  /** True when the block comes from the group rather than the site. */
+  blockedByGroup?: boolean;
   todaySeconds?: number;
   todayOpenCount?: number;
   isExtended?: boolean;

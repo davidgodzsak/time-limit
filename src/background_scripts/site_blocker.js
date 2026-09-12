@@ -4,12 +4,56 @@ import { getUsageStats } from './usage_storage.js';
 import { getExtensions } from './extension_storage.js';
 import { findMatchingSite } from './url_matcher.js';
 
+/**
+ * Works out whether a full block covers a site, and who set it.
+ *
+ * A full block is the strictest rule the extension has: the site never opens,
+ * there is no daily allowance to spend and no countdown to sit through. It is
+ * deliberately unlike the time/opens limits, where a group *replaces* its
+ * members' config:
+ *
+ * - A blocked group blocks every site in it.
+ * - A site keeps its own block inside a group that has none, so adding a
+ *   blocked site to a group never silently unblocks it.
+ * - Turning the site or the group off (`isEnabled: false`) lifts the block,
+ *   the same as it lifts every other rule.
+ *
+ * Every caller that needs to know "is this page blocked outright" goes through
+ * here — the blocker, the badge, the popup's page info and the extend flow.
+ *
+ * @param {Object|null} site - The matched distracting site.
+ * @param {Object|null} group - Its group, if it has one (enabled or not).
+ * @returns {{isBlocked: boolean, byGroup: boolean, groupName: string|null}}
+ */
+export function resolveFullBlock(site, group) {
+  const groupActive = !!group && group.isEnabled !== false;
+  const byGroup = groupActive && group.isBlocked === true;
+  const bySite = !!site && site.isBlocked === true;
+
+  return {
+    isBlocked: byGroup || bySite,
+    byGroup,
+    groupName: byGroup ? group.name || null : null,
+  };
+}
+
 function _getCurrentDateString() {
   const now = new Date();
   const year = now.getFullYear();
   const month = (now.getMonth() + 1).toString().padStart(2, '0');
   const day = now.getDate().toString().padStart(2, '0');
   return `${year}-${month}-${day}`;
+}
+
+/**
+ * The English fallback sentence shown at the bottom of the timeout page.
+ * The page itself localizes the `blocked` case; this is what a stale page or a
+ * log line gets.
+ */
+function _generateBlockedReason(groupName) {
+  return groupName
+    ? `This site is blocked as part of the group "${groupName}".`
+    : 'This site is blocked.';
 }
 
 function _generateBlockingReason(site, siteStats, timeExceeded, opensExceeded, isGroup = false, groupName = null) {
@@ -76,6 +120,22 @@ export async function checkAndBlockSite(tabId, url) {
       };
     }
 
+    const siteGroup = matchingSite.groupId
+      ? groups.find((g) => g.id === matchingSite.groupId) || null
+      : null;
+
+    // A full block outranks everything else: there is no allowance to measure
+    // and nothing an extension could add to, so answer before touching usage.
+    const fullBlock = resolveFullBlock(matchingSite, siteGroup);
+    if (fullBlock.isBlocked) {
+      return {
+        shouldBlock: true,
+        siteId: matchingSite.id,
+        reason: _generateBlockedReason(fullBlock.groupName),
+        limitType: 'blocked',
+      };
+    }
+
     const dateString = _getCurrentDateString();
     const dailyStats = await getUsageStats(dateString);
 
@@ -84,20 +144,15 @@ export async function checkAndBlockSite(tabId, url) {
     let isInGroup = false;
     let groupName = null;
 
-    if (matchingSite.groupId) {
-      const group = groups.find((g) => g.id === matchingSite.groupId);
-
-      if (group && group.isEnabled !== false) {
-        isInGroup = true;
-        groupName = group.name;
-        limitConfig = group;
-        usageStats = _aggregateGroupUsage(distractingSites, matchingSite.groupId, dailyStats);
-      } else {
-        usageStats = dailyStats[matchingSite.id] || {
-          timeSpentSeconds: 0,
-          opens: 0,
-        };
-      }
+    if (siteGroup && siteGroup.isEnabled !== false) {
+      isInGroup = true;
+      groupName = siteGroup.name;
+      limitConfig = siteGroup;
+      usageStats = _aggregateGroupUsage(
+        distractingSites,
+        matchingSite.groupId,
+        dailyStats
+      );
     } else {
       usageStats = dailyStats[matchingSite.id] || {
         timeSpentSeconds: 0,
@@ -224,19 +279,27 @@ export async function checkOpenLimitBeforeAccess(url) {
   }
 }
 
+/**
+ * Builds the timeout page URL for a block result, carrying what the page needs
+ * to explain itself (and to know a full block has no limit to extend).
+ *
+ * @param {string} url - The URL the user was trying to open.
+ * @param {{siteId: string, reason: string, limitType: string}} result - From checkAndBlockSite.
+ * @returns {string} The extension page URL to send the tab to.
+ */
+export function buildTimeoutUrl(url, { siteId, reason, limitType }) {
+  return (
+    browser.runtime.getURL('pages/timeout/index.html') +
+    `?blockedUrl=${encodeURIComponent(url)}&siteId=${encodeURIComponent(siteId)}&reason=${encodeURIComponent(reason)}&limitType=${encodeURIComponent(limitType)}`
+  );
+}
+
 export async function handlePotentialRedirect(tabId, url) {
   try {
-    const { shouldBlock, siteId, reason, limitType } = await checkAndBlockSite(
-      tabId,
-      url
-    );
+    const result = await checkAndBlockSite(tabId, url);
 
-    if (shouldBlock && siteId) {
-      const timeoutUrl =
-        browser.runtime.getURL('pages/timeout/index.html') +
-        `?blockedUrl=${encodeURIComponent(url)}&siteId=${encodeURIComponent(siteId)}&reason=${encodeURIComponent(reason)}&limitType=${encodeURIComponent(limitType)}`;
-
-      await browser.tabs.update(tabId, { url: timeoutUrl });
+    if (result.shouldBlock && result.siteId) {
+      await browser.tabs.update(tabId, { url: buildTimeoutUrl(url, result) });
       return true;
     }
 
