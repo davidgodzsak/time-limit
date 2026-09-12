@@ -57,6 +57,7 @@ export async function getDistractingSites() {
  * @param {string} siteObject.urlPattern - The URL pattern for the site.
  * @param {number} siteObject.dailyLimitSeconds - The daily time limit in seconds.
  * @param {number} [siteObject.dailyOpenLimit] - The daily open count limit (optional).
+ * @param {boolean} [siteObject.isBlocked] - Blocks the site outright; no allowance, no countdown.
  * @param {boolean} [siteObject.isEnabled=true] - Whether the site rule is enabled.
  * @param {string} [siteObject.groupId] - The ID of the group this site belongs to (optional).
  * @returns {Promise<Object|null>} A promise that resolves to the added site object (including its new ID)
@@ -117,6 +118,18 @@ export async function addDistractingSite(siteObject) {
     return null;
   }
 
+  // Validate isBlocked if provided (the full block: the site never opens)
+  if (
+    Object.prototype.hasOwnProperty.call(siteObject, 'isBlocked') &&
+    typeof siteObject.isBlocked !== 'boolean'
+  ) {
+    console.error(
+      'Invalid isBlocked provided to addDistractingSite. Must be a boolean if specified.',
+      siteObject.isBlocked
+    );
+    return null;
+  }
+
   // Validate groupId if provided
   if (
     Object.prototype.hasOwnProperty.call(siteObject, 'groupId') &&
@@ -156,6 +169,11 @@ export async function addDistractingSite(siteObject) {
     Object.prototype.hasOwnProperty.call(siteObject, 'reflectionDelaySeconds')
   ) {
     newSite.reflectionDelaySeconds = siteObject.reflectionDelaySeconds;
+  }
+
+  // Add the full block only when it is on — an off block is simply absent.
+  if (siteObject.isBlocked === true) {
+    newSite.isBlocked = true;
   }
 
   // Add groupId if provided
@@ -273,6 +291,17 @@ export async function updateDistractingSite(siteId, updates) {
     return null;
   }
   if (
+    Object.prototype.hasOwnProperty.call(updates, 'isBlocked') &&
+    updates.isBlocked !== null &&
+    typeof updates.isBlocked !== 'boolean'
+  ) {
+    console.error(
+      'Invalid isBlocked in updates for updateDistractingSite.',
+      updates.isBlocked
+    );
+    return null;
+  }
+  if (
     Object.prototype.hasOwnProperty.call(updates, 'groupId') &&
     updates.groupId !== null &&
     (typeof updates.groupId !== 'string' || updates.groupId.trim() === '')
@@ -335,18 +364,25 @@ export async function updateDistractingSite(siteId, updates) {
     if (updates.reflectionDelaySeconds === null) {
       delete updatedSite.reflectionDelaySeconds;
     }
+    // An off block is stored as the absence of the flag, so turning it off
+    // removes it rather than writing `false`.
+    if (updates.isBlocked === false || updates.isBlocked === null) {
+      delete updatedSite.isBlocked;
+    }
 
     // A site in a group inherits the group's limits, so it may hold none of its
     // own. A standalone site must keep at least one rule — a time limit, an
-    // opens limit, or a reflection delay, which stands on its own.
+    // opens limit, a reflection delay, or a full block, each of which stands on
+    // its own.
     if (
       !updatedSite.groupId &&
+      updatedSite.isBlocked !== true &&
       typeof updatedSite.dailyLimitSeconds !== 'number' &&
       typeof updatedSite.dailyOpenLimit !== 'number' &&
       typeof updatedSite.reflectionDelaySeconds !== 'number'
     ) {
       console.error(
-        `Cannot remove all limits from site "${siteId}". At least one of dailyLimitSeconds, dailyOpenLimit or reflectionDelaySeconds is required.`
+        `Cannot remove all limits from site "${siteId}". At least one of dailyLimitSeconds, dailyOpenLimit, reflectionDelaySeconds or isBlocked is required.`
       );
       return null;
     }

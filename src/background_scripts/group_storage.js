@@ -33,6 +33,7 @@ export async function getGroups() {
  * @param {string} [groupObject.color] - The group color (optional, defaults to a color).
  * @param {number} groupObject.dailyLimitSeconds - The daily time limit in seconds for the group.
  * @param {number} [groupObject.dailyOpenLimit] - The daily open count limit for the group (optional).
+ * @param {boolean} [groupObject.isBlocked] - Blocks every site in the group outright.
  * @param {boolean} [groupObject.isEnabled=true] - Whether the group rule is enabled.
  * @returns {Promise<Object|null>} A promise that resolves to the added group object (including its new ID and siteIds array)
  *                                 or null if validation fails or a storage error occurs.
@@ -89,15 +90,28 @@ export async function addGroup(groupObject) {
     return null;
   }
 
-  // A group must have at least one rule: a time limit, an opens limit, or a
-  // reflection delay (which is usable on its own).
+  // Validate isBlocked if provided (blocks every site in the group outright)
   if (
+    Object.prototype.hasOwnProperty.call(groupObject, 'isBlocked') &&
+    typeof groupObject.isBlocked !== 'boolean'
+  ) {
+    console.error(
+      'Invalid isBlocked provided to addGroup. Must be a boolean if specified.',
+      groupObject.isBlocked
+    );
+    return null;
+  }
+
+  // A group must have at least one rule: a time limit, an opens limit, a
+  // reflection delay, or a full block (each usable on its own).
+  if (
+    groupObject.isBlocked !== true &&
     typeof groupObject.dailyLimitSeconds !== 'number' &&
     typeof groupObject.dailyOpenLimit !== 'number' &&
     typeof groupObject.reflectionDelaySeconds !== 'number'
   ) {
     console.error(
-      'addGroup requires at least one of dailyLimitSeconds, dailyOpenLimit or reflectionDelaySeconds.',
+      'addGroup requires at least one of dailyLimitSeconds, dailyOpenLimit, reflectionDelaySeconds or isBlocked.',
       groupObject
     );
     return null;
@@ -123,6 +137,10 @@ export async function addGroup(groupObject) {
     Object.prototype.hasOwnProperty.call(groupObject, 'reflectionDelaySeconds')
   ) {
     newGroup.reflectionDelaySeconds = groupObject.reflectionDelaySeconds;
+  }
+  // Only an active block is stored; off is the absence of the flag.
+  if (groupObject.isBlocked === true) {
+    newGroup.isBlocked = true;
   }
 
   try {
@@ -222,6 +240,17 @@ export async function updateGroup(groupId, updates) {
     );
     return null;
   }
+  if (
+    Object.prototype.hasOwnProperty.call(updates, 'isBlocked') &&
+    updates.isBlocked !== null &&
+    typeof updates.isBlocked !== 'boolean'
+  ) {
+    console.error(
+      'Invalid isBlocked in updates for updateGroup.',
+      updates.isBlocked
+    );
+    return null;
+  }
 
   try {
     const groups = await getGroups();
@@ -245,15 +274,20 @@ export async function updateGroup(groupId, updates) {
     if (updates.reflectionDelaySeconds === null) {
       delete updatedGroup.reflectionDelaySeconds;
     }
+    if (updates.isBlocked === false || updates.isBlocked === null) {
+      delete updatedGroup.isBlocked;
+    }
 
-    // A group must always keep at least one rule (time, opens or a delay).
+    // A group must always keep at least one rule (time, opens, a delay or a
+    // full block).
     if (
+      updatedGroup.isBlocked !== true &&
       typeof updatedGroup.dailyLimitSeconds !== 'number' &&
       typeof updatedGroup.dailyOpenLimit !== 'number' &&
       typeof updatedGroup.reflectionDelaySeconds !== 'number'
     ) {
       console.error(
-        `Cannot remove all limits from group "${groupId}". At least one of dailyLimitSeconds, dailyOpenLimit or reflectionDelaySeconds is required.`
+        `Cannot remove all limits from group "${groupId}". At least one of dailyLimitSeconds, dailyOpenLimit, reflectionDelaySeconds or isBlocked is required.`
       );
       return null;
     }

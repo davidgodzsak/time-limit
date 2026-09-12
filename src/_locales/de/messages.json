@@ -1450,5 +1450,89 @@
   "whatsNew_support_button": {
     "message": "Entwicklung unterstützen",
     "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Blockiert",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Vollständig blockieren",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Diese Seite öffnet sich nie — kein Tageskontingent, kein Countdown, nichts zu verlängern. Hier wieder ausschalten, um die Seite zurückzubekommen.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Bleibt gespeichert, wird aber nicht verwendet, solange die Blockierung aktiv ist.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Vollständig blockieren",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Jede Seite in dieser Gruppe wird vollständig blockiert, unabhängig von ihren eigenen Limits.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Diese Seite blockieren",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "unlimitedSiteView_blockSite_hint": {
+    "message": "Blockiert sie vollständig. Du kannst das in den Einstellungen rückgängig machen.",
+    "description": "Explains that a block can be undone in settings"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 ist jetzt blockiert",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Seite konnte nicht blockiert werden. Bitte versuche es erneut.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Diese Seite ist blockiert",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Sie öffnet sich erst, wenn du die Blockierung in den Einstellungen ausschaltest.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Blockiert durch die Gruppe „$1“.",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Diese Seite ist blockiert.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 bleibt blockiert, bis du die Blockierung in den Einstellungen ausschaltest — sie wird über Nacht nicht zurückgesetzt.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Blockierte Seite",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Diese Seite ist vollständig blockiert, es gibt also kein Limit zum Verlängern. Schalte die Blockierung in den Einstellungen aus, wenn du sie wirklich brauchst.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "timeoutPageView_button_openSettings": {
+    "message": "Einstellungen öffnen",
+    "description": "Popup button opening the settings page"
+  },
+  "groups_blocked_label": {
+    "message": "Blockiert",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Seite vollständig blockieren",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Eine echte Blockierung statt eines Ein-Minuten-Limits als Notlösung. Funktioniert pro Seite oder für eine ganze Gruppe — und es gibt nichts zu verlängern.",
+    "description": "Release note sentence explaining the full block"
   }
 }

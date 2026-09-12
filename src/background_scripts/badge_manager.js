@@ -7,7 +7,9 @@
  */
 
 import { getDistractingSites } from './site_storage.js';
+import { getGroups } from './group_storage.js';
 import { getUsageStats } from './usage_storage.js';
+import { resolveFullBlock } from './site_blocker.js';
 import {
   checkIfUrlIsDistracting,
   initializeDistractionDetector,
@@ -20,6 +22,9 @@ import { getVisitHost } from './visit_tracker.js';
 const SUGGESTION_BADGE_TEXT = '!';
 const SUGGESTION_BADGE_COLOR = [245, 158, 11, 255]; // amber
 const DEFAULT_BADGE_COLOR = [0, 122, 255, 255]; // blue
+/** Badge for a fully blocked site — no allowance left to count down. */
+const BLOCKED_BADGE_TEXT = '✕';
+const BLOCKED_BADGE_COLOR = [220, 38, 38, 255]; // red
 
 // Ensure detector is initialized
 let _detectorInitialized = false;
@@ -262,6 +267,20 @@ export async function updateBadge(tabId) {
       );
       await _setBadgeText(tabId, '');
       return;
+    }
+
+    // A fully blocked site has no allowance to show. Say so instead of a
+    // remaining count that would always read the same.
+    if (site.groupId || site.isBlocked) {
+      const groups = site.groupId ? await getGroups() : [];
+      const fullBlock = resolveFullBlock(
+        site,
+        groups.find((g) => g.id === site.groupId) || null
+      );
+      if (fullBlock.isBlocked) {
+        await _setBadgeText(tabId, BLOCKED_BADGE_TEXT, BLOCKED_BADGE_COLOR);
+        return;
+      }
     }
 
 

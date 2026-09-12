@@ -1450,5 +1450,89 @@
   "whatsNew_support_button": {
     "message": "Support development",
     "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Blocked",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Block completely",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "This site never opens — no daily allowance, no countdown, nothing to extend. Turn it off here to get the site back.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Kept, but not used while the block is on.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Block completely",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Every site in this group is blocked outright, whatever limits its sites have of their own.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Block this site",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "unlimitedSiteView_blockSite_hint": {
+    "message": "Blocks it completely. You can undo this in Settings.",
+    "description": "Explains that a block can be undone in settings"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 is blocked now",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Could not block this site. Please try again.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "This site is blocked",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "It won't open until you turn the block off in Settings.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Blocked by the group \"$1\".",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "This site is blocked.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 stays blocked until you turn the block off in Settings — this one does not reset overnight.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Blocked site",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "This site is blocked completely, so there is no limit to extend. Turn the block off in Settings if you really need it.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "timeoutPageView_button_openSettings": {
+    "message": "Open settings",
+    "description": "Popup button opening the settings page"
+  },
+  "groups_blocked_label": {
+    "message": "Blocked",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Block a site completely",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "A real block, instead of a one minute limit standing in for one. Works per site or per whole group, and there is nothing to extend.",
+    "description": "Release note sentence explaining the full block"
   }
 }

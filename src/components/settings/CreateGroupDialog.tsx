@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Plus, Clock, MousePointerClick, Hourglass } from "lucide-react";
+import { Plus, Clock, MousePointerClick, Hourglass, Ban } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import {
   Dialog,
   DialogContent,
@@ -23,6 +24,7 @@ interface CreateGroupDialogProps {
     timeLimit?: number;
     opensLimit?: number;
     reflectionDelay?: number;
+    isBlocked?: boolean;
   }) => void;
   initialGroup?: {
     id: string;
@@ -31,6 +33,7 @@ interface CreateGroupDialogProps {
     timeLimit: number;
     opensLimit?: number;
     reflectionDelay?: number;
+    isBlocked?: boolean;
   };
   isEditing?: boolean;
 }
@@ -52,6 +55,7 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
   const [reflectionDelay, setReflectionDelay] = useState<number | undefined>(
     initialGroup?.reflectionDelay
   );
+  const [isBlocked, setIsBlocked] = useState(initialGroup?.isBlocked === true);
 
   // Update form when dialog opens with initialGroup data
   useEffect(() => {
@@ -62,6 +66,7 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
         setTimeLimit(initialGroup.timeLimit ? initialGroup.timeLimit.toString() : "");
         setOpensLimit((initialGroup.opensLimit || "").toString());
         setReflectionDelay(initialGroup.reflectionDelay || undefined);
+        setIsBlocked(initialGroup.isBlocked === true);
       } else {
         // Reset form for create mode
         setGroupName("");
@@ -69,6 +74,7 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
         setTimeLimit("30");
         setOpensLimit("");
         setReflectionDelay(undefined);
+        setIsBlocked(false);
       }
     }
   }, [open, initialGroup]);
@@ -81,9 +87,9 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
     const parsedTimeLimit = timeLimit ? parseInt(timeLimit) : undefined;
     const parsedOpensLimit = opensLimit ? parseInt(opensLimit) : undefined;
 
-    // A reflection delay counts as a rule of its own, so any one of the three
-    // is enough.
-    if (!parsedTimeLimit && !parsedOpensLimit && !reflectionDelay) {
+    // A reflection delay and a full block each count as a rule of their own, so
+    // any one of the four is enough.
+    if (!parsedTimeLimit && !parsedOpensLimit && !reflectionDelay && !isBlocked) {
       alert(t("dialog_createGroup_validation"));
       return;
     }
@@ -96,12 +102,14 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
       timeLimit: parsedTimeLimit, // undefined = no time limit
       opensLimit: parsedOpensLimit, // undefined = no opens limit
       reflectionDelay, // undefined = opens straight away
+      isBlocked, // true = nothing in this group opens at all
     });
     setGroupName("");
     setSelectedColor("bg-blue-500");
     setTimeLimit("30");
     setOpensLimit("");
     setReflectionDelay(undefined);
+    setIsBlocked(false);
     onOpenChange(false);
   };
 
@@ -146,6 +154,26 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
             </div>
           </div>
 
+          <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-3">
+            <div className="flex items-center justify-between gap-3">
+              <Label
+                htmlFor="group-block"
+                className="flex items-center gap-2 text-destructive"
+              >
+                <Ban size={14} />
+                {t("dialog_createGroup_label_blockCompletely")}
+              </Label>
+              <Switch
+                id="group-block"
+                checked={isBlocked}
+                onCheckedChange={setIsBlocked}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              {t("dialog_createGroup_hint_blockCompletely")}
+            </p>
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="group-time-limit" className="flex items-center gap-2">
@@ -157,6 +185,7 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
                 type="number"
                 value={timeLimit}
                 onChange={(e) => setTimeLimit(e.target.value)}
+                disabled={isBlocked}
                 className="rounded-xl"
               />
             </div>
@@ -170,6 +199,7 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
                 type="number"
                 value={opensLimit}
                 onChange={(e) => setOpensLimit(e.target.value)}
+                disabled={isBlocked}
                 className="rounded-xl"
               />
             </div>
@@ -184,9 +214,12 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
               value={reflectionDelay}
               onChange={setReflectionDelay}
               includeOff
+              disabled={isBlocked}
             />
             <p className="text-xs text-muted-foreground">
-              {t("dialog_createGroup_hint_reflectionDelay")}
+              {isBlocked
+                ? t("dialog_addSite_blocked_note")
+                : t("dialog_createGroup_hint_reflectionDelay")}
             </p>
           </div>
         </div>
@@ -197,7 +230,8 @@ const CreateGroupDialog = ({ open, onOpenChange, onCreate, initialGroup, isEditi
           <Button
             onClick={handleCreate}
             disabled={
-              !groupName.trim() || (!timeLimit && !opensLimit && !reflectionDelay)
+              !groupName.trim() ||
+              (!timeLimit && !opensLimit && !reflectionDelay && !isBlocked)
             }
             className="rounded-xl"
           >

@@ -45,6 +45,12 @@ const PluginPopup = () => {
   const [opensLimit, setOpensLimit] = useState(0);
   const [isExtended, setIsExtended] = useState(false);
   const [reflectionDelay, setReflectionDelay] = useState(0);
+  // The site never opens: set on the site itself or on its group.
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [blockedByGroup, setBlockedByGroup] = useState(false);
+  // Set when the timeout page we are looking at is a full block rather than a
+  // spent allowance, so the popup does not offer an extension that cannot work.
+  const [timeoutIsFullBlock, setTimeoutIsFullBlock] = useState(false);
   const [pageType, setPageType] = useState<'normal' | 'timeout' | 'settings' | 'info' | 'reflect'>('normal');
 
   // A site the extension noticed being opened again and again; the banner in
@@ -98,6 +104,7 @@ const PluginPopup = () => {
             const urlParams = new URLSearchParams(pageInfo.url.split('?')[1]);
             const extractedSiteId = urlParams.get('siteId');
             const extractedBlockedUrl = urlParams.get('blockedUrl');
+            setTimeoutIsFullBlock(urlParams.get('limitType') === 'blocked');
 
             if (extractedSiteId) {
               setSiteId(extractedSiteId);
@@ -182,6 +189,8 @@ const PluginPopup = () => {
             setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
             setIsExtended(!!pageInfo.siteInfo.isExtended);
             setReflectionDelay(pageInfo.siteInfo.reflectionDelaySeconds || 0);
+            setIsBlocked(!!pageInfo.siteInfo.isBlocked);
+            setBlockedByGroup(!!pageInfo.siteInfo.blockedByGroup);
 
             // Check if rating should show on limited sites (after 4+ days)
             try {
@@ -375,6 +384,8 @@ const PluginPopup = () => {
         setOpensLimit(pageInfo.siteInfo.dailyOpenLimit || 0);
         setOpensUsed(pageInfo.siteInfo.todayOpenCount || 0);
         setReflectionDelay(pageInfo.siteInfo.reflectionDelaySeconds || 0);
+        setIsBlocked(!!pageInfo.siteInfo.isBlocked);
+        setBlockedByGroup(!!pageInfo.siteInfo.blockedByGroup);
       }
       setSuggestion(null);
 
@@ -389,6 +400,41 @@ const PluginPopup = () => {
     } catch (error) {
       logError("Error adding limit", error);
       reportAddFailure(error, "popup_addLimit_failed");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  /**
+   * Blocks the current site outright. It is deliberately a separate action from
+   * "Add limit": a block replaces the presets above rather than combining with
+   * them, and the only way back is turning it off in Settings.
+   */
+  const handleBlockSite = async () => {
+    try {
+      setIsSaving(true);
+      await api.addSite({ name: targetPattern, isBlocked: true });
+
+      toast(getSuccessToastProps(t("popup_blockSite_success", targetPattern)));
+
+      resetTimeLimitSelection();
+      resetOpensLimitSelection();
+      setSelectedReflectionDelay(null);
+      setSuggestion(null);
+
+      const pageInfo = await api.getCurrentPageInfo();
+      if (pageInfo.isDistractingSite && pageInfo.siteInfo) {
+        setIsLimited(true);
+        setSiteId(pageInfo.siteInfo.id);
+        setIsBlocked(!!pageInfo.siteInfo.isBlocked);
+        setBlockedByGroup(!!pageInfo.siteInfo.blockedByGroup);
+        setTimeLimit(0);
+        setOpensLimit(0);
+        setReflectionDelay(0);
+      }
+    } catch (error) {
+      logError("Error blocking site", error);
+      reportAddFailure(error, "popup_blockSite_failed");
     } finally {
       setIsSaving(false);
     }
@@ -710,6 +756,7 @@ const PluginPopup = () => {
           originalOpensLimit={originalOpensLimit}
           siteId={siteId}
           blockedUrl={blockedUrl}
+          isFullyBlocked={timeoutIsFullBlock}
           isSaving={false}
           onExtendLimit={handleExtendLimit}
           onOpenSettings={handleOpenSettings}
@@ -749,6 +796,7 @@ const PluginPopup = () => {
         onAcceptSuggestion={handleAcceptSuggestion}
         onDismissSuggestion={handleDismissSuggestion}
         onAddLimit={handleAddLimit}
+        onBlockSite={handleBlockSite}
         onOpenGroupSelector={openGroupSelector}
         onAddToGroup={handleAddToGroup}
         onCloseGroupSelector={() => setShowGroupSelector(false)}
@@ -782,6 +830,8 @@ const PluginPopup = () => {
       opensRemaining={opensRemaining}
       isExtended={isExtended}
       reflectionDelay={reflectionDelay}
+      isBlocked={isBlocked}
+      blockedByGroup={blockedByGroup}
       onSettings={handleOpenSettings}
       onInfo={handleOpenInfo}
     />

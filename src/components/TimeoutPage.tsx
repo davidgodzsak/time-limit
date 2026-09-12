@@ -16,7 +16,9 @@ const TimeoutPage = () => {
   // URL params
   const [blockedUrl, setBlockedUrl] = useState<string>("");
   const [siteName, setSiteName] = useState<string>("this site");
-  const [limitType, setLimitType] = useState<"time" | "opens" | "reflection">("time");
+  const [limitType, setLimitType] = useState<
+    "time" | "opens" | "reflection" | "blocked"
+  >("time");
   const [blockingReason, setBlockingReason] = useState<string>(
     "You've reached your daily limit"
   );
@@ -36,14 +38,23 @@ const TimeoutPage = () => {
 
     const url = params.get("blockedUrl") || "";
     const type =
-      (params.get("limitType") as "time" | "opens" | "reflection") || "time";
+      (params.get("limitType") as
+        | "time"
+        | "opens"
+        | "reflection"
+        | "blocked") || "time";
 
-    // Arriving from the reflection page is a choice, not a limit being hit, so
-    // it gets its own line instead of the background's "you've exceeded…".
-    const reason =
-      type === "reflection"
-        ? t("timeout_reflection_reason")
-        : params.get("reason") || "You've reached your daily limit";
+    // Two cases are not "you ran out of allowance", so they get their own line
+    // instead of the background's English "you've exceeded…": arriving from the
+    // reflection page is a choice, and a full block never had an allowance.
+    let reason: string;
+    if (type === "reflection") {
+      reason = t("timeout_reflection_reason");
+    } else if (type === "blocked") {
+      reason = t("timeout_blocked_reason");
+    } else {
+      reason = params.get("reason") || "You've reached your daily limit";
+    }
 
     setBlockedUrl(url);
     setBlockingReason(reason);
@@ -307,6 +318,10 @@ const TimeoutPage = () => {
           <p className="text-xs">
             {limitType === "reflection"
               ? t("timeout_reflection_hint", siteName)
+              : limitType === "blocked"
+              ? // A block does not reset at midnight, so promising a reset
+                // time here would be a lie.
+                t("timeout_blocked_hint", siteName)
               : t("timeout_resetTime", [siteName, resetTime])}
           </p>
       </div>

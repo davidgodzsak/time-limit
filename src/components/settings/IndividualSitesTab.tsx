@@ -9,6 +9,7 @@ import {
   ChevronRight,
   GripVertical,
   Hourglass,
+  Ban,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -106,23 +107,34 @@ export function IndividualSitesTab({
               />
               <span className="text-xl">{site.favicon}</span>
               <span className="flex-1 font-medium">{site.name}</span>
-              {site.timeLimit && (
-                <Badge variant="outline" className="rounded-full gap-1">
-                  <Clock size={12} />
-                  {site.timeLimit} min
+              {/* A full block makes the other limits moot, so it replaces them
+                  rather than sitting next to numbers that never count down. */}
+              {site.isBlocked ? (
+                <Badge variant="destructive" className="rounded-full gap-1">
+                  <Ban size={12} />
+                  {t("badge_blocked")}
                 </Badge>
-              )}
-              {site.opensLimit && (
-                <Badge variant="outline" className="rounded-full gap-1">
-                  <MousePointerClick size={12} />
-                  {site.opensLimit} opens
-                </Badge>
-              )}
-              {site.reflectionDelay && (
-                <Badge variant="outline" className="rounded-full gap-1">
-                  <Hourglass size={12} />
-                  {t("badge_reflectionDelay", String(site.reflectionDelay))}
-                </Badge>
+              ) : (
+                <>
+                  {site.timeLimit && (
+                    <Badge variant="outline" className="rounded-full gap-1">
+                      <Clock size={12} />
+                      {site.timeLimit} min
+                    </Badge>
+                  )}
+                  {site.opensLimit && (
+                    <Badge variant="outline" className="rounded-full gap-1">
+                      <MousePointerClick size={12} />
+                      {site.opensLimit} opens
+                    </Badge>
+                  )}
+                  {site.reflectionDelay && (
+                    <Badge variant="outline" className="rounded-full gap-1">
+                      <Hourglass size={12} />
+                      {t("badge_reflectionDelay", String(site.reflectionDelay))}
+                    </Badge>
+                  )}
+                </>
               )}
               <Switch
                 checked={site.isEnabled !== false}
@@ -185,19 +197,25 @@ export function IndividualSitesTab({
                     <span className="font-semibold text-left">
                       {group.name}
                     </span>
-                    {group.timeLimit > 0 && (
+                    {group.isBlocked && (
+                      <Badge variant="destructive" className="rounded-full gap-1">
+                        <Ban size={12} />
+                        {t("badge_blocked")}
+                      </Badge>
+                    )}
+                    {!group.isBlocked && group.timeLimit > 0 && (
                       <Badge variant="outline" className="rounded-full gap-1">
                         <Clock size={12} />
                         {group.timeLimit} min
                       </Badge>
                     )}
-                    {group.opensLimit && group.opensLimit > 0 && (
+                    {!group.isBlocked && group.opensLimit && group.opensLimit > 0 && (
                       <Badge variant="outline" className="rounded-full gap-1">
                         <MousePointerClick size={12} />
                         {group.opensLimit}
                       </Badge>
                     )}
-                    {group.reflectionDelay && group.reflectionDelay > 0 && (
+                    {!group.isBlocked && group.reflectionDelay && group.reflectionDelay > 0 && (
                       <Badge variant="outline" className="rounded-full gap-1">
                         <Hourglass size={12} />
                         {t("badge_reflectionDelay", String(group.reflectionDelay))}
@@ -232,6 +250,15 @@ export function IndividualSitesTab({
                       >
                         <span className="text-lg">{site.favicon}</span>
                         <span className="flex-1 text-sm">{site.name}</span>
+                        {site.isBlocked && (
+                          <Badge
+                            variant="destructive"
+                            className="rounded-full gap-1 text-xs"
+                          >
+                            <Ban size={10} />
+                            {t("badge_blocked")}
+                          </Badge>
+                        )}
                         {site.reflectionDelay && (
                           <Badge
                             variant="outline"

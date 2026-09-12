@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Plus, Globe, Loader2, Info, Hourglass, Lightbulb } from "lucide-react";
+import { Settings, Plus, Globe, Loader2, Info, Hourglass, Lightbulb, Ban } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import { UIGroup } from "@/lib/storage";
 import type { LimitSuggestion } from "@/lib/api";
@@ -29,6 +29,8 @@ interface UnlimitedSiteViewProps {
   onAcceptSuggestion?: (seconds: number) => void;
   onDismissSuggestion?: () => void;
   onAddLimit: () => void;
+  /** Blocks the site outright, without any of the presets above. */
+  onBlockSite: () => void;
   onOpenSettings: () => void;
   onOpenGroupSelector: () => void;
   onAddToGroup: (groupId: string) => void;
@@ -53,6 +55,7 @@ export function UnlimitedSiteView({
   onAcceptSuggestion,
   onDismissSuggestion,
   onAddLimit,
+  onBlockSite,
   onOpenSettings,
   onOpenGroupSelector,
   onAddToGroup,
@@ -212,6 +215,24 @@ export function UnlimitedSiteView({
             <Plus size={14} className="mr-1.5" />
             {t("unlimitedSiteView_button_addLimit")}
           </Button>
+
+          {/* The block is its own action rather than a fourth preset: it
+              replaces every limit above instead of combining with them. */}
+          <div>
+            <Button
+              variant="outline"
+              className="w-full rounded-xl border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
+              size="sm"
+              onClick={onBlockSite}
+              disabled={isSaving}
+            >
+              <Ban size={14} className="mr-1.5" />
+              {t("unlimitedSiteView_button_blockSite")}
+            </Button>
+            <p className="text-xs text-muted-foreground mt-1.5 text-center">
+              {t("unlimitedSiteView_blockSite_hint")}
+            </p>
+          </div>
 
           <div className="relative py-2">
             <div className="absolute inset-x-0 top-1/2 h-px bg-border" />
