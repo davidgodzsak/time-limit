@@ -164,7 +164,6 @@ jobs:
         run: |
           VERSION="${{ needs.build.outputs.version }}"
           SOURCE_ZIP="time-limit-$VERSION-source.zip"
-          RELEASE_NOTES="${{ github.event.release.body }}"
 
           web-ext sign \
             --source-dir=firefox-dist/ \
@@ -238,10 +237,17 @@ jobs:
           fi
 
       - name: Publish item to Chrome Web Store
+        # RELEASE_NOTES arrives through the environment on purpose. Expanding
+        # ${{ github.event.release.body }} inside `run:` pastes the text into
+        # the script before bash sees it, so a release note containing
+        # backticks — `reddit.com`, say — runs as a command. That is how the
+        # v1.12.0 Firefox publish died, and it is an injection point: whoever
+        # can write a release body can run commands on the runner.
+        env:
+          RELEASE_NOTES: ${{ github.event.release.body }}
         run: |
           EXTENSION_ID="${{ secrets.CHROME_EXTENSION_ID }}"
           ACCESS_TOKEN="${{ steps.auth.outputs.access-token }}"
-          RELEASE_NOTES="${{ github.event.release.body }}"
 
           # Publish the item
           PUBLISH_RESPONSE=$(curl -s -X POST \
