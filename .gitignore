@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Screenshots dropped in the repo root while testing
+Screenshot*.jpg
+Screenshot*.png
