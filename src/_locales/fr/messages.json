@@ -91,10 +91,6 @@
     "message": "Non suivi",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Ajoutez des limites pour rester attentif en naviguant sur ce site.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Limite de temps",
     "description": "Section label for time limit selection"

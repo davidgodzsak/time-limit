@@ -139,12 +139,11 @@ export function UnlimitedSiteView({
           </div>
         )}
 
-        <p className="text-sm text-muted-foreground mb-4">
-          {t("unlimitedSiteView_description")}
-        </p>
-
-        {/* space-y-3, not -4: this stack now carries four ways to limit a site
-            plus the group option, and the whole card has to stay under 600px. */}
+        {/* No standfirst here: "Not tracked" above and the three labelled
+            sections below already say what this screen is for, and those two
+            wrapped lines were the difference between fitting and scrolling.
+            space-y-3 rather than -4 for the same reason — this stack carries
+            four ways to limit a site plus the group option. */}
         <div className="space-y-3">
           <div>
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">

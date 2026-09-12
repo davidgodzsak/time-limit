@@ -91,10 +91,6 @@
     "message": "Nesledované",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Pridajte limity, aby ste si pri prehliadaní tejto stránky udržali prehľad.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Časový limit",
     "description": "Section label for time limit selection"

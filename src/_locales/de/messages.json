@@ -91,10 +91,6 @@
     "message": "Nicht getrackt",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Füge Limits hinzu, um diese Seite bewusster zu nutzen.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Zeitlimit",
     "description": "Section label for time limit selection"

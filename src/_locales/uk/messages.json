@@ -19,7 +19,6 @@
   "normalPageView_minLeft": { "message": "хв залишилось", "description": "Short label for remaining time unit" },
   "normalPageView_extended_badge": { "message": "Розширений ліміт активний", "description": "Badge shown on a limited site when the daily limit has been extended for today" },
   "unlimitedSiteView_notTracked": { "message": "Не відстежується", "description": "Status label for unlimited sites" },
-  "unlimitedSiteView_description": { "message": "Додайте ліміти, щоб залишатися уважними під час перегляду цього сайту.", "description": "Description in unlimited site view" },
   "unlimitedSiteView_timeLimit_label": { "message": "Ліміт часу", "description": "Section label for time limit selection" },
   "unlimitedSiteView_opensLimit_label": { "message": "Ліміт відкрить", "description": "Section label for opens limit selection" },
   "unlimitedSiteView_button_addLimit": { "message": "Додати ліміт", "description": "Button to add a limit to the site" },

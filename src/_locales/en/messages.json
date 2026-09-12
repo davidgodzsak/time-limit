@@ -91,10 +91,6 @@
     "message": "Not tracked",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Add limits to stay mindful while browsing this site.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Time limit",
     "description": "Section label for time limit selection"

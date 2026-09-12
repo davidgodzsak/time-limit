@@ -91,10 +91,6 @@
     "message": "Nieśledzona",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Dodaj limity, aby świadomiej korzystać z tej strony.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Limit czasu",
     "description": "Section label for time limit selection"

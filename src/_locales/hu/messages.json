@@ -91,10 +91,6 @@
     "message": "Nem követett",
     "description": "Status label for unlimited sites"
   },
-  "unlimitedSiteView_description": {
-    "message": "Állíts be korlátokat, hogy tudatosabban böngészd ezt az oldalt.",
-    "description": "Description in unlimited site view"
-  },
   "unlimitedSiteView_timeLimit_label": {
     "message": "Időkorlát",
     "description": "Section label for time limit selection"

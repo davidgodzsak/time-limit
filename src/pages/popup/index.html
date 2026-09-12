@@ -16,6 +16,10 @@
        * tall for one scrolls inside the frame instead of resizing it. Views
        * should still be built to fit — this is the safety net for the locales
        * whose labels wrap onto a second line.
+       *
+       * The height budget is 100vh rather than a number: how much a browser
+       * actually grants is its business (Firefox stops short of the 600px it
+       * documents), and vh is whatever it ended up giving us.
        */
       html {
         width: 320px;
@@ -24,7 +28,7 @@
 
       body {
         width: 320px;
-        max-height: 598px;
+        max-height: 100vh;
         overflow-x: hidden;
         overflow-y: auto;
       }
