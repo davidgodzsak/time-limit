@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Begränsa tiden på distraherande webbplatser. Blockera tidstjuvar, följ din användning och håll fokus med dagliga tidsgränser och besöksräknare.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Laddar...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Välj minst en typ av gräns",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Gräns tillagd för $SITENAME$",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Gränsen kunde inte läggas till. Försök igen.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Klart",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Spårning påslagen",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Spårningen kunde inte slås på",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Grupperna kunde inte laddas. Försök igen.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Webbplatsen lades till i gruppen",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Webbplatsen kunde inte läggas till i gruppen. Försök igen.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Sidinformationen kunde inte laddas",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "Om det här tillägget",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Öppningar idag",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "$COUNT$ öppningar kvar",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "min kvar",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "Utökad gräns aktiv",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Spåras inte",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Tidsgräns",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Öppningsgräns",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Lägg till gräns",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "eller",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Välj en grupp",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Inga grupper finns. Skapa en i inställningarna.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Lägg till i grupp",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Avstängd",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Spårningen är pausad för den här webbplatsen. Klicka nedan för att slå på den igen.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Spårningen är pausad för gruppen som webbplatsen tillhör. Klicka nedan för att slå på den.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Spårningen är pausad för webbplatsen och dess grupp. Klicka nedan för att slå på den igen.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Slå på spårning",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Inställningar",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Hantera gränser",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Ställ in dina gränser, grupper och meddelanden här.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "Om tillägget",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Läs mer och ställ in",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Time Limit hjälper dig att hålla fokus genom att begränsa tiden på distraherande webbplatser. Integritet först, gratis och öppen källkod.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Till inställningar",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Stoppsida",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Gränsen är nådd",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Utökningsläge",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Du har nått en gräns. Ta en paus och kom tillbaka senare.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Utöka gränser",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Utöka din gräns",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Tidsgräns:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "min",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Öppningsgräns:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "öppningar",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "Extra minuter (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "Extra öppningar (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Varför behöver du mer tid?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Förklara varför du behöver utöka den här gränsen...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 tecken",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "Motiveringen måste vara minst 35 tecken",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Utöka antingen tiden eller öppningarna",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Utöka",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Utökar...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Välkommen till Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Börja med att sätta din första gräns",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Sätt dina första gränser i inställningarna för att börja följa tiden på distraherande webbplatser.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Öppna inställningar",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Eller lägg till gräns",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "När allt är inställt kan du lägga till snabba gränser härifrån",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Laddar inställningar...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Gränser",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Grupper",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Meddelanden",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "Inställningar",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Visningsinställningar",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Anpassa hur tillägget ser ut och beter sig",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Språk",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Åsidosätt webbläsarens visningsspråk",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Webbläsarens språk",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "Sök webbplatser och grupper...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Enskilda webbplatser",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Lägg till webbplats",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Spåras inte",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "Påslagen",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Avstängd",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Grupper",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "$LENGTH$ webbplatser",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Lägg till webbplats i gruppen",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Hantera grupper",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Begränsa liknande webbplatser ihop, så att du inte bara byter till alternativet",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Ny grupp",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ webbplatser delar gränser",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Lägg till",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ min/dag",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ öppningar/dag",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Redigera grupp",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Ta bort grupp",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Peppande meddelanden",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "De visas när du når dina gränser",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Lägg till ett nytt peppande meddelande...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Visningsalternativ",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Visa slumpmässigt meddelande",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Visa ett nytt meddelande varje gång",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Visa aktivitetsförslag",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Visa kort med saker att göra i stället",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Redigera meddelande",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Ta bort meddelande",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Lägg till ny webbplats",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Redigera webbplats",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Lägg till en webbplats att följa med tids- eller öppningsgränser.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Uppdatera gränserna för den här webbplatsen.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Webbadress",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "t.ex. tiktok.com eller youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Tidsgräns (min)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "t.ex. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Öppningsgräns",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "t.ex. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Ange minst en tidsgräns, en öppningsgräns eller en paus",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Lägg till webbplats",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Uppdatera webbplats",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Skapa ny grupp",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Redigera grupp",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Skapa en grupp som delar gränser mellan flera webbplatser.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "Uppdatera gruppens inställningar.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Gruppnamn",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "t.ex. Sociala medier",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Färg",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Tidsgräns (min)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Öppningsgräns",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Ange minst en tidsgräns, en öppningsgräns eller en paus",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Skapa grupp",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Uppdatera grupp",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Lägg till webbplats i $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Webbplatsen delar gruppens tids- och öppningsgränser.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Webbadress",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "t.ex. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Snabbval",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Lägg till i gruppen",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Andas in",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Ut",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Inga peppande meddelanden än",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Lägg till meddelanden i tilläggets inställningar för att se dem här",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Öppna inställningar",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Det här kunde du göra i stället...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Nollställs $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Ta tillbaka ditt fokus",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "Ett enkelt webbläsartillägg med integritet först, som hjälper dig att bygga sundare surfvanor. Sätt gränser på webbplatserna som distraherar dig, få vänliga påminnelser när du behöver en paus och håll koll på hur du använder din tid på nätet.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Det här får du",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Spara tid",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Bli medveten om hur du använder din tid på nätet och ta tillbaka ditt fokus",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Surfa medvetet",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Bygg sundare vanor med vänliga gränser, utan pekpinnar",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Integritet först",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Allt stannar på din enhet. Ingen spårning, ingen datainsamling, inga servrar",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Gratis för alltid",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Inga annonser, inga betalväggar. Vi vill göra internet sundare för alla",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Redo att börja?",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Öppna inställningarna för att lägga till dina första gränser och anpassa allt efter dina mål.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Till inställningar",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Stöd projektet",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Om tillägget är till nytta för dig, överväg att stödja utvecklingen. Din gåva hjälper oss att hålla det gratis, annonsfritt och öppet för alla.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Enstaka eller återkommande gåvor",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Snabbt och säkert",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Stöd vårt arbete",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Bli beskyddare",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Besök",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Har du synpunkter?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Hittat ett fel eller önskar du en funktion? Vi vill gärna höra från dig!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Rapportera ett problem",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Önska en funktion",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Gjort med ❤️ för att hjälpa dig hålla fokus",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Läs en bok",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Sätt igång med romanen du tänkt börja på",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Drick vatten",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Håll vätskebalansen! Kroppen tackar dig",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Ta en promenad",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Få frisk luft och rensa tankarna",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Ring någon",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Hör av dig till en vän eller någon i familjen",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Meditera",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 minuters närvaro kan återställa ditt fokus",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Ta en paus",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Sträck på dig, koka te och vila ögonen",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "Klart",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Något gick fel. Försök igen.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Gräns tillagd för $SITENAME$",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Webbplatsen uppdaterad",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Webbplatsen borttagen",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "Gruppen skapad",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "Gruppen uppdaterad",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "Gruppen borttagen",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Meddelandet tillagt",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Meddelandet uppdaterat",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Meddelandet borttaget",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Webbplatsen lades till i gruppen",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Webbplatsen togs bort från gruppen",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Spårning påslagen",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Spårning avstängd",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Inställningen sparad",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Gränsen utökad! Omdirigerar...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Ett oväntat fel uppstod",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Ogiltigt meddelandeformat",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "Meddelandet måste ha en åtgärd",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Webbplatsen kunde inte läggas till. Kontrollera adressen och försök igen.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Webbplatsen kunde inte uppdateras. Den kanske inte finns, eller så är uppgifterna ogiltiga.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Webbplatsen kunde inte tas bort. Den kanske inte finns.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Anteckningen kunde inte läggas till. Kontrollera texten och försök igen.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Anteckningen kunde inte uppdateras. Den kanske inte finns, eller så är uppgifterna ogiltiga.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Anteckningen kunde inte tas bort. Den kanske inte finns.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Ingen aktiv flik hittades",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "Kommer inte åt adressen i den aktuella fliken",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Kunde inte hämta information om den aktuella sidan",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Kunde inte uppdatera siddata",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Gränsen kunde inte läggas till. Kontrollera adressen och försök igen.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Kunde inte hämta information till ikonmärket",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Kunde inte hämta systemstatus",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Du kommer åt webbplatsen igen. Gå tillbaka eller uppdatera sidan.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "Du har idag passerat både din tidsgräns ($1/$2 minuter) och din öppningsgräns ($3/$4 öppningar) för $5.",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "Du har lagt $1 minuter på $2 idag och passerat din gräns på $3 minuter.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Du har öppnat $1 $2 gånger idag och passerat din gräns på $3 öppningar.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "Daglig gräns passerad för $1.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Välkommen till Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Håll fokus med smarta gränser",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Sätt smarta gränser",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Sätt tids- eller öppningsgränser på distraherande webbplatser",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Ordna i grupper",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Gruppera liknande webbplatser och låt gränsen gälla dem alla",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Håll motivationen",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Skriv egna peppande meddelanden som visas när gränsen är nådd",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "Det tar bara 2 minuter att ställa in",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Hoppa över",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Starta",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "Allt är klart!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Time Limit är redo att hjälpa dig hålla fokus",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "Din första gräns är satt. Börja surfa, så hjälper Time Limit dig att hålla dig på spåret.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Snabbåtkomst från verktygsfältet",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Klicka på tilläggets ikon i webbläsarens verktygsfält för att snabbt lägga till gränser eller se hur det går",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Webbläsarens verktygsfält med ikonen för tillägget Time Limit",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "Börja surfa",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Hoppa över",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Nästa",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Slutför",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Adressmönstret får inte vara tomt",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Adressmönstret är för långt (max 2000 tecken)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Ogiltig adress. Ange en giltig domän (t.ex. exempel.se)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Adressmönstret innehåller ett spärrat protokoll",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Tidsgränsen måste vara ett giltigt tal",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Tidsgränsen måste vara större än 0",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Tidsgränsen kan inte överstiga 24 timmar",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "Anteckningstexten får inte vara tom",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "Anteckningstexten är för lång (max 1000 tecken)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Okänd datatyp vid validering av lagringen",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Högsta antal $1 uppnått ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "Ett okänt fel uppstod",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "Tillägget laddades om. Uppdatera den här sidan.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Lagringsgränsen är nådd. Ta bort några poster och försök igen.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Anslutningsfel. Kontrollera din internetanslutning och försök igen.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Fel i webbläsarens API. Försök igen eller starta om webbläsaren.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "Ett objekt krävs",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "Obligatoriskt fält '$1' saknas",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "Öppningsgränsen måste vara ett giltigt tal",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "Öppningsgränsen måste vara större än 0",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "Öppningsgränsen kan inte överstiga 1000 öppningar per dag",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Webbplatsen måste vara ett objekt",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Minst en gräns (tid eller öppningar) måste anges",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Gillar du Time Limit?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Hjälp oss växa med ett femstjärnigt omdöme",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Betygsätt nu",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Redan betygsatt",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Senare →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Trivs du med Time Limit?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Dina synpunkter hjälper oss att bli bättre. Lämna ett snabbt omdöme!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Betygsätt nu",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Redan betygsatt",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Senare →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Tack! ♥ Stöd utvecklingen med en gåva.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Kunde inte behandla betyget. Försök igen.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Tack för ditt stöd!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Kunde inte behandla betyget. Försök igen.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Betygsätt oss",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Begränsa en hel webbplats (youtube.com), en underdomän (shorts.youtube.com) eller en del av den (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "\"$1\" har redan en gräns. Redigera den befintliga gränsen i stället.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "\"$1\" har redan en gräns i gruppen \"$2\".",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "Av",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "$1 s paus",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Paus innan sidan öppnas",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Räknar ner och frågar sedan om du fortfarande vill öppna webbplatsen. Fungerar på egen hand, utan daglig gräns.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Paus innan sidan öppnas",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Varje webbplats i gruppen får samma nedräkning innan den öppnas.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "$1 s paus",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Paus innan sidan öppnas",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "$1 s paus innan sidan öppnas",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Ingen daglig gräns här — bara ett ögonblick för att se om du verkligen menade det.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Dra ett andetag",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Du bestämmer",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "sekunder",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Några sekunder räcker oftast för att märka om du faktiskt menade att komma hit.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Vill du fortfarande öppna den här?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Ja, öppna",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Nej, inte nu",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Öppnad $1 gånger idag · stannade här $2 gånger",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Eftertankepaus",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Bestäm på sidan",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Nedräkningen pågår i fliken. Välj där om du vill öppna webbplatsen eller göra något annat.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Du valde att inte öppna den här just nu.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 finns kvar när du vill — det här var ditt val, inte en gräns.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Värd en gräns?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Du har öppnat $1 $2 gånger idag.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pausa $1 s innan sidan öppnas",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Inte den här sidan",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 pausar nu innan den öppnas",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Föreslå gränser",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Märker webbplatser du öppnar om och om igen och erbjuder en mjuk gräns. Högst ett förslag om dagen, och aldrig två gånger för samma webbplats.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Nyheter",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Nyss uppdaterat. Det här har ändrats.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Okej",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Paus innan sidan öppnas",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "En kort nedräkning och sedan \"vill du fortfarande öppna den här?\". Mjukare än en blockering, och den fungerar utan daglig gräns.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Gränser som föreslås åt dig",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Öppna samma webbplats om och om igen så erbjuder tillägget en paus för den. Högst ett förslag om dagen, och aldrig två gånger för samma webbplats.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Gratis, privat och annonsfritt",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Om det förtjänar sin plats i din dag håller en liten gåva det växande.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Stöd utvecklingen",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Blockerad",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Blockera helt",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Webbplatsen öppnas aldrig — ingen daglig tid, ingen nedräkning, inget att utöka. Stäng av det här för att få tillbaka webbplatsen.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Sparas, men används inte medan blockeringen är på.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Blockera helt",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Alla webbplatser i gruppen blockeras helt, oavsett vilka egna gränser de har.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Blockera webbplatsen",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 är blockerad nu",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Kunde inte blockera webbplatsen. Försök igen.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Webbplatsen är blockerad",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Ingen nedräkning och inget att utöka.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Blockerad av gruppen \"$1\".",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Webbplatsen är blockerad.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 är blockerad — till skillnad från en daglig gräns kommer den inte tillbaka vid midnatt.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Blockerad webbplats",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Webbplatsen är helt blockerad, så det finns ingen gräns att utöka.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Blockerad",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Blockera en webbplats helt",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "En riktig blockering, i stället för en enminutersgräns som får spela blockering. Fungerar per webbplats eller för en hel grupp, och det finns inget att utöka.",
+    "description": "Release note sentence explaining the full block"
+  }
+}

@@ -6,8 +6,8 @@
  * category offers nothing at all — better than pushing tiktok.com at someone
  * who is building a group of news sites.
  *
- * Keywords cover the languages the extension ships in, so a group called
- * "Közösségi média" or "Nachrichten" is recognized too.
+ * Keywords cover the 16 languages the extension ships in, so a group called
+ * "Közösségi média", "Nachrichten" or "ソーシャル" is recognized too.
  */
 
 interface SuggestionCategory {
@@ -20,7 +20,9 @@ const CATEGORIES: SuggestionCategory[] = [
     keywords: [
       'social', 'media', 'soziale', 'sozial', 'redes', 'sociales', 'réseaux',
       'reseaux', 'sociaux', 'közösségi', 'kozossegi', 'społeczne', 'spoleczne',
-      'sociálne', 'socialne', 'соціальні', 'соцмережі',
+      'sociálne', 'socialne', 'соціальні', 'соцмережі', 'sociais', 'sociali',
+      'sociala', 'sosiale', 'sociální', 'socialni', 'социальн', 'соцсети',
+      'κοινωνικ', 'sns', 'ソーシャル',
     ],
     sites: [
       'instagram.com', 'tiktok.com', 'facebook.com', 'x.com',
@@ -31,13 +33,15 @@ const CATEGORIES: SuggestionCategory[] = [
     keywords: [
       'news', 'nachrichten', 'noticias', 'actualités', 'actualites', 'hírek',
       'hirek', 'wiadomości', 'wiadomosci', 'správy', 'spravy', 'новини',
+      'notícias', 'nyheter', 'zprávy', 'zpravy', 'новости', 'notizie',
+      'ειδήσεις', 'ニュース',
     ],
     sites: ['bbc.com', 'cnn.com', 'nytimes.com', 'theguardian.com', 'reuters.com'],
   },
   {
     keywords: [
       'video', 'videó', 'videos', 'vídeos', 'vidéo', 'wideo', 'відео',
-      'streaming', 'stream', 'tv',
+      'streaming', 'stream', 'tv', 'videa', 'видео', 'βίντεο', '動画',
     ],
     sites: ['youtube.com', 'netflix.com', 'twitch.tv', 'youtube.com/shorts'],
   },
@@ -45,18 +49,23 @@ const CATEGORIES: SuggestionCategory[] = [
     keywords: [
       'shop', 'shopping', 'webshop', 'einkaufen', 'compras', 'achats',
       'vásárlás', 'vasarlas', 'zakupy', 'nákupy', 'nakupy', 'покупки',
+      'handel', 'acquisti', 'αγορές', '買い物', 'ショッピング',
     ],
     sites: ['amazon.com', 'ebay.com', 'aliexpress.com', 'etsy.com'],
   },
   {
     keywords: [
       'gaming', 'game', 'games', 'spiele', 'juegos', 'jeux', 'játék', 'jatek',
-      'gry', 'hry', 'ігри',
+      'gry', 'hry', 'ігри', 'jogos', 'spel', 'spill', 'игры', 'giochi',
+      'παιχνίδια', 'ゲーム',
     ],
     sites: ['store.steampowered.com', 'epicgames.com', 'roblox.com', 'ign.com'],
   },
   {
-    keywords: ['forum', 'forums', 'fórum', 'foren', 'foros', 'форум'],
+    keywords: [
+      'forum', 'forums', 'fórum', 'foren', 'foros', 'форум', 'fóruns',
+      'foruns', 'φόρουμ', 'フォーラム',
+    ],
     sites: ['reddit.com', 'quora.com', 'news.ycombinator.com', 'stackoverflow.com'],
   },
 ];

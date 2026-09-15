@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Περιορίστε τον χρόνο σε ιστότοπους που σας αποσπούν. Μπλοκάρετε σελίδες που τρώνε τον χρόνο σας, παρακολουθήστε τη χρήση και μείνετε συγκεντρωμένοι με ημερήσια όρια χρόνου και μετρητές επισκέψεων.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Φόρτωση...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Επιλέξτε τουλάχιστον έναν τύπο ορίου",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Προστέθηκε όριο για $SITENAME$",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Δεν ήταν δυνατή η προσθήκη του ορίου. Δοκιμάστε ξανά.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Έτοιμο",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Η παρακολούθηση ενεργοποιήθηκε",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Δεν ήταν δυνατή η ενεργοποίηση της παρακολούθησης",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Δεν ήταν δυνατή η φόρτωση των ομάδων. Δοκιμάστε ξανά.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Ο ιστότοπος προστέθηκε στην ομάδα",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Δεν ήταν δυνατή η προσθήκη του ιστότοπου στην ομάδα. Δοκιμάστε ξανά.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Δεν ήταν δυνατή η φόρτωση των πληροφοριών της σελίδας",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "Σχετικά με την επέκταση",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Ανοίγματα σήμερα",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "Απομένουν $COUNT$ ανοίγματα",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "λεπτά ακόμη",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "Ενεργό παρατεταμένο όριο",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Χωρίς παρακολούθηση",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Όριο χρόνου",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Όριο ανοιγμάτων",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Προσθήκη ορίου",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "ή",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Επιλέξτε ομάδα",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Δεν υπάρχουν ομάδες. Δημιουργήστε μία στις ρυθμίσεις.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Προσθήκη στην ομάδα",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Ακύρωση",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Ανενεργό",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Η παρακολούθηση αυτού του ιστότοπου είναι σε παύση. Πατήστε παρακάτω για να την ενεργοποιήσετε ξανά.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Η παρακολούθηση της ομάδας στην οποία ανήκει ο ιστότοπος είναι σε παύση. Πατήστε παρακάτω για να την ενεργοποιήσετε.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Η παρακολούθηση αυτού του ιστότοπου και της ομάδας του είναι σε παύση. Πατήστε παρακάτω για να την ενεργοποιήσετε ξανά.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Ενεργοποίηση παρακολούθησης",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Ρυθμίσεις",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Διαχείριση ορίων",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Εδώ ρυθμίζετε όρια, ομάδες και μηνύματα.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "Σχετικά με την επέκταση",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Μάθετε και ρυθμίστε",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Το Time Limit σάς βοηθά να μένετε συγκεντρωμένοι περιορίζοντας τον χρόνο σε ιστότοπους που αποσπούν. Με σεβασμό στην ιδιωτικότητα, δωρεάν και ανοιχτού κώδικα.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Στις ρυθμίσεις",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Σελίδα ορίου",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Το όριο εξαντλήθηκε",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Λειτουργία παράτασης",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Φτάσατε σε ένα όριο. Κάντε ένα διάλειμμα και επιστρέψτε αργότερα.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Παράταση ορίων",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Παρατείνετε το όριό σας",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Όριο χρόνου:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "λεπ.",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Όριο ανοιγμάτων:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "ανοίγματα",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "Επιπλέον λεπτά (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "Επιπλέον ανοίγματα (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Γιατί χρειάζεστε περισσότερο χρόνο;",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Εξηγήστε γιατί χρειάζεστε παράταση σε αυτό το όριο...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 χαρακτήρες",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "Η αιτιολόγηση πρέπει να έχει τουλάχιστον 35 χαρακτήρες",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Παρατείνετε είτε τον χρόνο είτε τα ανοίγματα",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Ακύρωση",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Παράταση",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Γίνεται παράταση...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Καλώς ήρθατε στο Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Ξεκινήστε ορίζοντας το πρώτο σας όριο",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Ορίστε τα πρώτα σας όρια στις ρυθμίσεις για να αρχίσει η καταγραφή του χρόνου σε ιστότοπους που αποσπούν.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Άνοιγμα ρυθμίσεων",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Ή προσθέστε όριο",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "Μόλις ρυθμιστεί, θα προσθέτετε γρήγορα όρια από εδώ",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Φόρτωση ρυθμίσεων...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Όρια",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Ομάδες",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Μηνύματα",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "Προτιμήσεις",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Προτιμήσεις εμφάνισης",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Προσαρμόστε την εμφάνιση και τη συμπεριφορά της επέκτασης",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Γλώσσα",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Χρήση γλώσσας διαφορετικής από αυτή του προγράμματος περιήγησης",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Γλώσσα περιηγητή",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "Αναζήτηση ιστότοπων και ομάδων...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Μεμονωμένοι ιστότοποι",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Προσθήκη ιστότοπου",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Χωρίς παρακολούθηση",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "Ενεργό",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Ανενεργό",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Ομάδες",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "$LENGTH$ ιστότοποι",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Προσθήκη ιστότοπου στην ομάδα",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Διαχείριση ομάδων",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Περιορίστε μαζί τους συγγενικούς ιστότοπους, για να μην περνάτε απλώς στον επόμενο",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Νέα ομάδα",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ ιστότοποι μοιράζονται όρια",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Προσθήκη",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ λεπ./ημέρα",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ ανοίγματα/ημέρα",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Επεξεργασία ομάδας",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Διαγραφή ομάδας",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Μηνύματα ενθάρρυνσης",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "Εμφανίζονται όταν φτάνετε στα όριά σας",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Προσθέστε ένα νέο μήνυμα ενθάρρυνσης...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Επιλογές εμφάνισης",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Εμφάνιση τυχαίου μηνύματος",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Κάθε φορά ένα διαφορετικό μήνυμα",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Εμφάνιση προτάσεων δραστηριοτήτων",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Κάρτες με πράγματα να κάνετε αντί γι' αυτό",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Επεξεργασία μηνύματος",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Διαγραφή μηνύματος",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Προσθήκη νέου ιστότοπου",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Επεξεργασία ιστότοπου",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Προσθέστε έναν ιστότοπο για παρακολούθηση με όριο χρόνου ή ανοιγμάτων.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Ενημερώστε τα όρια αυτού του ιστότοπου.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Διεύθυνση ιστότοπου",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "π.χ. tiktok.com ή youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Όριο χρόνου (λεπ.)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "π.χ. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Όριο ανοιγμάτων",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "π.χ. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Ορίστε τουλάχιστον όριο χρόνου, όριο ανοιγμάτων ή μια παύση",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Ακύρωση",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Προσθήκη ιστότοπου",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Ενημέρωση ιστότοπου",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Δημιουργία νέας ομάδας",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Επεξεργασία ομάδας",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Δημιουργήστε μια ομάδα ώστε πολλοί ιστότοποι να μοιράζονται τα ίδια όρια.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "Ενημερώστε τις ρυθμίσεις της ομάδας.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Όνομα ομάδας",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "π.χ. Κοινωνικά δίκτυα",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Χρώμα",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Όριο χρόνου (λεπ.)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Όριο ανοιγμάτων",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Ορίστε τουλάχιστον όριο χρόνου, όριο ανοιγμάτων ή μια παύση",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Ακύρωση",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Δημιουργία ομάδας",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Ενημέρωση ομάδας",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Προσθήκη ιστότοπου στην ομάδα $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Αυτός ο ιστότοπος θα μοιράζεται τα όρια χρόνου και ανοιγμάτων της ομάδας.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Διεύθυνση ιστότοπου",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "π.χ. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Γρήγορη προσθήκη",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Ακύρωση",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Προσθήκη στην ομάδα",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Εισπνοή",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Εκπνοή",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Δεν έχετε ακόμη μηνύματα ενθάρρυνσης",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Προσθέστε μηνύματα στις ρυθμίσεις της επέκτασης για να εμφανίζονται εδώ",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Άνοιγμα ρυθμίσεων",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Τι θα μπορούσατε να κάνετε αντί γι' αυτό...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Μηδενίζεται στις $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Πάρτε πίσω τη συγκέντρωσή σας",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "Μια απλή επέκταση με σεβασμό στην ιδιωτικότητα, που σας βοηθά να χτίσετε πιο υγιείς συνήθειες περιήγησης. Βάλτε όρια στους ιστότοπους που σας αποσπούν, δεχτείτε ήπιες υπενθυμίσεις όταν χρειάζεστε διάλειμμα και έχετε επίγνωση του χρόνου σας στο διαδίκτυο.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Τι κερδίζετε",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Κερδίστε χρόνο",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Δείτε πώς περνάτε τον χρόνο σας στο διαδίκτυο και πάρτε πίσω τη συγκέντρωσή σας",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Με επίγνωση",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Χτίστε πιο υγιείς συνήθειες με ήπια όρια, χωρίς κριτική",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Ιδιωτικότητα πρώτα",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Όλα μένουν στη συσκευή σας. Καμία παρακολούθηση, καμία συλλογή δεδομένων, κανένας διακομιστής",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Δωρεάν για πάντα",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Χωρίς διαφημίσεις, χωρίς συνδρομές. Θέλουμε ένα πιο υγιές διαδίκτυο για όλους",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Έτοιμοι να ξεκινήσετε;",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Ανοίξτε τις ρυθμίσεις, προσθέστε τα πρώτα σας όρια και προσαρμόστε τα στους στόχους σας.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Στις ρυθμίσεις",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Στηρίξτε το έργο",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Αν σας φαίνεται χρήσιμη η επέκταση, σκεφτείτε να στηρίξετε την ανάπτυξή της. Η δωρεά σας μας βοηθά να τη διατηρούμε δωρεάν, χωρίς διαφημίσεις και ανοιχτού κώδικα για όλους.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Εφάπαξ ή επαναλαμβανόμενη δωρεά",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Γρήγορα και με ασφάλεια",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Στηρίξτε τη δουλειά μας",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Γίνετε υποστηρικτής",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Μετάβαση",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Έχετε σχόλια;",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Βρήκατε σφάλμα ή θέλετε μια λειτουργία; Θα χαρούμε να το ακούσουμε!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Αναφορά προβλήματος",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Πρόταση λειτουργίας",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Φτιαγμένο με ❤️ για να μένετε συγκεντρωμένοι",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Διαβάστε ένα βιβλίο",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Ξεκινήστε επιτέλους εκείνο το μυθιστόρημα",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Πιείτε νερό",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Μείνετε ενυδατωμένοι, το σώμα σας θα το εκτιμήσει",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Κάντε μια βόλτα",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Πάρτε λίγο αέρα και καθαρίστε το μυαλό σας",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Πάρτε κάποιον τηλέφωνο",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Επικοινωνήστε με έναν φίλο ή κάποιον δικό σας",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Διαλογιστείτε",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 λεπτά επίγνωσης αρκούν για να επανέλθει η συγκέντρωση",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Κάντε ένα διάλειμμα",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Τεντωθείτε, φτιάξτε ένα τσάι και ξεκουράστε τα μάτια σας",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "Η ενέργεια ολοκληρώθηκε",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Κάτι πήγε στραβά. Δοκιμάστε ξανά.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Προστέθηκε όριο για $SITENAME$",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Ο ιστότοπος ενημερώθηκε",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Ο ιστότοπος αφαιρέθηκε",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "Η ομάδα δημιουργήθηκε",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "Η ομάδα ενημερώθηκε",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "Η ομάδα διαγράφηκε",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Το μήνυμα προστέθηκε",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Το μήνυμα ενημερώθηκε",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Το μήνυμα αφαιρέθηκε",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Ο ιστότοπος προστέθηκε στην ομάδα",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Ο ιστότοπος αφαιρέθηκε από την ομάδα",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Η παρακολούθηση ενεργοποιήθηκε",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Η παρακολούθηση απενεργοποιήθηκε",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Η προτίμηση αποθηκεύτηκε",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Το όριο παρατάθηκε! Ανακατεύθυνση...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Παρουσιάστηκε απρόσμενο σφάλμα",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Μη έγκυρη μορφή μηνύματος",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "Το μήνυμα πρέπει να έχει ενέργεια",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Δεν ήταν δυνατή η προσθήκη του ιστότοπου. Ελέγξτε τη μορφή της διεύθυνσης και δοκιμάστε ξανά.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Δεν ήταν δυνατή η ενημέρωση του ιστότοπου. Ίσως δεν υπάρχει ή τα δεδομένα δεν είναι έγκυρα.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Δεν ήταν δυνατή η διαγραφή του ιστότοπου. Ίσως δεν υπάρχει.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Δεν ήταν δυνατή η προσθήκη της σημείωσης. Ελέγξτε το κείμενο και δοκιμάστε ξανά.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Δεν ήταν δυνατή η ενημέρωση της σημείωσης. Ίσως δεν υπάρχει ή τα δεδομένα δεν είναι έγκυρα.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Δεν ήταν δυνατή η διαγραφή της σημείωσης. Ίσως δεν υπάρχει.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Δεν βρέθηκε ενεργή καρτέλα",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "Δεν είναι δυνατή η πρόσβαση στη διεύθυνση της τρέχουσας καρτέλας",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Δεν ήταν δυνατή η λήψη πληροφοριών για την τρέχουσα σελίδα",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Δεν ήταν δυνατή η ανανέωση των δεδομένων της σελίδας",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Δεν ήταν δυνατή η προσθήκη του ορίου. Ελέγξτε τη μορφή της διεύθυνσης και δοκιμάστε ξανά.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Δεν ήταν δυνατή η λήψη πληροφοριών για το σήμα",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Δεν ήταν δυνατή η λήψη της κατάστασης του συστήματος",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Ο ιστότοπος είναι ξανά προσβάσιμος. Γυρίστε πίσω ή ανανεώστε τη σελίδα.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "Σήμερα ξεπεράσατε και το όριο χρόνου ($1/$2 λεπτά) και το όριο ανοιγμάτων ($3/$4 ανοίγματα) για $5.",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "Σήμερα περάσατε $1 λεπτά σε $2, ξεπερνώντας το όριό σας των $3 λεπτών.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Σήμερα ανοίξατε $1 $2 φορές, ξεπερνώντας το όριό σας των $3 ανοιγμάτων.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "Το ημερήσιο όριο για $1 εξαντλήθηκε.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Καλώς ήρθατε στο Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Μείνετε συγκεντρωμένοι με έξυπνα όρια",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Ορίστε έξυπνα όρια",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Βάλτε όρια χρόνου ή ανοιγμάτων σε ιστότοπους που αποσπούν",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Οργανώστε σε ομάδες",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Ομαδοποιήστε συγγενικούς ιστότοπους και εφαρμόστε ένα όριο σε όλους",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Μείνετε σε εγρήγορση",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Γράψτε τα δικά σας μηνύματα για όταν εξαντλείται ένα όριο",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "Η ρύθμιση παίρνει μόλις 2 λεπτά",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Παράλειψη",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Έναρξη",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "Όλα έτοιμα!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Το Time Limit είναι έτοιμο να σας κρατά συγκεντρωμένους",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "Το πρώτο σας όριο μπήκε. Συνεχίστε την περιήγηση και το Time Limit θα σας κρατά στον δρόμο σας.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Γρήγορη πρόσβαση από τη γραμμή εργαλείων",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Πατήστε το εικονίδιο της επέκτασης στη γραμμή εργαλείων για να προσθέσετε γρήγορα όρια ή να δείτε την πρόοδό σας",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Γραμμή εργαλείων του περιηγητή με το εικονίδιο της επέκτασης Time Limit",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "Ξεκινήστε την περιήγηση",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Παράλειψη",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Επόμενο",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Τέλος",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Το μοτίβο διεύθυνσης δεν μπορεί να είναι κενό",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Το μοτίβο διεύθυνσης είναι πολύ μεγάλο (έως 2000 χαρακτήρες)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Μη έγκυρη διεύθυνση. Δώστε έγκυρο τομέα (π.χ. example.com)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Το μοτίβο διεύθυνσης περιέχει μη επιτρεπτό πρωτόκολλο",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Το όριο χρόνου πρέπει να είναι έγκυρος αριθμός",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Το όριο χρόνου πρέπει να είναι μεγαλύτερο από 0",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Το όριο χρόνου δεν μπορεί να ξεπερνά τις 24 ώρες",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "Το κείμενο της σημείωσης δεν μπορεί να είναι κενό",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "Το κείμενο της σημείωσης είναι πολύ μεγάλο (έως 1000 χαρακτήρες)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Άγνωστος τύπος δεδομένων κατά τον έλεγχο της αποθήκευσης",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Συμπληρώθηκε ο μέγιστος αριθμός για $1 ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "Παρουσιάστηκε άγνωστο σφάλμα",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "Η επέκταση φορτώθηκε ξανά. Ανανεώστε αυτή τη σελίδα.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Ο χώρος αποθήκευσης γέμισε. Αφαιρέστε μερικά στοιχεία και δοκιμάστε ξανά.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Σφάλμα σύνδεσης. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Σφάλμα στο API του περιηγητή. Δοκιμάστε ξανά ή επανεκκινήστε τον περιηγητή.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "Απαιτείται αντικείμενο",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "Λείπει το υποχρεωτικό πεδίο '$1'",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "Το όριο ανοιγμάτων πρέπει να είναι έγκυρος αριθμός",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "Το όριο ανοιγμάτων πρέπει να είναι μεγαλύτερο από 0",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "Το όριο ανοιγμάτων δεν μπορεί να ξεπερνά τα 1000 ανοίγματα την ημέρα",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Ο ιστότοπος πρέπει να είναι αντικείμενο",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Πρέπει να οριστεί τουλάχιστον ένα όριο (χρόνου ή ανοιγμάτων)",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Σας αρέσει το Time Limit;",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Βοηθήστε μας να μεγαλώσουμε με μια κριτική 5 αστέρων",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Αξιολόγηση",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Το έχω κάνει",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Αργότερα →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Σας βολεύει το Time Limit;",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Τα σχόλιά σας μάς βοηθούν να βελτιωθούμε. Αφήστε μια σύντομη κριτική!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Αξιολόγηση",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Το έχω κάνει",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Αργότερα →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Ευχαριστούμε! ♥ Στηρίξτε την ανάπτυξη με μια δωρεά.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Σφάλμα κατά την καταχώριση της αξιολόγησης. Δοκιμάστε ξανά.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Ευχαριστούμε για τη στήριξη!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Σφάλμα κατά την καταχώριση της αξιολόγησης. Δοκιμάστε ξανά.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Αξιολογήστε μας",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Περιορίστε ολόκληρο τον ιστότοπο (youtube.com), έναν υποτομέα (shorts.youtube.com) ή μια ενότητα (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "Το \"$1\" έχει ήδη όριο. Επεξεργαστείτε το υπάρχον.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "Το \"$1\" έχει ήδη όριο στην ομάδα \"$2\".",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "Καμία",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1 δευτ.",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "παύση $1 δευτ.",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Παύση πριν το άνοιγμα",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Μετράει αντίστροφα και μετά ρωτά αν θέλετε ακόμη να ανοίξετε τον ιστότοπο. Λειτουργεί και μόνη της, χωρίς ημερήσιο όριο.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Παύση πριν το άνοιγμα",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Κάθε ιστότοπος της ομάδας έχει την ίδια αντίστροφη μέτρηση πριν ανοίξει.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "παύση $1 δευτ.",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Παύση πριν το άνοιγμα",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "παύση $1 δευτ. πριν ανοίξει",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Εδώ δεν υπάρχει ημερήσιο όριο — μόνο μια στιγμή για να δείτε αν το εννοούσατε.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Πάρτε μια ανάσα",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Εσείς αποφασίζετε",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "δευτερόλεπτα",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Λίγα δευτερόλεπτα συνήθως αρκούν για να καταλάβετε αν όντως θέλατε να έρθετε εδώ.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Θέλετε ακόμη να το ανοίξετε;",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Ναι, άνοιξέ το",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Όχι, όχι τώρα",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Άνοιξε $1 φορές σήμερα · σταματήσατε εδώ $2 φορές",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Παύση για σκέψη",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Αποφασίστε στη σελίδα",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Η αντίστροφη μέτρηση τρέχει στην καρτέλα. Εκεί διαλέγετε αν θα ανοίξετε τον ιστότοπο ή θα κάνετε κάτι άλλο.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Επιλέξατε να μην το ανοίξετε τώρα.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "Το $1 θα είναι εκεί όποτε το θελήσετε — ήταν δική σας επιλογή, όχι όριο.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Αξίζει ένα όριο;",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Ανοίξατε $1 $2 φορές σήμερα.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Παύση $1 δευτ. πριν ανοίξει",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Όχι γι' αυτόν τον ιστότοπο",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "Το $1 θα κάνει τώρα παύση πριν ανοίξει",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Πρόταση ορίων",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Εντοπίζει ιστότοπους που ανοίγετε ξανά και ξανά και προτείνει ένα ήπιο όριο. Το πολύ μία πρόταση την ημέρα και ποτέ δύο φορές για τον ίδιο ιστότοπο.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Τι νέο υπάρχει",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Μόλις ενημερώθηκε. Δείτε τι άλλαξε.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Το κατάλαβα",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Παύση πριν το άνοιγμα",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Μια σύντομη αντίστροφη μέτρηση και μετά «θέλετε ακόμη να το ανοίξετε;». Πιο ήπιο από μπλοκάρισμα και λειτουργεί χωρίς ημερήσιο όριο.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Όρια στα μέτρα σας",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Ανοίξτε τον ίδιο ιστότοπο ξανά και ξανά και η επέκταση θα προτείνει μια παύση γι' αυτόν. Το πολύ μία πρόταση την ημέρα και ποτέ δύο φορές για τον ίδιο ιστότοπο.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Δωρεάν, ιδιωτικό και χωρίς διαφημίσεις",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Αν κερδίζει τη θέση του στην ημέρα σας, μια μικρή δωρεά το πάει παρακάτω.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Στηρίξτε την ανάπτυξη",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Φραγή",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Πλήρης αποκλεισμός",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Αυτός ο ιστότοπος δεν ανοίγει ποτέ — χωρίς ημερήσιο χρόνο, χωρίς αντίστροφη μέτρηση, χωρίς παράταση. Απενεργοποιήστε το εδώ για να τον πάρετε πίσω.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Διατηρούνται, αλλά δεν ισχύουν όσο είναι ενεργός ο αποκλεισμός.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Πλήρης αποκλεισμός",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Κάθε ιστότοπος της ομάδας αποκλείεται εντελώς, όποια δικά του όρια κι αν έχει.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Αποκλεισμός ιστότοπου",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "Το $1 αποκλείστηκε",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Δεν ήταν δυνατός ο αποκλεισμός. Δοκιμάστε ξανά.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Αυτός ο ιστότοπος είναι αποκλεισμένος",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Δεν υπάρχει αντίστροφη μέτρηση ούτε κάτι να παρατείνετε.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Αποκλεισμένος από την ομάδα \"$1\".",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Αυτός ο ιστότοπος είναι αποκλεισμένος.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "Το $1 είναι αποκλεισμένο — σε αντίθεση με ένα ημερήσιο όριο, αυτό δεν επανέρχεται τα μεσάνυχτα.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Αποκλεισμένος ιστότοπος",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Ο ιστότοπος είναι εντελώς αποκλεισμένος, οπότε δεν υπάρχει όριο να παρατείνετε.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Αποκλεισμένη",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Αποκλείστε έναν ιστότοπο εντελώς",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Ένας πραγματικός αποκλεισμός, αντί για ένα όριο ενός λεπτού που έκανε τον αποκλεισμένο. Ισχύει ανά ιστότοπο ή για ολόκληρη ομάδα, και δεν υπάρχει τίποτα να παρατείνετε.",
+    "description": "Release note sentence explaining the full block"
+  }
+}

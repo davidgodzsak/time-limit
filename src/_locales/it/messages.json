@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Limita il tempo sui siti che ti distraggono. Blocca i siti mangiatempo, tieni traccia dell'uso e resta concentrato con limiti giornalieri e contatori di aperture.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Caricamento...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Scegli almeno un tipo di limite",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Limite aggiunto per $SITENAME$",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Impossibile aggiungere il limite. Riprova.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Fatto",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Monitoraggio attivato",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Impossibile attivare il monitoraggio",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Impossibile caricare i gruppi. Riprova.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Sito aggiunto al gruppo",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Impossibile aggiungere il sito al gruppo. Riprova.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Impossibile caricare le informazioni della pagina",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "Informazioni sull'estensione",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Aperture di oggi",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "$COUNT$ aperture rimaste",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "min rimasti",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "Limite esteso attivo",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Non monitorato",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Limite di tempo",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Limite di aperture",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Aggiungi limite",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "oppure",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Scegli un gruppo",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Nessun gruppo disponibile. Creane uno nelle impostazioni.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Aggiungi al gruppo",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Annulla",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Disattivato",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Il monitoraggio di questo sito è in pausa. Tocca qui sotto per riattivarlo.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Il monitoraggio del gruppo a cui appartiene il sito è in pausa. Tocca qui sotto per attivarlo.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Il monitoraggio di questo sito e del suo gruppo è in pausa. Tocca qui sotto per riattivarlo.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Attiva il monitoraggio",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Impostazioni",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Gestisci i limiti",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Qui configuri limiti, gruppi e messaggi.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "Informazioni sull'estensione",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Scopri e configura",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Time Limit ti aiuta a restare concentrato limitando il tempo sui siti che distraggono. Privacy al primo posto, gratuito e open source.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Vai alle impostazioni",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Pagina di stop",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Limite raggiunto",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Modalità estensione",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Hai raggiunto un limite. Prenditi una pausa e torna più tardi.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Estendi i limiti",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Estendi il limite",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Limite di tempo:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "min",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Limite di aperture:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "aperture",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "Minuti extra (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "Aperture extra (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Perché ti serve più tempo?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Spiega perché ti serve estendere questo limite...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 caratteri",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "La motivazione deve avere almeno 35 caratteri",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Estendi il tempo oppure le aperture",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Annulla",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Estendi",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Estensione...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Benvenuto in Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Inizia impostando il tuo primo limite",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Imposta i primi limiti nelle impostazioni per iniziare a monitorare il tempo sui siti che ti distraggono.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Apri le impostazioni",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Oppure aggiungi un limite",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "Una volta configurato, potrai aggiungere limiti rapidi da qui",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Caricamento impostazioni...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Limiti",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Gruppi",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Messaggi",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "Preferenze",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Preferenze di visualizzazione",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Personalizza l'aspetto e il comportamento dell'estensione",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Lingua",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Usa una lingua diversa da quella del browser",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Lingua del browser",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "Cerca siti e gruppi...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Siti singoli",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Aggiungi sito",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Non monitorato",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "Attivo",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Disattivato",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Gruppi",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "$LENGTH$ siti",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Aggiungi un sito al gruppo",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Gestisci i gruppi",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Limita insieme i siti simili, così non passi semplicemente all'alternativa",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Nuovo gruppo",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ siti con limiti in comune",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Aggiungi",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ min/giorno",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ aperture/giorno",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Modifica gruppo",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Elimina gruppo",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Messaggi motivazionali",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "Compaiono quando raggiungi i tuoi limiti",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Aggiungi un nuovo messaggio motivazionale...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Opzioni di visualizzazione",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Mostra un messaggio casuale",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Mostra un messaggio diverso ogni volta",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Mostra idee di attività",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Mostra schede con cose da fare al posto di navigare",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Modifica messaggio",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Elimina messaggio",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Aggiungi un nuovo sito",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Modifica sito",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Aggiungi un sito da monitorare con limiti di tempo o di aperture.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Aggiorna i limiti di questo sito.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Indirizzo del sito",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "es. tiktok.com o youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Limite di tempo (min)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "es. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Limite di aperture",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "es. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Imposta almeno un limite di tempo, uno di aperture o una pausa",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Annulla",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Aggiungi sito",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Aggiorna sito",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Crea un nuovo gruppo",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Modifica gruppo",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Crea un gruppo per condividere i limiti tra più siti.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "Aggiorna le impostazioni del gruppo.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Nome del gruppo",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "es. Social",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Colore",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Limite di tempo (min)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Limite di aperture",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Imposta almeno un limite di tempo, uno di aperture o una pausa",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Annulla",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Crea gruppo",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Aggiorna gruppo",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Aggiungi un sito a $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Questo sito condividerà i limiti di tempo e di aperture del gruppo.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Indirizzo del sito",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "es. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Aggiunta rapida",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Annulla",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Aggiungi al gruppo",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Inspira",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Espira",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Nessun messaggio motivazionale",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Aggiungi i messaggi nelle impostazioni dell'estensione per vederli qui",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Apri le impostazioni",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Cosa potresti fare invece...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Si azzera alle $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Riprenditi la concentrazione",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "Un'estensione semplice, con la privacy al primo posto, che ti aiuta a costruire abitudini di navigazione più sane. Metti limiti ai siti che ti distraggono, ricevi promemoria gentili quando ti serve una pausa e resta consapevole di come spendi il tuo tempo online.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Cosa ci guadagni",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Guadagni tempo",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Renditi conto di come passi il tempo online e riprenditi la concentrazione",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Naviga con consapevolezza",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Costruisci abitudini più sane con limiti gentili e senza giudizio",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Privacy al primo posto",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Tutto resta sul tuo dispositivo. Nessun tracciamento, nessuna raccolta dati, nessun server",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Gratis per sempre",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Niente pubblicità, niente paywall. Vogliamo un internet più sano per tutti",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Pronto a iniziare?",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Apri le impostazioni per aggiungere i tuoi primi limiti e adattare tutto ai tuoi obiettivi.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Vai alle impostazioni",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Sostieni il progetto",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Se questa estensione ti è utile, valuta di sostenerne lo sviluppo. La tua donazione ci aiuta a tenerla gratuita, senza pubblicità e open source per tutti.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Donazione singola o ricorrente",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Veloce e sicuro",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Sostieni il nostro lavoro",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Diventa sostenitore",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Vai",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Hai un suggerimento?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Hai trovato un bug o vorresti una funzione? Ci farebbe piacere saperlo!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Segnala un problema",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Proponi una funzione",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Fatto con ❤️ per aiutarti a restare concentrato",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Leggi un libro",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Immergiti in quel romanzo che volevi iniziare",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Bevi un po' d'acqua",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Restare idratati fa bene, il tuo corpo ringrazia",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Fai due passi",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Prendi aria e schiarisciti le idee",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Chiama qualcuno",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Senti un amico o qualcuno della famiglia",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Medita",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 minuti di presenza bastano a recuperare la concentrazione",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Prenditi una pausa",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Sgranchisciti, fatti un tè e riposa gli occhi",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "Operazione completata",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Qualcosa è andato storto. Riprova.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Limite aggiunto per $SITENAME$",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Sito aggiornato",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Sito rimosso",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "Gruppo creato",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "Gruppo aggiornato",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "Gruppo eliminato",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Messaggio aggiunto",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Messaggio aggiornato",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Messaggio rimosso",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Sito aggiunto al gruppo",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Sito rimosso dal gruppo",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Monitoraggio attivato",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Monitoraggio disattivato",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Preferenza salvata",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Limite esteso! Reindirizzamento...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Si è verificato un errore imprevisto",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Formato del messaggio non valido",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "Il messaggio deve contenere un'azione",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Impossibile aggiungere il sito. Controlla il formato dell'indirizzo e riprova.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Impossibile aggiornare il sito. Potrebbe non esistere o i dati non sono validi.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Impossibile eliminare il sito. Potrebbe non esistere.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Impossibile aggiungere la nota. Controlla il testo e riprova.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Impossibile aggiornare la nota. Potrebbe non esistere o i dati non sono validi.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Impossibile eliminare la nota. Potrebbe non esistere.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Nessuna scheda attiva trovata",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "Impossibile accedere all'indirizzo della scheda attuale",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Impossibile ottenere le informazioni della pagina attuale",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Impossibile aggiornare i dati della pagina",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Impossibile aggiungere il limite. Controlla il formato dell'indirizzo e riprova.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Impossibile ottenere le informazioni del badge",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Impossibile ottenere lo stato del sistema",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Ora puoi accedere a questo sito. Torna indietro o ricarica la pagina.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "Oggi su $5 hai superato sia il limite di tempo ($1/$2 minuti) sia quello di aperture ($3/$4 aperture).",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "Oggi hai passato $1 minuti su $2, superando il tuo limite di $3 minuti.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Oggi hai aperto $1 $2 volte, superando il tuo limite di $3 aperture.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "Limite giornaliero superato per $1.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Benvenuto in Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Resta concentrato con limiti intelligenti",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Imposta limiti intelligenti",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Definisci limiti di tempo o di aperture sui siti che ti distraggono",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Organizza in gruppi",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Raggruppa i siti simili e applica un limite a tutti insieme",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Resta motivato",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Scrivi i messaggi che compariranno quando raggiungi i limiti",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "Bastano 2 minuti per configurare tutto",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Salta",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Inizia",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "È tutto pronto!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Time Limit è pronto ad aiutarti a restare concentrato",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "Il tuo primo limite è impostato. Continua a navigare, al resto pensa Time Limit.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Accesso rapido dalla barra",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Tocca l'icona dell'estensione nella barra del browser per aggiungere limiti al volo o vedere come stai andando",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Barra del browser con l'icona dell'estensione Time Limit",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "Inizia a navigare",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Salta",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Avanti",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Fine",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Il modello di indirizzo non può essere vuoto",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Modello di indirizzo troppo lungo (max 2000 caratteri)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Indirizzo non valido. Inserisci un dominio valido (es. esempio.com)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Il modello di indirizzo contiene un protocollo non consentito",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Il limite di tempo deve essere un numero valido",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Il limite di tempo deve essere maggiore di 0",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Il limite di tempo non può superare le 24 ore",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "Il testo della nota non può essere vuoto",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "Testo della nota troppo lungo (max 1000 caratteri)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Tipo di dato sconosciuto nella convalida dell'archiviazione",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Numero massimo di $1 raggiunto ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "Si è verificato un errore sconosciuto",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "L'estensione è stata ricaricata. Ricarica questa pagina.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Spazio di archiviazione esaurito. Rimuovi qualche elemento e riprova.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Errore di connessione. Controlla la connessione a internet e riprova.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Errore dell'API del browser. Riprova o riavvia il browser.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "È richiesto un oggetto",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "Manca il campo obbligatorio '$1'",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "Il limite di aperture deve essere un numero valido",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "Il limite di aperture deve essere maggiore di 0",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "Il limite di aperture non può superare 1000 aperture al giorno",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Il sito deve essere un oggetto",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Va indicato almeno un limite (tempo o aperture)",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Ti piace Time Limit?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Aiutaci a crescere con una recensione a 5 stelle",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Lascia una recensione",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "L'ho già fatto",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Più tardi →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Ti trovi bene con Time Limit?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Il tuo parere ci aiuta a migliorare. Lascia una breve recensione!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Lascia una recensione",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "L'ho già fatto",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Più tardi →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Grazie! ♥ Puoi sostenere lo sviluppo con una donazione.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Impossibile registrare la valutazione. Riprova.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Grazie per il tuo sostegno!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Impossibile registrare la valutazione. Riprova.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Valutaci",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Limita un sito intero (youtube.com), un sottodominio (shorts.youtube.com) o una sezione (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "\"$1\" ha già un limite. Modifica quello esistente.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "\"$1\" ha già un limite nel gruppo \"$2\".",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "Nessuna",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "pausa di $1 s",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pausa prima di aprire",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Parte un conto alla rovescia, poi ti chiede se vuoi ancora aprire il sito. Funziona da sola, anche senza limite giornaliero.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pausa prima di aprire",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Ogni sito del gruppo avrà lo stesso conto alla rovescia prima di aprirsi.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "pausa di $1 s",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pausa prima di aprire",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "pausa di $1 s prima di aprire",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Qui non c'è un limite giornaliero, solo un attimo per capire se volevi davvero venire qui.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Respira",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Decidi tu",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "secondi",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Bastano pochi secondi per capire se volevi davvero venire qui.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Vuoi ancora aprire questo sito?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Sì, aprilo",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "No, non ora",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Aperto $1 volte oggi · fermato qui $2 volte",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Pausa di riflessione",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Decidi nella pagina",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Il conto alla rovescia sta scorrendo nella scheda. Scegli lì se aprire il sito o fare altro.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Hai scelto di non aprirlo adesso.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 resta lì quando vorrai: è stata una tua scelta, non un limite.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Vale un limite?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Oggi hai aperto $1 $2 volte.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pausa di $1 s prima di aprire",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Non per questo sito",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 ora si ferma un attimo prima di aprirsi",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Suggerisci limiti",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Nota i siti che apri in continuazione e propone un limite leggero. Al massimo un suggerimento al giorno, e mai due volte per lo stesso sito.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Novità",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Appena aggiornata. Ecco cosa è cambiato.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Ho capito",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pausa prima di aprire",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Un breve conto alla rovescia e poi \"vuoi ancora aprirlo?\". Più gentile di un blocco, e funziona senza limite giornaliero.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Limiti proposti su misura",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Se apri lo stesso sito in continuazione, l'estensione ti propone una pausa. Al massimo un suggerimento al giorno, e mai due volte per lo stesso sito.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Gratuita, privata e senza pubblicità",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Se si merita un posto nella tua giornata, una piccola donazione la fa crescere.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Sostieni lo sviluppo",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Bloccato",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Blocca del tutto",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Questo sito non si apre mai: niente tempo giornaliero, niente conto alla rovescia, niente da estendere. Disattivalo qui per riavere il sito.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Restano salvati, ma non valgono finché il blocco è attivo.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Blocca del tutto",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Ogni sito del gruppo è bloccato del tutto, quali che siano i limiti che ha di suo.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Blocca questo sito",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 ora è bloccato",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Impossibile bloccare questo sito. Riprova.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Questo sito è bloccato",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Niente conto alla rovescia e niente da estendere.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Bloccato dal gruppo \"$1\".",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Questo sito è bloccato.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 è bloccato: a differenza di un limite giornaliero, questo non torna a mezzanotte.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Sito bloccato",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Questo sito è bloccato del tutto, quindi non c'è nessun limite da estendere.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Bloccato",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Blocca un sito del tutto",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Un blocco vero, invece di un limite di un minuto che faceva finta di esserlo. Funziona per un sito o per un gruppo intero, e non c'è niente da estendere.",
+    "description": "Release note sentence explaining the full block"
+  }
+}

@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Omezte čas na rozptylujících webech. Blokujte stránky, které vám berou čas, sledujte využití a udržte soustředění díky denním limitům a počítadlu otevření.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Načítání...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Vyberte alespoň jeden typ limitu",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Limit pro $SITENAME$ přidán",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Limit se nepodařilo přidat. Zkuste to znovu.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Hotovo",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Sledování zapnuto",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Sledování se nepodařilo zapnout",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Skupiny se nepodařilo načíst. Zkuste to znovu.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Stránka byla přidána do skupiny",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Stránku se nepodařilo přidat do skupiny. Zkuste to znovu.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Informace o stránce se nepodařilo načíst",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "O tomto rozšíření",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Otevření dnes",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "Zbývá otevření: $COUNT$",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "min zbývá",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "Prodloužený limit je aktivní",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Nesledováno",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Časový limit",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Limit otevření",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Přidat limit",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "nebo",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Vyberte skupinu",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Žádné skupiny nejsou k dispozici. Vytvořte ji v nastavení.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Přidat do skupiny",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Zrušit",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Vypnuto",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Sledování této stránky je pozastavené. Kliknutím níže ho znovu zapnete.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Sledování skupiny, do které stránka patří, je pozastavené. Kliknutím níže ho zapnete.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Sledování této stránky i její skupiny je pozastavené. Kliknutím níže ho znovu zapnete.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Zapnout sledování",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Nastavení",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Správa limitů",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Zde nastavíte limity, skupiny a zprávy.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "O tomto rozšíření",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Zjistit víc a nastavit",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Time Limit vám pomáhá udržet soustředění tím, že omezuje čas na rozptylujících stránkách. Soukromí na prvním místě, zdarma a s otevřeným kódem.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Přejít do nastavení",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Stránka limitu",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Limit vyčerpán",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Režim prodloužení",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Vyčerpali jste limit. Dejte si pauzu a vraťte se později.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Prodloužit limity",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Prodloužit limit",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Časový limit:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "min",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Limit otevření:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "otevření",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "Minuty navíc (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "Otevření navíc (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Proč potřebujete víc času?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Vysvětlete, proč potřebujete tento limit prodloužit...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 znaků",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "Zdůvodnění musí mít alespoň 35 znaků",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Prodlužte buď čas, nebo počet otevření",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Zrušit",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Prodloužit",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Prodlužuji...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Vítejte v Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Začněte nastavením prvního limitu",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Nastavte si v nastavení první limity a začněte sledovat čas na rozptylujících stránkách.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Otevřít nastavení",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Nebo přidat limit",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "Až budete hotovi, můžete odsud přidávat rychlé limity",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Načítání nastavení...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Limity",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Skupiny",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Zprávy",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "Předvolby",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Předvolby zobrazení",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Přizpůsobte si vzhled a chování rozšíření",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Jazyk",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Nastavit jiný jazyk než jazyk prohlížeče",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Podle prohlížeče",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "Hledat stránky a skupiny...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Jednotlivé stránky",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Přidat stránku",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Nesledováno",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "Zapnuto",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Vypnuto",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Skupiny",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "Stránek: $LENGTH$",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Přidat stránku do skupiny",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Správa skupin",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Omezte související stránky společně, ať nepřejdete jen k alternativě",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Nová skupina",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ stránek sdílí limity",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Přidat",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ min/den",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ otevření/den",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Upravit skupinu",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Smazat skupinu",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Motivační zprávy",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "Zobrazí se, až vyčerpáte limit",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Přidat novou motivační zprávu...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Možnosti zobrazení",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Zobrazovat náhodnou zprávu",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Pokaždé zobrazit jinou zprávu",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Zobrazovat návrhy činností",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Zobrazit karty s tím, co dělat místo toho",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Upravit zprávu",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Smazat zprávu",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Přidat novou stránku",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Upravit stránku",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Přidejte web, který chcete sledovat časovým limitem nebo limitem otevření.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Upravte limity pro tento web.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Adresa webu",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "např. tiktok.com nebo youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Časový limit (min)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "např. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Limit otevření",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "např. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Nastavte alespoň časový limit, limit otevření nebo pauzu",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Zrušit",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Přidat stránku",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Uložit stránku",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Vytvořit novou skupinu",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Upravit skupinu",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Vytvořte skupinu, ve které bude několik stránek sdílet jeden limit.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "Upravte nastavení skupiny.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Název skupiny",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "např. Sociální sítě",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Barva",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Časový limit (min)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Limit otevření",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Nastavte alespoň časový limit, limit otevření nebo pauzu",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Zrušit",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Vytvořit skupinu",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Uložit skupinu",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Přidat stránku do skupiny $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Tato stránka bude sdílet časový limit a limit otevření skupiny.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Adresa webu",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "např. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Rychlé přidání",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Zrušit",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Přidat do skupiny",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Nádech",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Výdech",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Zatím nemáte žádné motivační zprávy",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Přidejte je v nastavení rozšíření a uvidíte je tady",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Otevřít nastavení",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Co byste mohli dělat místo toho...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Obnoví se v $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Získejte zpátky své soustředění",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "Jednoduché rozšíření, které staví soukromí na první místo a pomáhá vám budovat zdravější návyky při prohlížení webu. Nastavte limity na stránkách, které vás rozptylují, dostávejte laskavá připomenutí, když si máte dát pauzu, a mějte přehled o tom, jak trávíte čas online.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Co tím získáte",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Ušetřete čas",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Mějte přehled o tom, jak trávíte čas online, a získejte zpátky soustředění",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Buďte vědomí",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Budujte zdravější návyky díky laskavým limitům bez moralizování",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Soukromí na prvním místě",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Všechno zůstává ve vašem zařízení. Žádné sledování, žádný sběr dat, žádné servery",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Navždy zdarma",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Žádné reklamy, žádné placené zdi. Věříme, že internet může být zdravější pro všechny",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Pustíme se do toho?",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Otevřete nastavení, přidejte první limity a přizpůsobte si vše svým cílům.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Přejít do nastavení",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Podpořte tento projekt",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Pokud je pro vás rozšíření užitečné, zvažte podporu jeho vývoje. Váš příspěvek nám pomáhá držet ho zdarma, bez reklam a s otevřeným kódem pro všechny.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Jednorázový nebo pravidelný příspěvek",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Rychle a bezpečně",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Podpořte naši práci",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Staňte se patronem",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Přejít",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Máte zpětnou vazbu?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Našli jste chybu nebo vám něco chybí? Rádi se to dozvíme!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Nahlásit problém",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Navrhnout funkci",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Vytvořeno s ❤️, aby vám pomohlo udržet soustředění",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Přečtěte si knihu",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Pusťte se do románu, který chcete začít už dlouho",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Napijte se vody",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Dodržujte pitný režim, tělo vám poděkuje",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Jděte se projít",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Na čerstvém vzduchu si pročistíte hlavu",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Zavolejte někomu",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Ozvěte se kamarádovi nebo někomu z rodiny",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Meditujte",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 minut všímavosti dokáže vrátit soustředění",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Dejte si pauzu",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Protáhněte se, udělejte si čaj a nechte odpočinout oči",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "Hotovo",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Něco se pokazilo. Zkuste to znovu.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Limit pro $SITENAME$ přidán",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Stránka upravena",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Stránka odebrána",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "Skupina vytvořena",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "Skupina upravena",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "Skupina smazána",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Zpráva přidána",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Zpráva upravena",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Zpráva odebrána",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Stránka přidána do skupiny",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Stránka odebrána ze skupiny",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Sledování zapnuto",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Sledování vypnuto",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Předvolba uložena",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Limit prodloužen! Přesměrovávám...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Došlo k neočekávané chybě",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Neplatný formát zprávy",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "Zpráva musí obsahovat akci",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Stránku se nepodařilo přidat. Zkontrolujte formát adresy a zkuste to znovu.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Stránku se nepodařilo upravit. Možná neexistuje, nebo jsou data neplatná.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Stránku se nepodařilo smazat. Možná neexistuje.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Poznámku se nepodařilo přidat. Zkontrolujte text a zkuste to znovu.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Poznámku se nepodařilo upravit. Možná neexistuje, nebo jsou data neplatná.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Poznámku se nepodařilo smazat. Možná neexistuje.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Nebyl nalezen žádný aktivní panel",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "K adrese aktuálního panelu nelze přistoupit",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Informace o aktuální stránce se nepodařilo získat",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Data stránky se nepodařilo obnovit",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Limit se nepodařilo přidat. Zkontrolujte formát adresy a zkuste to znovu.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Údaje pro odznak se nepodařilo získat",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Stav systému se nepodařilo získat",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Stránka je opět přístupná. Vraťte se zpět nebo ji načtěte znovu.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "Dnes jste u $5 překročili časový limit ($1/$2 minut) i limit otevření ($3/$4 otevření).",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "Dnes jste na $2 strávili $1 minut a překročili svůj limit $3 minut.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Dnes jste $1 otevřeli $2krát a překročili svůj limit $3 otevření.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "Denní limit pro $1 je vyčerpán.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Vítejte v Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Udržte soustředění díky chytrým limitům",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Nastavte chytré limity",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Určete časový limit nebo limit otevření pro rozptylující stránky",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Uspořádejte do skupin",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Seskupte podobné stránky a limit bude platit pro všechny",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Zůstaňte motivovaní",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Napište si vlastní zprávy, které se zobrazí po vyčerpání limitu",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "Nastavení zabere jen 2 minuty",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Přeskočit",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Začít",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "Všechno je připravené!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Time Limit je připraven vám pomáhat udržet soustředění",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "První limit máte nastavený. Můžete se pustit do prohlížení, Time Limit vás podrží.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Rychlý přístup z lišty",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Klikněte na ikonu rozšíření v liště prohlížeče a rychle přidáte limit nebo se podíváte, jak si vedete",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Lišta prohlížeče s ikonou rozšíření Time Limit",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "Začít prohlížet",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Přeskočit",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Další",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Dokončit",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Vzor adresy nesmí být prázdný",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Vzor adresy je příliš dlouhý (max. 2000 znaků)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Neplatná adresa. Zadejte platnou doménu (např. priklad.cz)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Vzor adresy obsahuje zakázaný protokol",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Časový limit musí být platné číslo",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Časový limit musí být větší než 0",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Časový limit nesmí přesáhnout 24 hodin",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "Text poznámky nesmí být prázdný",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "Text poznámky je příliš dlouhý (max. 1000 znaků)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Neznámý typ dat při ověřování úložiště",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Byl dosažen maximální počet: $1 ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "Došlo k neznámé chybě",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "Rozšíření bylo znovu načteno. Obnovte tuto stránku.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Úložiště je plné. Odeberte několik položek a zkuste to znovu.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Chyba připojení. Zkontrolujte připojení k internetu a zkuste to znovu.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Chyba API prohlížeče. Zkuste to znovu nebo prohlížeč restartujte.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "Je vyžadován objekt",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "Chybí povinné pole '$1'",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "Limit otevření musí být platné číslo",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "Limit otevření musí být větší než 0",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "Limit otevření nesmí přesáhnout 1000 otevření denně",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Stránka musí být objekt",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Je nutné zadat alespoň jeden limit (čas nebo otevření)",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Líbí se vám Time Limit?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Pomozte nám růst pětihvězdičkovým hodnocením",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Ohodnotit",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Už jsem hodnotil",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Později →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Slouží vám Time Limit dobře?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Vaše zpětná vazba nám pomáhá se zlepšovat. Napište krátké hodnocení!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Ohodnotit",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Už jsem hodnotil",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Později →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Děkujeme! ♥ Vývoj můžete podpořit příspěvkem.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Hodnocení se nepodařilo zpracovat. Zkuste to znovu.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Děkujeme za vaši podporu!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Hodnocení se nepodařilo zpracovat. Zkuste to znovu.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Ohodnotit",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Omezte celý web (youtube.com), jednu subdoménu (shorts.youtube.com) nebo jednu sekci (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "\"$1\" už má limit. Upravte raději ten stávající.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "\"$1\" už má limit ve skupině \"$2\".",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "Vypnuto",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "pauza $1 s",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pauza před otevřením",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Odpočítá čas a pak se zeptá, jestli stránku pořád chcete otevřít. Funguje i samostatně, bez denního limitu.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pauza před otevřením",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Každá stránka v této skupině dostane před otevřením stejné odpočítávání.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "pauza $1 s",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pauza před otevřením",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "pauza $1 s před otevřením",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Žádný denní limit — jen chvilka na rozmyšlenou, jestli jste sem opravdu chtěli.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Nadechněte se",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Rozhodnutí je na vás",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "sekund",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Pár vteřin obvykle stačí, abyste si všimli, jestli jste sem opravdu chtěli.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Chcete to pořád otevřít?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Ano, otevřít",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Ne, teď ne",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Dnes otevřeno $1× · zastaveno zde $2×",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Pauza na rozmyšlenou",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Rozhodněte na stránce",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Odpočítávání běží v panelu. Tam se rozhodněte, jestli stránku otevřete, nebo uděláte něco jiného.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Rozhodli jste se to teď neotevírat.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 tu bude, až budete chtít — bylo to vaše rozhodnutí, ne limit.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Nestojí to za limit?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Dnes jste $1 otevřeli $2×.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pauza $1 s před otevřením",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Tuhle stránku ne",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 se teď před otevřením na chvíli zastaví",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Navrhovat limity",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Všimne si stránek, které otevíráte pořád dokola, a nabídne mírný limit. Nejvýš jeden návrh denně a nikdy dvakrát pro stejnou stránku.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Novinky",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Právě jsme aktualizovali. Tohle se změnilo.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Rozumím",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pauza před otevřením",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Krátké odpočítávání a pak otázka „chcete to pořád otevřít?“. Mírnější než blokace a funguje i bez denního limitu.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Limity navržené na míru",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Když stejnou stránku otevřete pořád dokola, rozšíření pro ni nabídne pauzu. Nejvýš jeden návrh denně a nikdy dvakrát pro stejnou stránku.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Zdarma, soukromé a bez reklam",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Pokud si své místo ve vašem dni zaslouží, malý příspěvek ho posune dál.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Podpořit vývoj",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Blokováno",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Zablokovat úplně",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Tato stránka se nikdy neotevře — žádný denní čas, žádné odpočítávání, není co prodlužovat. Vypnutím tady stránku vrátíte zpět.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Zůstává uložené, ale během blokace se nepoužije.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Zablokovat úplně",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Každá stránka v této skupině je zablokovaná úplně, ať už má vlastní limity jakékoli.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Zablokovat tuto stránku",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 je teď zablokováno",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Stránku se nepodařilo zablokovat. Zkuste to znovu.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Tato stránka je zablokovaná",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Není co odpočítávat ani co prodlužovat.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Zablokováno skupinou „$1“.",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Tato stránka je zablokovaná.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 je zablokováno — na rozdíl od denního limitu se o půlnoci neobnoví.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Zablokovaná stránka",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Tato stránka je zablokovaná úplně, takže není co prodlužovat.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Blokováno",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Zablokujte stránku úplně",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Skutečná blokace místo jednominutového limitu, který ji jen předstíral. Funguje pro jednu stránku i pro celou skupinu a není co prodlužovat.",
+    "description": "Release note sentence explaining the full block"
+  }
+}

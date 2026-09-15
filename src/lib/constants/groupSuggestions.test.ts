@@ -12,6 +12,14 @@ describe('getGroupSiteSuggestions', () => {
     expect(getGroupSiteSuggestions('Közösségi média').length).toBeGreaterThan(0);
     expect(getGroupSiteSuggestions('Nachrichten').length).toBeGreaterThan(0);
     expect(getGroupSiteSuggestions('Новини').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Redes sociais').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Sociala medier').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Zprávy').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Игры').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Giochi').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('ソーシャル').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Παιχνίδια').length).toBeGreaterThan(0);
+    expect(getGroupSiteSuggestions('Nyheter').length).toBeGreaterThan(0);
   });
 
   it('suggests nothing for a group that fits no category', () => {

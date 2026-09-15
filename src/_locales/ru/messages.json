@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Ограничьте время на отвлекающих сайтах. Блокируйте пожирателей времени, следите за использованием и сохраняйте концентрацию с помощью дневных лимитов и счётчика открытий.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Загрузка...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Выберите хотя бы один тип лимита",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Лимит для $SITENAME$ добавлен",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Не удалось добавить лимит. Попробуйте ещё раз.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Готово",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Отслеживание включено",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Не удалось включить отслеживание",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Не удалось загрузить группы. Попробуйте ещё раз.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Сайт добавлен в группу",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Не удалось добавить сайт в группу. Попробуйте ещё раз.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Не удалось загрузить сведения о странице",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "Об этом расширении",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Открытий сегодня",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "Осталось открытий: $COUNT$",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "мин осталось",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "Действует продлённый лимит",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Без отслеживания",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Лимит времени",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Лимит открытий",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Добавить лимит",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "или",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Выберите группу",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Групп пока нет. Создайте её в настройках.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Добавить в группу",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Отмена",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Выключено",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Отслеживание этого сайта приостановлено. Нажмите ниже, чтобы включить его снова.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Отслеживание группы, в которую входит сайт, приостановлено. Нажмите ниже, чтобы включить его.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Отслеживание этого сайта и его группы приостановлено. Нажмите ниже, чтобы включить его снова.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Включить отслеживание",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Настройки",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Управление лимитами",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Здесь настраиваются лимиты, группы и сообщения.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "Об этом расширении",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Узнать и настроить",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Time Limit помогает сохранять концентрацию, ограничивая время на отвлекающих сайтах. Приватность прежде всего, бесплатно и с открытым кодом.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Перейти в настройки",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Страница лимита",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Лимит исчерпан",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Режим продления",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Вы исчерпали лимит. Сделайте перерыв и вернитесь позже.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Продлить лимиты",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Продлить лимит",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Лимит времени:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "мин",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Лимит открытий:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "открытий",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "Дополнительные минуты (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "Дополнительные открытия (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Зачем вам больше времени?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Объясните, почему нужно продлить этот лимит...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 символов",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "В объяснении должно быть не меньше 35 символов",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Продлите либо время, либо открытия",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Отмена",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Продлить",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Продлеваем...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Добро пожаловать в Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Начните с первого лимита",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Задайте первые лимиты в настройках, чтобы начать отслеживать время на отвлекающих сайтах.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Открыть настройки",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Или добавить лимит",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "После настройки быстрые лимиты можно будет добавлять прямо отсюда",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Загрузка настроек...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Лимиты",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Группы",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Сообщения",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "Параметры",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Параметры отображения",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Настройте внешний вид и поведение расширения",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Язык",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Использовать язык, отличный от языка браузера",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Язык браузера",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "Поиск сайтов и групп...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Отдельные сайты",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Добавить сайт",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Без отслеживания",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "Включено",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Выключено",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Группы",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "Сайтов: $LENGTH$",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Добавить сайт в группу",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Управление группами",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Ограничивайте похожие сайты вместе, чтобы не переключаться на замену",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Новая группа",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "Сайтов с общим лимитом: $COUNT$",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Добавить",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ мин/день",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ открытий/день",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Изменить группу",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Удалить группу",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Мотивирующие сообщения",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "Они появятся, когда вы исчерпаете лимит",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Добавить мотивирующее сообщение...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Параметры показа",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Показывать случайное сообщение",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Каждый раз показывать другое сообщение",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Показывать идеи занятий",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Показывать карточки с тем, чем заняться вместо этого",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Изменить сообщение",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Удалить сообщение",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Добавить сайт",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Изменить сайт",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Добавьте сайт и следите за ним с помощью лимита времени или открытий.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Измените лимиты для этого сайта.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Адрес сайта",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "напр. tiktok.com или youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Лимит времени (мин)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "напр. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Лимит открытий",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "напр. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Задайте хотя бы лимит времени, лимит открытий или паузу",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Отмена",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Добавить сайт",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Сохранить сайт",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Создать группу",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Изменить группу",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Создайте группу, чтобы несколько сайтов делили один лимит.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "Измените настройки группы.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Название группы",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "напр. Соцсети",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Цвет",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Лимит времени (мин)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Лимит открытий",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Задайте хотя бы лимит времени, лимит открытий или паузу",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Отмена",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Создать группу",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Сохранить группу",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Добавить сайт в группу $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Этот сайт будет делить лимиты времени и открытий группы.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Адрес сайта",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "напр. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Быстрое добавление",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Отмена",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Добавить в группу",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Вдох",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Выдох",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Мотивирующих сообщений пока нет",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Добавьте их в настройках расширения, и они появятся здесь",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Открыть настройки",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Чем можно заняться вместо этого...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Обновится в $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Верните себе концентрацию",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "Простое расширение, которое ставит приватность на первое место и помогает выработать здоровые привычки в интернете. Установите лимиты на отвлекающие сайты, получайте мягкие напоминания о перерыве и следите за тем, как вы проводите время в сети.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Что вы получите",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Экономия времени",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Понимайте, на что уходит время в сети, и возвращайте себе концентрацию",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Осознанность",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Вырабатывайте здоровые привычки с мягкими лимитами без нравоучений",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Приватность прежде всего",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Всё остаётся на вашем устройстве. Никакого отслеживания, сбора данных и серверов",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Бесплатно навсегда",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Без рекламы и платных стен. Мы верим, что интернет может быть здоровее для всех",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Готовы начать?",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Откройте настройки, добавьте первые лимиты и подстройте всё под свои цели.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Перейти в настройки",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Поддержите проект",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Если расширение вам полезно, подумайте о поддержке его разработки. Ваше пожертвование помогает сохранить его бесплатным, без рекламы и с открытым кодом для всех.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Разовое или регулярное пожертвование",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Быстро и безопасно",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Поддержите нашу работу",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Станьте патроном",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Перейти",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Есть отзыв?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Нашли ошибку или хотите предложить функцию? Будем рады услышать!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Сообщить о проблеме",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Предложить функцию",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Сделано с ❤️, чтобы помочь вам сохранять концентрацию",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Почитайте книгу",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Возьмитесь за роман, который давно собирались начать",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Выпейте воды",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Не забывайте пить — тело скажет спасибо",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Прогуляйтесь",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Подышите свежим воздухом и проясните голову",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Позвоните кому-нибудь",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Свяжитесь с другом или кем-то из близких",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Помедитируйте",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 минут осознанности вернут вам концентрацию",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Сделайте перерыв",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Разомнитесь, заварите чай и дайте отдохнуть глазам",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "Готово",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Что-то пошло не так. Попробуйте ещё раз.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Лимит для $SITENAME$ добавлен",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Сайт обновлён",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Сайт удалён",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "Группа создана",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "Группа обновлена",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "Группа удалена",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Сообщение добавлено",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Сообщение обновлено",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Сообщение удалено",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Сайт добавлен в группу",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Сайт удалён из группы",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Отслеживание включено",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Отслеживание выключено",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Настройка сохранена",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Лимит продлён! Перенаправляем...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Произошла непредвиденная ошибка",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Неверный формат сообщения",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "В сообщении должно быть действие",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Не удалось добавить сайт. Проверьте формат адреса и попробуйте ещё раз.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Не удалось обновить сайт. Возможно, его нет или данные неверны.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Не удалось удалить сайт. Возможно, его нет.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Не удалось добавить заметку. Проверьте текст и попробуйте ещё раз.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Не удалось обновить заметку. Возможно, её нет или данные неверны.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Не удалось удалить заметку. Возможно, её нет.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Активная вкладка не найдена",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "Нет доступа к адресу текущей вкладки",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Не удалось получить сведения о текущей странице",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Не удалось обновить данные страницы",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Не удалось добавить лимит. Проверьте формат адреса и попробуйте ещё раз.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Не удалось получить данные для значка",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Не удалось получить состояние системы",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Сайт снова доступен. Вернитесь назад или обновите страницу.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "Сегодня вы превысили и лимит времени ($1/$2 минут), и лимит открытий ($3/$4 открытий) для $5.",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "Сегодня вы провели на $2 $1 минут и превысили свой лимит в $3 минут.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Сегодня вы открыли $1 $2 раз и превысили свой лимит в $3 открытий.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "Дневной лимит для $1 исчерпан.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Добро пожаловать в Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Сохраняйте концентрацию с умными лимитами",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Задайте умные лимиты",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Установите лимит времени или открытий для отвлекающих сайтов",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Соберите в группы",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Сгруппируйте похожие сайты, и лимит будет действовать сразу на все",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Не теряйте мотивацию",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Напишите свои сообщения, которые появятся при исчерпании лимита",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "Настройка займёт всего 2 минуты",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Пропустить",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Начать",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "Всё готово!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Time Limit готов помогать вам сохранять концентрацию",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "Первый лимит настроен. Пользуйтесь браузером, а Time Limit поможет не сбиться с курса.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Быстрый доступ с панели",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Нажмите значок расширения на панели браузера, чтобы быстро добавить лимит или посмотреть, как идут дела",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Панель браузера со значком расширения Time Limit",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "К браузеру",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Пропустить",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Далее",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Готово",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Шаблон адреса не может быть пустым",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Шаблон адреса слишком длинный (максимум 2000 символов)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Неверный адрес. Введите корректный домен (напр. example.com)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Шаблон адреса содержит запрещённый протокол",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Лимит времени должен быть числом",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Лимит времени должен быть больше 0",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Лимит времени не может превышать 24 часа",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "Текст заметки не может быть пустым",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "Текст заметки слишком длинный (максимум 1000 символов)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Неизвестный тип данных при проверке хранилища",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Достигнуто максимальное количество: $1 ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "Произошла неизвестная ошибка",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "Расширение было перезагружено. Обновите эту страницу.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Хранилище заполнено. Удалите часть записей и попробуйте ещё раз.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Ошибка соединения. Проверьте подключение к интернету и попробуйте ещё раз.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Ошибка API браузера. Попробуйте ещё раз или перезапустите браузер.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "Требуется объект",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "Отсутствует обязательное поле '$1'",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "Лимит открытий должен быть числом",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "Лимит открытий должен быть больше 0",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "Лимит открытий не может превышать 1000 в день",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Сайт должен быть объектом",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Нужно задать хотя бы один лимит (время или открытия)",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Нравится Time Limit?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Помогите нам расти — поставьте 5 звёзд",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Оценить",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Уже оценил",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Позже →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Time Limit вам помогает?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Ваш отзыв помогает нам стать лучше. Напишите пару слов!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Оценить",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Уже оценил",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Позже →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Спасибо! ♥ Поддержать разработку можно пожертвованием.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Не удалось обработать оценку. Попробуйте ещё раз.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Спасибо за поддержку!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Не удалось обработать оценку. Попробуйте ещё раз.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Оценить",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Ограничьте весь сайт (youtube.com), один поддомен (shorts.youtube.com) или один раздел (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "Для «$1» лимит уже есть. Измените существующий.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "Для «$1» уже есть лимит в группе «$2».",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "Выкл.",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1 с",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "пауза $1 с",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Пауза перед открытием",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Идёт обратный отсчёт, а потом вопрос, хотите ли вы всё ещё открыть сайт. Работает и сама по себе, без дневного лимита.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Пауза перед открытием",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Перед каждым сайтом этой группы будет один и тот же обратный отсчёт.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "пауза $1 с",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Пауза перед открытием",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "пауза $1 с перед открытием",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Дневного лимита здесь нет — только мгновение, чтобы понять, точно ли вы сюда собирались.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Сделайте вдох",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Решать вам",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "секунд",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Нескольких секунд обычно хватает, чтобы понять, действительно ли вы хотели сюда зайти.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Всё ещё хотите это открыть?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Да, открыть",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Нет, не сейчас",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Открыто сегодня: $1 · остановились здесь: $2",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Пауза на размышление",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Решите на странице",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Обратный отсчёт идёт во вкладке. Там и выберите: открыть сайт или заняться чем-то другим.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Вы решили не открывать это сейчас.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 никуда не денется — это было ваше решение, а не лимит.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Стоит поставить лимит?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Сегодня вы открыли $1 $2 раз.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Пауза $1 с перед открытием",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Только не этот сайт",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "Теперь $1 будет открываться с паузой",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Предлагать лимиты",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Замечает сайты, которые вы открываете снова и снова, и предлагает мягкий лимит. Не больше одного предложения в день и никогда дважды для одного сайта.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Что нового",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Только что обновились. Вот что изменилось.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Понятно",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Пауза перед открытием",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "Короткий обратный отсчёт, а затем вопрос «всё ещё хотите это открыть?». Мягче блокировки и работает без дневного лимита.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Лимиты, предложенные вам",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Открывайте один и тот же сайт снова и снова — и расширение предложит для него паузу. Не больше одного предложения в день и никогда дважды для одного сайта.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Бесплатно, приватно и без рекламы",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Если расширение заслужило место в вашем дне, небольшое пожертвование поможет ему расти.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Поддержать разработку",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Блок",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Заблокировать полностью",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Этот сайт не откроется никогда — ни дневного времени, ни отсчёта, ни продления. Выключите здесь, чтобы вернуть сайт.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Сохраняется, но не действует, пока включена блокировка.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Заблокировать полностью",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Каждый сайт этой группы заблокирован полностью, какие бы собственные лимиты у него ни были.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Заблокировать этот сайт",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 теперь заблокирован",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Не удалось заблокировать сайт. Попробуйте ещё раз.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Этот сайт заблокирован",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Отсчитывать нечего, и продлевать нечего.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Заблокировано группой «$1».",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Этот сайт заблокирован.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 заблокирован — в отличие от дневного лимита, в полночь он не вернётся.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Заблокированный сайт",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Этот сайт заблокирован полностью, поэтому продлевать нечего.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Заблокировано",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Полная блокировка сайта",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "Настоящая блокировка вместо лимита в одну минуту, который её изображал. Работает для сайта или для целой группы, и продлевать нечего.",
+    "description": "Release note sentence explaining the full block"
+  }
+}

@@ -185,7 +185,7 @@ interface Message {
 
 ### Translations
 Every user-visible string goes through `t()` in `src/lib/utils/i18n.ts` and lives
-in all eight `src/_locales/*/messages.json` files. `t()` resolves in this order:
+in all sixteen `src/_locales/*/messages.json` files (`src/lib/utils/locales.test.ts` fails when one of them falls behind `en`). `t()` resolves in this order:
 the user's language override (fetched by `initI18n`) → `browser.i18n` → the
 bundled **English fallback** (also fetched by `initI18n`) → the raw key. The
 fallback matters because `browser.i18n` reads the *installed* package's locales

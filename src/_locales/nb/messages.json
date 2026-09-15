@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "Begrens tiden på nettsteder som stjeler oppmerksomheten. Blokker tidstyver, følg med på bruken og hold fokus med daglige tidsgrenser og besøkstellere.",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "Laster...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "Velg minst én type grense",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "Grense lagt til for $SITENAME$",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "Klarte ikke å legge til grensen. Prøv igjen.",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "Ferdig",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "Sporing er slått på",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "Klarte ikke å slå på sporing",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "Klarte ikke å laste gruppene. Prøv igjen.",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "Nettstedet ble lagt til i gruppen",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "Klarte ikke å legge nettstedet til i gruppen. Prøv igjen.",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "Klarte ikke å laste informasjon om siden",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "Om denne utvidelsen",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "Åpninger i dag",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "$COUNT$ åpninger igjen",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "min igjen",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "Utvidet grense er aktiv",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "Spores ikke",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "Tidsgrense",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "Åpningsgrense",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "Legg til grense",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "eller",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "Velg en gruppe",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "Ingen grupper finnes. Opprett en i innstillingene.",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "Legg til i gruppe",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "Av",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "Sporingen av dette nettstedet er satt på pause. Klikk nedenfor for å slå den på igjen.",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "Sporingen av gruppen nettstedet hører til er satt på pause. Klikk nedenfor for å slå den på.",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "Sporingen av dette nettstedet og gruppen det hører til er satt på pause. Klikk nedenfor for å slå den på igjen.",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "Slå på sporing",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "Innstillinger",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "Håndter grenser",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "Her setter du opp grenser, grupper og meldinger.",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "Om denne utvidelsen",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "Les mer og sett opp",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Time Limit hjelper deg å holde fokus ved å begrense tiden på nettsteder som stjeler oppmerksomheten. Personvern først, gratis og åpen kildekode.",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "Gå til innstillinger",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "Stoppside",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "Grensen er nådd",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "Utvidelsesmodus",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "Du har nådd en grense. Ta en pause og kom tilbake senere.",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "Utvid grensene",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "Utvid grensen din",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "Tidsgrense:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "min",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "Åpningsgrense:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "åpninger",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "Ekstra minutter (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "Ekstra åpninger (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "Hvorfor trenger du mer tid?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "Forklar hvorfor du trenger å utvide denne grensen...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 tegn",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "Begrunnelsen må være på minst 35 tegn",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "Utvid enten tiden eller åpningene",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "Utvid",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "Utvider...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Velkommen til Time Limit",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "Kom i gang med din første grense",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "Sett opp de første grensene i innstillingene for å begynne å følge tiden på nettsteder som stjeler oppmerksomheten.",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "Åpne innstillinger",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "Eller legg til grense",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "Når alt er satt opp, kan du legge til raske grenser herfra",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "Laster innstillinger...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "Grenser",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "Grupper",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "Meldinger",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "Valg",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "Visningsvalg",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "Tilpass hvordan utvidelsen ser ut og oppfører seg",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "Språk",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "Overstyr språket nettleseren viser",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "Nettleserens språk",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "Søk i nettsteder og grupper...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "Enkeltnettsteder",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "Legg til nettsted",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "Spores ikke",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "På",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "Av",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "Grupper",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "$LENGTH$ nettsteder",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "Legg et nettsted til i gruppen",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "Håndter grupper",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "Begrens liknende nettsteder samlet, så du ikke bare hopper til alternativet",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "Ny gruppe",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ nettsteder deler grenser",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "Legg til",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "$MINUTES$ min/dag",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "$COUNT$ åpninger/dag",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "Rediger gruppe",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "Slett gruppe",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "Motiverende meldinger",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "De dukker opp når du når grensene dine",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "Legg til en ny motiverende melding...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "Visningsvalg",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "Vis en tilfeldig melding",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "Vis en ny melding hver gang",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "Vis forslag til aktiviteter",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "Vis kort med ting du kan gjøre i stedet",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "Rediger melding",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "Slett melding",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "Legg til nytt nettsted",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "Rediger nettsted",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "Legg til et nettsted du vil følge med tids- eller åpningsgrenser.",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "Oppdater grensene for dette nettstedet.",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "Nettadresse",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "f.eks. tiktok.com eller youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "Tidsgrense (min)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "f.eks. 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "Åpningsgrense",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "f.eks. 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "Sett minst en tidsgrense, en åpningsgrense eller en pause",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "Legg til nettsted",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "Oppdater nettsted",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "Opprett ny gruppe",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "Rediger gruppe",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "Opprett en gruppe der flere nettsteder deler de samme grensene.",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "Oppdater innstillingene for gruppen.",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "Gruppenavn",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "f.eks. Sosiale medier",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "Farge",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "Tidsgrense (min)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "Åpningsgrense",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "Sett minst en tidsgrense, en åpningsgrense eller en pause",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "Opprett gruppe",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "Oppdater gruppe",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "Legg et nettsted til i $GROUPNAME$",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "Dette nettstedet deler gruppens tids- og åpningsgrenser.",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "Nettadresse",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "f.eks. tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "Hurtigvalg",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "Avbryt",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "Legg til i gruppen",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "Pust inn",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "Ut",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "Ingen motiverende meldinger ennå",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "Legg til meldinger i innstillingene for å se dem her",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "Åpne innstillinger",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "Dette kunne du gjort i stedet...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • Nullstilles $RESETTIME$",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "Ta tilbake fokuset ditt",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "En enkel nettleserutvidelse med personvernet først, som hjelper deg å bygge sunnere nettvaner. Sett grenser på nettstedene som stjeler oppmerksomheten, få vennlige påminnelser når du trenger en pause, og hold deg bevisst på hvordan du bruker tiden din på nett.",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "Dette får du",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "Spar tid",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "Bli bevisst på hvordan du bruker tiden på nett, og ta tilbake fokuset",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "Vær til stede",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "Bygg sunnere vaner med vennlige grenser, uten pekefinger",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "Personvern først",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "Alt blir på enheten din. Ingen sporing, ingen datainnsamling, ingen servere",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "Gratis for alltid",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "Ingen reklame, ingen betalingsmur. Vi vil gjøre internett sunnere for alle",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "Klar til å begynne?",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "Åpne innstillingene for å legge til dine første grenser og tilpasse alt til målene dine.",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "Gå til innstillinger",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "Støtt prosjektet",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "Hvis utvidelsen er nyttig for deg, vurder å støtte utviklingen. Gaven din hjelper oss å holde den gratis, reklamefri og med åpen kildekode for alle.",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "Engangsgave eller fast støtte",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "Raskt og trygt",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "Støtt arbeidet vårt",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "Bli fast støttespiller",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "Gå dit",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "Har du tilbakemeldinger?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "Fant du en feil, eller ønsker du deg en funksjon? Vi hører gjerne fra deg!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "Meld fra om et problem",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "Foreslå en funksjon",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "Laget med ❤️ for å hjelpe deg å holde fokus",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "Les en bok",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "Kast deg over romanen du har tenkt å begynne på",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "Drikk vann",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "Hold deg hydrert, kroppen takker deg",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "Ta en tur",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "Få frisk luft og klarne tankene",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "Ring noen",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "Ta kontakt med en venn eller noen i familien",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "Meditér",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5 minutter med nærvær kan gi deg fokuset tilbake",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "Ta en pause",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "Strekk på deg, kok te og hvil øynene",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "Ferdig",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "Noe gikk galt. Prøv igjen.",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "Grense lagt til for $SITENAME$",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "Nettstedet er oppdatert",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "Nettstedet er fjernet",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "Gruppen er opprettet",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "Gruppen er oppdatert",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "Gruppen er slettet",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "Meldingen er lagt til",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "Meldingen er oppdatert",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "Meldingen er fjernet",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "Nettstedet ble lagt til i gruppen",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "Nettstedet ble fjernet fra gruppen",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "Sporing er slått på",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "Sporing er slått av",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "Valget er lagret",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "Grensen er utvidet! Sender deg videre...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "Det oppsto en uventet feil",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "Ugyldig meldingsformat",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "Meldingen må ha en handling",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "Klarte ikke å legge til nettstedet. Sjekk formatet på adressen og prøv igjen.",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "Klarte ikke å oppdatere nettstedet. Det finnes kanskje ikke, eller dataene er ugyldige.",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "Klarte ikke å slette nettstedet. Det finnes kanskje ikke.",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "Klarte ikke å legge til notatet. Sjekk teksten og prøv igjen.",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "Klarte ikke å oppdatere notatet. Det finnes kanskje ikke, eller dataene er ugyldige.",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "Klarte ikke å slette notatet. Det finnes kanskje ikke.",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "Fant ingen aktiv fane",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "Får ikke tilgang til adressen i den aktive fanen",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "Klarte ikke å hente informasjon om siden",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "Klarte ikke å oppdatere sidedataene",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "Klarte ikke å legge til grensen. Sjekk formatet på adressen og prøv igjen.",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "Klarte ikke å hente informasjon til merket",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "Klarte ikke å hente systemstatus",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "Du kommer til nettstedet igjen. Gå tilbake eller last siden på nytt.",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "I dag har du passert både tidsgrensen ($1/$2 minutter) og åpningsgrensen ($3/$4 åpninger) for $5.",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "Du har brukt $1 minutter på $2 i dag og passert grensen din på $3 minutter.",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "Du har åpnet $1 $2 ganger i dag og passert grensen din på $3 åpninger.",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "Daglig grense passert for $1.",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Velkommen til Time Limit",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "Hold fokus med smarte grenser",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "Sett smarte grenser",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "Bestem tids- eller åpningsgrenser på nettsteder som stjeler oppmerksomheten",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "Samle i grupper",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "Grupper liknende nettsteder og la én grense gjelde dem alle",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "Hold motivasjonen",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "Skriv dine egne meldinger som vises når grensen er nådd",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "Det tar bare 2 minutter å sette opp",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "Hopp over",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "Start",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "Alt er klart!",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Time Limit er klar til å hjelpe deg med å holde fokus",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "Den første grensen din er satt. Surf videre, så hjelper Time Limit deg å holde kursen.",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "Rask tilgang fra verktøylinjen",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "Klikk på ikonet i nettleserens verktøylinje for raskt å legge til grenser eller se hvordan det går",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Nettleserens verktøylinje med ikonet til Time Limit-utvidelsen",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "Begynn å surfe",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "Hopp over",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "Neste",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "Fullfør",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "Adressemønsteret kan ikke være tomt",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "Adressemønsteret er for langt (maks 2000 tegn)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "Ugyldig adresse. Skriv inn et gyldig domene (f.eks. eksempel.no)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "Adressemønsteret inneholder en sperret protokoll",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "Tidsgrensen må være et gyldig tall",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "Tidsgrensen må være større enn 0",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "Tidsgrensen kan ikke overstige 24 timer",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "Notatteksten kan ikke være tom",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "Notatteksten er for lang (maks 1000 tegn)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "Ukjent datatype ved validering av lagringen",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "Største antall $1 er nådd ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "Det oppsto en ukjent feil",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "Utvidelsen ble lastet på nytt. Last denne siden på nytt.",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "Lagringsgrensen er nådd. Fjern noen oppføringer og prøv igjen.",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "Tilkoblingsfeil. Sjekk internettforbindelsen og prøv igjen.",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "Feil i nettleserens API. Prøv igjen, eller start nettleseren på nytt.",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "Et objekt kreves",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "Det påkrevde feltet '$1' mangler",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "Åpningsgrensen må være et gyldig tall",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "Åpningsgrensen må være større enn 0",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "Åpningsgrensen kan ikke overstige 1000 åpninger per dag",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "Nettstedet må være et objekt",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "Minst én grense (tid eller åpninger) må angis",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Liker du Time Limit?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "Hjelp oss å vokse med en femstjerners omtale",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "Gi en vurdering",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "Allerede vurdert",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "Senere →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Fungerer Time Limit for deg?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "Tilbakemeldingen din hjelper oss å bli bedre. Legg igjen en kjapp omtale!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "Gi en vurdering",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "Allerede vurdert",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "Senere →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "Takk! ♥ Støtt utviklingen med en gave.",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "Klarte ikke å registrere vurderingen. Prøv igjen.",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "Takk for støtten!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "Klarte ikke å registrere vurderingen. Prøv igjen.",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "Vurder oss",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "Begrens et helt nettsted (youtube.com), ett underdomene (shorts.youtube.com) eller én del (youtube.com/shorts).",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "\"$1\" har allerede en grense. Rediger den eksisterende i stedet.",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "\"$1\" har allerede en grense i gruppen \"$2\".",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "Av",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1 s",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "$1 s pause",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "Pause før siden åpnes",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "Teller ned og spør så om du fortsatt vil åpne nettstedet. Fungerer på egen hånd, uten en daglig grense.",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "Pause før siden åpnes",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "Hvert nettsted i gruppen får den samme nedtellingen før det åpnes.",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "$1 s pause",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "Pause før siden åpnes",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "$1 s pause før siden åpnes",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "Ingen daglig grense her — bare et øyeblikk til å kjenne etter om du faktisk mente det.",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "Trekk pusten",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "Du bestemmer",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "sekunder",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "Noen sekunder er som regel nok til å merke om du faktisk ville hit.",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "Vil du fortsatt åpne denne?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "Ja, åpne den",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "Nei, ikke nå",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "Åpnet $1 ganger i dag · stoppet her $2 ganger",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "Tenkepause",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "Bestem deg i fanen",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "Nedtellingen går i fanen. Velg der om du vil åpne nettstedet eller gjøre noe annet.",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "Du valgte å ikke åpne denne nå.",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 er der fortsatt når du vil — dette var ditt valg, ikke en grense.",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "Verdt en grense?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "Du har åpnet $1 $2 ganger i dag.",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "Pause $1 s før siden åpnes",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "Ikke dette nettstedet",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 tar nå en pause før den åpnes",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "Foreslå grenser",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "Legger merke til nettsteder du åpner om og om igjen, og tilbyr en mild grense. Høyst ett forslag om dagen, og aldri to ganger for samme nettsted.",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "Nytt i denne versjonen",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "Nettopp oppdatert. Her er hva som er endret.",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "Skjønner",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "Pause før siden åpnes",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "En kort nedtelling, og så «vil du fortsatt åpne denne?». Mildere enn en blokkering, og den virker uten en daglig grense.",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "Grenser foreslått for deg",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "Åpner du det samme nettstedet om og om igjen, tilbyr utvidelsen en pause for det. Høyst ett forslag om dagen, og aldri to ganger for samme nettsted.",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "Gratis, privat og reklamefri",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "Fortjener den plassen sin i dagen din, holder en liten gave den i vekst.",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "Støtt utviklingen",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "Sperret",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "Blokker helt",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "Dette nettstedet åpnes aldri — ingen daglig tid, ingen nedtelling, ingenting å utvide. Slå det av her for å få nettstedet tilbake.",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "Beholdes, men brukes ikke mens blokkeringen er på.",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "Blokker helt",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "Hvert nettsted i gruppen blokkeres helt, uansett hvilke egne grenser det har.",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "Blokker dette nettstedet",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 er blokkert nå",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "Klarte ikke å blokkere dette nettstedet. Prøv igjen.",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "Dette nettstedet er blokkert",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "Ingenting å telle ned, og ingenting å utvide.",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "Blokkert av gruppen \"$1\".",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "Dette nettstedet er blokkert.",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 er blokkert — i motsetning til en daglig grense kommer ikke denne tilbake ved midnatt.",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "Blokkert nettsted",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "Dette nettstedet er helt blokkert, så det finnes ingen grense å utvide.",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "Blokkert",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "Blokker et nettsted helt",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "En ekte blokkering, i stedet for en ettminuttsgrense som skulle spille rollen. Virker per nettsted eller for en hel gruppe, og det finnes ingenting å utvide.",
+    "description": "Release note sentence explaining the full block"
+  }
+}

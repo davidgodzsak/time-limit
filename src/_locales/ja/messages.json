@@ -1,0 +1,1526 @@
+{
+  "extensionName": {
+    "message": "Time Limit",
+    "description": "Extension name shown in browser and stores"
+  },
+  "extensionDescription": {
+    "message": "気が散るサイトの利用時間を制限します。時間を奪うサイトをブロックし、利用状況を記録し、1日の時間制限と開いた回数の制限で集中を保ちます。",
+    "description": "Extension description in store listing"
+  },
+  "extensionActionTitle": {
+    "message": "Time Limit",
+    "description": "Tooltip when hovering over extension icon in toolbar"
+  },
+  "popup_loading_message": {
+    "message": "読み込み中...",
+    "description": "Loading state message in popup"
+  },
+  "popup_addLimit_validation": {
+    "message": "制限の種類を1つ以上選んでください",
+    "description": "Error when neither time nor opens limit is selected"
+  },
+  "popup_addLimit_success": {
+    "message": "$SITENAME$ に制限を追加しました",
+    "description": "Success notification when limit is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "popup_addLimit_failed": {
+    "message": "制限を追加できませんでした。もう一度お試しください。",
+    "description": "Error notification when limit addition fails"
+  },
+  "popup_trackingEnabled_title": {
+    "message": "完了",
+    "description": "Toast title for successful tracking enable"
+  },
+  "popup_trackingEnabled_description": {
+    "message": "記録を有効にしました",
+    "description": "Toast description for successful tracking enable"
+  },
+  "popup_trackingEnabled_failed": {
+    "message": "記録を有効にできませんでした",
+    "description": "Error when tracking enable fails"
+  },
+  "popup_groupSelector_error": {
+    "message": "グループを読み込めませんでした。もう一度お試しください。",
+    "description": "Error when group selector fails to load"
+  },
+  "popup_addToGroup_success": {
+    "message": "サイトをグループに追加しました",
+    "description": "Success notification when site is added to group"
+  },
+  "popup_addToGroup_failed": {
+    "message": "サイトをグループに追加できませんでした。もう一度お試しください。",
+    "description": "Error notification when site addition to group fails"
+  },
+  "popup_pageInfo_error": {
+    "message": "ページの情報を読み込めませんでした",
+    "description": "Error when page info cannot be loaded"
+  },
+  "normalPageView_button_tooltip": {
+    "message": "この拡張機能について",
+    "description": "Tooltip for info button in normal page view"
+  },
+  "normalPageView_opensLimit_label": {
+    "message": "今日開いた回数",
+    "description": "Label for opens limit count display"
+  },
+  "normalPageView_opensRemaining": {
+    "message": "残り $COUNT$ 回",
+    "description": "Helper text showing remaining opens",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "normalPageView_minLeft": {
+    "message": "分 残り",
+    "description": "Short label for remaining time unit"
+  },
+  "normalPageView_extended_badge": {
+    "message": "延長した制限が有効です",
+    "description": "Badge shown on a limited site when the daily limit has been extended for today"
+  },
+  "unlimitedSiteView_notTracked": {
+    "message": "記録していません",
+    "description": "Status label for unlimited sites"
+  },
+  "unlimitedSiteView_timeLimit_label": {
+    "message": "時間制限",
+    "description": "Section label for time limit selection"
+  },
+  "unlimitedSiteView_opensLimit_label": {
+    "message": "回数制限",
+    "description": "Section label for opens limit selection"
+  },
+  "unlimitedSiteView_button_addLimit": {
+    "message": "制限を追加",
+    "description": "Button to add a limit to the site"
+  },
+  "unlimitedSiteView_divider": {
+    "message": "または",
+    "description": "Divider text between limit type options"
+  },
+  "unlimitedSiteView_groupSelector_label": {
+    "message": "グループを選択",
+    "description": "Label for group selector"
+  },
+  "unlimitedSiteView_groupSelector_empty": {
+    "message": "グループがありません。設定で作成してください。",
+    "description": "Empty state message when no groups exist"
+  },
+  "unlimitedSiteView_button_addToGroup": {
+    "message": "グループに追加",
+    "description": "Button to add site to a group"
+  },
+  "unlimitedSiteView_button_cancel": {
+    "message": "キャンセル",
+    "description": "Cancel button in unlimited site view"
+  },
+  "disabledStateView_disabled": {
+    "message": "無効",
+    "description": "Status label for disabled tracking"
+  },
+  "disabledStateView_message_site": {
+    "message": "このサイトの記録は一時停止中です。下をクリックすると再開します。",
+    "description": "Message when site tracking is disabled"
+  },
+  "disabledStateView_message_group": {
+    "message": "このサイトが属するグループの記録は一時停止中です。下をクリックすると有効になります。",
+    "description": "Message when group tracking is disabled"
+  },
+  "disabledStateView_message_both": {
+    "message": "このサイトとそのグループの記録は一時停止中です。下をクリックすると再開します。",
+    "description": "Message when both site and group tracking are disabled"
+  },
+  "disabledStateView_button": {
+    "message": "記録を有効にする",
+    "description": "Button to enable tracking"
+  },
+  "settingsPageView_title": {
+    "message": "設定ページ",
+    "description": "Page identification in popup when on settings page"
+  },
+  "settingsPageView_subtitle": {
+    "message": "制限を管理",
+    "description": "Subtitle description on popup settings page view"
+  },
+  "settingsPageView_description": {
+    "message": "ここで制限・グループ・メッセージを設定できます。",
+    "description": "Informational text in popup settings page view"
+  },
+  "infoPageView_title": {
+    "message": "この拡張機能について",
+    "description": "Page identification in popup when on info page"
+  },
+  "infoPageView_subtitle": {
+    "message": "知る・設定する",
+    "description": "Subtitle in popup info page view"
+  },
+  "infoPageView_description": {
+    "message": "Time Limit は気が散るサイトの利用時間を制限して集中を助けます。プライバシー重視、無料、オープンソースです。",
+    "description": "Extension description in popup info page view"
+  },
+  "infoPageView_button": {
+    "message": "設定を開く",
+    "description": "Button to navigate to settings from popup"
+  },
+  "timeoutPageView_title": {
+    "message": "制限ページ",
+    "description": "Page identification in popup when on timeout page"
+  },
+  "timeoutPageView_subtitle_normal": {
+    "message": "制限に達しました",
+    "description": "Subtitle in normal timeout state"
+  },
+  "timeoutPageView_subtitle_extended": {
+    "message": "延長モード",
+    "description": "Subtitle when extension form is open"
+  },
+  "timeoutPageView_message": {
+    "message": "制限に達しました。少し休んで、あとで戻ってきましょう。",
+    "description": "Default informational message on timeout"
+  },
+  "timeoutPageView_button_extend": {
+    "message": "制限を延長",
+    "description": "Button to open extend limits form"
+  },
+  "timeoutPageView_extend_title": {
+    "message": "制限を延長する",
+    "description": "Title of extend limits form"
+  },
+  "timeoutPageView_extend_timeLimit": {
+    "message": "時間制限:",
+    "description": "Label for time limit display in form"
+  },
+  "timeoutPageView_extend_timeLabel": {
+    "message": "分",
+    "description": "Unit label for minutes"
+  },
+  "timeoutPageView_extend_opensLimit": {
+    "message": "回数制限:",
+    "description": "Label for opens limit display in form"
+  },
+  "timeoutPageView_extend_opensLabel": {
+    "message": "回",
+    "description": "Unit label for opens"
+  },
+  "timeoutPageView_extend_minutes_label": {
+    "message": "追加する分数 (0-60)",
+    "description": "Label for extra minutes input field"
+  },
+  "timeoutPageView_extend_opens_label": {
+    "message": "追加する回数 (0-10)",
+    "description": "Label for extra opens input field"
+  },
+  "timeoutPageView_extend_excuse_label": {
+    "message": "なぜもっと時間が必要ですか?",
+    "description": "Label for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_placeholder": {
+    "message": "この制限を延長したい理由を書いてください...",
+    "description": "Placeholder text for excuse textarea"
+  },
+  "timeoutPageView_extend_excuse_counter": {
+    "message": "$LENGTH$/35 文字",
+    "description": "Character counter for excuse field",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "timeoutPageView_extend_error_minChars": {
+    "message": "理由は35文字以上で入力してください",
+    "description": "Validation error for excuse length"
+  },
+  "timeoutPageView_extend_error_noExtension": {
+    "message": "時間か回数のどちらかを延長してください",
+    "description": "Validation error when neither time nor opens extended"
+  },
+  "timeoutPageView_extend_button_cancel": {
+    "message": "キャンセル",
+    "description": "Cancel button in extend form"
+  },
+  "timeoutPageView_extend_button_extend": {
+    "message": "延長する",
+    "description": "Submit button in extend form"
+  },
+  "timeoutPageView_extend_button_extending": {
+    "message": "延長しています...",
+    "description": "Button label during extension submission"
+  },
+  "firstInstallView_title": {
+    "message": "Time Limit へようこそ",
+    "description": "Welcome screen title for first time users"
+  },
+  "firstInstallView_subtitle": {
+    "message": "まずは最初の制限を設定しましょう",
+    "description": "Welcome screen subtitle"
+  },
+  "firstInstallView_tip": {
+    "message": "設定で最初の制限を作ると、気が散るサイトの利用時間の記録が始まります。",
+    "description": "Helpful tip on welcome screen"
+  },
+  "firstInstallView_button_openSettings": {
+    "message": "設定を開く",
+    "description": "Button to open settings page"
+  },
+  "firstInstallView_button_addLimit": {
+    "message": "または制限を追加",
+    "description": "Alternative button text to add limit"
+  },
+  "firstInstallView_footer": {
+    "message": "設定が済むと、ここから手早く制限を追加できます",
+    "description": "Footer note on welcome screen"
+  },
+  "settings_loading": {
+    "message": "設定を読み込み中...",
+    "description": "Loading state message in settings page"
+  },
+  "settings_tab_limits": {
+    "message": "制限",
+    "description": "Tab label for limits/sites section"
+  },
+  "settings_tab_groups": {
+    "message": "グループ",
+    "description": "Tab label for groups section"
+  },
+  "settings_tab_messages": {
+    "message": "メッセージ",
+    "description": "Tab label for messages section"
+  },
+  "settings_tab_preferences": {
+    "message": "環境設定",
+    "description": "Tab label for display preferences section"
+  },
+  "preferences_section_title": {
+    "message": "表示の設定",
+    "description": "Title for the display preferences page"
+  },
+  "preferences_section_description": {
+    "message": "拡張機能の見た目と動きを調整します",
+    "description": "Description for the display preferences page"
+  },
+  "settings_language_label": {
+    "message": "言語",
+    "description": "Label for the language selector in display preferences"
+  },
+  "settings_language_description": {
+    "message": "ブラウザーの表示言語を上書きします",
+    "description": "Description for the language selector option"
+  },
+  "settings_language_auto": {
+    "message": "ブラウザーに合わせる",
+    "description": "Option to use the browser's default language"
+  },
+  "sites_search_placeholder": {
+    "message": "サイトとグループを検索...",
+    "description": "Placeholder in search input for sites"
+  },
+  "sites_section_title": {
+    "message": "個別のサイト",
+    "description": "Title for individual sites section"
+  },
+  "sites_button_add": {
+    "message": "サイトを追加",
+    "description": "Button to add a new site"
+  },
+  "sites_status_notTracked": {
+    "message": "記録していません",
+    "description": "Status label for untracked sites"
+  },
+  "sites_button_enabled": {
+    "message": "有効",
+    "description": "Label for enabled/tracking state"
+  },
+  "sites_button_disabled": {
+    "message": "無効",
+    "description": "Label for disabled tracking state"
+  },
+  "sites_groups_section_title": {
+    "message": "グループ",
+    "description": "Title for groups section in sites tab"
+  },
+  "sites_groups_badge": {
+    "message": "$LENGTH$ サイト",
+    "description": "Count badge showing number of sites in group",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "sites_groups_addSite_button": {
+    "message": "グループにサイトを追加",
+    "description": "Button to add site to group"
+  },
+  "groups_section_title": {
+    "message": "グループの管理",
+    "description": "Title of groups management section"
+  },
+  "groups_section_description": {
+    "message": "似たサイトをまとめて制限すれば、別のサイトに移るだけで終わりません",
+    "description": "Description explaining groups purpose"
+  },
+  "groups_button_new": {
+    "message": "新しいグループ",
+    "description": "Button to create a new group"
+  },
+  "groups_sites_count": {
+    "message": "$COUNT$ サイトで制限を共有",
+    "description": "Text showing how many sites share group limits",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "groups_badge_add": {
+    "message": "追加",
+    "description": "Button text to add site to group"
+  },
+  "groups_timeLimit_label": {
+    "message": "1日 $MINUTES$ 分",
+    "description": "Display format for group time limit",
+    "placeholders": {
+      "minutes": {
+        "content": "$1",
+        "example": "60"
+      }
+    }
+  },
+  "groups_opensLimit_label": {
+    "message": "1日 $COUNT$ 回",
+    "description": "Display format for group opens limit",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "groups_button_edit_title": {
+    "message": "グループを編集",
+    "description": "Tooltip for edit group button"
+  },
+  "groups_button_delete_title": {
+    "message": "グループを削除",
+    "description": "Tooltip for delete group button"
+  },
+  "messages_section_title": {
+    "message": "励ましのメッセージ",
+    "description": "Title of messages section"
+  },
+  "messages_section_description": {
+    "message": "制限に達したときに表示されます",
+    "description": "Description of messages functionality"
+  },
+  "messages_input_placeholder": {
+    "message": "新しい励ましのメッセージを追加...",
+    "description": "Placeholder for new message input"
+  },
+  "messages_display_options_title": {
+    "message": "表示オプション",
+    "description": "Title for display options section"
+  },
+  "messages_option_randomMessage": {
+    "message": "ランダムに表示",
+    "description": "Toggle option label for random messages"
+  },
+  "messages_option_randomMessage_description": {
+    "message": "毎回ちがうメッセージを表示します",
+    "description": "Description for random message option"
+  },
+  "messages_option_suggestions": {
+    "message": "代わりにできることを表示",
+    "description": "Toggle option label for activity suggestions"
+  },
+  "messages_option_suggestions_description": {
+    "message": "代わりにできることをカードで表示します",
+    "description": "Description for activity suggestions option"
+  },
+  "messages_button_edit_title": {
+    "message": "メッセージを編集",
+    "description": "Tooltip for edit message button"
+  },
+  "messages_button_delete_title": {
+    "message": "メッセージを削除",
+    "description": "Tooltip for delete message button"
+  },
+  "dialog_addSite_title_create": {
+    "message": "サイトを追加",
+    "description": "Dialog title when creating a new site"
+  },
+  "dialog_addSite_title_edit": {
+    "message": "サイトを編集",
+    "description": "Dialog title when editing an existing site"
+  },
+  "dialog_addSite_description_create": {
+    "message": "時間や回数の制限で見守るサイトを追加します。",
+    "description": "Dialog description when creating a site"
+  },
+  "dialog_addSite_description_edit": {
+    "message": "このサイトの制限を変更します。",
+    "description": "Dialog description when editing a site"
+  },
+  "dialog_addSite_label_websiteUrl": {
+    "message": "サイトのアドレス",
+    "description": "Label for website URL input"
+  },
+  "dialog_addSite_placeholder_websiteUrl": {
+    "message": "例: tiktok.com または youtube.com/shorts",
+    "description": "Placeholder for website URL input"
+  },
+  "dialog_addSite_label_timeLimit": {
+    "message": "時間制限 (分)",
+    "description": "Label for time limit input"
+  },
+  "dialog_addSite_placeholder_timeLimit": {
+    "message": "例: 30",
+    "description": "Placeholder for time limit input"
+  },
+  "dialog_addSite_label_opensLimit": {
+    "message": "回数制限",
+    "description": "Label for opens limit input"
+  },
+  "dialog_addSite_placeholder_opensLimit": {
+    "message": "例: 10",
+    "description": "Placeholder for opens limit input"
+  },
+  "dialog_addSite_validation": {
+    "message": "時間制限・回数制限・一呼吸のいずれかを設定してください",
+    "description": "Validation alert message for add site dialog"
+  },
+  "dialog_addSite_button_cancel": {
+    "message": "キャンセル",
+    "description": "Cancel button in add site dialog"
+  },
+  "dialog_addSite_button_add": {
+    "message": "サイトを追加",
+    "description": "Submit button in add site dialog (create mode)"
+  },
+  "dialog_addSite_button_update": {
+    "message": "サイトを更新",
+    "description": "Submit button in add site dialog (edit mode)"
+  },
+  "dialog_createGroup_title_create": {
+    "message": "新しいグループを作成",
+    "description": "Dialog title when creating a new group"
+  },
+  "dialog_createGroup_title_edit": {
+    "message": "グループを編集",
+    "description": "Dialog title when editing a group"
+  },
+  "dialog_createGroup_description_create": {
+    "message": "複数のサイトで制限を共有するグループを作ります。",
+    "description": "Dialog description when creating a group"
+  },
+  "dialog_createGroup_description_edit": {
+    "message": "グループの設定を変更します。",
+    "description": "Dialog description when editing a group"
+  },
+  "dialog_createGroup_label_groupName": {
+    "message": "グループ名",
+    "description": "Label for group name input"
+  },
+  "dialog_createGroup_placeholder_groupName": {
+    "message": "例: SNS",
+    "description": "Placeholder for group name input"
+  },
+  "dialog_createGroup_label_color": {
+    "message": "色",
+    "description": "Label for color picker"
+  },
+  "dialog_createGroup_label_timeLimit": {
+    "message": "時間制限 (分)",
+    "description": "Label for group time limit input"
+  },
+  "dialog_createGroup_label_opensLimit": {
+    "message": "回数制限",
+    "description": "Label for group opens limit input"
+  },
+  "dialog_createGroup_validation": {
+    "message": "時間制限・回数制限・一呼吸のいずれかを設定してください",
+    "description": "Validation alert message for create group dialog"
+  },
+  "dialog_createGroup_button_cancel": {
+    "message": "キャンセル",
+    "description": "Cancel button in create group dialog"
+  },
+  "dialog_createGroup_button_create": {
+    "message": "グループを作成",
+    "description": "Submit button in create group dialog (create mode)"
+  },
+  "dialog_createGroup_button_update": {
+    "message": "グループを更新",
+    "description": "Submit button in create group dialog (edit mode)"
+  },
+  "dialog_addToGroup_title": {
+    "message": "$GROUPNAME$ にサイトを追加",
+    "description": "Dialog title when adding site to group",
+    "placeholders": {
+      "groupname": {
+        "content": "$1",
+        "example": "Social Media"
+      }
+    }
+  },
+  "dialog_addToGroup_description": {
+    "message": "このサイトはグループの時間制限と回数制限を共有します。",
+    "description": "Dialog description for add site to group"
+  },
+  "dialog_addToGroup_label_websiteUrl": {
+    "message": "サイトのアドレス",
+    "description": "Label for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_placeholder_websiteUrl": {
+    "message": "例: tiktok.com",
+    "description": "Placeholder for website URL input in add to group dialog"
+  },
+  "dialog_addToGroup_quickAdd_label": {
+    "message": "かんたん追加",
+    "description": "Label for quick add section in dialog"
+  },
+  "dialog_addToGroup_button_cancel": {
+    "message": "キャンセル",
+    "description": "Cancel button in add to group dialog"
+  },
+  "dialog_addToGroup_button_add": {
+    "message": "グループに追加",
+    "description": "Submit button in add to group dialog"
+  },
+  "timeout_breathing_in": {
+    "message": "吸って",
+    "description": "Label for breathing circle during inhale"
+  },
+  "timeout_breathing_out": {
+    "message": "吐いて",
+    "description": "Label for breathing circle during exhale"
+  },
+  "timeout_noMessages_title": {
+    "message": "励ましのメッセージはまだありません",
+    "description": "Empty state title when no messages exist"
+  },
+  "timeout_noMessages_description": {
+    "message": "拡張機能の設定で追加すると、ここに表示されます",
+    "description": "Empty state description when no messages exist"
+  },
+  "timeout_noMessages_button": {
+    "message": "設定を開く",
+    "description": "Button to open settings from timeout page"
+  },
+  "timeout_suggestions_label": {
+    "message": "代わりにできること...",
+    "description": "Label for activity suggestions section"
+  },
+  "timeout_resetTime": {
+    "message": "$SITENAME$ • $RESETTIME$ にリセット",
+    "description": "Footer showing site name and reset time",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      },
+      "resettime": {
+        "content": "$2",
+        "example": "12:00 AM"
+      }
+    }
+  },
+  "info_title": {
+    "message": "集中を取り戻す",
+    "description": "Main heading on info page"
+  },
+  "info_description": {
+    "message": "健やかなネットの習慣づくりを手伝う、シンプルでプライバシー重視の拡張機能です。気が散るサイトに制限をかけ、休むべきときにはそっと知らせ、オンラインで過ごす時間に気づきを取り戻します。",
+    "description": "Main description on info page"
+  },
+  "info_values_title": {
+    "message": "得られること",
+    "description": "Section title for extension benefits"
+  },
+  "info_value_saveTime_title": {
+    "message": "時間を取り戻す",
+    "description": "Value proposition title 1"
+  },
+  "info_value_saveTime_description": {
+    "message": "ネットでの時間の使い方に気づき、集中を取り戻せます",
+    "description": "Value proposition description 1"
+  },
+  "info_value_mindful_title": {
+    "message": "心を配る",
+    "description": "Value proposition title 2"
+  },
+  "info_value_mindful_description": {
+    "message": "責めないやさしい制限で、健やかな習慣を育てます",
+    "description": "Value proposition description 2"
+  },
+  "info_value_privacy_title": {
+    "message": "プライバシー重視",
+    "description": "Value proposition title 3"
+  },
+  "info_value_privacy_description": {
+    "message": "すべて端末の中だけ。追跡もデータ収集もサーバーもありません",
+    "description": "Value proposition description 3"
+  },
+  "info_value_free_title": {
+    "message": "ずっと無料",
+    "description": "Value proposition title 4"
+  },
+  "info_value_free_description": {
+    "message": "広告なし、有料の壁なし。みんなにとって健やかなインターネットを目指しています",
+    "description": "Value proposition description 4"
+  },
+  "info_setup_title": {
+    "message": "はじめましょう",
+    "description": "Section title for getting started"
+  },
+  "info_setup_description": {
+    "message": "設定を開いて最初の制限を追加し、自分の目標に合わせて調整してください。",
+    "description": "Description for getting started section"
+  },
+  "info_setup_button": {
+    "message": "設定を開く",
+    "description": "Button to navigate to settings from info page"
+  },
+  "info_donation_title": {
+    "message": "このプロジェクトを応援する",
+    "description": "Section title for donation options"
+  },
+  "info_donation_description": {
+    "message": "役に立っていると感じたら、開発の応援をご検討ください。寄付のおかげで、無料・広告なし・オープンソースを続けられます。",
+    "description": "Description for donation section"
+  },
+  "info_donation_stripe": {
+    "message": "Stripe",
+    "description": "Donation option name"
+  },
+  "info_donation_stripe_description": {
+    "message": "一度きりでも継続でも",
+    "description": "Description for Stripe donation option"
+  },
+  "info_donation_paypal": {
+    "message": "PayPal",
+    "description": "Donation option name"
+  },
+  "info_donation_paypal_description": {
+    "message": "すばやく安全に",
+    "description": "Description for PayPal donation option"
+  },
+  "info_donation_buymeacoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Donation option name"
+  },
+  "info_donation_buymeacoffee_description": {
+    "message": "活動を応援する",
+    "description": "Description for Buy Me a Coffee option"
+  },
+  "info_donation_patreon": {
+    "message": "Patreon",
+    "description": "Donation option name"
+  },
+  "info_donation_patreon_description": {
+    "message": "パトロンになる",
+    "description": "Description for Patreon option"
+  },
+  "info_donation_link": {
+    "message": "開く",
+    "description": "Link text for donation options"
+  },
+  "info_feedback_title": {
+    "message": "ご意見はありますか?",
+    "description": "Section title for feedback"
+  },
+  "info_feedback_description": {
+    "message": "不具合を見つけた、こんな機能がほしい — ぜひ教えてください!",
+    "description": "Description for feedback section"
+  },
+  "info_feedback_reportIssue": {
+    "message": "不具合を報告",
+    "description": "Button text to report issue"
+  },
+  "info_feedback_featureRequest": {
+    "message": "機能をリクエスト",
+    "description": "Button text for feature request"
+  },
+  "info_footer": {
+    "message": "集中の助けになるように ❤️ を込めて作りました",
+    "description": "Footer text on info page"
+  },
+  "suggestion_readBook_title": {
+    "message": "本を読む",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_readBook_description": {
+    "message": "読もうと思っていた小説を開いてみましょう",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_drinkWater_title": {
+    "message": "水を飲む",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_drinkWater_description": {
+    "message": "水分補給を。体が喜びます",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeWalk_title": {
+    "message": "散歩に出る",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeWalk_description": {
+    "message": "外の空気を吸って、頭をすっきりさせましょう",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_callSomeone_title": {
+    "message": "誰かに電話する",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_callSomeone_description": {
+    "message": "友だちや家族と話してみましょう",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_meditate_title": {
+    "message": "瞑想する",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_meditate_description": {
+    "message": "5分の瞑想で集中は戻ります",
+    "description": "Activity suggestion description"
+  },
+  "suggestion_takeBreak_title": {
+    "message": "ひと休みする",
+    "description": "Activity suggestion title"
+  },
+  "suggestion_takeBreak_description": {
+    "message": "伸びをして、お茶を入れて、目を休めましょう",
+    "description": "Activity suggestion description"
+  },
+  "notification_success_default": {
+    "message": "完了しました",
+    "description": "Default success message"
+  },
+  "notification_error_default": {
+    "message": "問題が発生しました。もう一度お試しください。",
+    "description": "Default error message"
+  },
+  "notification_siteAdded": {
+    "message": "$SITENAME$ に制限を追加しました",
+    "description": "Notification when site is added",
+    "placeholders": {
+      "sitename": {
+        "content": "$1",
+        "example": "facebook.com"
+      }
+    }
+  },
+  "notification_siteUpdated": {
+    "message": "サイトを更新しました",
+    "description": "Notification when site is updated"
+  },
+  "notification_siteRemoved": {
+    "message": "サイトを削除しました",
+    "description": "Notification when site is removed"
+  },
+  "notification_groupCreated": {
+    "message": "グループを作成しました",
+    "description": "Notification when group is created"
+  },
+  "notification_groupUpdated": {
+    "message": "グループを更新しました",
+    "description": "Notification when group is updated"
+  },
+  "notification_groupDeleted": {
+    "message": "グループを削除しました",
+    "description": "Notification when group is deleted"
+  },
+  "notification_messageAdded": {
+    "message": "メッセージを追加しました",
+    "description": "Notification when message is added"
+  },
+  "notification_messageUpdated": {
+    "message": "メッセージを更新しました",
+    "description": "Notification when message is updated"
+  },
+  "notification_messageRemoved": {
+    "message": "メッセージを削除しました",
+    "description": "Notification when message is removed"
+  },
+  "notification_addedToGroup": {
+    "message": "サイトをグループに追加しました",
+    "description": "Notification when site is added to group"
+  },
+  "notification_removedFromGroup": {
+    "message": "サイトをグループから外しました",
+    "description": "Notification when site is removed from group"
+  },
+  "notification_trackingEnabled": {
+    "message": "記録を有効にしました",
+    "description": "Notification when tracking is enabled"
+  },
+  "notification_trackingDisabled": {
+    "message": "記録を無効にしました",
+    "description": "Notification when tracking is disabled"
+  },
+  "notification_preferenceSaved": {
+    "message": "設定を保存しました",
+    "description": "Notification when preference is saved"
+  },
+  "notification_extendSuccess": {
+    "message": "制限を延長しました。移動します...",
+    "description": "Notification when limit extension succeeds"
+  },
+  "error_unexpected": {
+    "message": "予期しないエラーが発生しました",
+    "description": "Generic error fallback message"
+  },
+  "error_invalid_message_format": {
+    "message": "メッセージの形式が正しくありません",
+    "description": "Error when message structure is invalid"
+  },
+  "error_action_required": {
+    "message": "メッセージにはアクションが必要です",
+    "description": "Error when message action is missing"
+  },
+  "error_addSite_failed": {
+    "message": "サイトを追加できませんでした。アドレスの形式を確認して、もう一度お試しください。",
+    "description": "Error when site addition fails"
+  },
+  "error_updateSite_failed": {
+    "message": "サイトを更新できませんでした。サイトが存在しないか、データが正しくありません。",
+    "description": "Error when site update fails"
+  },
+  "error_deleteSite_failed": {
+    "message": "サイトを削除できませんでした。サイトが存在しない可能性があります。",
+    "description": "Error when site deletion fails"
+  },
+  "error_addNote_failed": {
+    "message": "メモを追加できませんでした。本文を確認して、もう一度お試しください。",
+    "description": "Error when note addition fails"
+  },
+  "error_updateNote_failed": {
+    "message": "メモを更新できませんでした。メモが存在しないか、データが正しくありません。",
+    "description": "Error when note update fails"
+  },
+  "error_deleteNote_failed": {
+    "message": "メモを削除できませんでした。メモが存在しない可能性があります。",
+    "description": "Error when note deletion fails"
+  },
+  "error_noActiveTab": {
+    "message": "アクティブなタブが見つかりません",
+    "description": "Error when there's no active browser tab"
+  },
+  "error_cannotAccessTabUrl": {
+    "message": "現在のタブのアドレスにアクセスできません",
+    "description": "Error when tab URL cannot be accessed"
+  },
+  "error_getPageInfo_failed": {
+    "message": "現在のページの情報を取得できませんでした",
+    "description": "Error when retrieving page info fails"
+  },
+  "error_refreshPageData_failed": {
+    "message": "ページのデータを更新できませんでした",
+    "description": "Error when refreshing page data fails"
+  },
+  "error_addSiteLimit_failed": {
+    "message": "制限を追加できませんでした。アドレスの形式を確認して、もう一度お試しください。",
+    "description": "Error when quick limit addition fails"
+  },
+  "error_badgeInfo_failed": {
+    "message": "バッジの情報を取得できませんでした",
+    "description": "Error when badge info cannot be retrieved"
+  },
+  "error_systemStatus_failed": {
+    "message": "システムの状態を取得できませんでした",
+    "description": "Error when system status cannot be retrieved"
+  },
+  "notification_siteAccessRestored": {
+    "message": "このサイトを開けるようになりました。戻るか、ページを再読み込みしてください。",
+    "description": "Notification when site limit is removed and access is restored"
+  },
+  "block_reason_both": {
+    "message": "今日は $5 で時間制限 ($1/$2 分) と回数制限 ($3/$4 回) の両方を超えました。",
+    "description": "Blocking reason when both time and opens limits exceeded",
+    "placeholders": {
+      "time_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "time_limit": {
+        "content": "$2",
+        "example": "30"
+      },
+      "opens_count": {
+        "content": "$3",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$4",
+        "example": "10"
+      },
+      "context": {
+        "content": "$5",
+        "example": "this site"
+      }
+    }
+  },
+  "block_reason_time": {
+    "message": "今日は $2 で $1 分使い、$3 分の制限を超えました。",
+    "description": "Blocking reason when time limit exceeded",
+    "placeholders": {
+      "minutes_spent": {
+        "content": "$1",
+        "example": "45"
+      },
+      "context": {
+        "content": "$2",
+        "example": "this site"
+      },
+      "limit_minutes": {
+        "content": "$3",
+        "example": "30"
+      }
+    }
+  },
+  "block_reason_opens": {
+    "message": "今日は $1 を $2 回開き、$3 回の制限を超えました。",
+    "description": "Blocking reason when opens limit exceeded",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      },
+      "opens_count": {
+        "content": "$2",
+        "example": "15"
+      },
+      "opens_limit": {
+        "content": "$3",
+        "example": "10"
+      }
+    }
+  },
+  "block_reason_default": {
+    "message": "$1 の1日の制限を超えました。",
+    "description": "Default blocking reason",
+    "placeholders": {
+      "context": {
+        "content": "$1",
+        "example": "this site"
+      }
+    }
+  },
+  "onboarding_welcome_title": {
+    "message": "Time Limit へようこそ",
+    "description": "Main title of the welcome screen dialog"
+  },
+  "onboarding_welcome_subtitle": {
+    "message": "かしこい制限で集中を保ちましょう",
+    "description": "Subtitle of the welcome screen dialog"
+  },
+  "onboarding_welcome_feature1_title": {
+    "message": "かしこい制限を設定",
+    "description": "First feature title in welcome screen (with Lightbulb icon)"
+  },
+  "onboarding_welcome_feature1_description": {
+    "message": "気が散るサイトに時間や回数の制限を決めます",
+    "description": "First feature description in welcome screen"
+  },
+  "onboarding_welcome_feature2_title": {
+    "message": "グループでまとめる",
+    "description": "Second feature title in welcome screen (with FolderOpen icon)"
+  },
+  "onboarding_welcome_feature2_description": {
+    "message": "似たサイトをまとめて、ひとつの制限を全部に効かせます",
+    "description": "Second feature description in welcome screen"
+  },
+  "onboarding_welcome_feature3_title": {
+    "message": "やる気を保つ",
+    "description": "Third feature title in welcome screen (with Quote icon)"
+  },
+  "onboarding_welcome_feature3_description": {
+    "message": "制限に達したときに出るメッセージを自分の言葉で書けます",
+    "description": "Third feature description in welcome screen"
+  },
+  "onboarding_welcome_duration": {
+    "message": "設定にかかるのは2分ほどです",
+    "description": "Text about time required to complete setup"
+  },
+  "onboarding_welcome_button_skip": {
+    "message": "スキップ",
+    "description": "Button to skip onboarding"
+  },
+  "onboarding_welcome_button_start": {
+    "message": "はじめる",
+    "description": "Button to begin onboarding process"
+  },
+  "onboarding_completion_title": {
+    "message": "準備ができました",
+    "description": "Title of completion screen"
+  },
+  "onboarding_completion_subtitle": {
+    "message": "Time Limit があなたの集中を支えます",
+    "description": "Subtitle of completion screen"
+  },
+  "onboarding_completion_message": {
+    "message": "最初の制限を設定できました。あとは普段どおりに使えば、Time Limit が見守ります。",
+    "description": "Main message text on completion screen"
+  },
+  "onboarding_completion_toolbar_title": {
+    "message": "ツールバーからすぐに",
+    "description": "Section title explaining toolbar access"
+  },
+  "onboarding_completion_toolbar_description": {
+    "message": "ブラウザーのツールバーにあるアイコンをクリックすれば、制限の追加や状況の確認がすぐにできます",
+    "description": "Description of how to use the toolbar icon"
+  },
+  "onboarding_completion_toolbar_image_alt": {
+    "message": "Time Limit のアイコンが表示されたブラウザーのツールバー",
+    "description": "Alt text for browser image (accessibility)"
+  },
+  "onboarding_completion_button_start": {
+    "message": "使いはじめる",
+    "description": "Button to close completion screen and begin using extension"
+  },
+  "spotlight_button_skip": {
+    "message": "スキップ",
+    "description": "Button to skip current spotlight tutorial step"
+  },
+  "spotlight_button_next": {
+    "message": "次へ",
+    "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_finish": {
+    "message": "完了",
+    "description": "Button to complete spotlight tutorial"
+  },
+  "error_urlPattern_empty": {
+    "message": "アドレスのパターンを入力してください",
+    "description": "Validation error for empty URL"
+  },
+  "error_urlPattern_toolong": {
+    "message": "アドレスのパターンが長すぎます (最大2000文字)",
+    "description": "Validation error for URL exceeding max length"
+  },
+  "error_urlPattern_invalid": {
+    "message": "アドレスの形式が正しくありません。有効なドメインを入力してください (例: example.com)",
+    "description": "Validation error for invalid URL format"
+  },
+  "error_urlPattern_restricted": {
+    "message": "アドレスのパターンに使用できないプロトコルが含まれています",
+    "description": "Validation error for restricted protocol in URL"
+  },
+  "error_timeLimit_notNumber": {
+    "message": "時間制限には有効な数値を入力してください",
+    "description": "Validation error when time limit is not a number"
+  },
+  "error_timeLimit_tooSmall": {
+    "message": "時間制限は0より大きい値にしてください",
+    "description": "Validation error when time limit is 0 or negative"
+  },
+  "error_timeLimit_tooLarge": {
+    "message": "時間制限は24時間までです",
+    "description": "Validation error when time limit exceeds maximum"
+  },
+  "error_noteText_empty": {
+    "message": "メモの本文を入力してください",
+    "description": "Validation error for empty note"
+  },
+  "error_noteText_toolong": {
+    "message": "メモの本文が長すぎます (最大1000文字)",
+    "description": "Validation error for note exceeding max length"
+  },
+  "error_storageType_unknown": {
+    "message": "保存データの検証で不明な型が指定されました",
+    "description": "Internal error for unknown storage type"
+  },
+  "error_storage_limitExceeded": {
+    "message": "$1 の上限に達しました ($2)",
+    "description": "Validation error when storage limit exceeded",
+    "placeholders": {
+      "datatype": {
+        "content": "$1",
+        "example": "sites"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "500"
+      }
+    }
+  },
+  "error_unknown": {
+    "message": "不明なエラーが発生しました",
+    "description": "Generic unknown error"
+  },
+  "error_extensionReloaded": {
+    "message": "拡張機能が再読み込みされました。このページを再読み込みしてください。",
+    "description": "Error when extension context is invalidated"
+  },
+  "error_storage_full": {
+    "message": "保存容量がいっぱいです。いくつか削除して、もう一度お試しください。",
+    "description": "Error when storage quota exceeded"
+  },
+  "error_network": {
+    "message": "接続エラーです。インターネット接続を確認して、もう一度お試しください。",
+    "description": "Error for network/connectivity issues"
+  },
+  "error_browserApi": {
+    "message": "ブラウザー API のエラーです。もう一度試すか、ブラウザーを再起動してください。",
+    "description": "Error when browser API call fails"
+  },
+  "error_objectRequired": {
+    "message": "オブジェクトが必要です",
+    "description": "Validation error when object is missing"
+  },
+  "error_requiredFieldMissing": {
+    "message": "必須項目 '$1' がありません",
+    "description": "Validation error when required field missing",
+    "placeholders": {
+      "field": {
+        "content": "$1",
+        "example": "urlPattern"
+      }
+    }
+  },
+  "error_openLimit_notNumber": {
+    "message": "回数制限には有効な数値を入力してください",
+    "description": "Validation error when open limit is not a number"
+  },
+  "error_openLimit_tooSmall": {
+    "message": "回数制限は0より大きい値にしてください",
+    "description": "Validation error when open limit is 0 or negative"
+  },
+  "error_openLimit_tooLarge": {
+    "message": "回数制限は1日1000回までです",
+    "description": "Validation error when open limit exceeds maximum"
+  },
+  "error_site_invalidType": {
+    "message": "サイトはオブジェクトである必要があります",
+    "description": "Validation error when site is not an object"
+  },
+  "error_site_noLimit": {
+    "message": "時間か回数のどちらかの制限を指定してください",
+    "description": "Validation error when site has no limits"
+  },
+  "ratingBanner_title": {
+    "message": "Time Limit は気に入りましたか?",
+    "description": "Title for rating banner in settings"
+  },
+  "ratingBanner_description": {
+    "message": "5つ星のレビューで応援してください",
+    "description": "Description for rating banner in settings"
+  },
+  "ratingBanner_rateButton": {
+    "message": "評価する",
+    "description": "Button to open rating page from banner"
+  },
+  "ratingBanner_alreadyRatedButton": {
+    "message": "評価済み",
+    "description": "Button to mark as already rated from banner"
+  },
+  "ratingBanner_laterButton": {
+    "message": "あとで →",
+    "description": "Button to dismiss rating banner and ask again later"
+  },
+  "ratingPrompt_title": {
+    "message": "Time Limit は役に立っていますか?",
+    "description": "Title for full-screen rating prompt in popup"
+  },
+  "ratingPrompt_description": {
+    "message": "みなさんの声が改善につながります。ひとことレビューをお願いします!",
+    "description": "Description for rating prompt"
+  },
+  "ratingPrompt_rateButton": {
+    "message": "評価する",
+    "description": "Button to rate from prompt view"
+  },
+  "ratingPrompt_alreadyRatedButton": {
+    "message": "評価済み",
+    "description": "Button to mark as already rated from prompt"
+  },
+  "ratingPrompt_laterButton": {
+    "message": "あとで →",
+    "description": "Button to dismiss rating prompt for now"
+  },
+  "popup_rating_thankYou": {
+    "message": "ありがとうございます! ♥ 寄付で開発を応援できます。",
+    "description": "Thank you message after rating from popup"
+  },
+  "popup_rating_error": {
+    "message": "評価を処理できませんでした。もう一度お試しください。",
+    "description": "Error message when rating fails in popup"
+  },
+  "settings_rating_thankYou": {
+    "message": "応援ありがとうございます!",
+    "description": "Thank you message after rating from settings"
+  },
+  "settings_rating_error": {
+    "message": "評価を処理できませんでした。もう一度お試しください。",
+    "description": "Error message when rating fails in settings"
+  },
+  "infoPageView_rateButton": {
+    "message": "評価する",
+    "description": "Button to rate from popup info view"
+  },
+  "dialog_addSite_hint_scope": {
+    "message": "サイト全体 (youtube.com)、サブドメイン (shorts.youtube.com)、一部だけ (youtube.com/shorts) のいずれでも制限できます。",
+    "description": "Hint under the URL field explaining domain, subdomain and path limits"
+  },
+  "error_site_duplicate": {
+    "message": "「$1」にはすでに制限があります。既存の制限を編集してください。",
+    "description": "Shown when adding a site that already has a limit"
+  },
+  "error_site_duplicateInGroup": {
+    "message": "「$1」にはグループ「$2」ですでに制限があります。",
+    "description": "Shown when adding a site that is already limited inside a group"
+  },
+  "reflection_option_off": {
+    "message": "なし",
+    "description": "Off choice in the reflection delay picker"
+  },
+  "reflection_option_seconds": {
+    "message": "$1秒",
+    "description": "A reflection delay option, e.g. 10s"
+  },
+  "badge_reflectionDelay": {
+    "message": "$1秒の間",
+    "description": "Badge showing the pause length before a site opens"
+  },
+  "dialog_addSite_label_reflectionDelay": {
+    "message": "開く前にひと呼吸",
+    "description": "Label for the reflection delay picker in the add site dialog"
+  },
+  "dialog_addSite_hint_reflectionDelay": {
+    "message": "カウントダウンのあとに、本当に開くかを尋ねます。1日の制限がなくても、これだけで使えます。",
+    "description": "Explains what the reflection delay does"
+  },
+  "dialog_createGroup_label_reflectionDelay": {
+    "message": "開く前にひと呼吸",
+    "description": "Label for the reflection delay picker in the group dialog"
+  },
+  "dialog_createGroup_hint_reflectionDelay": {
+    "message": "このグループのすべてのサイトが、開く前に同じカウントダウンをはさみます。",
+    "description": "Explains the group-level reflection delay"
+  },
+  "groups_reflectionDelay_label": {
+    "message": "$1秒の間",
+    "description": "Group card line showing the reflection delay"
+  },
+  "unlimitedSiteView_reflectionDelay_label": {
+    "message": "開く前にひと呼吸",
+    "description": "Popup label above the reflection delay presets"
+  },
+  "normalPageView_reflectionOnly_title": {
+    "message": "開く前に $1秒の間",
+    "description": "Popup heading for a site limited only by a pause"
+  },
+  "normalPageView_reflectionOnly_description": {
+    "message": "1日の制限はありません。本当に開きたかったのか確かめる、ほんの少しの時間です。",
+    "description": "Popup subtext for a site limited only by a pause"
+  },
+  "reflection_label_waiting": {
+    "message": "ひと呼吸",
+    "description": "Label above the countdown on the reflection page"
+  },
+  "reflection_label_ready": {
+    "message": "決めるのはあなた",
+    "description": "Label shown once the countdown has finished"
+  },
+  "reflection_seconds_unit": {
+    "message": "秒",
+    "description": "Unit under the countdown number"
+  },
+  "reflection_hint": {
+    "message": "数秒あれば、本当にここに来たかったのか気づけます。",
+    "description": "Text shown while the countdown runs"
+  },
+  "reflection_question": {
+    "message": "それでも開きますか?",
+    "description": "Question asked once the countdown finishes"
+  },
+  "reflection_button_yes": {
+    "message": "はい、開く",
+    "description": "Continue to the original page"
+  },
+  "reflection_button_no": {
+    "message": "いいえ、今はやめる",
+    "description": "Decline and go to the timeout page"
+  },
+  "reflection_today_summary": {
+    "message": "今日 $1 回開きました · ここでやめた回数 $2",
+    "description": "Todays opens and stops for the site being reflected on"
+  },
+  "reflectPageView_title": {
+    "message": "ひと呼吸の時間",
+    "description": "Popup title while the reflection page is open"
+  },
+  "reflectPageView_subtitle": {
+    "message": "タブで決める",
+    "description": "Popup subtitle while the reflection page is open"
+  },
+  "reflectPageView_description": {
+    "message": "カウントダウンはタブで進んでいます。開くか、別のことをするかは、そちらで選んでください。",
+    "description": "Popup body while the reflection page is open"
+  },
+  "timeout_reflection_reason": {
+    "message": "今は開かないことを選びました。",
+    "description": "Timeout page line when the user declined at the reflection prompt"
+  },
+  "timeout_reflection_hint": {
+    "message": "$1 は開きたくなればいつでもそこにあります。制限ではなく、あなたの選択です。",
+    "description": "Timeout page subtext after declining at the reflection prompt"
+  },
+  "suggestion_title": {
+    "message": "制限をかけますか?",
+    "description": "Heading of the limit suggestion banner in the popup"
+  },
+  "suggestion_body": {
+    "message": "今日は $1 を $2 回開いています。",
+    "description": "Explains why a site is being suggested"
+  },
+  "suggestion_button_accept": {
+    "message": "開く前に $1秒の間を置く",
+    "description": "Accepts the suggestion with a reflection pause"
+  },
+  "suggestion_button_dismiss": {
+    "message": "このサイトはしない",
+    "description": "Dismisses the suggestion permanently for that site"
+  },
+  "suggestion_accepted": {
+    "message": "$1 は開く前にひと呼吸おくようになりました",
+    "description": "Toast after accepting a suggestion"
+  },
+  "preferences_option_limitSuggestions": {
+    "message": "制限を提案する",
+    "description": "Preference toggle for proactive limit suggestions"
+  },
+  "preferences_option_limitSuggestions_description": {
+    "message": "何度も開いているサイトに気づいて、ゆるやかな制限を提案します。提案は1日1件まで、同じサイトに二度は出しません。",
+    "description": "Explains the limit suggestion preference"
+  },
+  "whatsNew_title": {
+    "message": "新着情報",
+    "description": "Heading of the release note shown in the popup after an update"
+  },
+  "whatsNew_subtitle": {
+    "message": "更新しました。変わったところをどうぞ。",
+    "description": "Line under the release note heading"
+  },
+  "whatsNew_button_continue": {
+    "message": "わかりました",
+    "description": "Closes the release note and returns to the normal popup"
+  },
+  "whatsNew_reflection_title": {
+    "message": "開く前にひと呼吸",
+    "description": "Release note highlight: the reflection delay"
+  },
+  "whatsNew_reflection_body": {
+    "message": "短いカウントダウンのあとに「それでも開きますか?」と尋ねます。ブロックよりやさしく、1日の制限がなくても使えます。",
+    "description": "Release note body: the reflection delay"
+  },
+  "whatsNew_suggestions_title": {
+    "message": "あなたに合わせた制限の提案",
+    "description": "Release note highlight: limit suggestions"
+  },
+  "whatsNew_suggestions_body": {
+    "message": "同じサイトを何度も開いていると、拡張機能がひと呼吸の設定を提案します。提案は1日1件まで、同じサイトに二度は出しません。",
+    "description": "Release note body: limit suggestions"
+  },
+  "whatsNew_support_title": {
+    "message": "無料・プライバシー重視・広告なし",
+    "description": "Heading of the donation block in the release note"
+  },
+  "whatsNew_support_description": {
+    "message": "毎日の役に立っていると感じたら、少しの寄付が次の一歩になります。",
+    "description": "Body of the donation block in the release note"
+  },
+  "whatsNew_support_button": {
+    "message": "開発を応援する",
+    "description": "Opens the donation section of the info page"
+  },
+  "badge_blocked": {
+    "message": "停止",
+    "description": "Badge on a site or group that is blocked outright"
+  },
+  "dialog_addSite_label_blockCompletely": {
+    "message": "完全にブロック",
+    "description": "Switch that blocks the site outright"
+  },
+  "dialog_addSite_hint_blockCompletely": {
+    "message": "このサイトは開きません。1日の持ち時間もカウントダウンもなく、延長もできません。ここをオフにすれば元に戻ります。",
+    "description": "Explains what blocking a site completely does"
+  },
+  "dialog_addSite_blocked_note": {
+    "message": "保存はされますが、ブロック中は使われません。",
+    "description": "Shown next to the disabled limit inputs while the block is on"
+  },
+  "dialog_createGroup_label_blockCompletely": {
+    "message": "完全にブロック",
+    "description": "Switch that blocks every site in the group"
+  },
+  "dialog_createGroup_hint_blockCompletely": {
+    "message": "このグループのすべてのサイトが、それぞれの制限にかかわらず完全にブロックされます。",
+    "description": "Explains what blocking a group completely does"
+  },
+  "unlimitedSiteView_button_blockSite": {
+    "message": "このサイトをブロック",
+    "description": "Popup button that blocks the current site outright"
+  },
+  "popup_blockSite_success": {
+    "message": "$1 をブロックしました",
+    "description": "Toast after blocking a site from the popup"
+  },
+  "popup_blockSite_failed": {
+    "message": "このサイトをブロックできませんでした。もう一度お試しください。",
+    "description": "Toast when blocking a site from the popup failed"
+  },
+  "normalPageView_blocked_title": {
+    "message": "このサイトはブロック中です",
+    "description": "Popup heading for a blocked site"
+  },
+  "normalPageView_blocked_description": {
+    "message": "カウントダウンも、延長できるものもありません。",
+    "description": "Popup text under the blocked heading"
+  },
+  "normalPageView_blocked_byGroup": {
+    "message": "グループ「$1」によるブロックです。",
+    "description": "Popup line naming the group that blocks this site"
+  },
+  "timeout_blocked_reason": {
+    "message": "このサイトはブロック中です。",
+    "description": "Timeout page line for a site that is blocked outright"
+  },
+  "timeout_blocked_hint": {
+    "message": "$1 はブロック中です。1日の制限とちがって、深夜を過ぎても戻りません。",
+    "description": "Timeout page hint explaining a block does not reset at midnight"
+  },
+  "timeoutPageView_blocked_title": {
+    "message": "ブロック中のサイト",
+    "description": "Popup heading on the timeout page of a blocked site"
+  },
+  "timeoutPageView_blocked_message": {
+    "message": "このサイトは完全にブロックされているため、延長できる制限はありません。",
+    "description": "Popup text explaining a blocked site has no limit to extend"
+  },
+  "groups_blocked_label": {
+    "message": "ブロック中",
+    "description": "Group card line showing the group is blocked"
+  },
+  "whatsNew_fullBlock_title": {
+    "message": "サイトを完全にブロック",
+    "description": "Release note headline for the full block"
+  },
+  "whatsNew_fullBlock_body": {
+    "message": "1分の制限で代用するのではなく、本物のブロックです。サイト単位でもグループ単位でも使えて、延長はできません。",
+    "description": "Release note sentence explaining the full block"
+  }
+}
