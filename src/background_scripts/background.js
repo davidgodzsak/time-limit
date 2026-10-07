@@ -69,6 +69,9 @@ import {
   updateDistractingSite,
   deleteDistractingSite,
   findSiteByPattern,
+  detachSiteFromGroup,
+  detachSitesFromGroup,
+  repairOrphanedGroupMembers,
 } from './site_storage.js';
 import {
   getTimeoutNotes,
@@ -155,6 +158,7 @@ async function _checkPatternAvailable(urlPattern, excludeSiteId) {
 async function handleInstalled(details) {
   try {
     await initializeDailyResetAlarm();
+    await _repairGroupMembership();
     await initializeDistractionDetector();
 
     // An update earns a short release note in the popup; a fresh install gets
@@ -372,15 +376,49 @@ async function handleBeforeNavigate(details) {
       return;
     }
 
-    // Unlimited page: count the visit so we can offer a limit for the sites
-    // the user keeps coming back to.
-    await _trackVisitAndMaybeSuggest(tabId, url);
+    // Visit counting and limit suggestions deliberately do NOT run here — see
+    // handleNavigationCommitted.
   } catch (error) {
     console.error(
       '[Background] Error during navigation blocking check:',
       error
     );
     // Don't block navigation on error to avoid false positives
+  }
+}
+
+/**
+ * Handles a navigation that has actually committed — the tab is now showing the
+ * new URL.
+ *
+ * Visit counting and limit suggestions live here rather than in
+ * `handleBeforeNavigate` because of the popup. The nudge calls
+ * `browser.action.openPopup()`, and the popup asks the background what the
+ * active tab is showing; before the navigation commits that is still the
+ * *previous* page, so the popup opened describing the old site and found no
+ * suggestion for it. The user saw an ordinary popup with an unexplained `!`
+ * badge, and only got the suggestion by closing and reopening it. Committing
+ * first costs a few hundred milliseconds and makes the popup right the first
+ * time.
+ *
+ * Blocking and the reflection countdown stay in `handleBeforeNavigate`: those
+ * have to win the race with the page, this does not.
+ *
+ * @param {Object} details - Navigation details from browser.webNavigation.onCommitted
+ * @param {number} details.tabId - The tab ID where navigation committed
+ * @param {string} details.url - The URL now loaded
+ * @param {number} details.frameId - The frame ID (0 for main frame)
+ */
+async function handleNavigationCommitted(details) {
+  if (details.frameId !== 0) return;
+
+  const { tabId, url } = details;
+  if (!tabId || !url) return;
+
+  try {
+    await _trackVisitAndMaybeSuggest(tabId, url);
+  } catch (error) {
+    console.warn('[Background] Error handling committed navigation:', error);
   }
 }
 
@@ -1688,6 +1726,12 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         }
 
+        // Members first: once the group is gone there is nothing left to tell
+        // them apart from ordinary sites, and a member left pointing at a
+        // deleted group is invisible in Settings while still holding its URL
+        // pattern against every future add.
+        const dissolved = await detachSitesFromGroup(message.payload.id);
+
         const deleteResult = await deleteGroup(message.payload.id);
         if (!deleteResult) {
           return {
@@ -1708,11 +1752,18 @@ async function handleMessage(message, _sender, _sendResponse) {
         // Broadcast the update to all UI components
         await broadcastToUIComponents('groupDeleted', {
           groupId: message.payload.id,
+          standaloneSites: dissolved.standalone,
+          deletedSiteIds: dissolved.deletedSiteIds,
         });
 
         return {
           success: true,
-          data: { deleted: true, id: message.payload.id },
+          data: {
+            deleted: true,
+            id: message.payload.id,
+            standaloneSites: dissolved.standalone,
+            deletedSiteIds: dissolved.deletedSiteIds,
+          },
           error: null,
         };
       }
@@ -1804,16 +1855,19 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         }
 
-        // Remove the groupId from the site (make it standalone)
-        await updateDistractingSite(message.payload.siteId, {
-          groupId: null,
-        });
+        // Take the site out of the group properly. Clearing `groupId` alone
+        // silently failed for a member with no limits of its own — the standalone
+        // guard in updateDistractingSite rejects it — and stranded the site
+        // where no Settings tab could show it.
+        const detached = await detachSiteFromGroup(message.payload.siteId);
 
         await _reloadDistractionDetectorCache();
         await _refreshCurrentTabBadge();
 
         // Broadcast the update to all UI components
         await broadcastToUIComponents('siteRemovedFromGroup', {
+          standaloneSite: detached.outcome === 'standalone' ? detached.site : null,
+          deletedSiteId: detached.outcome === 'deleted' ? message.payload.siteId : null,
           group: updatedGroup,
           siteId: message.payload.siteId,
         });
@@ -2424,6 +2478,31 @@ async function handleActionClick(tab) {
 }
 
 /**
+ * Puts right any site left pointing at a group it is not in.
+ *
+ * Two shipped bugs could produce that: deleting a group never cleared its
+ * members' `groupId`, and removing a single member cleared it through a call
+ * that quietly refuses when the site has no limits of its own. Either way the
+ * site vanished from both Settings tabs while still holding its URL pattern, so
+ * the page could not be limited again and there was nothing to click to undo
+ * it. Installs already carry the damage, so it is repaired on startup rather
+ * than only prevented from here on.
+ *
+ * @private
+ */
+async function _repairGroupMembership() {
+  try {
+    const groups = await getGroups();
+    const repaired = await repairOrphanedGroupMembers(groups);
+    if (repaired.standalone.length || repaired.deletedSiteIds.length) {
+      await broadcastToUIComponents('groupMembershipRepaired', repaired);
+    }
+  } catch (error) {
+    console.error('[Background] Error repairing group membership:', error);
+  }
+}
+
+/**
  * Opens the toolbar popup where the browser allows it. Firefox and Chrome both
  * refuse this in some contexts (no user gesture, older versions), which is not
  * an error — callers fall back to something quieter.
@@ -2481,8 +2560,8 @@ async function _suggestionsEnabled() {
  * where the site is pre-filled and one click away from a limit.
  *
  * @private
- * @param {number} tabId - The tab being navigated.
- * @param {string} url - The URL being opened.
+ * @param {number} tabId - The tab the navigation committed in.
+ * @param {string} url - The URL now loaded.
  */
 async function _trackVisitAndMaybeSuggest(tabId, url) {
   try {
@@ -2526,11 +2605,19 @@ async function _nudgeAboutSuggestion(tabId, suggestion) {
   if (await _openPopupIfAllowed()) return;
 
   try {
+    // Say the thing that actually qualified the site. A window-triggered
+    // suggestion can have opensToday === 1, and "1 times today" is both untrue
+    // to the reason and ungrammatical.
+    const opened =
+      suggestion.trigger === 'today'
+        ? `${suggestion.opensToday} times today`
+        : `${suggestion.opensWindow} times in the past week`;
+
     await browser.notifications.create(`limit-suggestion-${suggestion.host}`, {
       type: 'basic',
       iconUrl: 'assets/icons/icon-48.png',
       title: 'Time Limit',
-      message: `You've opened ${suggestion.host} ${suggestion.opensToday} times today. Open the toolbar icon to add a gentle limit.`,
+      message: `You've opened ${suggestion.host} ${opened}. Open the toolbar icon to add a gentle limit.`,
     });
   } catch (error) {
     console.warn('[Background] Could not create suggestion notification:', error);
@@ -2710,6 +2797,7 @@ try {
   browser.runtime.onInstalled.addListener(handleInstalled);
   browser.alarms.onAlarm.addListener(handleAlarm);
   browser.webNavigation.onBeforeNavigate.addListener(handleBeforeNavigate);
+  browser.webNavigation.onCommitted.addListener(handleNavigationCommitted);
   browser.tabs.onActivated.addListener(handleTabActivated);
   browser.tabs.onUpdated.addListener(handleTabUpdated);
   browser.windows.onFocusChanged.addListener(handleWindowFocusChanged);
@@ -2728,4 +2816,9 @@ try {
   } catch (error) {
     console.error('[Background] Error initializing daily reset alarm:', error);
   }
+
+  // Also here, not just in onInstalled: an install already carrying a stranded
+  // site would otherwise have to wait for the next extension update to get it
+  // back. A no-op when there is nothing to repair.
+  await _repairGroupMembership();
 })();

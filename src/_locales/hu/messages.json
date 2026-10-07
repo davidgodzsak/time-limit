@@ -1387,6 +1387,106 @@
     "message": "Ma $2 alkalommal nyitottad meg: $1.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Az elmúlt héten $2 alkalommal nyitottad meg ezt: $1.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Nem sikerült betölteni a beállításokat. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Oldal hozzáadva",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Oldal frissítve",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Oldal eltávolítva",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Nem sikerült frissíteni az oldalt. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Nem sikerült eltávolítani az oldalt. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Oldal hozzáadva a csoporthoz",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Oldal eltávolítva a csoportból",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Nem sikerült eltávolítani az oldalt a csoportból. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Csoport létrehozva",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Csoport frissítve",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Csoport törölve",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Nem sikerült létrehozni a csoportot. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Nem sikerült frissíteni a csoportot. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Nem sikerült törölni a csoportot. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Üzenet hozzáadva",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Üzenet frissítve",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Üzenet eltávolítva",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Nem sikerült hozzáadni az üzenetet. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Nem sikerült frissíteni az üzenetet. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Nem sikerült eltávolítani az üzenetet. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Nem sikerült menteni a beállítást. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Nem sikerült megváltoztatni a nyelvet. Próbáld újra.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Törlöd ezt a csoportot? A saját korlátokkal rendelkező oldalak önálló oldalként megmaradnak; amelyek csak a csoportban léteztek, a csoporttal együtt törlődnek.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "$1 mp szünet megnyitás előtt",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Igazi letiltás az egyperces korlát helyett, ami eddig helyettesítette. Oldalanként vagy egész csoportra működik, és nincs mit meghosszabbítani.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Már 16 nyelven",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Új nyelvek: brazil portugál, svéd, cseh, orosz, olasz, japán, görög és norvég. A Beállítások között választhatsz.",
+    "description": "Release note body: new interface languages"
   }
 }

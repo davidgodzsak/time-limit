@@ -185,7 +185,7 @@ interface Message {
 
 ### Translations
 Every user-visible string goes through `t()` in `src/lib/utils/i18n.ts` and lives
-in all eight `src/_locales/*/messages.json` files. `t()` resolves in this order:
+in all sixteen `src/_locales/*/messages.json` files (`src/lib/utils/locales.test.ts` fails when one of them falls behind `en`). `t()` resolves in this order:
 the user's language override (fetched by `initI18n`) → `browser.i18n` → the
 bundled **English fallback** (also fetched by `initI18n`) → the raw key. The
 fallback matters because `browser.i18n` reads the *installed* package's locales
@@ -239,6 +239,25 @@ either `host` or `host/path`:
 - **Storage stores only an active block**: turning it off deletes the flag
   rather than writing `false`, so `isBlocked !== true` everywhere means "no".
 
+### Group Membership (`detachSiteFromGroup` in `site_storage.js`)
+- **A member usually has no rules of its own** — the "Add site to group" dialog
+  creates it with none, and the group supplies them. So leaving a group is not
+  just clearing `groupId`: `updateDistractingSite` refuses to leave a standalone
+  site with no rule at all, and that refusal is silent.
+- **So leaving a group means one of two things**: a site with limits of its own
+  becomes standalone, and a site that only existed inside the group is deleted
+  with it. `detachSiteFromGroup` decides; `deleteGroup` and `removeSiteFromGroup`
+  both go through it, and nothing else should clear `groupId` by hand.
+- **A site pointing at a group it is not in is invisible and unfixable**: the
+  individual list filters on `!groupId` and the group no longer lists it, while
+  the site still holds its URL pattern, so the page cannot be limited again and
+  there is nothing on screen to delete. Both shipped bugs produced exactly this.
+- **`repairOrphanedGroupMembers` runs on every background startup**, since
+  existing installs carry the damage. It detaches any site whose `groupId` names
+  a missing group, or a group whose `siteIds` does not list it — both states are
+  unreachable through the UI.
+- Membership is the absence or presence of `groupId`, never `groupId: null`.
+
 ### Reflection Delay Rules (all decided in `reflection_gate.js`)
 - **Block first, pause second**: `handleBeforeNavigate` runs the block check, and
   only sends a still-openable page through the countdown. A used-up limit goes
@@ -269,8 +288,20 @@ either `host` or `host/path`:
 - `suggestion_engine.js` offers a limit when a known distracting host passes 4
   opens in a day (or 8 in the window), or any other host passes 10 in a day (or
   25 across 3+ days). Work-shaped hosts are never offered.
+- **`trigger` says which threshold fired** (`'today'` or `'window'`), and the
+  banner and the notification must use it: a site can qualify on the week's
+  count alone while today's is still 1, and "opened 1 times today" is neither
+  true nor grammatical. `suggestion_body` is the today sentence,
+  `suggestion_body_window` the weekly one; a suggestion with no `trigger`
+  (raised before the field existed) takes the weekly one, which is true either
+  way.
 - Non-nagging by construction: one suggestion a day, one pending at a time, each
   host offered at most once ever, and a `showLimitSuggestions` preference.
+- **Counted on `webNavigation.onCommitted`, not `onBeforeNavigate`** — unlike
+  blocking and the countdown, which have to beat the page. The popup asks what
+  the *active tab* is showing, and before a navigation commits that is still the
+  previous page, so nudging any earlier opens a popup describing the old site
+  with no suggestion in it.
 - The nudge is `browser.action.openPopup()` where allowed, a notification
   otherwise, plus an amber `!` badge on that tab. The popup turns it into one
   click that adds a 10 second pause.
@@ -448,6 +479,11 @@ npm run preview       # Preview production build
 
 ## Common Gotchas
 
+0. **Toasts need `<Toaster />` mounted in the page's own entry point.** Each of
+   the five pages renders its own React root (`src/pages/*/main.tsx`); there is
+   no shared app shell, and `src/App.tsx` is dead scaffold. A page without the
+   `<Toaster />` makes every `toast()` in it a silent no-op — which is how an
+   error message can be written, translated, tested and still never seen.
 1. **Background scripts are copied, not bundled**: the vite plugin copies `src/background_scripts/*.js` into `dist` verbatim. They are not type-checked, not minified, and `esbuild`'s `drop: ['console']` does NOT apply to them — a `console.log` there ships to users. Keep `console.warn`/`console.error` for real problems only.
 2. **State Management**: Don't try to store state in background script variables; always use chrome.storage
 3. **Event Handlers**: Each event listener should be defined at top-level in background.js

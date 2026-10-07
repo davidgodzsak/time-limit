@@ -111,10 +111,15 @@ export function UnlimitedSiteView({
                   {t("suggestion_title")}
                 </p>
                 <p className="text-xs text-amber-800 mt-0.5">
-                  {t("suggestion_body", [
-                    suggestion.host,
-                    String(suggestion.opensToday),
-                  ])}
+                  {suggestion.trigger === "today"
+                    ? t("suggestion_body", [
+                        suggestion.host,
+                        String(suggestion.opensToday),
+                      ])
+                    : t("suggestion_body_window", [
+                        suggestion.host,
+                        String(suggestion.opensWindow),
+                      ])}
                 </p>
               </div>
             </div>

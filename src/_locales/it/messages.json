@@ -4,7 +4,7 @@
     "description": "Extension name shown in browser and stores"
   },
   "extensionDescription": {
-    "message": "Zeitlimits für ablenkende Webseiten. Seiten blockieren, Nutzung verfolgen und mit täglichen Limits fokussiert bleiben.",
+    "message": "Limita il tempo sui siti che ti distraggono. Blocca i siti mangiatempo, tieni traccia dell'uso e resta concentrato con limiti giornalieri e contatori di aperture.",
     "description": "Extension description in store listing"
   },
   "extensionActionTitle": {
@@ -12,15 +12,15 @@
     "description": "Tooltip when hovering over extension icon in toolbar"
   },
   "popup_loading_message": {
-    "message": "Wird geladen...",
+    "message": "Caricamento...",
     "description": "Loading state message in popup"
   },
   "popup_addLimit_validation": {
-    "message": "Bitte wähle mindestens einen Limittyp aus",
+    "message": "Scegli almeno un tipo di limite",
     "description": "Error when neither time nor opens limit is selected"
   },
   "popup_addLimit_success": {
-    "message": "Limit für $SITENAME$ hinzugefügt",
+    "message": "Limite aggiunto per $SITENAME$",
     "description": "Success notification when limit is added",
     "placeholders": {
       "sitename": {
@@ -30,47 +30,47 @@
     }
   },
   "popup_addLimit_failed": {
-    "message": "Limit konnte nicht hinzugefügt werden. Bitte erneut versuchen.",
+    "message": "Impossibile aggiungere il limite. Riprova.",
     "description": "Error notification when limit addition fails"
   },
   "popup_trackingEnabled_title": {
-    "message": "Erfolg",
+    "message": "Fatto",
     "description": "Toast title for successful tracking enable"
   },
   "popup_trackingEnabled_description": {
-    "message": "Tracking aktiviert",
+    "message": "Monitoraggio attivato",
     "description": "Toast description for successful tracking enable"
   },
   "popup_trackingEnabled_failed": {
-    "message": "Tracking konnte nicht aktiviert werden",
+    "message": "Impossibile attivare il monitoraggio",
     "description": "Error when tracking enable fails"
   },
   "popup_groupSelector_error": {
-    "message": "Gruppen konnten nicht geladen werden. Bitte erneut versuchen.",
+    "message": "Impossibile caricare i gruppi. Riprova.",
     "description": "Error when group selector fails to load"
   },
   "popup_addToGroup_success": {
-    "message": "Seite erfolgreich zur Gruppe hinzugefügt",
+    "message": "Sito aggiunto al gruppo",
     "description": "Success notification when site is added to group"
   },
   "popup_addToGroup_failed": {
-    "message": "Seite konnte nicht zur Gruppe hinzugefügt werden. Bitte erneut versuchen.",
+    "message": "Impossibile aggiungere il sito al gruppo. Riprova.",
     "description": "Error notification when site addition to group fails"
   },
   "popup_pageInfo_error": {
-    "message": "Seiteninformationen konnten nicht geladen werden",
+    "message": "Impossibile caricare le informazioni della pagina",
     "description": "Error when page info cannot be loaded"
   },
   "normalPageView_button_tooltip": {
-    "message": "Über diese Erweiterung",
+    "message": "Informazioni sull'estensione",
     "description": "Tooltip for info button in normal page view"
   },
   "normalPageView_opensLimit_label": {
-    "message": "Öffnungen heute",
+    "message": "Aperture di oggi",
     "description": "Label for opens limit count display"
   },
   "normalPageView_opensRemaining": {
-    "message": "$COUNT$ Öffnungen verbleibend",
+    "message": "$COUNT$ aperture rimaste",
     "description": "Helper text showing remaining opens",
     "placeholders": {
       "count": {
@@ -80,155 +80,155 @@
     }
   },
   "normalPageView_minLeft": {
-    "message": "Min übrig",
+    "message": "min rimasti",
     "description": "Short label for remaining time unit"
   },
   "normalPageView_extended_badge": {
-    "message": "Erweitertes Limit aktiv",
+    "message": "Limite esteso attivo",
     "description": "Badge shown on a limited site when the daily limit has been extended for today"
   },
   "unlimitedSiteView_notTracked": {
-    "message": "Nicht getrackt",
+    "message": "Non monitorato",
     "description": "Status label for unlimited sites"
   },
   "unlimitedSiteView_timeLimit_label": {
-    "message": "Zeitlimit",
+    "message": "Limite di tempo",
     "description": "Section label for time limit selection"
   },
   "unlimitedSiteView_opensLimit_label": {
-    "message": "Öffnungslimit",
+    "message": "Limite di aperture",
     "description": "Section label for opens limit selection"
   },
   "unlimitedSiteView_button_addLimit": {
-    "message": "Limit hinzufügen",
+    "message": "Aggiungi limite",
     "description": "Button to add a limit to the site"
   },
   "unlimitedSiteView_divider": {
-    "message": "oder",
+    "message": "oppure",
     "description": "Divider text between limit type options"
   },
   "unlimitedSiteView_groupSelector_label": {
-    "message": "Gruppe auswählen",
+    "message": "Scegli un gruppo",
     "description": "Label for group selector"
   },
   "unlimitedSiteView_groupSelector_empty": {
-    "message": "Keine Gruppen vorhanden. Erstelle eine in den Einstellungen.",
+    "message": "Nessun gruppo disponibile. Creane uno nelle impostazioni.",
     "description": "Empty state message when no groups exist"
   },
   "unlimitedSiteView_button_addToGroup": {
-    "message": "Zur Gruppe hinzufügen",
+    "message": "Aggiungi al gruppo",
     "description": "Button to add site to a group"
   },
   "unlimitedSiteView_button_cancel": {
-    "message": "Abbrechen",
+    "message": "Annulla",
     "description": "Cancel button in unlimited site view"
   },
   "disabledStateView_disabled": {
-    "message": "Deaktiviert",
+    "message": "Disattivato",
     "description": "Status label for disabled tracking"
   },
   "disabledStateView_message_site": {
-    "message": "Tracking ist für diese Seite pausiert. Klicke unten, um es wieder einzuschalten.",
+    "message": "Il monitoraggio di questo sito è in pausa. Tocca qui sotto per riattivarlo.",
     "description": "Message when site tracking is disabled"
   },
   "disabledStateView_message_group": {
-    "message": "Tracking ist für die Gruppe dieser Seite pausiert. Klicke unten, um es zu aktivieren.",
+    "message": "Il monitoraggio del gruppo a cui appartiene il sito è in pausa. Tocca qui sotto per attivarlo.",
     "description": "Message when group tracking is disabled"
   },
   "disabledStateView_message_both": {
-    "message": "Tracking ist für diese Seite und ihre Gruppe pausiert. Klicke unten, um es wieder einzuschalten.",
+    "message": "Il monitoraggio di questo sito e del suo gruppo è in pausa. Tocca qui sotto per riattivarlo.",
     "description": "Message when both site and group tracking are disabled"
   },
   "disabledStateView_button": {
-    "message": "Tracking einschalten",
+    "message": "Attiva il monitoraggio",
     "description": "Button to enable tracking"
   },
   "settingsPageView_title": {
-    "message": "Einstellungen",
+    "message": "Impostazioni",
     "description": "Page identification in popup when on settings page"
   },
   "settingsPageView_subtitle": {
-    "message": "Limits verwalten",
+    "message": "Gestisci i limiti",
     "description": "Subtitle description on popup settings page view"
   },
   "settingsPageView_description": {
-    "message": "Konfiguriere hier deine Limits, Gruppen und Nachrichten.",
+    "message": "Qui configuri limiti, gruppi e messaggi.",
     "description": "Informational text in popup settings page view"
   },
   "infoPageView_title": {
-    "message": "Über diese Erweiterung",
+    "message": "Informazioni sull'estensione",
     "description": "Page identification in popup when on info page"
   },
   "infoPageView_subtitle": {
-    "message": "Mehr erfahren & einrichten",
+    "message": "Scopri e configura",
     "description": "Subtitle in popup info page view"
   },
   "infoPageView_description": {
-    "message": "Time Limit hilft dir, fokussiert zu bleiben, indem es die Zeit auf ablenkenden Seiten begrenzt. Datenschutzfreundlich, kostenlos und Open Source.",
+    "message": "Time Limit ti aiuta a restare concentrato limitando il tempo sui siti che distraggono. Privacy al primo posto, gratuito e open source.",
     "description": "Extension description in popup info page view"
   },
   "infoPageView_button": {
-    "message": "Zu den Einstellungen",
+    "message": "Vai alle impostazioni",
     "description": "Button to navigate to settings from popup"
   },
   "timeoutPageView_title": {
-    "message": "Timeout-Seite",
+    "message": "Pagina di stop",
     "description": "Page identification in popup when on timeout page"
   },
   "timeoutPageView_subtitle_normal": {
-    "message": "Limit erreicht",
+    "message": "Limite raggiunto",
     "description": "Subtitle in normal timeout state"
   },
   "timeoutPageView_subtitle_extended": {
-    "message": "Erweiterungsmodus",
+    "message": "Modalità estensione",
     "description": "Subtitle when extension form is open"
   },
   "timeoutPageView_message": {
-    "message": "Du hast ein Limit erreicht. Mach eine Pause und komm später wieder.",
+    "message": "Hai raggiunto un limite. Prenditi una pausa e torna più tardi.",
     "description": "Default informational message on timeout"
   },
   "timeoutPageView_button_extend": {
-    "message": "Limits verlängern",
+    "message": "Estendi i limiti",
     "description": "Button to open extend limits form"
   },
   "timeoutPageView_extend_title": {
-    "message": "Limit verlängern",
+    "message": "Estendi il limite",
     "description": "Title of extend limits form"
   },
   "timeoutPageView_extend_timeLimit": {
-    "message": "Zeitlimit:",
+    "message": "Limite di tempo:",
     "description": "Label for time limit display in form"
   },
   "timeoutPageView_extend_timeLabel": {
-    "message": "Min",
+    "message": "min",
     "description": "Unit label for minutes"
   },
   "timeoutPageView_extend_opensLimit": {
-    "message": "Öffnungslimit:",
+    "message": "Limite di aperture:",
     "description": "Label for opens limit display in form"
   },
   "timeoutPageView_extend_opensLabel": {
-    "message": "Öffnungen",
+    "message": "aperture",
     "description": "Unit label for opens"
   },
   "timeoutPageView_extend_minutes_label": {
-    "message": "Zusätzliche Minuten (0–60)",
+    "message": "Minuti extra (0-60)",
     "description": "Label for extra minutes input field"
   },
   "timeoutPageView_extend_opens_label": {
-    "message": "Zusätzliche Öffnungen (0–10)",
+    "message": "Aperture extra (0-10)",
     "description": "Label for extra opens input field"
   },
   "timeoutPageView_extend_excuse_label": {
-    "message": "Warum brauchst du mehr Zeit?",
+    "message": "Perché ti serve più tempo?",
     "description": "Label for excuse textarea"
   },
   "timeoutPageView_extend_excuse_placeholder": {
-    "message": "Erkläre, warum du dieses Limit verlängern musst...",
+    "message": "Spiega perché ti serve estendere questo limite...",
     "description": "Placeholder text for excuse textarea"
   },
   "timeoutPageView_extend_excuse_counter": {
-    "message": "$LENGTH$/35 Zeichen",
+    "message": "$LENGTH$/35 caratteri",
     "description": "Character counter for excuse field",
     "placeholders": {
       "length": {
@@ -238,119 +238,119 @@
     }
   },
   "timeoutPageView_extend_error_minChars": {
-    "message": "Die Begründung muss mindestens 35 Zeichen lang sein",
+    "message": "La motivazione deve avere almeno 35 caratteri",
     "description": "Validation error for excuse length"
   },
   "timeoutPageView_extend_error_noExtension": {
-    "message": "Es muss entweder Zeit oder Öffnungen verlängert werden",
+    "message": "Estendi il tempo oppure le aperture",
     "description": "Validation error when neither time nor opens extended"
   },
   "timeoutPageView_extend_button_cancel": {
-    "message": "Abbrechen",
+    "message": "Annulla",
     "description": "Cancel button in extend form"
   },
   "timeoutPageView_extend_button_extend": {
-    "message": "Verlängern",
+    "message": "Estendi",
     "description": "Submit button in extend form"
   },
   "timeoutPageView_extend_button_extending": {
-    "message": "Wird verlängert...",
+    "message": "Estensione...",
     "description": "Button label during extension submission"
   },
   "firstInstallView_title": {
-    "message": "Willkommen bei Time Limit",
+    "message": "Benvenuto in Time Limit",
     "description": "Welcome screen title for first time users"
   },
   "firstInstallView_subtitle": {
-    "message": "Starte mit deinem ersten Seitenlimit",
+    "message": "Inizia impostando il tuo primo limite",
     "description": "Welcome screen subtitle"
   },
   "firstInstallView_tip": {
-    "message": "Richte deine ersten Seitenlimits in den Einstellungen ein, um deine Zeit auf ablenkenden Seiten zu verfolgen.",
+    "message": "Imposta i primi limiti nelle impostazioni per iniziare a monitorare il tempo sui siti che ti distraggono.",
     "description": "Helpful tip on welcome screen"
   },
   "firstInstallView_button_openSettings": {
-    "message": "Einstellungen öffnen",
+    "message": "Apri le impostazioni",
     "description": "Button to open settings page"
   },
   "firstInstallView_button_addLimit": {
-    "message": "Oder Limit hinzufügen",
+    "message": "Oppure aggiungi un limite",
     "description": "Alternative button text to add limit"
   },
   "firstInstallView_footer": {
-    "message": "Sobald alles eingerichtet ist, kannst du hier schnell Limits hinzufügen",
+    "message": "Una volta configurato, potrai aggiungere limiti rapidi da qui",
     "description": "Footer note on welcome screen"
   },
   "settings_loading": {
-    "message": "Einstellungen werden geladen...",
+    "message": "Caricamento impostazioni...",
     "description": "Loading state message in settings page"
   },
   "settings_tab_limits": {
-    "message": "Limits",
+    "message": "Limiti",
     "description": "Tab label for limits/sites section"
   },
   "settings_tab_groups": {
-    "message": "Gruppen",
+    "message": "Gruppi",
     "description": "Tab label for groups section"
   },
   "settings_tab_messages": {
-    "message": "Nachrichten",
+    "message": "Messaggi",
     "description": "Tab label for messages section"
   },
   "settings_tab_preferences": {
-    "message": "Einstellungen",
+    "message": "Preferenze",
     "description": "Tab label for display preferences section"
   },
   "preferences_section_title": {
-    "message": "Anzeigeeinstellungen",
+    "message": "Preferenze di visualizzazione",
     "description": "Title for the display preferences page"
   },
   "preferences_section_description": {
-    "message": "Passen Sie das Aussehen und Verhalten der Erweiterung an",
+    "message": "Personalizza l'aspetto e il comportamento dell'estensione",
     "description": "Description for the display preferences page"
   },
   "settings_language_label": {
-    "message": "Sprache",
+    "message": "Lingua",
     "description": "Label for the language selector in display preferences"
   },
   "settings_language_description": {
-    "message": "Browsersprache überschreiben",
+    "message": "Usa una lingua diversa da quella del browser",
     "description": "Description for the language selector option"
   },
   "settings_language_auto": {
-    "message": "Browser-Standard",
+    "message": "Lingua del browser",
     "description": "Option to use the browser's default language"
   },
   "sites_search_placeholder": {
-    "message": "Seiten und Gruppen suchen...",
+    "message": "Cerca siti e gruppi...",
     "description": "Placeholder in search input for sites"
   },
   "sites_section_title": {
-    "message": "Einzelne Seiten",
+    "message": "Siti singoli",
     "description": "Title for individual sites section"
   },
   "sites_button_add": {
-    "message": "Seite hinzufügen",
+    "message": "Aggiungi sito",
     "description": "Button to add a new site"
   },
   "sites_status_notTracked": {
-    "message": "Nicht getrackt",
+    "message": "Non monitorato",
     "description": "Status label for untracked sites"
   },
   "sites_button_enabled": {
-    "message": "Aktiviert",
+    "message": "Attivo",
     "description": "Label for enabled/tracking state"
   },
   "sites_button_disabled": {
-    "message": "Deaktiviert",
+    "message": "Disattivato",
     "description": "Label for disabled tracking state"
   },
   "sites_groups_section_title": {
-    "message": "Gruppen",
+    "message": "Gruppi",
     "description": "Title for groups section in sites tab"
   },
   "sites_groups_badge": {
-    "message": "$LENGTH$ Seiten",
+    "message": "$LENGTH$ siti",
     "description": "Count badge showing number of sites in group",
     "placeholders": {
       "length": {
@@ -360,23 +360,23 @@
     }
   },
   "sites_groups_addSite_button": {
-    "message": "Seite zur Gruppe hinzufügen",
+    "message": "Aggiungi un sito al gruppo",
     "description": "Button to add site to group"
   },
   "groups_section_title": {
-    "message": "Gruppen verwalten",
+    "message": "Gestisci i gruppi",
     "description": "Title of groups management section"
   },
   "groups_section_description": {
-    "message": "Verwandte Seiten zusammenfassen, um den Wechsel zu Alternativen zu verhindern",
+    "message": "Limita insieme i siti simili, così non passi semplicemente all'alternativa",
     "description": "Description explaining groups purpose"
   },
   "groups_button_new": {
-    "message": "Neue Gruppe",
+    "message": "Nuovo gruppo",
     "description": "Button to create a new group"
   },
   "groups_sites_count": {
-    "message": "$COUNT$ Seiten teilen Limits",
+    "message": "$COUNT$ siti con limiti in comune",
     "description": "Text showing how many sites share group limits",
     "placeholders": {
       "count": {
@@ -386,11 +386,11 @@
     }
   },
   "groups_badge_add": {
-    "message": "Hinzufügen",
+    "message": "Aggiungi",
     "description": "Button text to add site to group"
   },
   "groups_timeLimit_label": {
-    "message": "$MINUTES$ Min/Tag",
+    "message": "$MINUTES$ min/giorno",
     "description": "Display format for group time limit",
     "placeholders": {
       "minutes": {
@@ -400,7 +400,7 @@
     }
   },
   "groups_opensLimit_label": {
-    "message": "$COUNT$ Öffnungen/Tag",
+    "message": "$COUNT$ aperture/giorno",
     "description": "Display format for group opens limit",
     "placeholders": {
       "count": {
@@ -410,163 +410,163 @@
     }
   },
   "groups_button_edit_title": {
-    "message": "Gruppe bearbeiten",
+    "message": "Modifica gruppo",
     "description": "Tooltip for edit group button"
   },
   "groups_button_delete_title": {
-    "message": "Gruppe löschen",
+    "message": "Elimina gruppo",
     "description": "Tooltip for delete group button"
   },
   "messages_section_title": {
-    "message": "Motivationsnachrichten",
+    "message": "Messaggi motivazionali",
     "description": "Title of messages section"
   },
   "messages_section_description": {
-    "message": "Diese erscheinen, wenn du deine Limits erreichst",
+    "message": "Compaiono quando raggiungi i tuoi limiti",
     "description": "Description of messages functionality"
   },
   "messages_input_placeholder": {
-    "message": "Neue Motivationsnachricht hinzufügen...",
+    "message": "Aggiungi un nuovo messaggio motivazionale...",
     "description": "Placeholder for new message input"
   },
   "messages_display_options_title": {
-    "message": "Anzeigeoptionen",
+    "message": "Opzioni di visualizzazione",
     "description": "Title for display options section"
   },
   "messages_option_randomMessage": {
-    "message": "Zufällige Nachricht anzeigen",
+    "message": "Mostra un messaggio casuale",
     "description": "Toggle option label for random messages"
   },
   "messages_option_randomMessage_description": {
-    "message": "Jedes Mal eine zufällige Nachricht anzeigen",
+    "message": "Mostra un messaggio diverso ogni volta",
     "description": "Description for random message option"
   },
   "messages_option_suggestions": {
-    "message": "Aktivitätsvorschläge anzeigen",
+    "message": "Mostra idee di attività",
     "description": "Toggle option label for activity suggestions"
   },
   "messages_option_suggestions_description": {
-    "message": "Karten mit Ideen anzeigen, was du stattdessen tun kannst",
+    "message": "Mostra schede con cose da fare al posto di navigare",
     "description": "Description for activity suggestions option"
   },
   "messages_button_edit_title": {
-    "message": "Nachricht bearbeiten",
+    "message": "Modifica messaggio",
     "description": "Tooltip for edit message button"
   },
   "messages_button_delete_title": {
-    "message": "Nachricht löschen",
+    "message": "Elimina messaggio",
     "description": "Tooltip for delete message button"
   },
   "dialog_addSite_title_create": {
-    "message": "Neue Seite hinzufügen",
+    "message": "Aggiungi un nuovo sito",
     "description": "Dialog title when creating a new site"
   },
   "dialog_addSite_title_edit": {
-    "message": "Seite bearbeiten",
+    "message": "Modifica sito",
     "description": "Dialog title when editing an existing site"
   },
   "dialog_addSite_description_create": {
-    "message": "Füge eine Website zum Tracken mit Zeit- oder Öffnungslimits hinzu.",
+    "message": "Aggiungi un sito da monitorare con limiti di tempo o di aperture.",
     "description": "Dialog description when creating a site"
   },
   "dialog_addSite_description_edit": {
-    "message": "Aktualisiere die Limits für diese Website.",
+    "message": "Aggiorna i limiti di questo sito.",
     "description": "Dialog description when editing a site"
   },
   "dialog_addSite_label_websiteUrl": {
-    "message": "Website-URL",
+    "message": "Indirizzo del sito",
     "description": "Label for website URL input"
   },
   "dialog_addSite_placeholder_websiteUrl": {
-    "message": "z. B. tiktok.com oder youtube.com/shorts",
+    "message": "es. tiktok.com o youtube.com/shorts",
     "description": "Placeholder for website URL input"
   },
   "dialog_addSite_label_timeLimit": {
-    "message": "Zeitlimit (Min)",
+    "message": "Limite di tempo (min)",
     "description": "Label for time limit input"
   },
   "dialog_addSite_placeholder_timeLimit": {
-    "message": "z.B. 30",
+    "message": "es. 30",
     "description": "Placeholder for time limit input"
   },
   "dialog_addSite_label_opensLimit": {
-    "message": "Öffnungslimit",
+    "message": "Limite di aperture",
     "description": "Label for opens limit input"
   },
   "dialog_addSite_placeholder_opensLimit": {
-    "message": "z.B. 10",
+    "message": "es. 10",
     "description": "Placeholder for opens limit input"
   },
   "dialog_addSite_validation": {
-    "message": "Bitte setze mindestens ein Zeitlimit, ein Öffnungslimit oder eine Pause",
+    "message": "Imposta almeno un limite di tempo, uno di aperture o una pausa",
     "description": "Validation alert message for add site dialog"
   },
   "dialog_addSite_button_cancel": {
-    "message": "Abbrechen",
+    "message": "Annulla",
     "description": "Cancel button in add site dialog"
   },
   "dialog_addSite_button_add": {
-    "message": "Seite hinzufügen",
+    "message": "Aggiungi sito",
     "description": "Submit button in add site dialog (create mode)"
   },
   "dialog_addSite_button_update": {
-    "message": "Seite aktualisieren",
+    "message": "Aggiorna sito",
     "description": "Submit button in add site dialog (edit mode)"
   },
   "dialog_createGroup_title_create": {
-    "message": "Neue Gruppe erstellen",
+    "message": "Crea un nuovo gruppo",
     "description": "Dialog title when creating a new group"
   },
   "dialog_createGroup_title_edit": {
-    "message": "Gruppe bearbeiten",
+    "message": "Modifica gruppo",
     "description": "Dialog title when editing a group"
   },
   "dialog_createGroup_description_create": {
-    "message": "Erstelle eine Gruppe, um Limits auf mehrere Seiten anzuwenden.",
+    "message": "Crea un gruppo per condividere i limiti tra più siti.",
     "description": "Dialog description when creating a group"
   },
   "dialog_createGroup_description_edit": {
-    "message": "Aktualisiere die Gruppeneinstellungen.",
+    "message": "Aggiorna le impostazioni del gruppo.",
     "description": "Dialog description when editing a group"
   },
   "dialog_createGroup_label_groupName": {
-    "message": "Gruppenname",
+    "message": "Nome del gruppo",
     "description": "Label for group name input"
   },
   "dialog_createGroup_placeholder_groupName": {
-    "message": "z.B. Soziale Medien",
+    "message": "es. Social",
     "description": "Placeholder for group name input"
   },
   "dialog_createGroup_label_color": {
-    "message": "Farbe",
+    "message": "Colore",
     "description": "Label for color picker"
   },
   "dialog_createGroup_label_timeLimit": {
-    "message": "Zeitlimit (Min)",
+    "message": "Limite di tempo (min)",
     "description": "Label for group time limit input"
   },
   "dialog_createGroup_label_opensLimit": {
-    "message": "Öffnungslimit",
+    "message": "Limite di aperture",
     "description": "Label for group opens limit input"
   },
   "dialog_createGroup_validation": {
-    "message": "Bitte setze mindestens ein Zeitlimit, ein Öffnungslimit oder eine Pause",
+    "message": "Imposta almeno un limite di tempo, uno di aperture o una pausa",
     "description": "Validation alert message for create group dialog"
   },
   "dialog_createGroup_button_cancel": {
-    "message": "Abbrechen",
+    "message": "Annulla",
     "description": "Cancel button in create group dialog"
   },
   "dialog_createGroup_button_create": {
-    "message": "Gruppe erstellen",
+    "message": "Crea gruppo",
     "description": "Submit button in create group dialog (create mode)"
   },
   "dialog_createGroup_button_update": {
-    "message": "Gruppe aktualisieren",
+    "message": "Aggiorna gruppo",
     "description": "Submit button in create group dialog (edit mode)"
   },
   "dialog_addToGroup_title": {
-    "message": "Seite zu $GROUPNAME$ hinzufügen",
+    "message": "Aggiungi un sito a $GROUPNAME$",
     "description": "Dialog title when adding site to group",
     "placeholders": {
       "groupname": {
@@ -576,55 +576,55 @@
     }
   },
   "dialog_addToGroup_description": {
-    "message": "Diese Seite teilt die Zeit- und Öffnungslimits der Gruppe.",
+    "message": "Questo sito condividerà i limiti di tempo e di aperture del gruppo.",
     "description": "Dialog description for add site to group"
   },
   "dialog_addToGroup_label_websiteUrl": {
-    "message": "Website-URL",
+    "message": "Indirizzo del sito",
     "description": "Label for website URL input in add to group dialog"
   },
   "dialog_addToGroup_placeholder_websiteUrl": {
-    "message": "z.B. tiktok.com",
+    "message": "es. tiktok.com",
     "description": "Placeholder for website URL input in add to group dialog"
   },
   "dialog_addToGroup_quickAdd_label": {
-    "message": "Schnell hinzufügen",
+    "message": "Aggiunta rapida",
     "description": "Label for quick add section in dialog"
   },
   "dialog_addToGroup_button_cancel": {
-    "message": "Abbrechen",
+    "message": "Annulla",
     "description": "Cancel button in add to group dialog"
   },
   "dialog_addToGroup_button_add": {
-    "message": "Zur Gruppe hinzufügen",
+    "message": "Aggiungi al gruppo",
     "description": "Submit button in add to group dialog"
   },
   "timeout_breathing_in": {
-    "message": "Einatmen",
+    "message": "Inspira",
     "description": "Label for breathing circle during inhale"
   },
   "timeout_breathing_out": {
-    "message": "Ausatmen",
+    "message": "Espira",
     "description": "Label for breathing circle during exhale"
   },
   "timeout_noMessages_title": {
-    "message": "Noch keine Motivationsnachrichten eingerichtet",
+    "message": "Nessun messaggio motivazionale",
     "description": "Empty state title when no messages exist"
   },
   "timeout_noMessages_description": {
-    "message": "Füge Nachrichten in den Erweiterungseinstellungen hinzu, um sie hier zu sehen",
+    "message": "Aggiungi i messaggi nelle impostazioni dell'estensione per vederli qui",
     "description": "Empty state description when no messages exist"
   },
   "timeout_noMessages_button": {
-    "message": "Einstellungen öffnen",
+    "message": "Apri le impostazioni",
     "description": "Button to open settings from timeout page"
   },
   "timeout_suggestions_label": {
-    "message": "Was du stattdessen tun könntest...",
+    "message": "Cosa potresti fare invece...",
     "description": "Label for activity suggestions section"
   },
   "timeout_resetTime": {
-    "message": "$SITENAME$ • Zurückgesetzt um $RESETTIME$",
+    "message": "$SITENAME$ • Si azzera alle $RESETTIME$",
     "description": "Footer showing site name and reset time",
     "placeholders": {
       "sitename": {
@@ -638,67 +638,67 @@
     }
   },
   "info_title": {
-    "message": "Hol dir deinen Fokus zurück",
+    "message": "Riprenditi la concentrazione",
     "description": "Main heading on info page"
   },
   "info_description": {
-    "message": "Eine einfache, datenschutzfreundliche Browsererweiterung, die dir hilft, gesündere Surfgewohnheiten aufzubauen. Setze Limits auf ablenkenden Seiten, erhalte sanfte Erinnerungen und bleibe achtsam bei deiner Online-Zeit.",
+    "message": "Un'estensione semplice, con la privacy al primo posto, che ti aiuta a costruire abitudini di navigazione più sane. Metti limiti ai siti che ti distraggono, ricevi promemoria gentili quando ti serve una pausa e resta consapevole di come spendi il tuo tempo online.",
     "description": "Main description on info page"
   },
   "info_values_title": {
-    "message": "Was du bekommst",
+    "message": "Cosa ci guadagni",
     "description": "Section title for extension benefits"
   },
   "info_value_saveTime_title": {
-    "message": "Zeit sparen",
+    "message": "Guadagni tempo",
     "description": "Value proposition title 1"
   },
   "info_value_saveTime_description": {
-    "message": "Behalte den Überblick, wie du deine Online-Zeit verbringst, und gewinne deinen Fokus zurück",
+    "message": "Renditi conto di come passi il tempo online e riprenditi la concentrazione",
     "description": "Value proposition description 1"
   },
   "info_value_mindful_title": {
-    "message": "Bleib achtsam",
+    "message": "Naviga con consapevolezza",
     "description": "Value proposition title 2"
   },
   "info_value_mindful_description": {
-    "message": "Baue gesündere Surfgewohnheiten mit sanften, nicht wertenden Limits auf",
+    "message": "Costruisci abitudini più sane con limiti gentili e senza giudizio",
     "description": "Value proposition description 2"
   },
   "info_value_privacy_title": {
-    "message": "Datenschutz zuerst",
+    "message": "Privacy al primo posto",
     "description": "Value proposition title 3"
   },
   "info_value_privacy_description": {
-    "message": "Alles bleibt auf deinem Gerät. Kein Tracking, keine Datensammlung, keine Server",
+    "message": "Tutto resta sul tuo dispositivo. Nessun tracciamento, nessuna raccolta dati, nessun server",
     "description": "Value proposition description 3"
   },
   "info_value_free_title": {
-    "message": "Dauerhaft kostenlos",
+    "message": "Gratis per sempre",
     "description": "Value proposition title 4"
   },
   "info_value_free_description": {
-    "message": "Keine Werbung, keine Bezahlschranken. Wir glauben daran, das Internet für alle gesünder zu machen",
+    "message": "Niente pubblicità, niente paywall. Vogliamo un internet più sano per tutti",
     "description": "Value proposition description 4"
   },
   "info_setup_title": {
-    "message": "Bereit zum Start?",
+    "message": "Pronto a iniziare?",
     "description": "Section title for getting started"
   },
   "info_setup_description": {
-    "message": "Öffne die Einstellungen, um deine ersten Seitenlimits hinzuzufügen und alles an deine Ziele anzupassen.",
+    "message": "Apri le impostazioni per aggiungere i tuoi primi limiti e adattare tutto ai tuoi obiettivi.",
     "description": "Description for getting started section"
   },
   "info_setup_button": {
-    "message": "Zu den Einstellungen",
+    "message": "Vai alle impostazioni",
     "description": "Button to navigate to settings from info page"
   },
   "info_donation_title": {
-    "message": "Dieses Projekt unterstützen",
+    "message": "Sostieni il progetto",
     "description": "Section title for donation options"
   },
   "info_donation_description": {
-    "message": "Wenn dir diese Erweiterung hilft, unterstütze gerne ihre Weiterentwicklung. Deine Spende hilft uns, sie für alle kostenlos, werbefrei und quelloffen zu halten.",
+    "message": "Se questa estensione ti è utile, valuta di sostenerne lo sviluppo. La tua donazione ci aiuta a tenerla gratuita, senza pubblicità e open source per tutti.",
     "description": "Description for donation section"
   },
   "info_donation_stripe": {
@@ -706,7 +706,7 @@
     "description": "Donation option name"
   },
   "info_donation_stripe_description": {
-    "message": "Einmalige oder wiederkehrende Spenden",
+    "message": "Donazione singola o ricorrente",
     "description": "Description for Stripe donation option"
   },
   "info_donation_paypal": {
@@ -714,7 +714,7 @@
     "description": "Donation option name"
   },
   "info_donation_paypal_description": {
-    "message": "Schnell und sicher",
+    "message": "Veloce e sicuro",
     "description": "Description for PayPal donation option"
   },
   "info_donation_buymeacoffee": {
@@ -722,7 +722,7 @@
     "description": "Donation option name"
   },
   "info_donation_buymeacoffee_description": {
-    "message": "Unsere Arbeit unterstützen",
+    "message": "Sostieni il nostro lavoro",
     "description": "Description for Buy Me a Coffee option"
   },
   "info_donation_patreon": {
@@ -730,91 +730,91 @@
     "description": "Donation option name"
   },
   "info_donation_patreon_description": {
-    "message": "Patron werden",
+    "message": "Diventa sostenitore",
     "description": "Description for Patreon option"
   },
   "info_donation_link": {
-    "message": "Besuchen",
+    "message": "Vai",
     "description": "Link text for donation options"
   },
   "info_feedback_title": {
-    "message": "Hast du Feedback?",
+    "message": "Hai un suggerimento?",
     "description": "Section title for feedback"
   },
   "info_feedback_description": {
-    "message": "Fehler gefunden oder einen Feature-Wunsch? Wir freuen uns, von dir zu hören!",
+    "message": "Hai trovato un bug o vorresti una funzione? Ci farebbe piacere saperlo!",
     "description": "Description for feedback section"
   },
   "info_feedback_reportIssue": {
-    "message": "Problem melden",
+    "message": "Segnala un problema",
     "description": "Button text to report issue"
   },
   "info_feedback_featureRequest": {
-    "message": "Feature vorschlagen",
+    "message": "Proponi una funzione",
     "description": "Button text for feature request"
   },
   "info_footer": {
-    "message": "Mit ❤️ gemacht, damit du fokussiert bleibst",
+    "message": "Fatto con ❤️ per aiutarti a restare concentrato",
     "description": "Footer text on info page"
   },
   "suggestion_readBook_title": {
-    "message": "Ein Buch lesen",
+    "message": "Leggi un libro",
     "description": "Activity suggestion title"
   },
   "suggestion_readBook_description": {
-    "message": "Tauche in den Roman ein, den du schon immer lesen wolltest",
+    "message": "Immergiti in quel romanzo che volevi iniziare",
     "description": "Activity suggestion description"
   },
   "suggestion_drinkWater_title": {
-    "message": "Wasser trinken",
+    "message": "Bevi un po' d'acqua",
     "description": "Activity suggestion title"
   },
   "suggestion_drinkWater_description": {
-    "message": "Trink genug! Dein Körper wird es dir danken",
+    "message": "Restare idratati fa bene, il tuo corpo ringrazia",
     "description": "Activity suggestion description"
   },
   "suggestion_takeWalk_title": {
-    "message": "Spazieren gehen",
+    "message": "Fai due passi",
     "description": "Activity suggestion title"
   },
   "suggestion_takeWalk_description": {
-    "message": "Schnapp dir frische Luft und mach den Kopf frei",
+    "message": "Prendi aria e schiarisciti le idee",
     "description": "Activity suggestion description"
   },
   "suggestion_callSomeone_title": {
-    "message": "Jemanden anrufen",
+    "message": "Chiama qualcuno",
     "description": "Activity suggestion title"
   },
   "suggestion_callSomeone_description": {
-    "message": "Melde dich bei einem Freund oder einem Familienmitglied",
+    "message": "Senti un amico o qualcuno della famiglia",
     "description": "Activity suggestion description"
   },
   "suggestion_meditate_title": {
-    "message": "Meditieren",
+    "message": "Medita",
     "description": "Activity suggestion title"
   },
   "suggestion_meditate_description": {
-    "message": "5 Minuten Achtsamkeit können deinen Fokus zurückbringen",
+    "message": "5 minuti di presenza bastano a recuperare la concentrazione",
     "description": "Activity suggestion description"
   },
   "suggestion_takeBreak_title": {
-    "message": "Pause machen",
+    "message": "Prenditi una pausa",
     "description": "Activity suggestion title"
   },
   "suggestion_takeBreak_description": {
-    "message": "Streck dich, koch dir einen Tee und ruh deine Augen aus",
+    "message": "Sgranchisciti, fatti un tè e riposa gli occhi",
     "description": "Activity suggestion description"
   },
   "notification_success_default": {
-    "message": "Vorgang erfolgreich abgeschlossen",
+    "message": "Operazione completata",
     "description": "Default success message"
   },
   "notification_error_default": {
-    "message": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "message": "Qualcosa è andato storto. Riprova.",
     "description": "Default error message"
   },
   "notification_siteAdded": {
-    "message": "Limit für $SITENAME$ hinzugefügt",
+    "message": "Limite aggiunto per $SITENAME$",
     "description": "Notification when site is added",
     "placeholders": {
       "sitename": {
@@ -824,131 +824,131 @@
     }
   },
   "notification_siteUpdated": {
-    "message": "Seite erfolgreich aktualisiert",
+    "message": "Sito aggiornato",
     "description": "Notification when site is updated"
   },
   "notification_siteRemoved": {
-    "message": "Seite erfolgreich entfernt",
+    "message": "Sito rimosso",
     "description": "Notification when site is removed"
   },
   "notification_groupCreated": {
-    "message": "Gruppe erfolgreich erstellt",
+    "message": "Gruppo creato",
     "description": "Notification when group is created"
   },
   "notification_groupUpdated": {
-    "message": "Gruppe erfolgreich aktualisiert",
+    "message": "Gruppo aggiornato",
     "description": "Notification when group is updated"
   },
   "notification_groupDeleted": {
-    "message": "Gruppe erfolgreich gelöscht",
+    "message": "Gruppo eliminato",
     "description": "Notification when group is deleted"
   },
   "notification_messageAdded": {
-    "message": "Nachricht erfolgreich hinzugefügt",
+    "message": "Messaggio aggiunto",
     "description": "Notification when message is added"
   },
   "notification_messageUpdated": {
-    "message": "Nachricht erfolgreich aktualisiert",
+    "message": "Messaggio aggiornato",
     "description": "Notification when message is updated"
   },
   "notification_messageRemoved": {
-    "message": "Nachricht erfolgreich entfernt",
+    "message": "Messaggio rimosso",
     "description": "Notification when message is removed"
   },
   "notification_addedToGroup": {
-    "message": "Seite erfolgreich zur Gruppe hinzugefügt",
+    "message": "Sito aggiunto al gruppo",
     "description": "Notification when site is added to group"
   },
   "notification_removedFromGroup": {
-    "message": "Seite erfolgreich aus Gruppe entfernt",
+    "message": "Sito rimosso dal gruppo",
     "description": "Notification when site is removed from group"
   },
   "notification_trackingEnabled": {
-    "message": "Tracking aktiviert",
+    "message": "Monitoraggio attivato",
     "description": "Notification when tracking is enabled"
   },
   "notification_trackingDisabled": {
-    "message": "Tracking deaktiviert",
+    "message": "Monitoraggio disattivato",
     "description": "Notification when tracking is disabled"
   },
   "notification_preferenceSaved": {
-    "message": "Einstellung gespeichert",
+    "message": "Preferenza salvata",
     "description": "Notification when preference is saved"
   },
   "notification_extendSuccess": {
-    "message": "Limit verlängert! Weiterleitung...",
+    "message": "Limite esteso! Reindirizzamento...",
     "description": "Notification when limit extension succeeds"
   },
   "error_unexpected": {
-    "message": "Ein unerwarteter Fehler ist aufgetreten",
+    "message": "Si è verificato un errore imprevisto",
     "description": "Generic error fallback message"
   },
   "error_invalid_message_format": {
-    "message": "Ungültiges Nachrichtenformat",
+    "message": "Formato del messaggio non valido",
     "description": "Error when message structure is invalid"
   },
   "error_action_required": {
-    "message": "Nachrichtenaktion ist erforderlich",
+    "message": "Il messaggio deve contenere un'azione",
     "description": "Error when message action is missing"
   },
   "error_addSite_failed": {
-    "message": "Seite konnte nicht hinzugefügt werden. Bitte überprüfe das URL-Format und versuche es erneut.",
+    "message": "Impossibile aggiungere il sito. Controlla il formato dell'indirizzo e riprova.",
     "description": "Error when site addition fails"
   },
   "error_updateSite_failed": {
-    "message": "Seite konnte nicht aktualisiert werden. Seite existiert möglicherweise nicht oder die Daten sind ungültig.",
+    "message": "Impossibile aggiornare il sito. Potrebbe non esistere o i dati non sono validi.",
     "description": "Error when site update fails"
   },
   "error_deleteSite_failed": {
-    "message": "Seite konnte nicht gelöscht werden. Seite existiert möglicherweise nicht.",
+    "message": "Impossibile eliminare il sito. Potrebbe non esistere.",
     "description": "Error when site deletion fails"
   },
   "error_addNote_failed": {
-    "message": "Notiz konnte nicht hinzugefügt werden. Bitte überprüfe den Notiztext und versuche es erneut.",
+    "message": "Impossibile aggiungere la nota. Controlla il testo e riprova.",
     "description": "Error when note addition fails"
   },
   "error_updateNote_failed": {
-    "message": "Notiz konnte nicht aktualisiert werden. Notiz existiert möglicherweise nicht oder die Daten sind ungültig.",
+    "message": "Impossibile aggiornare la nota. Potrebbe non esistere o i dati non sono validi.",
     "description": "Error when note update fails"
   },
   "error_deleteNote_failed": {
-    "message": "Notiz konnte nicht gelöscht werden. Notiz existiert möglicherweise nicht.",
+    "message": "Impossibile eliminare la nota. Potrebbe non esistere.",
     "description": "Error when note deletion fails"
   },
   "error_noActiveTab": {
-    "message": "Kein aktiver Tab gefunden",
+    "message": "Nessuna scheda attiva trovata",
     "description": "Error when there's no active browser tab"
   },
   "error_cannotAccessTabUrl": {
-    "message": "Zugriff auf aktuelle Tab-URL nicht möglich",
+    "message": "Impossibile accedere all'indirizzo della scheda attuale",
     "description": "Error when tab URL cannot be accessed"
   },
   "error_getPageInfo_failed": {
-    "message": "Aktuelle Seiteninformationen konnten nicht abgerufen werden",
+    "message": "Impossibile ottenere le informazioni della pagina attuale",
     "description": "Error when retrieving page info fails"
   },
   "error_refreshPageData_failed": {
-    "message": "Seitendaten konnten nicht aktualisiert werden",
+    "message": "Impossibile aggiornare i dati della pagina",
     "description": "Error when refreshing page data fails"
   },
   "error_addSiteLimit_failed": {
-    "message": "Seitenlimit konnte nicht hinzugefügt werden. Bitte überprüfe das URL-Format und versuche es erneut.",
+    "message": "Impossibile aggiungere il limite. Controlla il formato dell'indirizzo e riprova.",
     "description": "Error when quick limit addition fails"
   },
   "error_badgeInfo_failed": {
-    "message": "Badge-Informationen konnten nicht abgerufen werden",
+    "message": "Impossibile ottenere le informazioni del badge",
     "description": "Error when badge info cannot be retrieved"
   },
   "error_systemStatus_failed": {
-    "message": "Systemstatus konnte nicht abgerufen werden",
+    "message": "Impossibile ottenere lo stato del sistema",
     "description": "Error when system status cannot be retrieved"
   },
   "notification_siteAccessRestored": {
-    "message": "Du kannst nun auf diese Seite zugreifen. Geh zurück oder aktualisiere die Seite.",
+    "message": "Ora puoi accedere a questo sito. Torna indietro o ricarica la pagina.",
     "description": "Notification when site limit is removed and access is restored"
   },
   "block_reason_both": {
-    "message": "Du hast sowohl dein Zeitlimit ($1/$2 Minuten) als auch dein Öffnungslimit ($3/$4 Öffnungen) für $5 heute überschritten.",
+    "message": "Oggi su $5 hai superato sia il limite di tempo ($1/$2 minuti) sia quello di aperture ($3/$4 aperture).",
     "description": "Blocking reason when both time and opens limits exceeded",
     "placeholders": {
       "time_spent": {
@@ -974,7 +974,7 @@
     }
   },
   "block_reason_time": {
-    "message": "Du hast heute $1 Minuten auf $2 verbracht und damit dein Limit von $3 Minuten überschritten.",
+    "message": "Oggi hai passato $1 minuti su $2, superando il tuo limite di $3 minuti.",
     "description": "Blocking reason when time limit exceeded",
     "placeholders": {
       "minutes_spent": {
@@ -992,7 +992,7 @@
     }
   },
   "block_reason_opens": {
-    "message": "Du hast $1 heute $2 Mal geöffnet und damit dein Limit von $3 Öffnungen überschritten.",
+    "message": "Oggi hai aperto $1 $2 volte, superando il tuo limite di $3 aperture.",
     "description": "Blocking reason when opens limit exceeded",
     "placeholders": {
       "context": {
@@ -1010,7 +1010,7 @@
     }
   },
   "block_reason_default": {
-    "message": "Tageslimit für $1 überschritten.",
+    "message": "Limite giornaliero superato per $1.",
     "description": "Default blocking reason",
     "placeholders": {
       "context": {
@@ -1020,131 +1020,131 @@
     }
   },
   "onboarding_welcome_title": {
-    "message": "Willkommen bei Time Limit",
+    "message": "Benvenuto in Time Limit",
     "description": "Main title of the welcome screen dialog"
   },
   "onboarding_welcome_subtitle": {
-    "message": "Bleib fokussiert mit smarten Website-Limits",
+    "message": "Resta concentrato con limiti intelligenti",
     "description": "Subtitle of the welcome screen dialog"
   },
   "onboarding_welcome_feature1_title": {
-    "message": "Smarte Limits setzen",
+    "message": "Imposta limiti intelligenti",
     "description": "First feature title in welcome screen (with Lightbulb icon)"
   },
   "onboarding_welcome_feature1_description": {
-    "message": "Definiere Zeit- oder Öffnungslimits für ablenkende Seiten",
+    "message": "Definisci limiti di tempo o di aperture sui siti che ti distraggono",
     "description": "First feature description in welcome screen"
   },
   "onboarding_welcome_feature2_title": {
-    "message": "Mit Gruppen organisieren",
+    "message": "Organizza in gruppi",
     "description": "Second feature title in welcome screen (with FolderOpen icon)"
   },
   "onboarding_welcome_feature2_description": {
-    "message": "Verwandte Seiten gruppieren und Limits auf alle anwenden",
+    "message": "Raggruppa i siti simili e applica un limite a tutti insieme",
     "description": "Second feature description in welcome screen"
   },
   "onboarding_welcome_feature3_title": {
-    "message": "Motiviert bleiben",
+    "message": "Resta motivato",
     "description": "Third feature title in welcome screen (with Quote icon)"
   },
   "onboarding_welcome_feature3_description": {
-    "message": "Motivationsnachrichten anpassen, die bei Limits erscheinen",
+    "message": "Scrivi i messaggi che compariranno quando raggiungi i limiti",
     "description": "Third feature description in welcome screen"
   },
   "onboarding_welcome_duration": {
-    "message": "Die Einrichtung dauert nur 2 Minuten",
+    "message": "Bastano 2 minuti per configurare tutto",
     "description": "Text about time required to complete setup"
   },
   "onboarding_welcome_button_skip": {
-    "message": "Überspringen",
+    "message": "Salta",
     "description": "Button to skip onboarding"
   },
   "onboarding_welcome_button_start": {
-    "message": "Start",
+    "message": "Inizia",
     "description": "Button to begin onboarding process"
   },
   "onboarding_completion_title": {
-    "message": "Alles bereit!",
+    "message": "È tutto pronto!",
     "description": "Title of completion screen"
   },
   "onboarding_completion_subtitle": {
-    "message": "Time Limit ist bereit, dir beim Fokussieren zu helfen",
+    "message": "Time Limit è pronto ad aiutarti a restare concentrato",
     "description": "Subtitle of completion screen"
   },
   "onboarding_completion_message": {
-    "message": "Du hast dein erstes Limit erfolgreich eingerichtet. Fang an zu surfen, und Time Limit hilft dir, am Ball zu bleiben.",
+    "message": "Il tuo primo limite è impostato. Continua a navigare, al resto pensa Time Limit.",
     "description": "Main message text on completion screen"
   },
   "onboarding_completion_toolbar_title": {
-    "message": "Schnellzugriff über die Symbolleiste",
+    "message": "Accesso rapido dalla barra",
     "description": "Section title explaining toolbar access"
   },
   "onboarding_completion_toolbar_description": {
-    "message": "Klicke auf das Erweiterungssymbol in der Browser-Symbolleiste, um schnell neue Limits hinzuzufügen oder deinen Fortschritt zu prüfen",
+    "message": "Tocca l'icona dell'estensione nella barra del browser per aggiungere limiti al volo o vedere come stai andando",
     "description": "Description of how to use the toolbar icon"
   },
   "onboarding_completion_toolbar_image_alt": {
-    "message": "Browser-Symbolleiste mit dem Time-Limit-Erweiterungssymbol",
+    "message": "Barra del browser con l'icona dell'estensione Time Limit",
     "description": "Alt text for browser image (accessibility)"
   },
   "onboarding_completion_button_start": {
-    "message": "Surfen beginnen",
+    "message": "Inizia a navigare",
     "description": "Button to close completion screen and begin using extension"
   },
   "spotlight_button_skip": {
-    "message": "Überspringen",
+    "message": "Salta",
     "description": "Button to skip current spotlight tutorial step"
   },
   "spotlight_button_next": {
-    "message": "Weiter",
+    "message": "Avanti",
     "description": "Button to advance to next spotlight step"
   },
   "spotlight_button_finish": {
-    "message": "Fertig",
+    "message": "Fine",
     "description": "Button to complete spotlight tutorial"
   },
   "error_urlPattern_empty": {
-    "message": "URL-Muster muss eine nicht leere Zeichenfolge sein",
+    "message": "Il modello di indirizzo non può essere vuoto",
     "description": "Validation error for empty URL"
   },
   "error_urlPattern_toolong": {
-    "message": "URL-Muster zu lang (max. 2000 Zeichen)",
+    "message": "Modello di indirizzo troppo lungo (max 2000 caratteri)",
     "description": "Validation error for URL exceeding max length"
   },
   "error_urlPattern_invalid": {
-    "message": "Ungültiges URL-Format. Bitte gib eine gültige Domain ein (z.B. example.com)",
+    "message": "Indirizzo non valido. Inserisci un dominio valido (es. esempio.com)",
     "description": "Validation error for invalid URL format"
   },
   "error_urlPattern_restricted": {
-    "message": "Ungültiges URL-Muster enthält ein eingeschränktes Protokoll",
+    "message": "Il modello di indirizzo contiene un protocollo non consentito",
     "description": "Validation error for restricted protocol in URL"
   },
   "error_timeLimit_notNumber": {
-    "message": "Zeitlimit muss eine gültige Zahl sein",
+    "message": "Il limite di tempo deve essere un numero valido",
     "description": "Validation error when time limit is not a number"
   },
   "error_timeLimit_tooSmall": {
-    "message": "Zeitlimit muss größer als 0 sein",
+    "message": "Il limite di tempo deve essere maggiore di 0",
     "description": "Validation error when time limit is 0 or negative"
   },
   "error_timeLimit_tooLarge": {
-    "message": "Zeitlimit kann 24 Stunden nicht überschreiten",
+    "message": "Il limite di tempo non può superare le 24 ore",
     "description": "Validation error when time limit exceeds maximum"
   },
   "error_noteText_empty": {
-    "message": "Notiztext muss eine nicht leere Zeichenfolge sein",
+    "message": "Il testo della nota non può essere vuoto",
     "description": "Validation error for empty note"
   },
   "error_noteText_toolong": {
-    "message": "Notiztext zu lang (max. 1000 Zeichen)",
+    "message": "Testo della nota troppo lungo (max 1000 caratteri)",
     "description": "Validation error for note exceeding max length"
   },
   "error_storageType_unknown": {
-    "message": "Unbekannter Datentyp für Speichervalidierung",
+    "message": "Tipo di dato sconosciuto nella convalida dell'archiviazione",
     "description": "Internal error for unknown storage type"
   },
   "error_storage_limitExceeded": {
-    "message": "Maximale Anzahl von $1 erreicht ($2)",
+    "message": "Numero massimo di $1 raggiunto ($2)",
     "description": "Validation error when storage limit exceeded",
     "placeholders": {
       "datatype": {
@@ -1158,31 +1158,31 @@
     }
   },
   "error_unknown": {
-    "message": "Ein unbekannter Fehler ist aufgetreten",
+    "message": "Si è verificato un errore sconosciuto",
     "description": "Generic unknown error"
   },
   "error_extensionReloaded": {
-    "message": "Erweiterung wurde neu geladen. Bitte lade diese Seite neu.",
+    "message": "L'estensione è stata ricaricata. Ricarica questa pagina.",
     "description": "Error when extension context is invalidated"
   },
   "error_storage_full": {
-    "message": "Speicherlimit erreicht. Bitte entferne einige Elemente und versuche es erneut.",
+    "message": "Spazio di archiviazione esaurito. Rimuovi qualche elemento e riprova.",
     "description": "Error when storage quota exceeded"
   },
   "error_network": {
-    "message": "Verbindungsfehler. Bitte überprüfe deine Internetverbindung und versuche es erneut.",
+    "message": "Errore di connessione. Controlla la connessione a internet e riprova.",
     "description": "Error for network/connectivity issues"
   },
   "error_browserApi": {
-    "message": "Browser-API-Fehler. Bitte versuche es erneut oder starte den Browser neu.",
+    "message": "Errore dell'API del browser. Riprova o riavvia il browser.",
     "description": "Error when browser API call fails"
   },
   "error_objectRequired": {
-    "message": "Objekt ist erforderlich",
+    "message": "È richiesto un oggetto",
     "description": "Validation error when object is missing"
   },
   "error_requiredFieldMissing": {
-    "message": "Pflichtfeld '$1' fehlt",
+    "message": "Manca il campo obbligatorio '$1'",
     "description": "Validation error when required field missing",
     "placeholders": {
       "field": {
@@ -1192,99 +1192,99 @@
     }
   },
   "error_openLimit_notNumber": {
-    "message": "Öffnungslimit muss eine gültige Zahl sein",
+    "message": "Il limite di aperture deve essere un numero valido",
     "description": "Validation error when open limit is not a number"
   },
   "error_openLimit_tooSmall": {
-    "message": "Öffnungslimit muss größer als 0 sein",
+    "message": "Il limite di aperture deve essere maggiore di 0",
     "description": "Validation error when open limit is 0 or negative"
   },
   "error_openLimit_tooLarge": {
-    "message": "Öffnungslimit kann 1000 Öffnungen pro Tag nicht überschreiten",
+    "message": "Il limite di aperture non può superare 1000 aperture al giorno",
     "description": "Validation error when open limit exceeds maximum"
   },
   "error_site_invalidType": {
-    "message": "Seite muss ein Objekt sein",
+    "message": "Il sito deve essere un oggetto",
     "description": "Validation error when site is not an object"
   },
   "error_site_noLimit": {
-    "message": "Mindestens ein Limit (Zeit oder Öffnungen) muss angegeben werden",
+    "message": "Va indicato almeno un limite (tempo o aperture)",
     "description": "Validation error when site has no limits"
   },
   "ratingBanner_title": {
-    "message": "Liebst du Time Limit?",
+    "message": "Ti piace Time Limit?",
     "description": "Title for rating banner in settings"
   },
   "ratingBanner_description": {
-    "message": "Hilf uns zu wachsen, indem du eine 5-Sterne-Bewertung hinterlässt",
+    "message": "Aiutaci a crescere con una recensione a 5 stelle",
     "description": "Description for rating banner in settings"
   },
   "ratingBanner_rateButton": {
-    "message": "Jetzt bewerten",
+    "message": "Lascia una recensione",
     "description": "Button to open rating page from banner"
   },
   "ratingBanner_alreadyRatedButton": {
-    "message": "Bereits bewertet",
+    "message": "L'ho già fatto",
     "description": "Button to mark as already rated from banner"
   },
   "ratingBanner_laterButton": {
-    "message": "Später →",
+    "message": "Più tardi →",
     "description": "Button to dismiss rating banner and ask again later"
   },
   "ratingPrompt_title": {
-    "message": "Gefällt dir Time Limit?",
+    "message": "Ti trovi bene con Time Limit?",
     "description": "Title for full-screen rating prompt in popup"
   },
   "ratingPrompt_description": {
-    "message": "Dein Feedback hilft uns, besser zu werden. Hinterlasse eine kurze Bewertung!",
+    "message": "Il tuo parere ci aiuta a migliorare. Lascia una breve recensione!",
     "description": "Description for rating prompt"
   },
   "ratingPrompt_rateButton": {
-    "message": "Jetzt bewerten",
+    "message": "Lascia una recensione",
     "description": "Button to rate from prompt view"
   },
   "ratingPrompt_alreadyRatedButton": {
-    "message": "Bereits bewertet",
+    "message": "L'ho già fatto",
     "description": "Button to mark as already rated from prompt"
   },
   "ratingPrompt_laterButton": {
-    "message": "Später →",
+    "message": "Più tardi →",
     "description": "Button to dismiss rating prompt for now"
   },
   "popup_rating_thankYou": {
-    "message": "Danke! ♥ Unterstütze die Entwicklung durch Spenden.",
+    "message": "Grazie! ♥ Puoi sostenere lo sviluppo con una donazione.",
     "description": "Thank you message after rating from popup"
   },
   "popup_rating_error": {
-    "message": "Fehler bei der Verarbeitung der Bewertung. Bitte erneut versuchen.",
+    "message": "Impossibile registrare la valutazione. Riprova.",
     "description": "Error message when rating fails in popup"
   },
   "settings_rating_thankYou": {
-    "message": "Danke für deine Unterstützung!",
+    "message": "Grazie per il tuo sostegno!",
     "description": "Thank you message after rating from settings"
   },
   "settings_rating_error": {
-    "message": "Fehler bei der Verarbeitung der Bewertung. Bitte erneut versuchen.",
+    "message": "Impossibile registrare la valutazione. Riprova.",
     "description": "Error message when rating fails in settings"
   },
   "infoPageView_rateButton": {
-    "message": "Bewerte uns",
+    "message": "Valutaci",
     "description": "Button to rate from popup info view"
   },
   "dialog_addSite_hint_scope": {
-    "message": "Begrenze eine ganze Website (youtube.com), eine Subdomain (shorts.youtube.com) oder einen einzelnen Bereich (youtube.com/shorts).",
+    "message": "Limita un sito intero (youtube.com), un sottodominio (shorts.youtube.com) o una sezione (youtube.com/shorts).",
     "description": "Hint under the URL field explaining domain, subdomain and path limits"
   },
   "error_site_duplicate": {
-    "message": "„$1“ ist bereits begrenzt. Bearbeite stattdessen das bestehende Limit.",
+    "message": "\"$1\" ha già un limite. Modifica quello esistente.",
     "description": "Shown when adding a site that already has a limit"
   },
   "error_site_duplicateInGroup": {
-    "message": "„$1“ ist bereits in der Gruppe „$2“ begrenzt.",
+    "message": "\"$1\" ha già un limite nel gruppo \"$2\".",
     "description": "Shown when adding a site that is already limited inside a group"
   },
   "reflection_option_off": {
-    "message": "Aus",
+    "message": "Nessuna",
     "description": "Off choice in the reflection delay picker"
   },
   "reflection_option_seconds": {
@@ -1292,343 +1292,343 @@
     "description": "A reflection delay option, e.g. 10s"
   },
   "badge_reflectionDelay": {
-    "message": "$1 s Pause",
+    "message": "pausa di $1 s",
     "description": "Badge showing the pause length before a site opens"
   },
   "dialog_addSite_label_reflectionDelay": {
-    "message": "Pause vor dem Öffnen",
+    "message": "Pausa prima di aprire",
     "description": "Label for the reflection delay picker in the add site dialog"
   },
   "dialog_addSite_hint_reflectionDelay": {
-    "message": "Zählt herunter und fragt dann, ob du die Seite wirklich öffnen willst. Funktioniert auch ohne Tageslimit.",
+    "message": "Parte un conto alla rovescia, poi ti chiede se vuoi ancora aprire il sito. Funziona da sola, anche senza limite giornaliero.",
     "description": "Explains what the reflection delay does"
   },
   "dialog_createGroup_label_reflectionDelay": {
-    "message": "Pause vor dem Öffnen",
+    "message": "Pausa prima di aprire",
     "description": "Label for the reflection delay picker in the group dialog"
   },
   "dialog_createGroup_hint_reflectionDelay": {
-    "message": "Jede Seite in dieser Gruppe bekommt denselben Countdown vor dem Öffnen.",
+    "message": "Ogni sito del gruppo avrà lo stesso conto alla rovescia prima di aprirsi.",
     "description": "Explains the group-level reflection delay"
   },
   "groups_reflectionDelay_label": {
-    "message": "$1 s Pause",
+    "message": "pausa di $1 s",
     "description": "Group card line showing the reflection delay"
   },
   "unlimitedSiteView_reflectionDelay_label": {
-    "message": "Pause vor dem Öffnen",
+    "message": "Pausa prima di aprire",
     "description": "Popup label above the reflection delay presets"
   },
   "normalPageView_reflectionOnly_title": {
-    "message": "$1 s Pause, bevor sich das öffnet",
+    "message": "pausa di $1 s prima di aprire",
     "description": "Popup heading for a site limited only by a pause"
   },
   "normalPageView_reflectionOnly_description": {
-    "message": "Kein Tageslimit — nur ein Moment, um zu prüfen, ob du wirklich hier sein willst.",
+    "message": "Qui non c'è un limite giornaliero, solo un attimo per capire se volevi davvero venire qui.",
     "description": "Popup subtext for a site limited only by a pause"
   },
   "reflection_label_waiting": {
-    "message": "Durchatmen",
+    "message": "Respira",
     "description": "Label above the countdown on the reflection page"
   },
   "reflection_label_ready": {
-    "message": "Deine Entscheidung",
+    "message": "Decidi tu",
     "description": "Label shown once the countdown has finished"
   },
   "reflection_seconds_unit": {
-    "message": "Sekunden",
+    "message": "secondi",
     "description": "Unit under the countdown number"
   },
   "reflection_hint": {
-    "message": "Ein paar Sekunden reichen meist, um zu merken, ob du wirklich hierher wolltest.",
+    "message": "Bastano pochi secondi per capire se volevi davvero venire qui.",
     "description": "Text shown while the countdown runs"
   },
   "reflection_question": {
-    "message": "Willst du das immer noch öffnen?",
+    "message": "Vuoi ancora aprire questo sito?",
     "description": "Question asked once the countdown finishes"
   },
   "reflection_button_yes": {
-    "message": "Ja, öffnen",
+    "message": "Sì, aprilo",
     "description": "Continue to the original page"
   },
   "reflection_button_no": {
-    "message": "Nein, jetzt nicht",
+    "message": "No, non ora",
     "description": "Decline and go to the timeout page"
   },
   "reflection_today_summary": {
-    "message": "Heute $1× geöffnet · $2× hier gestoppt",
+    "message": "Aperto $1 volte oggi · fermato qui $2 volte",
     "description": "Todays opens and stops for the site being reflected on"
   },
   "reflectPageView_title": {
-    "message": "Denkpause",
+    "message": "Pausa di riflessione",
     "description": "Popup title while the reflection page is open"
   },
   "reflectPageView_subtitle": {
-    "message": "Entscheide auf der Seite",
+    "message": "Decidi nella pagina",
     "description": "Popup subtitle while the reflection page is open"
   },
   "reflectPageView_description": {
-    "message": "Der Countdown läuft im Tab. Entscheide dort, ob du die Seite öffnest oder etwas anderes tust.",
+    "message": "Il conto alla rovescia sta scorrendo nella scheda. Scegli lì se aprire il sito o fare altro.",
     "description": "Popup body while the reflection page is open"
   },
   "timeout_reflection_reason": {
-    "message": "Du hast dich entschieden, das gerade nicht zu öffnen.",
+    "message": "Hai scelto di non aprirlo adesso.",
     "description": "Timeout page line when the user declined at the reflection prompt"
   },
   "timeout_reflection_hint": {
-    "message": "$1 ist weiterhin da, wann immer du willst — das war deine Entscheidung, kein Limit.",
+    "message": "$1 resta lì quando vorrai: è stata una tua scelta, non un limite.",
     "description": "Timeout page subtext after declining at the reflection prompt"
   },
   "suggestion_title": {
-    "message": "Ein Limit wert?",
+    "message": "Vale un limite?",
     "description": "Heading of the limit suggestion banner in the popup"
   },
   "suggestion_body": {
-    "message": "Du hast $1 heute $2× geöffnet.",
+    "message": "Oggi hai aperto $1 $2 volte.",
     "description": "Explains why a site is being suggested"
   },
   "suggestion_body_window": {
-    "message": "Du hast $1 in der letzten Woche $2-mal geöffnet.",
+    "message": "Hai aperto $1 $2 volte nell'ultima settimana.",
     "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
   },
   "toast_settingsLoadFailed": {
-    "message": "Einstellungen konnten nicht geladen werden. Bitte versuche es erneut.",
+    "message": "Impossibile caricare le impostazioni. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteAdded": {
-    "message": "Website hinzugefügt",
+    "message": "Sito aggiunto",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteUpdated": {
-    "message": "Website aktualisiert",
+    "message": "Sito aggiornato",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteRemoved": {
-    "message": "Website entfernt",
+    "message": "Sito rimosso",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteUpdateFailed": {
-    "message": "Website konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+    "message": "Impossibile aggiornare il sito. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteRemoveFailed": {
-    "message": "Website konnte nicht entfernt werden. Bitte versuche es erneut.",
+    "message": "Impossibile rimuovere il sito. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteAddedToGroup": {
-    "message": "Website zur Gruppe hinzugefügt",
+    "message": "Sito aggiunto al gruppo",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteRemovedFromGroup": {
-    "message": "Website aus der Gruppe entfernt",
+    "message": "Sito rimosso dal gruppo",
     "description": "Toast shown after a Settings action"
   },
   "toast_siteRemoveFromGroupFailed": {
-    "message": "Website konnte nicht aus der Gruppe entfernt werden. Bitte versuche es erneut.",
+    "message": "Impossibile rimuovere il sito dal gruppo. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_groupCreated": {
-    "message": "Gruppe erstellt",
+    "message": "Gruppo creato",
     "description": "Toast shown after a Settings action"
   },
   "toast_groupUpdated": {
-    "message": "Gruppe aktualisiert",
+    "message": "Gruppo aggiornato",
     "description": "Toast shown after a Settings action"
   },
   "toast_groupDeleted": {
-    "message": "Gruppe gelöscht",
+    "message": "Gruppo eliminato",
     "description": "Toast shown after a Settings action"
   },
   "toast_groupCreateFailed": {
-    "message": "Gruppe konnte nicht erstellt werden. Bitte versuche es erneut.",
+    "message": "Impossibile creare il gruppo. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_groupUpdateFailed": {
-    "message": "Gruppe konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+    "message": "Impossibile aggiornare il gruppo. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_groupDeleteFailed": {
-    "message": "Gruppe konnte nicht gelöscht werden. Bitte versuche es erneut.",
+    "message": "Impossibile eliminare il gruppo. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_messageAdded": {
-    "message": "Nachricht hinzugefügt",
+    "message": "Messaggio aggiunto",
     "description": "Toast shown after a Settings action"
   },
   "toast_messageUpdated": {
-    "message": "Nachricht aktualisiert",
+    "message": "Messaggio aggiornato",
     "description": "Toast shown after a Settings action"
   },
   "toast_messageRemoved": {
-    "message": "Nachricht entfernt",
+    "message": "Messaggio rimosso",
     "description": "Toast shown after a Settings action"
   },
   "toast_messageAddFailed": {
-    "message": "Nachricht konnte nicht hinzugefügt werden. Bitte versuche es erneut.",
+    "message": "Impossibile aggiungere il messaggio. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_messageUpdateFailed": {
-    "message": "Nachricht konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+    "message": "Impossibile aggiornare il messaggio. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_messageRemoveFailed": {
-    "message": "Nachricht konnte nicht entfernt werden. Bitte versuche es erneut.",
+    "message": "Impossibile rimuovere il messaggio. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_preferenceSaveFailed": {
-    "message": "Einstellung konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "message": "Impossibile salvare la preferenza. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "toast_languageChangeFailed": {
-    "message": "Sprache konnte nicht geändert werden. Bitte versuche es erneut.",
+    "message": "Impossibile cambiare la lingua. Riprova.",
     "description": "Toast shown after a Settings action"
   },
   "confirm_deleteGroup": {
-    "message": "Diese Gruppe löschen? Websites mit eigenen Limits bleiben als einzelne Websites erhalten; Websites, die nur in der Gruppe existierten, werden mitgelöscht.",
+    "message": "Eliminare questo gruppo? I siti con limiti propri restano come siti singoli; quelli che esistevano solo nel gruppo vengono eliminati con esso.",
     "description": "Confirmation before deleting a group"
   },
   "suggestion_button_accept": {
-    "message": "$1 s Pause vor dem Öffnen",
+    "message": "Pausa di $1 s prima di aprire",
     "description": "Accepts the suggestion with a reflection pause"
   },
   "suggestion_button_dismiss": {
-    "message": "Für diese Seite nicht",
+    "message": "Non per questo sito",
     "description": "Dismisses the suggestion permanently for that site"
   },
   "suggestion_accepted": {
-    "message": "$1 pausiert jetzt vor dem Öffnen",
+    "message": "$1 ora si ferma un attimo prima di aprirsi",
     "description": "Toast after accepting a suggestion"
   },
   "preferences_option_limitSuggestions": {
-    "message": "Limits vorschlagen",
+    "message": "Suggerisci limiti",
     "description": "Preference toggle for proactive limit suggestions"
   },
   "preferences_option_limitSuggestions_description": {
-    "message": "Erkennt Seiten, die du immer wieder öffnest, und schlägt ein sanftes Limit vor. Höchstens ein Vorschlag pro Tag, nie zweimal für dieselbe Seite.",
+    "message": "Nota i siti che apri in continuazione e propone un limite leggero. Al massimo un suggerimento al giorno, e mai due volte per lo stesso sito.",
     "description": "Explains the limit suggestion preference"
   },
   "whatsNew_title": {
-    "message": "Was ist neu",
+    "message": "Novità",
     "description": "Heading of the release note shown in the popup after an update"
   },
   "whatsNew_subtitle": {
-    "message": "Gerade aktualisiert. Das hat sich geändert.",
+    "message": "Appena aggiornata. Ecco cosa è cambiato.",
     "description": "Line under the release note heading"
   },
   "whatsNew_button_continue": {
-    "message": "Alles klar",
+    "message": "Ho capito",
     "description": "Closes the release note and returns to the normal popup"
   },
   "whatsNew_reflection_title": {
-    "message": "Pause vor dem Öffnen",
+    "message": "Pausa prima di aprire",
     "description": "Release note highlight: the reflection delay"
   },
   "whatsNew_reflection_body": {
-    "message": "Ein kurzer Countdown, dann „Willst du das immer noch öffnen?“. Sanfter als eine Sperre — und ganz ohne Tageslimit.",
+    "message": "Un breve conto alla rovescia e poi \"vuoi ancora aprirlo?\". Più gentile di un blocco, e funziona senza limite giornaliero.",
     "description": "Release note body: the reflection delay"
   },
   "whatsNew_suggestions_title": {
-    "message": "Vorgeschlagene Limits",
+    "message": "Limiti proposti su misura",
     "description": "Release note highlight: limit suggestions"
   },
   "whatsNew_suggestions_body": {
-    "message": "Öffnest du dieselbe Seite immer wieder, schlägt die Erweiterung eine Pause dafür vor. Höchstens ein Vorschlag pro Tag, nie zweimal dieselbe Seite.",
+    "message": "Se apri lo stesso sito in continuazione, l'estensione ti propone una pausa. Al massimo un suggerimento al giorno, e mai due volte per lo stesso sito.",
     "description": "Release note body: limit suggestions"
   },
   "whatsNew_support_title": {
-    "message": "Kostenlos, privat und werbefrei",
+    "message": "Gratuita, privata e senza pubblicità",
     "description": "Heading of the donation block in the release note"
   },
   "whatsNew_support_description": {
-    "message": "Wenn es dir den Tag erleichtert, hilft eine kleine Spende bei der Weiterentwicklung.",
+    "message": "Se si merita un posto nella tua giornata, una piccola donazione la fa crescere.",
     "description": "Body of the donation block in the release note"
   },
   "whatsNew_support_button": {
-    "message": "Entwicklung unterstützen",
+    "message": "Sostieni lo sviluppo",
     "description": "Opens the donation section of the info page"
   },
   "badge_blocked": {
-    "message": "Blockiert",
+    "message": "Bloccato",
     "description": "Badge on a site or group that is blocked outright"
   },
   "dialog_addSite_label_blockCompletely": {
-    "message": "Vollständig blockieren",
+    "message": "Blocca del tutto",
     "description": "Switch that blocks the site outright"
   },
   "dialog_addSite_hint_blockCompletely": {
-    "message": "Diese Seite öffnet sich nie — kein Tageskontingent, kein Countdown, nichts zu verlängern. Hier wieder ausschalten, um die Seite zurückzubekommen.",
+    "message": "Questo sito non si apre mai: niente tempo giornaliero, niente conto alla rovescia, niente da estendere. Disattivalo qui per riavere il sito.",
     "description": "Explains what blocking a site completely does"
   },
   "dialog_addSite_blocked_note": {
-    "message": "Bleibt gespeichert, wird aber nicht verwendet, solange die Blockierung aktiv ist.",
+    "message": "Restano salvati, ma non valgono finché il blocco è attivo.",
     "description": "Shown next to the disabled limit inputs while the block is on"
   },
   "dialog_createGroup_label_blockCompletely": {
-    "message": "Vollständig blockieren",
+    "message": "Blocca del tutto",
     "description": "Switch that blocks every site in the group"
   },
   "dialog_createGroup_hint_blockCompletely": {
-    "message": "Jede Seite in dieser Gruppe wird vollständig blockiert, unabhängig von ihren eigenen Limits.",
+    "message": "Ogni sito del gruppo è bloccato del tutto, quali che siano i limiti che ha di suo.",
     "description": "Explains what blocking a group completely does"
   },
   "unlimitedSiteView_button_blockSite": {
-    "message": "Diese Seite blockieren",
+    "message": "Blocca questo sito",
     "description": "Popup button that blocks the current site outright"
   },
   "popup_blockSite_success": {
-    "message": "$1 ist jetzt blockiert",
+    "message": "$1 ora è bloccato",
     "description": "Toast after blocking a site from the popup"
   },
   "popup_blockSite_failed": {
-    "message": "Seite konnte nicht blockiert werden. Bitte versuche es erneut.",
+    "message": "Impossibile bloccare questo sito. Riprova.",
     "description": "Toast when blocking a site from the popup failed"
   },
   "normalPageView_blocked_title": {
-    "message": "Diese Seite ist blockiert",
+    "message": "Questo sito è bloccato",
     "description": "Popup heading for a blocked site"
   },
   "normalPageView_blocked_description": {
-    "message": "Nichts, das herunterzählt, und nichts zu verlängern.",
+    "message": "Niente conto alla rovescia e niente da estendere.",
     "description": "Popup text under the blocked heading"
   },
   "normalPageView_blocked_byGroup": {
-    "message": "Blockiert durch die Gruppe „$1“.",
+    "message": "Bloccato dal gruppo \"$1\".",
     "description": "Popup line naming the group that blocks this site"
   },
   "timeout_blocked_reason": {
-    "message": "Diese Seite ist blockiert.",
+    "message": "Questo sito è bloccato.",
     "description": "Timeout page line for a site that is blocked outright"
   },
   "timeout_blocked_hint": {
-    "message": "$1 ist blockiert — anders als ein Tageslimit wird das um Mitternacht nicht zurückgesetzt.",
+    "message": "$1 è bloccato: a differenza di un limite giornaliero, questo non torna a mezzanotte.",
     "description": "Timeout page hint explaining a block does not reset at midnight"
   },
   "timeoutPageView_blocked_title": {
-    "message": "Blockierte Seite",
+    "message": "Sito bloccato",
     "description": "Popup heading on the timeout page of a blocked site"
   },
   "timeoutPageView_blocked_message": {
-    "message": "Diese Seite ist vollständig blockiert, es gibt also kein Limit zum Verlängern.",
+    "message": "Questo sito è bloccato del tutto, quindi non c'è nessun limite da estendere.",
     "description": "Popup text explaining a blocked site has no limit to extend"
   },
   "groups_blocked_label": {
-    "message": "Blockiert",
+    "message": "Bloccato",
     "description": "Group card line showing the group is blocked"
   },
   "whatsNew_fullBlock_title": {
-    "message": "Seite vollständig blockieren",
+    "message": "Blocca un sito del tutto",
     "description": "Release note headline for the full block"
   },
   "whatsNew_fullBlock_body": {
-    "message": "Eine echte Blockierung statt eines Ein-Minuten-Limits als Notlösung. Funktioniert pro Seite oder für eine ganze Gruppe — und es gibt nichts zu verlängern.",
+    "message": "Un blocco vero, invece di un limite di un minuto che faceva finta di esserlo. Funziona per un sito o per un gruppo intero, e non c'è niente da estendere.",
     "description": "Release note sentence explaining the full block"
   },
   "whatsNew_languages_title": {
-    "message": "Jetzt in 16 Sprachen",
+    "message": "Ora in 16 lingue",
     "description": "Release note highlight: new interface languages"
   },
   "whatsNew_languages_body": {
-    "message": "Neu: brasilianisches Portugiesisch, Schwedisch, Tschechisch, Russisch, Italienisch, Japanisch, Griechisch und Norwegisch. Wähle deine unter Einstellungen.",
+    "message": "Aggiunti portoghese brasiliano, svedese, ceco, russo, italiano, giapponese, greco e norvegese. Scegli la tua nelle Preferenze.",
     "description": "Release note body: new interface languages"
   }
 }

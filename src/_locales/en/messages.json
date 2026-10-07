@@ -1387,6 +1387,106 @@
     "message": "You have opened $1 $2 times today.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "You have opened $1 $2 times in the past week.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Could not load your settings. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Site added",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Site updated",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Site removed",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Could not update the site. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Could not remove the site. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Site added to the group",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Site removed from the group",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Could not remove the site from the group. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Group created",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Group updated",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Group deleted",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Could not create the group. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Could not update the group. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Could not delete the group. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Message added",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Message updated",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Message removed",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Could not add the message. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Could not update the message. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Could not remove the message. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Could not save the preference. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Could not change the language. Please try again.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Delete this group? Sites that have limits of their own stay as individual sites; sites that only existed inside the group are deleted with it.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Pause $1s before opening",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "A real block, instead of a one minute limit standing in for one. Works per site or per whole group, and there is nothing to extend.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Now in 16 languages",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Added Brazilian Portuguese, Swedish, Czech, Russian, Italian, Japanese, Greek and Norwegian. Pick yours under Preferences.",
+    "description": "Release note body: new interface languages"
   }
 }

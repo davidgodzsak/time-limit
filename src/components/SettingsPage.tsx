@@ -111,7 +111,7 @@ const SettingsPage = () => {
         }
       } catch (error) {
         logError("Error loading settings", error);
-        toast(getErrorToastProps("Failed to load settings. Please try again."));
+        toast(getErrorToastProps(t("toast_settingsLoadFailed")));
       } finally {
         setIsLoading(false);
       }
@@ -136,12 +136,29 @@ const SettingsPage = () => {
     loadRatingState();
   }, []);
 
+  /**
+   * Re-reads the site list from storage.
+   *
+   * Used by the events that move sites between the two tabs. Broadcast payloads
+   * carry storage-shaped sites (`urlPattern`, `dailyLimitSeconds`) while this
+   * state holds UI-shaped ones, so refetching through `api.getSites()` is the
+   * one path guaranteed to produce rows that render.
+   */
+  const refreshIndividualSites = async () => {
+    try {
+      const sitesData = await api.getSites();
+      setIndividualSites(sitesData.filter((s) => !s.groupId));
+    } catch (error) {
+      logError("Error refreshing sites", error);
+    }
+  };
+
   // Listen for real-time updates
   useBroadcastUpdates({
     siteAdded: (data) => {
       if (!data.site.groupId) {
         setIndividualSites((prev) => [...prev, data.site]);
-        toast(getSuccessToastProps("Site added successfully"));
+        toast(getSuccessToastProps(t("toast_siteAdded")));
       }
     },
     siteUpdated: (data) => {
@@ -160,14 +177,14 @@ const SettingsPage = () => {
     },
     siteDeleted: (data) => {
       setIndividualSites((prev) => prev.filter((s) => s.id !== data.siteId));
-      toast(getSuccessToastProps("Site removed successfully"));
+      toast(getSuccessToastProps(t("toast_siteRemoved")));
     },
     groupAdded: (data) => {
       setGroups((prev) => [
         ...prev,
         { ...data.group, expanded: true, sites: [] },
       ]);
-      toast(getSuccessToastProps("Group created successfully"));
+      toast(getSuccessToastProps(t("toast_groupCreated")));
     },
     groupUpdated: (data) => {
       setGroups((prev) =>
@@ -178,7 +195,9 @@ const SettingsPage = () => {
     },
     groupDeleted: (data) => {
       setGroups((prev) => prev.filter((g) => g.id !== data.groupId));
-      toast(getSuccessToastProps("Group deleted successfully"));
+      // Members with limits of their own are standalone sites now.
+      void refreshIndividualSites();
+      toast(getSuccessToastProps(t("toast_groupDeleted")));
     },
     siteAddedToGroup: (data) => {
       // Remove site from individual sites if it was there
@@ -199,6 +218,13 @@ const SettingsPage = () => {
           g.id === data.group.id ? { ...data.group, expanded: true } : g
         )
       );
+      // The site either became standalone or was deleted with its membership.
+      void refreshIndividualSites();
+    },
+    // Startup repair of sites stranded outside their group — they reappear in
+    // the individual list, or are gone for good.
+    groupMembershipRepaired: () => {
+      void refreshIndividualSites();
     },
   });
 
@@ -250,10 +276,10 @@ const SettingsPage = () => {
       const createdMessage = await api.addMessage(newMessage.trim());
       setMotivationalMessages([...motivationalMessages, createdMessage as unknown as Message]);
       setNewMessage("");
-      toast(getSuccessToastProps("Message added successfully"));
+      toast(getSuccessToastProps(t("toast_messageAdded")));
     } catch (error) {
       logError("Error adding message", error);
-      toast(getErrorToastProps("Failed to add message. Please try again."));
+      toast(getErrorToastProps(t("toast_messageAddFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -266,10 +292,10 @@ const SettingsPage = () => {
       setMotivationalMessages(
         motivationalMessages.filter((m) => m.id !== messageId)
       );
-      toast(getSuccessToastProps("Message removed successfully"));
+      toast(getSuccessToastProps(t("toast_messageRemoved")));
     } catch (error) {
       logError("Error removing message", error);
-      toast(getErrorToastProps("Failed to remove message. Please try again."));
+      toast(getErrorToastProps(t("toast_messageRemoveFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -292,10 +318,10 @@ const SettingsPage = () => {
         )
       );
       messageEditor.finishEdit();
-      toast(getSuccessToastProps("Message updated successfully"));
+      toast(getSuccessToastProps(t("toast_messageUpdated")));
     } catch (error) {
       logError("Error updating message", error);
-      toast(getErrorToastProps("Failed to update message. Please try again."));
+      toast(getErrorToastProps(t("toast_messageUpdateFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -324,7 +350,7 @@ const SettingsPage = () => {
       await savePreferences({ showRandomMessage: checked });
     } catch (error) {
       logError("Error updating preferences", error);
-      toast(getErrorToastProps("Failed to save preference. Please try again."));
+      toast(getErrorToastProps(t("toast_preferenceSaveFailed")));
       // Revert on error
       setShowRandomMessage(!checked);
     }
@@ -336,7 +362,7 @@ const SettingsPage = () => {
       await savePreferences({ showActivitySuggestions: checked });
     } catch (error) {
       logError("Error updating preferences", error);
-      toast(getErrorToastProps("Failed to save preference. Please try again."));
+      toast(getErrorToastProps(t("toast_preferenceSaveFailed")));
       // Revert on error
       setShowActivitySuggestions(!checked);
     }
@@ -348,7 +374,7 @@ const SettingsPage = () => {
       await savePreferences({ showLimitSuggestions: checked });
     } catch (error) {
       logError("Error updating preferences", error);
-      toast(getErrorToastProps("Failed to save preference. Please try again."));
+      toast(getErrorToastProps(t("toast_preferenceSaveFailed")));
       setShowLimitSuggestions(!checked);
     }
   };
@@ -371,7 +397,7 @@ const SettingsPage = () => {
       window.location.reload();
     } catch (error) {
       logError("Error updating language", error);
-      toast(getErrorToastProps("Failed to change language. Please try again."));
+      toast(getErrorToastProps(t("toast_languageChangeFailed")));
       setPreferredLanguage(previous);
     }
   };
@@ -404,7 +430,7 @@ const SettingsPage = () => {
       toast(getSuccessToastProps(newEnabled ? "Site enabled" : "Site disabled"));
     } catch (error) {
       logError("Error toggling site", error);
-      toast(getErrorToastProps("Failed to update site"));
+      toast(getErrorToastProps(t("toast_siteUpdateFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -428,7 +454,7 @@ const SettingsPage = () => {
       toast(getSuccessToastProps(newEnabled ? "Group enabled" : "Group disabled"));
     } catch (error) {
       logError("Error toggling group", error);
-      toast(getErrorToastProps("Failed to update group"));
+      toast(getErrorToastProps(t("toast_groupUpdateFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -473,7 +499,7 @@ const SettingsPage = () => {
           isBlocked: site.isBlocked === true,
         });
         setIndividualSites(individualSites.map(s => s.id === siteData.id ? updatedSite : s));
-        toast(getSuccessToastProps("Site updated successfully"));
+        toast(getSuccessToastProps(t("toast_siteUpdated")));
       } else {
         // Add new site
         const newSite = await api.addSite({
@@ -484,7 +510,7 @@ const SettingsPage = () => {
           isBlocked: site.isBlocked,
         });
         setIndividualSites([...individualSites, newSite]);
-        toast(getSuccessToastProps("Site added successfully"));
+        toast(getSuccessToastProps(t("toast_siteAdded")));
 
         // Trigger onboarding success if we're on step 1
         if (
@@ -526,10 +552,10 @@ const SettingsPage = () => {
       setIsSaving(true);
       await api.deleteSite(siteId);
       setIndividualSites(individualSites.filter((s) => s.id !== siteId));
-      toast(getSuccessToastProps("Site removed successfully"));
+      toast(getSuccessToastProps(t("toast_siteRemoved")));
     } catch (error) {
       logError("Error removing site", error);
-      toast(getErrorToastProps("Failed to remove site. Please try again."));
+      toast(getErrorToastProps(t("toast_siteRemoveFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -567,7 +593,7 @@ const SettingsPage = () => {
           }))
         );
 
-        toast(getSuccessToastProps("Group updated successfully"));
+        toast(getSuccessToastProps(t("toast_groupUpdated")));
       } else {
         // Create new group
         const newGroup = await api.addGroup({
@@ -582,7 +608,7 @@ const SettingsPage = () => {
           ...groups,
           { ...newGroup, expanded: true, sites: [] },
         ]);
-        toast(getSuccessToastProps("Group created successfully"));
+        toast(getSuccessToastProps(t("toast_groupCreated")));
 
         // Check if rating prompt should be shown after this success
         try {
@@ -597,7 +623,7 @@ const SettingsPage = () => {
       createGroupDialog.close();
     } catch (error) {
       logError("Error creating/editing group", error);
-      toast(getErrorToastProps(`Failed to ${createGroupDialog.data ? "update" : "create"} group. Please try again.`));
+      toast(getErrorToastProps(createGroupDialog.data ? t("toast_groupUpdateFailed") : t("toast_groupCreateFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -627,7 +653,7 @@ const SettingsPage = () => {
       );
 
       addToGroupDialog.close();
-      toast(getSuccessToastProps("Site added to group successfully"));
+      toast(getSuccessToastProps(t("toast_siteAddedToGroup")));
 
       // Trigger onboarding advancement if we're on step 3 and just added to Social Media
       if (
@@ -665,10 +691,11 @@ const SettingsPage = () => {
         )
       );
 
-      toast(getSuccessToastProps("Site removed from group successfully"));
+      await refreshIndividualSites();
+      toast(getSuccessToastProps(t("toast_siteRemovedFromGroup")));
     } catch (error) {
       logError("Error removing site from group", error);
-      toast(getErrorToastProps("Failed to remove site from group. Please try again."));
+      toast(getErrorToastProps(t("toast_siteRemoveFromGroupFailed")));
     } finally {
       setIsSaving(false);
     }
@@ -679,7 +706,9 @@ const SettingsPage = () => {
   };
 
   const handleDeleteGroup = async (groupId: string) => {
-    if (!window.confirm("Are you sure you want to delete this group? Sites in this group will become standalone.")) {
+    // Says what actually happens: a member with limits of its own survives as a
+    // standalone site, a member that only existed inside the group goes with it.
+    if (!window.confirm(t("confirm_deleteGroup"))) {
       return;
     }
 
@@ -687,10 +716,11 @@ const SettingsPage = () => {
       setIsSaving(true);
       await api.deleteGroup(groupId);
       setGroups(groups.filter((g) => g.id !== groupId));
-      toast(getSuccessToastProps("Group deleted successfully"));
+      await refreshIndividualSites();
+      toast(getSuccessToastProps(t("toast_groupDeleted")));
     } catch (error) {
       logError("Error deleting group", error);
-      toast(getErrorToastProps("Failed to delete group. Please try again."));
+      toast(getErrorToastProps(t("toast_groupDeleteFailed")));
     } finally {
       setIsSaving(false);
     }

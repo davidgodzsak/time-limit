@@ -413,6 +413,13 @@ export async function recordReflectionAnswer(
 export interface LimitSuggestion {
   host: string;
   reason: 'knownDistracting' | 'frequent';
+  /**
+   * Which threshold actually fired. The banner has to say the true one: a site
+   * can qualify on the week's count while today's is still 1. Absent on
+   * suggestions raised before this field existed — treat those as `window`,
+   * whose sentence is true either way.
+   */
+  trigger?: 'today' | 'window';
   opensToday: number;
   opensWindow: number;
   createdAt: number;

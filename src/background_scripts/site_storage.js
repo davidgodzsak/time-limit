@@ -364,6 +364,12 @@ export async function updateDistractingSite(siteId, updates) {
     if (updates.reflectionDelaySeconds === null) {
       delete updatedSite.reflectionDelaySeconds;
     }
+    // Leaving a group is the absence of a groupId, not a null one — same rule
+    // as the limits above, and it keeps `Object.hasOwn(site, 'groupId')` an
+    // honest test of membership.
+    if (updates.groupId === null) {
+      delete updatedSite.groupId;
+    }
     // An off block is stored as the absence of the flag, so turning it off
     // removes it rather than writing `false`.
     if (updates.isBlocked === false || updates.isBlocked === null) {
@@ -432,4 +438,131 @@ export async function deleteDistractingSite(siteId) {
     );
     return false;
   }
+}
+
+/**
+ * Reports whether a site carries a rule of its own, as opposed to inheriting
+ * everything from its group. Mirrors the guard in `updateDistractingSite`:
+ * a time limit, an opens limit, a reflection delay and a full block each stand
+ * on their own.
+ *
+ * @param {Object} site - A stored site object.
+ * @returns {boolean} True when the site would still mean something standalone.
+ */
+export function siteHasOwnRule(site) {
+  if (!site || typeof site !== 'object') return false;
+  return (
+    site.isBlocked === true ||
+    typeof site.dailyLimitSeconds === 'number' ||
+    typeof site.dailyOpenLimit === 'number' ||
+    typeof site.reflectionDelaySeconds === 'number'
+  );
+}
+
+/**
+ * Takes a site out of its group and leaves it in a state the Settings page can
+ * actually show.
+ *
+ * A group member usually holds no limits of its own — the group supplies them —
+ * and `updateDistractingSite` refuses to leave a standalone site with no rule
+ * at all. Simply clearing `groupId` therefore failed for exactly the sites this
+ * is called for, and the site stayed pointing at a group it was no longer in:
+ * invisible in both Settings tabs (the individual list filters on `!groupId`,
+ * the group no longer lists it) while still holding its pattern, so re-adding
+ * the page came back "already limited" with nowhere to go and fix it.
+ *
+ * So: a site with rules of its own becomes standalone, and a site whose only
+ * reason to exist was its membership is deleted with it.
+ *
+ * @async
+ * @param {string} siteId - The site leaving its group.
+ * @returns {Promise<{outcome: 'standalone'|'deleted'|'missing', site: Object|null}>}
+ */
+export async function detachSiteFromGroup(siteId) {
+  if (!siteId || typeof siteId !== 'string') {
+    console.error('Invalid siteId provided to detachSiteFromGroup.');
+    return { outcome: 'missing', site: null };
+  }
+
+  const sites = await getDistractingSites();
+  const site = sites.find((s) => s.id === siteId);
+  if (!site) return { outcome: 'missing', site: null };
+
+  if (!siteHasOwnRule(site)) {
+    const deleted = await deleteDistractingSite(siteId);
+    return { outcome: deleted ? 'deleted' : 'missing', site: deleted ? site : null };
+  }
+
+  const updated = await updateDistractingSite(siteId, { groupId: null });
+  return updated
+    ? { outcome: 'standalone', site: updated }
+    : { outcome: 'missing', site: null };
+}
+
+/**
+ * Detaches every member of a group. Used when the group itself goes away.
+ *
+ * @async
+ * @param {string} groupId - The group being dissolved.
+ * @returns {Promise<{standalone: Object[], deletedSiteIds: string[]}>}
+ */
+export async function detachSitesFromGroup(groupId) {
+  const result = { standalone: [], deletedSiteIds: [] };
+  if (!groupId || typeof groupId !== 'string') return result;
+
+  const sites = await getDistractingSites();
+  const members = sites.filter((site) => site.groupId === groupId);
+
+  for (const member of members) {
+    const { outcome, site } = await detachSiteFromGroup(member.id);
+    if (outcome === 'standalone' && site) result.standalone.push(site);
+    if (outcome === 'deleted') result.deletedSiteIds.push(member.id);
+  }
+
+  return result;
+}
+
+/**
+ * Repairs sites left pointing at a group they are not in — the wreckage of the
+ * two bugs above, which shipped, so existing installs carry it.
+ *
+ * Both broken states are unreachable through the UI, so fixing them on startup
+ * is safe: a site whose `groupId` names a group that no longer exists, and a
+ * site whose group exists but does not list it. Either way the site is stranded
+ * where nothing can edit it while it still holds its URL pattern.
+ *
+ * @async
+ * @param {Array<Object>} groups - All groups, as `getGroups()` returns them.
+ * @returns {Promise<{standalone: Object[], deletedSiteIds: string[]}>} What was repaired.
+ */
+export async function repairOrphanedGroupMembers(groups) {
+  const result = { standalone: [], deletedSiteIds: [] };
+
+  try {
+    const byId = new Map((groups || []).map((group) => [group.id, group]));
+    const sites = await getDistractingSites();
+
+    const orphans = sites.filter((site) => {
+      if (!site.groupId) return false;
+      const group = byId.get(site.groupId);
+      if (!group) return true;
+      return !Array.isArray(group.siteIds) || !group.siteIds.includes(site.id);
+    });
+
+    for (const orphan of orphans) {
+      const { outcome, site } = await detachSiteFromGroup(orphan.id);
+      if (outcome === 'standalone' && site) result.standalone.push(site);
+      if (outcome === 'deleted') result.deletedSiteIds.push(orphan.id);
+    }
+
+    if (orphans.length > 0) {
+      console.warn(
+        `[SiteStorage] Repaired ${orphans.length} site(s) stranded outside their group.`
+      );
+    }
+  } catch (error) {
+    console.error('[SiteStorage] Error repairing orphaned group members:', error);
+  }
+
+  return result;
 }

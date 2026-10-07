@@ -60,7 +60,43 @@ describe('evaluateCandidate', () => {
     expect(evaluateCandidate('youtube.com', { opensToday: 4 })).toEqual({
       shouldSuggest: true,
       reason: 'knownDistracting',
+      trigger: 'today',
     });
+  });
+
+  it("names the week as the trigger when today's count did not qualify it", () => {
+    // The bug this guards: a site opened once today but eight times this week
+    // qualified, and the banner still said "opened 1 times today".
+    expect(
+      evaluateCandidate('youtube.com', { opensToday: 1, opensWindow: 8 })
+    ).toEqual({
+      shouldSuggest: true,
+      reason: 'knownDistracting',
+      trigger: 'window',
+    });
+    expect(
+      evaluateCandidate('example.com', {
+        opensToday: 1,
+        opensWindow: 30,
+        activeDays: 4,
+      })
+    ).toMatchObject({ shouldSuggest: true, trigger: 'window' });
+  });
+
+  it('never reports a trigger whose own count is below 2', () => {
+    // Whichever branch fires, the number the UI prints is the one that crossed
+    // a threshold — so the banner can never render "1 times".
+    const cases = [
+      ['youtube.com', { opensToday: 4, opensWindow: 4 }],
+      ['youtube.com', { opensToday: 1, opensWindow: 8 }],
+      ['example.com', { opensToday: 10, opensWindow: 10 }],
+      ['example.com', { opensToday: 1, opensWindow: 30, activeDays: 4 }],
+    ];
+    for (const [host, stats] of cases) {
+      const { trigger } = evaluateCandidate(host, stats);
+      const shown = trigger === 'today' ? stats.opensToday : stats.opensWindow;
+      expect(shown, `${host} ${trigger}`).toBeGreaterThan(1);
+    }
   });
 
   it('leaves a known site alone while it is opened rarely', () => {
@@ -97,7 +133,11 @@ describe('considerSuggestion', () => {
   it('raises a suggestion once the thresholds are met', async () => {
     installFakeStorage({ visitTracking: visits('youtube.com', 6) });
     const suggestion = await considerSuggestion('youtube.com', TODAY);
-    expect(suggestion).toMatchObject({ host: 'youtube.com', opensToday: 6 });
+    expect(suggestion).toMatchObject({
+      host: 'youtube.com',
+      opensToday: 6,
+      trigger: 'today',
+    });
     expect(await getPendingSuggestionForHost('youtube.com')).not.toBeNull();
   });
 

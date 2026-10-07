@@ -31,14 +31,27 @@ interface BrowserGlobals {
   };
 }
 
+/**
+ * Languages the picker in Settings offers. `code` is the `_locales/<code>/`
+ * folder name — `pt_BR` keeps the underscore the extension packaging uses, and
+ * `nb` is the short code browsers resolve `nb-NO` against.
+ */
 export const AVAILABLE_LANGUAGES: { code: string; name: string }[] = [
   { code: 'en', name: 'English' },
+  { code: 'cs', name: 'Čeština' },
   { code: 'de', name: 'Deutsch' },
+  { code: 'el', name: 'Ελληνικά' },
   { code: 'es', name: 'Español' },
   { code: 'fr', name: 'Français' },
   { code: 'hu', name: 'Magyar' },
+  { code: 'it', name: 'Italiano' },
+  { code: 'ja', name: '日本語' },
+  { code: 'nb', name: 'Norsk bokmål' },
   { code: 'pl', name: 'Polski' },
+  { code: 'pt_BR', name: 'Português (Brasil)' },
+  { code: 'ru', name: 'Русский' },
   { code: 'sk', name: 'Slovenčina' },
+  { code: 'sv', name: 'Svenska' },
   { code: 'uk', name: 'Українська' },
 ];
 

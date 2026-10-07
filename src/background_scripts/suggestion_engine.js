@@ -125,30 +125,39 @@ export function isKnownDistractingHost(host) {
  * Scores one host against the thresholds. Pure, so the heuristic can be tested
  * without touching storage.
  *
+ * `trigger` names which threshold actually fired, because the two need
+ * different sentences in front of the user: a site can qualify on the window
+ * alone while today's count is still 1, and "you opened this 1 times today" is
+ * neither true to the reason nor grammatical.
+ *
  * @param {string} host - Hostname, lowercase and without `www.`.
  * @param {{opensToday: number, opensWindow: number, activeDays: number}} stats - Visit counts.
- * @returns {{shouldSuggest: boolean, reason: string|null}} Why it qualified, for the UI copy.
+ * @returns {{shouldSuggest: boolean, reason: string|null, trigger: string|null}} Why it qualified, for the UI copy.
  */
 export function evaluateCandidate(host, stats) {
   const { opensToday = 0, opensWindow = 0, activeDays = 0 } = stats || {};
+  const no = { shouldSuggest: false, reason: null, trigger: null };
 
-  if (isWorkShapedHost(host)) return { shouldSuggest: false, reason: null };
+  if (isWorkShapedHost(host)) return no;
 
   if (isKnownDistractingHost(host)) {
-    if (opensToday >= KNOWN_OPENS_TODAY || opensWindow >= KNOWN_OPENS_WINDOW) {
-      return { shouldSuggest: true, reason: 'knownDistracting' };
+    if (opensToday >= KNOWN_OPENS_TODAY) {
+      return { shouldSuggest: true, reason: 'knownDistracting', trigger: 'today' };
     }
-    return { shouldSuggest: false, reason: null };
+    if (opensWindow >= KNOWN_OPENS_WINDOW) {
+      return { shouldSuggest: true, reason: 'knownDistracting', trigger: 'window' };
+    }
+    return no;
   }
 
-  if (
-    opensToday >= OTHER_OPENS_TODAY ||
-    (opensWindow >= OTHER_OPENS_WINDOW && activeDays >= OTHER_ACTIVE_DAYS)
-  ) {
-    return { shouldSuggest: true, reason: 'frequent' };
+  if (opensToday >= OTHER_OPENS_TODAY) {
+    return { shouldSuggest: true, reason: 'frequent', trigger: 'today' };
+  }
+  if (opensWindow >= OTHER_OPENS_WINDOW && activeDays >= OTHER_ACTIVE_DAYS) {
+    return { shouldSuggest: true, reason: 'frequent', trigger: 'window' };
   }
 
-  return { shouldSuggest: false, reason: null };
+  return no;
 }
 
 /**
@@ -207,12 +216,13 @@ export async function considerSuggestion(host, todayString, enabled = true) {
 
   const tracking = await getVisitTracking();
   const stats = summarizeVisits(tracking[host], todayString);
-  const { shouldSuggest, reason } = evaluateCandidate(host, stats);
+  const { shouldSuggest, reason, trigger } = evaluateCandidate(host, stats);
   if (!shouldSuggest) return null;
 
   const suggestion = {
     host,
     reason,
+    trigger,
     opensToday: stats.opensToday,
     opensWindow: stats.opensWindow,
     createdAt: Date.now(),
