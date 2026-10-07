@@ -1387,6 +1387,106 @@
     "message": "Dziś otworzyłeś $1 $2 razy.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "W ciągu ostatniego tygodnia otworzyłeś $1 $2 razy.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Nie udało się wczytać ustawień. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Dodano witrynę",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Zaktualizowano witrynę",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Usunięto witrynę",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Nie udało się zaktualizować witryny. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Nie udało się usunąć witryny. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Dodano witrynę do grupy",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Usunięto witrynę z grupy",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Nie udało się usunąć witryny z grupy. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Utworzono grupę",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Zaktualizowano grupę",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Usunięto grupę",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Nie udało się utworzyć grupy. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Nie udało się zaktualizować grupy. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Nie udało się usunąć grupy. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Dodano wiadomość",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Zaktualizowano wiadomość",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Usunięto wiadomość",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Nie udało się dodać wiadomości. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Nie udało się zaktualizować wiadomości. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Nie udało się usunąć wiadomości. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Nie udało się zapisać preferencji. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Nie udało się zmienić języka. Spróbuj ponownie.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Usunąć tę grupę? Witryny z własnymi limitami pozostaną jako pojedyncze witryny; te, które istniały tylko w grupie, zostaną usunięte razem z nią.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Pauza $1 s przed otwarciem",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Prawdziwa blokada zamiast jednominutowego limitu udającego blokadę. Działa dla pojedynczej strony lub całej grupy i nie ma czego przedłużać.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Teraz w 16 językach",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Dodano portugalski (Brazylia), szwedzki, czeski, rosyjski, włoski, japoński, grecki i norweski. Wybierz swój w Preferencjach.",
+    "description": "Release note body: new interface languages"
   }
 }

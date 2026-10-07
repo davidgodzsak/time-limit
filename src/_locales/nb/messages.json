@@ -1387,6 +1387,106 @@
     "message": "Du har åpnet $1 $2 ganger i dag.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Du har åpnet $1 $2 ganger den siste uken.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Kunne ikke laste innstillingene. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Nettsted lagt til",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Nettsted oppdatert",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Nettsted fjernet",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Kunne ikke oppdatere nettstedet. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Kunne ikke fjerne nettstedet. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Nettsted lagt til i gruppen",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Nettsted fjernet fra gruppen",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Kunne ikke fjerne nettstedet fra gruppen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Gruppe opprettet",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Gruppe oppdatert",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Gruppe slettet",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Kunne ikke opprette gruppen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Kunne ikke oppdatere gruppen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Kunne ikke slette gruppen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Melding lagt til",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Melding oppdatert",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Melding fjernet",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Kunne ikke legge til meldingen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Kunne ikke oppdatere meldingen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Kunne ikke fjerne meldingen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Kunne ikke lagre innstillingen. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Kunne ikke endre språket. Prøv igjen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Slette denne gruppen? Nettsteder med egne grenser blir stående som enkeltnettsteder; de som bare fantes inne i gruppen, slettes sammen med den.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Pause $1 s før siden åpnes",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "En ekte blokkering, i stedet for en ettminuttsgrense som skulle spille rollen. Virker per nettsted eller for en hel gruppe, og det finnes ingenting å utvide.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Nå på 16 språk",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Lagt til brasiliansk portugisisk, svensk, tsjekkisk, russisk, italiensk, japansk, gresk og norsk. Velg ditt under Innstillinger.",
+    "description": "Release note body: new interface languages"
   }
 }

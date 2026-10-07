@@ -20,9 +20,28 @@ export interface BroadcastEventMap {
   siteDeleted: { siteId: string };
   groupAdded: { group: Record<string, unknown> };
   groupUpdated: { group: Record<string, unknown>; updates: Record<string, unknown> };
-  groupDeleted: { groupId: string };
+  /**
+   * Members are detached before the group goes: those with limits of their own
+   * come back as `standaloneSites`, those that only existed inside the group
+   * are deleted with it.
+   */
+  groupDeleted: {
+    groupId: string;
+    standaloneSites?: Record<string, unknown>[];
+    deletedSiteIds?: string[];
+  };
   siteAddedToGroup: { group: Record<string, unknown>; siteId: string };
-  siteRemovedFromGroup: { group: Record<string, unknown>; siteId: string };
+  siteRemovedFromGroup: {
+    group: Record<string, unknown>;
+    siteId: string;
+    standaloneSite?: Record<string, unknown> | null;
+    deletedSiteId?: string | null;
+  };
+  /** Startup repair of sites stranded outside their group. */
+  groupMembershipRepaired: {
+    standalone: Record<string, unknown>[];
+    deletedSiteIds: string[];
+  };
   quickLimitAdded: { site: Record<string, unknown> };
 }
 

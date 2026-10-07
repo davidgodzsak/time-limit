@@ -1387,6 +1387,106 @@
     "message": "Dnes si $1 otvoril $2×.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Za posledný týždeň ste $1 otvorili $2-krát.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Nepodarilo sa načítať nastavenia. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Stránka pridaná",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Stránka aktualizovaná",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Stránka odstránená",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Nepodarilo sa aktualizovať stránku. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Nepodarilo sa odstrániť stránku. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Stránka pridaná do skupiny",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Stránka odstránená zo skupiny",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Nepodarilo sa odstrániť stránku zo skupiny. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Skupina vytvorená",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Skupina aktualizovaná",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Skupina odstránená",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Nepodarilo sa vytvoriť skupinu. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Nepodarilo sa aktualizovať skupinu. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Nepodarilo sa odstrániť skupinu. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Správa pridaná",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Správa aktualizovaná",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Správa odstránená",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Nepodarilo sa pridať správu. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Nepodarilo sa aktualizovať správu. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Nepodarilo sa odstrániť správu. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Nepodarilo sa uložiť nastavenie. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Nepodarilo sa zmeniť jazyk. Skúste to znova.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Odstrániť túto skupinu? Stránky s vlastnými limitmi zostanú ako samostatné stránky; tie, ktoré existovali len v skupine, sa odstránia s ňou.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Pauza $1 s pred otvorením",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Skutočné blokovanie namiesto jednominútového limitu, ktorý ho dosiaľ zastupoval. Funguje pre stránku aj pre celú skupinu a niet čo predlžovať.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Teraz v 16 jazykoch",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Pridali sme osem nových jazykov, medzi nimi brazílsku portugalčinu, švédčinu, češtinu, ruštinu a taliančinu. Svoj jazyk si vyberte v Nastaveniach.",
+    "description": "Release note body: new interface languages"
   }
 }

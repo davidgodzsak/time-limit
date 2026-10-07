@@ -1387,6 +1387,106 @@
     "message": "今日は $1 を $2 回開いています。",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "過去1週間に $1 を $2 回開いています。",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "設定を読み込めませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "サイトを追加しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "サイトを更新しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "サイトを削除しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "サイトを更新できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "サイトを削除できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "サイトをグループに追加しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "サイトをグループから削除しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "サイトをグループから削除できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "グループを作成しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "グループを更新しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "グループを削除しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "グループを作成できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "グループを更新できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "グループを削除できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "メッセージを追加しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "メッセージを更新しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "メッセージを削除しました",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "メッセージを追加できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "メッセージを更新できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "メッセージを削除できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "設定を保存できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "言語を変更できませんでした。もう一度お試しください。",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "このグループを削除しますか？独自の制限を持つサイトは個別のサイトとして残り、グループ内にのみ存在していたサイトはグループとともに削除されます。",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "開く前に $1秒の間を置く",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "1分の制限で代用するのではなく、本物のブロックです。サイト単位でもグループ単位でも使えて、延長はできません。",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "16の言語に対応しました",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "ブラジルポルトガル語、スウェーデン語、チェコ語、ロシア語、イタリア語、日本語、ギリシャ語、ノルウェー語を追加しました。設定から選べます。",
+    "description": "Release note body: new interface languages"
   }
 }

@@ -1387,6 +1387,106 @@
     "message": "Ανοίξατε $1 $2 φορές σήμερα.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Έχεις ανοίξει το $1 $2 φορές την τελευταία εβδομάδα.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Δεν ήταν δυνατή η φόρτωση των ρυθμίσεων. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Ο ιστότοπος προστέθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Ο ιστότοπος ενημερώθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Ο ιστότοπος αφαιρέθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Δεν ήταν δυνατή η ενημέρωση του ιστότοπου. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Δεν ήταν δυνατή η αφαίρεση του ιστότοπου. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Ο ιστότοπος προστέθηκε στην ομάδα",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Ο ιστότοπος αφαιρέθηκε από την ομάδα",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Δεν ήταν δυνατή η αφαίρεση του ιστότοπου από την ομάδα. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Η ομάδα δημιουργήθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Η ομάδα ενημερώθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Η ομάδα διαγράφηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Δεν ήταν δυνατή η δημιουργία της ομάδας. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Δεν ήταν δυνατή η ενημέρωση της ομάδας. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Δεν ήταν δυνατή η διαγραφή της ομάδας. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Το μήνυμα προστέθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Το μήνυμα ενημερώθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Το μήνυμα αφαιρέθηκε",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Δεν ήταν δυνατή η προσθήκη του μηνύματος. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Δεν ήταν δυνατή η ενημέρωση του μηνύματος. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Δεν ήταν δυνατή η αφαίρεση του μηνύματος. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Δεν ήταν δυνατή η αποθήκευση της προτίμησης. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Δεν ήταν δυνατή η αλλαγή της γλώσσας. Δοκίμασε ξανά.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Διαγραφή αυτής της ομάδας; Οι ιστότοποι με δικά τους όρια παραμένουν ως μεμονωμένοι ιστότοποι· όσοι υπήρχαν μόνο μέσα στην ομάδα διαγράφονται μαζί της.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Παύση $1 δευτ. πριν ανοίξει",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Ένας πραγματικός αποκλεισμός, αντί για ένα όριο ενός λεπτού που έκανε τον αποκλεισμένο. Ισχύει ανά ιστότοπο ή για ολόκληρη ομάδα, και δεν υπάρχει τίποτα να παρατείνετε.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Τώρα σε 16 γλώσσες",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Προστέθηκαν πορτογαλικά Βραζιλίας, σουηδικά, τσεχικά, ρωσικά, ιταλικά, ιαπωνικά, ελληνικά και νορβηγικά. Διάλεξε τη δική σου στις Προτιμήσεις.",
+    "description": "Release note body: new interface languages"
   }
 }

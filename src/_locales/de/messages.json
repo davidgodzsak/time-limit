@@ -1387,6 +1387,106 @@
     "message": "Du hast $1 heute $2× geöffnet.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Du hast $1 in der letzten Woche $2-mal geöffnet.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Einstellungen konnten nicht geladen werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Website hinzugefügt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Website aktualisiert",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Website entfernt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Website konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Website konnte nicht entfernt werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Website zur Gruppe hinzugefügt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Website aus der Gruppe entfernt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Website konnte nicht aus der Gruppe entfernt werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Gruppe erstellt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Gruppe aktualisiert",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Gruppe gelöscht",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Gruppe konnte nicht erstellt werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Gruppe konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Gruppe konnte nicht gelöscht werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Nachricht hinzugefügt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Nachricht aktualisiert",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Nachricht entfernt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Nachricht konnte nicht hinzugefügt werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Nachricht konnte nicht aktualisiert werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Nachricht konnte nicht entfernt werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Einstellung konnte nicht gespeichert werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Sprache konnte nicht geändert werden. Bitte versuche es erneut.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Diese Gruppe löschen? Websites mit eigenen Limits bleiben als einzelne Websites erhalten; Websites, die nur in der Gruppe existierten, werden mitgelöscht.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "$1 s Pause vor dem Öffnen",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Eine echte Blockierung statt eines Ein-Minuten-Limits als Notlösung. Funktioniert pro Seite oder für eine ganze Gruppe — und es gibt nichts zu verlängern.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Jetzt in 16 Sprachen",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Neu: brasilianisches Portugiesisch, Schwedisch, Tschechisch, Russisch, Italienisch, Japanisch, Griechisch und Norwegisch. Wähle deine unter Einstellungen.",
+    "description": "Release note body: new interface languages"
   }
 }

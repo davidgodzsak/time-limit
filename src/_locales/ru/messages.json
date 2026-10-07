@@ -1387,6 +1387,106 @@
     "message": "Сегодня вы открыли $1 $2 раз.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "За последнюю неделю вы открывали $1 $2 раз.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Не удалось загрузить настройки. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Сайт добавлен",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Сайт обновлён",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Сайт удалён",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Не удалось обновить сайт. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Не удалось удалить сайт. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Сайт добавлен в группу",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Сайт удалён из группы",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Не удалось удалить сайт из группы. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Группа создана",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Группа обновлена",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Группа удалена",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Не удалось создать группу. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Не удалось обновить группу. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Не удалось удалить группу. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Сообщение добавлено",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Сообщение обновлено",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Сообщение удалено",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Не удалось добавить сообщение. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Не удалось обновить сообщение. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Не удалось удалить сообщение. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Не удалось сохранить настройку. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Не удалось изменить язык. Попробуйте ещё раз.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Удалить эту группу? Сайты с собственными ограничениями останутся отдельными сайтами; те, что существовали только внутри группы, будут удалены вместе с ней.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Пауза $1 с перед открытием",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Настоящая блокировка вместо лимита в одну минуту, который её изображал. Работает для сайта или для целой группы, и продлевать нечего.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Теперь на 16 языках",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Добавлены бразильский португальский, шведский, чешский, русский, итальянский, японский, греческий и норвежский. Выберите свой в настройках.",
+    "description": "Release note body: new interface languages"
   }
 }

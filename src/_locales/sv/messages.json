@@ -1387,6 +1387,106 @@
     "message": "Du har öppnat $1 $2 gånger idag.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Du har öppnat $1 $2 gånger den senaste veckan.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Det gick inte att läsa in inställningarna. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Webbplats tillagd",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Webbplats uppdaterad",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Webbplats borttagen",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Det gick inte att uppdatera webbplatsen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Det gick inte att ta bort webbplatsen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Webbplats tillagd i gruppen",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Webbplats borttagen från gruppen",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Det gick inte att ta bort webbplatsen från gruppen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Grupp skapad",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Grupp uppdaterad",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Grupp borttagen",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Det gick inte att skapa gruppen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Det gick inte att uppdatera gruppen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Det gick inte att ta bort gruppen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Meddelande tillagt",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Meddelande uppdaterat",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Meddelande borttaget",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Det gick inte att lägga till meddelandet. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Det gick inte att uppdatera meddelandet. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Det gick inte att ta bort meddelandet. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Det gick inte att spara inställningen. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Det gick inte att byta språk. Försök igen.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Ta bort den här gruppen? Webbplatser med egna gränser blir enskilda webbplatser; de som bara fanns i gruppen tas bort med den.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Pausa $1 s innan sidan öppnas",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "En riktig blockering, i stället för en enminutersgräns som får spela blockering. Fungerar per webbplats eller för en hel grupp, och det finns inget att utöka.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Nu på 16 språk",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Nytt: brasiliansk portugisiska, svenska, tjeckiska, ryska, italienska, japanska, grekiska och norska. Välj ditt under Inställningar.",
+    "description": "Release note body: new interface languages"
   }
 }

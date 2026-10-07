@@ -1387,6 +1387,106 @@
     "message": "Dnes jste $1 otevřeli $2×.",
     "description": "Explains why a site is being suggested"
   },
+  "suggestion_body_window": {
+    "message": "Web $1 jste za poslední týden otevřeli $2×.",
+    "description": "Explains why a site is being suggested, when the weekly count is what qualified it"
+  },
+  "toast_settingsLoadFailed": {
+    "message": "Nepodařilo se načíst nastavení. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAdded": {
+    "message": "Web přidán",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdated": {
+    "message": "Web aktualizován",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoved": {
+    "message": "Web odebrán",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteUpdateFailed": {
+    "message": "Nepodařilo se aktualizovat web. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFailed": {
+    "message": "Nepodařilo se odebrat web. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteAddedToGroup": {
+    "message": "Web přidán do skupiny",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemovedFromGroup": {
+    "message": "Web odebrán ze skupiny",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_siteRemoveFromGroupFailed": {
+    "message": "Nepodařilo se odebrat web ze skupiny. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreated": {
+    "message": "Skupina vytvořena",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdated": {
+    "message": "Skupina aktualizována",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleted": {
+    "message": "Skupina smazána",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupCreateFailed": {
+    "message": "Nepodařilo se vytvořit skupinu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupUpdateFailed": {
+    "message": "Nepodařilo se aktualizovat skupinu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_groupDeleteFailed": {
+    "message": "Nepodařilo se smazat skupinu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAdded": {
+    "message": "Zpráva přidána",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdated": {
+    "message": "Zpráva aktualizována",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoved": {
+    "message": "Zpráva odebrána",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageAddFailed": {
+    "message": "Nepodařilo se přidat zprávu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageUpdateFailed": {
+    "message": "Nepodařilo se aktualizovat zprávu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_messageRemoveFailed": {
+    "message": "Nepodařilo se odebrat zprávu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_preferenceSaveFailed": {
+    "message": "Nepodařilo se uložit předvolbu. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "toast_languageChangeFailed": {
+    "message": "Nepodařilo se změnit jazyk. Zkuste to znovu.",
+    "description": "Toast shown after a Settings action"
+  },
+  "confirm_deleteGroup": {
+    "message": "Smazat tuto skupinu? Weby s vlastními limity zůstanou jako samostatné weby; ty, které existovaly jen ve skupině, se smažou spolu s ní.",
+    "description": "Confirmation before deleting a group"
+  },
   "suggestion_button_accept": {
     "message": "Pauza $1 s před otevřením",
     "description": "Accepts the suggestion with a reflection pause"
@@ -1522,5 +1622,13 @@
   "whatsNew_fullBlock_body": {
     "message": "Skutečná blokace místo jednominutového limitu, který ji jen předstíral. Funguje pro jednu stránku i pro celou skupinu a není co prodlužovat.",
     "description": "Release note sentence explaining the full block"
+  },
+  "whatsNew_languages_title": {
+    "message": "Nyní v 16 jazycích",
+    "description": "Release note highlight: new interface languages"
+  },
+  "whatsNew_languages_body": {
+    "message": "Přidali jsme brazilskou portugalštinu, švédštinu, češtinu, ruštinu, italštinu, japonštinu, řečtinu a norštinu. Svůj jazyk vyberte v Nastavení.",
+    "description": "Release note body: new interface languages"
   }
 }
