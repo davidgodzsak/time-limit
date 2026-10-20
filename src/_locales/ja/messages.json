@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "ブラジルポルトガル語、スウェーデン語、チェコ語、ロシア語、イタリア語、日本語、ギリシャ語、ノルウェー語を追加しました。設定から選べます。",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "回数制限を修正しました",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "サイト内を移動しても回数は減らなくなりました。別のページ、別のタブ、別のアプリからサイトに来たときに1回と数えます。",
+    "description": "Release note body: what counts as an open now"
   }
 }

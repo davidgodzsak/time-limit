@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Dodano portugalski (Brazylia), szwedzki, czeski, rosyjski, włoski, japoński, grecki i norweski. Wybierz swój w Preferencjach.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Poprawiony limit otwarć",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Klikanie w obrębie strony nie zużywa już otwarć. Otwarcie liczy się, gdy wchodzisz na stronę skądinąd: z innej strony, innej karty lub innej aplikacji.",
+    "description": "Release note body: what counts as an open now"
   }
 }

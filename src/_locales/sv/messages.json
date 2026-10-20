@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Nytt: brasiliansk portugisiska, svenska, tjeckiska, ryska, italienska, japanska, grekiska och norska. Välj ditt under Inställningar.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Öppningsgränsen är fixad",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Att klicka runt inne på en webbplats förbrukar inte längre dina öppningar. En öppning räknas när du kommer till webbplatsen från något annat: en annan sida, en annan flik eller en annan app.",
+    "description": "Release note body: what counts as an open now"
   }
 }

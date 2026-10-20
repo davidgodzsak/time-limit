@@ -8,7 +8,7 @@
  * info page.
  */
 
-import { Ban, Globe, type LucideIcon } from 'lucide-react';
+import { DoorOpen, Globe, type LucideIcon } from 'lucide-react';
 
 export interface WhatsNewHighlight {
   icon: LucideIcon;
@@ -19,17 +19,18 @@ export interface WhatsNewHighlight {
 }
 
 export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
+  // 1.13.1: anyone with an opens limit saw it run out within minutes (#9), so
+  // they need to hear it works now and what an open means.
+  {
+    icon: DoorOpen,
+    titleKey: 'whatsNew_opens_title',
+    bodyKey: 'whatsNew_opens_body',
+  },
+  // Kept from 1.13.0, only two weeks old. The full block note from 1.12.0 is
+  // gone — over a month has passed, so users have seen it.
   {
     icon: Globe,
     titleKey: 'whatsNew_languages_title',
     bodyKey: 'whatsNew_languages_body',
-  },
-  // Kept from 1.12.0: it is the strictest rule in the extension and worth a
-  // second mention. The 1.11.0 notes (the pause and limit suggestions) are gone
-  // — nearly a month has passed, so users have seen them.
-  {
-    icon: Ban,
-    titleKey: 'whatsNew_fullBlock_title',
-    bodyKey: 'whatsNew_fullBlock_body',
   },
 ];

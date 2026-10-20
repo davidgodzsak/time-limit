@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Přidali jsme brazilskou portugalštinu, švédštinu, češtinu, ruštinu, italštinu, japonštinu, řečtinu a norštinu. Svůj jazyk vyberte v Nastavení.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Opravený limit otevření",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Procházení uvnitř webu už nespotřebovává otevření. Otevření se započítá, když na web přijdete odjinud: z jiné stránky, jiné karty nebo jiné aplikace.",
+    "description": "Release note body: what counts as an open now"
   }
 }

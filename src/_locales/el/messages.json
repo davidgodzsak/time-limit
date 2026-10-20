@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Προστέθηκαν πορτογαλικά Βραζιλίας, σουηδικά, τσεχικά, ρωσικά, ιταλικά, ιαπωνικά, ελληνικά και νορβηγικά. Διάλεξε τη δική σου στις Προτιμήσεις.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Το όριο ανοιγμάτων διορθώθηκε",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Η περιήγηση μέσα σε έναν ιστότοπο δεν καταναλώνει πια ανοίγματα. Ένα άνοιγμα μετράει όταν έρχεσαι στον ιστότοπο από αλλού: από άλλη σελίδα, άλλη καρτέλα ή άλλη εφαρμογή.",
+    "description": "Release note body: what counts as an open now"
   }
 }

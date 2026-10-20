@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Adicionamos português do Brasil, sueco, tcheco, russo, italiano, japonês, grego e norueguês. Escolha o seu em Preferências.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Limite de aberturas corrigido",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Navegar dentro de um site não gasta mais suas aberturas. Uma abertura conta quando você chega ao site vindo de outro lugar: outra página, outra aba ou outro aplicativo.",
+    "description": "Release note body: what counts as an open now"
   }
 }

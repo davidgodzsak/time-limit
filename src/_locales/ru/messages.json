@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Добавлены бразильский португальский, шведский, чешский, русский, итальянский, японский, греческий и норвежский. Выберите свой в настройках.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Лимит открытий исправлен",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Переходы внутри сайта больше не расходуют открытия. Открытие засчитывается, когда вы приходите на сайт откуда-то ещё: с другой страницы, из другой вкладки или другого приложения.",
+    "description": "Release note body: what counts as an open now"
   }
 }

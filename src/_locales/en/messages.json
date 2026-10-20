@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Added Brazilian Portuguese, Swedish, Czech, Russian, Italian, Japanese, Greek and Norwegian. Pick yours under Preferences.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "The opens limit, fixed",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Clicking around inside a site no longer uses up your opens. An open counts when you come to the site from somewhere else: another page, another tab or another app.",
+    "description": "Release note body: what counts as an open now"
   }
 }

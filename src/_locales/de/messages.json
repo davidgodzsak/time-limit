@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Neu: brasilianisches Portugiesisch, Schwedisch, Tschechisch, Russisch, Italienisch, Japanisch, Griechisch und Norwegisch. Wähle deine unter Einstellungen.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Öffnungslimit repariert",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Herumklicken innerhalb einer Seite verbraucht keine Öffnungen mehr. Eine Öffnung zählt, wenn du von woanders auf die Seite kommst: von einer anderen Seite, einem anderen Tab oder einer anderen App.",
+    "description": "Release note body: what counts as an open now"
   }
 }
