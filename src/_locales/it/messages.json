@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Aggiunti portoghese brasiliano, svedese, ceco, russo, italiano, giapponese, greco e norvegese. Scegli la tua nelle Preferenze.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Limite di aperture corretto",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Navigare all'interno di un sito non consuma più le tue aperture. Un'apertura conta quando arrivi al sito da altrove: un'altra pagina, un'altra scheda o un'altra app.",
+    "description": "Release note body: what counts as an open now"
   }
 }

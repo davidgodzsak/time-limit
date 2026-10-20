@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Lagt til brasiliansk portugisisk, svensk, tsjekkisk, russisk, italiensk, japansk, gresk og norsk. Velg ditt under Innstillinger.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Åpningsgrensen er fikset",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Å klikke rundt inne på et nettsted bruker ikke lenger opp åpningene dine. En åpning telles når du kommer til nettstedet fra et annet sted: en annen side, en annen fane eller en annen app.",
+    "description": "Release note body: what counts as an open now"
   }
 }

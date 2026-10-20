@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Pridali sme osem nových jazykov, medzi nimi brazílsku portugalčinu, švédčinu, češtinu, ruštinu a taliančinu. Svoj jazyk si vyberte v Nastaveniach.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Opravený limit otvorení",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Prechádzanie v rámci stránky už nespotrebúva otvorenia. Otvorenie sa započíta, keď na stránku prídete odinakiaľ: z inej stránky, inej karty alebo inej aplikácie.",
+    "description": "Release note body: what counts as an open now"
   }
 }

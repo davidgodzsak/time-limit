@@ -1630,5 +1630,13 @@
   "whatsNew_languages_body": {
     "message": "Új nyelvek: brazil portugál, svéd, cseh, orosz, olasz, japán, görög és norvég. A Beállítások között választhatsz.",
     "description": "Release note body: new interface languages"
+  },
+  "whatsNew_opens_title": {
+    "message": "Javítottuk a megnyitáskorlátot",
+    "description": "Release note highlight: the opens limit fix"
+  },
+  "whatsNew_opens_body": {
+    "message": "Az oldalon belüli kattintgatás már nem fogyasztja a megnyitásokat. Megnyitásnak az számít, amikor máshonnan érkezel az oldalra: másik oldalról, másik lapról vagy másik alkalmazásból.",
+    "description": "Release note body: what counts as an open now"
   }
 }
