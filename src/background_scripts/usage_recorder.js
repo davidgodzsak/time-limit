@@ -226,10 +226,8 @@ export async function startTracking(tabId, siteId) {
 
     await _setTrackingState(newState);
 
-
-    // Record the site open event
-    await _updateUsageStatsInStorage(siteId, 0, true);
-
+    // No open is recorded here: tracking restarts on every tab switch and
+    // focus change, which are not opens. open_counter.js counts them.
     return true;
   } catch (error) {
     console.error('[UsageRecorder] Error starting tracking:', error);
@@ -367,8 +365,8 @@ export async function getCurrentTrackingInfo() {
 }
 
 /**
- * Records an "open" event for a distracting site without starting time tracking.
- * This is used when a site is opened but time tracking isn't started immediately.
+ * Records an "open" event for a distracting site. Called by open_counter.js,
+ * which decides what counts as one.
  * @param {string} siteId - The ID of the distracting site that was opened.
  * @returns {Promise<boolean>} True if the open was recorded successfully, false otherwise.
  */
