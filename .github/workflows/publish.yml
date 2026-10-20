@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '24'
 
@@ -109,21 +109,21 @@ jobs:
           ls -lh "time-limit-${{ env.VERSION }}-source.zip"
 
       - name: Upload Firefox dist artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: firefox-dist
           path: firefox-dist/
           retention-days: 1
 
       - name: Upload Chrome dist artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: chrome-dist
           path: chrome-dist/
           retention-days: 1
 
       - name: Upload source zip artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: extension-source
           path: time-limit-${{ env.VERSION }}-source.zip
@@ -146,13 +146,13 @@ jobs:
 
     steps:
       - name: Download Firefox dist artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: firefox-dist
           path: firefox-dist/
 
       - name: Download source zip artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: extension-source
           path: .
@@ -182,7 +182,7 @@ jobs:
 
     steps:
       - name: Download Chrome dist artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: chrome-dist
           path: chrome-dist/
@@ -292,7 +292,7 @@ jobs:
 
     steps:
       - name: Update GitHub release with deployment status
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const version = '${{ needs.build.outputs.version }}';
