@@ -94,7 +94,21 @@ function _aggregateGroupUsage(sites, groupId, dailyStats) {
   return { timeSpentSeconds: totalTimeSeconds, opens: totalOpens };
 }
 
-export async function checkAndBlockSite(tabId, url) {
+/**
+ * Decides whether a page should be blocked, and why.
+ *
+ * The opens limit is about arriving at a site, so it only applies when
+ * `isOpen` is true. A tab already on the site is never thrown out for having
+ * used up its opens: the usage timer and the re-check after a settings change
+ * pass `isOpen: false`, and so does a navigation inside the site (see
+ * open_counter.js). Time limits and full blocks apply either way.
+ *
+ * @param {number} tabId
+ * @param {string} url
+ * @param {Object} [options]
+ * @param {boolean} [options.isOpen=true] - Whether the tab is opening the site.
+ */
+export async function checkAndBlockSite(tabId, url, { isOpen = true } = {}) {
   if (!tabId || !url || typeof url !== 'string') {
     return { shouldBlock: false, siteId: null, reason: null, limitType: null };
   }
@@ -191,7 +205,7 @@ export async function checkAndBlockSite(tabId, url) {
     const timeExceeded =
       hasTimeLimit && usageStats.timeSpentSeconds >= dailyLimitSeconds;
     const opensExceeded =
-      hasOpenLimit && usageStats.opens >= dailyOpenLimit;
+      isOpen && hasOpenLimit && usageStats.opens >= dailyOpenLimit;
 
     if (timeExceeded || opensExceeded) {
       let limitType = 'unknown';
@@ -294,9 +308,9 @@ export function buildTimeoutUrl(url, { siteId, reason, limitType }) {
   );
 }
 
-export async function handlePotentialRedirect(tabId, url) {
+export async function handlePotentialRedirect(tabId, url, options) {
   try {
-    const result = await checkAndBlockSite(tabId, url);
+    const result = await checkAndBlockSite(tabId, url, options);
 
     if (result.shouldBlock && result.siteId) {
       await browser.tabs.update(tabId, { url: buildTimeoutUrl(url, result) });

@@ -16,6 +16,13 @@ import {
   getCurrentTrackingInfo,
 } from './usage_recorder.js';
 import {
+  wouldOpenSite,
+  recordView,
+  forgetView,
+  noteBrowserLeft,
+  noteBrowserReturned,
+} from './open_counter.js';
+import {
   checkIfUrlIsDistracting,
   checkIfUrlHasLimits,
   initializeDistractionDetector,
@@ -259,11 +266,15 @@ async function handleAlarm(alarm) {
                 tab.url &&
                 !tab.url.includes('pages/timeout/index.html')
               ) {
+                // Not an open: the tab is already on the site, so only a
+                // time limit running out (or a full block) moves it.
                 const wasRedirected = await handlePotentialRedirect(
                   trackingInfo.tabId,
-                  tab.url
+                  tab.url,
+                  { isOpen: false }
                 );
                 if (wasRedirected) {
+                  await forgetView();
                   // Stop tracking since we're redirecting to timeout page
                   await stopTracking();
                   await browser.alarms.clear('usageTimer');
@@ -339,10 +350,17 @@ async function handleBeforeNavigate(details) {
       await updateUsage();
     }
 
-    // Check if the site should be blocked and redirect if necessary
-    const wasRedirected = await handlePotentialRedirect(tabId, url);
+    // Check if the site should be blocked and redirect if necessary. The opens
+    // limit only applies when this navigation opens the site: in the tab in
+    // front, coming from another page. A link or a reload inside the site does
+    // not, and a background tab only opens it once switched to (see
+    // open_counter.js).
+    const isFront = await _isFrontTab(tabId);
+    const isOpen = isFront && (await wouldOpenSite(url));
+    const wasRedirected = await handlePotentialRedirect(tabId, url, { isOpen });
 
     if (wasRedirected) {
+      if (isFront) await forgetView();
       // Stop any current tracking since we're redirecting to timeout page
       await stopTracking();
       try {
@@ -364,6 +382,8 @@ async function handleBeforeNavigate(details) {
       await browser.tabs.update(tabId, {
         url: buildReflectionUrl(url, reflection),
       });
+      // Answering "yes" brings the tab back to the site: that is the open.
+      if (isFront) await forgetView();
       await stopTracking();
       try {
         await browser.alarms.clear('usageTimer');
@@ -434,6 +454,13 @@ async function handleTabActivated(activeInfo) {
   try {
     // Get the tab details
     const tab = await browser.tabs.get(tabId);
+
+    // Switching to a tab that shows a limited site, from one that does not, is
+    // an open — and turned away once the opens are used up.
+    if (await _countOpen(tabId, tab.url)) {
+      return;
+    }
+
     await handleTabActivity(tabId, tab.url, true);
 
     // Update badge for the newly activated tab
@@ -471,14 +498,19 @@ async function handleTabUpdated(tabId, changeInfo, tab) {
     return;
   }
 
-
   try {
-    // Check if this tab is currently active
-    const [activeTab] = await browser.tabs.query({
-      active: true,
-      currentWindow: true,
-    });
-    const isActiveTab = activeTab && activeTab.id === tabId;
+    // Time is only tracked, and opens only counted, for the tab in front, so a
+    // background tab has nothing to do here. Letting it through used to stop
+    // tracking the tab the user was actually on whenever any other tab changed
+    // its URL — and restarting it counted another open.
+    const isActiveTab = await _isFrontTab(tabId);
+    if (!isActiveTab) {
+      return;
+    }
+
+    if (changeInfo.url && (await _countOpen(tabId, changeInfo.url))) {
+      return;
+    }
 
     // Check if browser window is focused
     const currentWindow = await browser.windows.getCurrent();
@@ -507,6 +539,47 @@ async function handleTabUpdated(tabId, changeInfo, tab) {
 }
 
 /**
+ * Whether a tab is the one in front: active in the last focused window.
+ * @param {number} tabId
+ * @returns {Promise<boolean>}
+ */
+async function _isFrontTab(tabId) {
+  const [activeTab] = await browser.tabs.query({
+    active: true,
+    currentWindow: true,
+  });
+  return !!activeTab && activeTab.id === tabId;
+}
+
+/**
+ * Counts an open when the tab in front now shows a limited site and the user
+ * was looking at something else — by a navigation, a single-page URL change,
+ * or switching tab or window (see open_counter.js).
+ *
+ * A used-up opens limit is enforced here, before counting: a switch to a tab
+ * that is already open has no navigation for `handleBeforeNavigate` to catch,
+ * and neither does a single-page site changing its URL (YouTube going from a
+ * video to Shorts).
+ *
+ * @param {number} tabId - The tab in front.
+ * @param {string} url - What it shows.
+ * @returns {Promise<boolean>} True if the tab was sent to the timeout page.
+ */
+async function _countOpen(tabId, url) {
+  // A tab that has not started loading yet (a link opening in a new tab)
+  // shows nothing; its navigation is what counts.
+  if (!url || url === 'about:blank') {
+    return false;
+  }
+
+  const { refused } = await recordView(url, {
+    allowOpen: async (openedUrl) =>
+      !(await handlePotentialRedirect(tabId, openedUrl)),
+  });
+  return refused;
+}
+
+/**
  * Handles window focus change events.
  * @param {number} windowId - The ID of the focused window (-1 if no window is focused)
  */
@@ -516,13 +589,22 @@ async function handleWindowFocusChanged(windowId) {
     if (windowId === browser.windows.WINDOW_ID_NONE) {
       // No window focused, stop tracking
       await stopTracking();
+      await noteBrowserLeft();
     } else {
+      // Back from another app: the site in front counts as opened again
+      // (see open_counter.js).
+      await noteBrowserReturned();
+
       // Window focused, check if we should resume tracking
       const [activeTab] = await browser.tabs.query({
         active: true,
         windowId: windowId,
       });
       if (activeTab && activeTab.url) {
+        // Coming back from another window counts like a tab switch.
+        if (await _countOpen(activeTab.id, activeTab.url)) {
+          return;
+        }
         await handleTabActivity(activeTab.id, activeTab.url, true);
       }
     }
@@ -2689,7 +2771,11 @@ async function _reEvaluateAllTabs() {
       try {
         // For deletions, we check if any site would block this tab
         // For updates, we check the specific site
-        const blockResult = await checkAndBlockSite(tab.id, tab.url);
+        // Not an open: a tab the user is sitting on is never thrown out
+        // for having used up its opens, only by time or a full block.
+        const blockResult = await checkAndBlockSite(tab.id, tab.url, {
+          isOpen: false,
+        });
 
 
         // Update badge for this tab
@@ -2800,6 +2886,7 @@ try {
   browser.webNavigation.onCommitted.addListener(handleNavigationCommitted);
   browser.tabs.onActivated.addListener(handleTabActivated);
   browser.tabs.onUpdated.addListener(handleTabUpdated);
+  browser.runtime.onStartup.addListener(() => forgetView());
   browser.windows.onFocusChanged.addListener(handleWindowFocusChanged);
   browser.runtime.onMessage.addListener(handleMessage);
   browser.action.onClicked.addListener(handleActionClick);

@@ -22,7 +22,8 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`background.js`**: Main event router listening to browser events (alarms, navigation, messages, toolbar clicks)
 - **`site_storage.js`**: CRUD operations for sites and limits
 - **`group_storage.js`**: CRUD operations for site groups
-- **`usage_recorder.js`**: Tracks time spent and visits per site via alarms
+- **`usage_recorder.js`**: Tracks time spent per site via alarms
+- **`open_counter.js`**: Decides what counts as opening a limited site (the view moving onto a rule from something else) and remembers the rule in view
 - **`distraction_detector.js`**: Detects if current URL matches any limited sites (delegates matching to `url_matcher.js`)
 - **`url_matcher.js`**: Single source of truth for URL patterns — normalization, host/subdomain/path matching, specificity ranking, duplicate detection
 - **`reflection_gate.js`**: Decides whether a navigation gets a countdown before the page opens, and documents how the delay sits next to the hard limits
@@ -210,7 +211,7 @@ either `host` or `host/path`:
 
 ### Limit Types
 - **Time Limits**: Minutes (1-1440), tracked via daily alarms checking chrome.storage
-- **Open Count Limits**: Site visits (1-100), tracked on webNavigation.onBeforeNavigate
+- **Open Count Limits**: Site visits (1-100), counted by `open_counter.js` — see below
 - **Reflection Delay**: Seconds (5/10/15 in the UI) of countdown before the page
   opens, then "do you still want to open this?". Yes restores the exact original
   URL; No goes to the timeout page. It is a rule in its own right — a site or
@@ -257,6 +258,35 @@ either `host` or `host/path`:
   a missing group, or a group whose `siteIds` does not list it — both states are
   unreachable through the UI.
 - Membership is the absence or presence of `groupId`, never `groupId: null`.
+
+### Open Counting (`open_counter.js`)
+- **An open is what the user is looking at moving onto a rule from something
+  else**: navigating there, switching to a tab or window that already shows
+  it, or coming back to the browser from another app. Instagram → Facebook →
+  Instagram is two Instagram opens even with both tabs left open, and so is
+  Instagram → Slack → Instagram — otherwise one open tab could be returned to
+  forever. Instagram tab → another Instagram tab is not an open, nor is
+  clicking around inside the site, reloading, or tabs loading in the
+  background. Moving onto a narrower rule (YouTube → Shorts) opens that rule.
+- **Focus flicker is not leaving**: some platforms report "no window focused"
+  for a moment while moving between two browser windows, so an absence under
+  `FOCUS_FLICKER_MS` (1s, timed via `leftBrowserAt`) does not count.
+- **Only the tab in front counts**: URL changes (`tabs.onUpdated`, because a
+  single-page site like Instagram changes its URL with no navigation), tab
+  activation and switching windows all go through `_countOpen` in
+  `background.js`. The rule in view lives in `viewedSiteId`, cleared on
+  browser startup and when the tab in front is sent to the timeout or
+  reflection page.
+- **The opens limit only stops arriving, never staying**: `checkAndBlockSite`
+  takes `{ isOpen }`. `handleBeforeNavigate` asks `wouldOpenSite` for the tab
+  in front, `_countOpen` checks before counting (so switching back to an open
+  tab past the limit goes to the timeout page), and the usage timer and the
+  settings re-check pass `isOpen: false`. Time limits and full blocks apply
+  either way.
+- **The time tracker must not count opens**: it restarts on every tab
+  switch, including between two tabs of the same site. It used to count them, so a five-open limit ran out within minutes
+  (issue #9). Related: background tabs must not stop the tracking of the tab in
+  front, so `handleTabUpdated` ignores them.
 
 ### Reflection Delay Rules (all decided in `reflection_gate.js`)
 - **Block first, pause second**: `handleBeforeNavigate` runs the block check, and
@@ -393,6 +423,7 @@ Current coverage:
 - `mindful_limits.integration.test.js` — blocker + gate together: a pause-only site never blocks, a spent limit skips the countdown, a group pause is answered once
 - `full_block.test.js` — the full block: it outranks usage, extensions and the countdown; group vs site ownership; `isEnabled` lifts it; specificity exceptions; a block counts as a rule in site/group storage
 - `whats_new_storage.test.js` — the release-note flag is set by updates only and stays dismissed
+- `open_counter.test.js` — what counts as an open (in-site browsing, same-site tab switches, leaving and coming back, other apps and focus flicker, bursts) and the blocker's `isOpen`
 - `urlScope.test.ts`, `groupSuggestions.test.ts` — popup quick-add pattern and group-aware suggestions
 
 Conventions: colocate `*.test.js`/`*.test.ts` next to the module; stub
@@ -410,6 +441,8 @@ browser.storage.local keys:
 - extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
 - reflections-YYYY-MM-DD: { [siteId]: { proceeded, dismissed } } (7 day window)
 - reflectionPasses: { [siteId|groupId]: expiresAtMs } (cleared on daily reset)
+- viewedSiteId: string|null (the rule the user is looking at, for open counting; cleared on browser startup)
+- leftBrowserAt: ms|null (when the browser last lost focus, for open counting)
 - whatsNewState: { pending, version, previousVersion } (release note, updates only)
 - visitTracking: { [host]: { days: { "YYYY-MM-DD": opens }, lastVisit } }
 - limitSuggestions: { handledHosts: string[], pending, lastSuggestedDate }
