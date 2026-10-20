@@ -1,0 +1,27 @@
+version: 2
+updates:
+  # Minor and patch bumps arrive as one grouped PR a week; majors get their own
+  # PR, since those (React 19, Vite, Tailwind 4...) need a deliberate look.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-and-patch:
+        update-types: [minor, patch]
+    commit-message:
+      prefix: chore
+      include: scope
+
+  # Keeps publish.yml off deprecated action runtimes (the Node 20 warning).
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      github-actions:
+        patterns: ['*']
+    commit-message:
+      prefix: chore
+      include: scope
