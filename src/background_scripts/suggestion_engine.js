@@ -271,3 +271,25 @@ export async function retireSuggestion(host) {
     pending: state.pending && state.pending.host === host ? null : state.pending,
   });
 }
+
+/**
+ * Sites without a rule that pass the suggestion thresholds, busiest first —
+ * the statistics page's "opened often, no limit yet" list. Same heuristic and
+ * same memory as the popup nudge, minus the one-a-day pacing: work-shaped and
+ * already-answered hosts never appear.
+ *
+ * @param {string} todayString - Today in "YYYY-MM-DD" format.
+ * @param {(host: string) => boolean} [isLimited] - Drops hosts that got a rule since.
+ * @param {number} [max=5] - How many to return.
+ * @returns {Promise<Array<{host: string, opensWindow: number, activeDays: number}>>}
+ */
+export async function getFrequentUnlimitedHosts(todayString, isLimited = () => false, max = 5) {
+  const [state, tracking] = await Promise.all([getSuggestionState(), getVisitTracking()]);
+  return Object.entries(tracking)
+    .filter(([host]) => !state.handledHosts.includes(host) && !isLimited(host))
+    .map(([host, entry]) => ({ host, ...summarizeVisits(entry, todayString) }))
+    .filter((stats) => evaluateCandidate(stats.host, stats).shouldSuggest)
+    .sort((a, b) => b.opensWindow - a.opensWindow)
+    .slice(0, max)
+    .map(({ host, opensWindow, activeDays }) => ({ host, opensWindow, activeDays }));
+}

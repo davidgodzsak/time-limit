@@ -69,6 +69,7 @@
 - [x] Removed all 89 `console.log` calls from the background scripts — they are copied to dist verbatim, so esbuild's `drop: ['console']` never applied and they shipped to users
 
 ### Settings page
+- [x] Removed the drag handle from individual site rows — nothing could be reordered
 - [x] be able to turn limits on or off by having a "switch" button next to each page in the limits tab (even on pages individually that are in a group) (reuse the one in the settings -> messages tab -> display options)
 
 ### Timeout page
@@ -112,12 +113,18 @@ stay (they cost nothing and the author speaks them).
   - [ ] Also translate the store listings (name, summary, description, screenshots' captions) — separate from `_locales`, done in the AMO/Chrome dashboards
 
 ### Statistic pages
-- [ ] Track how much time we spend on each site and how many times we open each site
-- [ ] Track which page we try to open even after the limit is hit
-- [ ] Show how many times the user tried to open an already blocked site (per site, per day) — the "how hard was this limit to keep" number
-- [ ] Make visualisations of tracked data
-- [ ] Display changes or trends over days/weeks/months
-- [ ] Suggest distracting pages to add limits to (but remember it's ok to spend time on pages that are not distracting: e.g. jira, github, etc.), if the user cancels a suggestion then let's remember and not try to suggest it again
+- [x] Track how much time we spend on each site and how many times we open each site — `history_storage.js` folds each day into a year of monthly history before the reset deletes it
+- [x] Track which page we try to open even after the limit is hit — `activity-YYYY-MM-DD`, counted when arriving at a spent or blocked site
+- [x] Show how many times the user tried to open an already blocked site (per site, per day) — Limits tab, "Tried while off limits"
+- [x] Make visualisations of tracked data — stacked area per site, weekday × hour heatmap, limit-fit dot strips, pause rings, sparklines
+- [x] Display changes or trends over days/weeks/months — 7/30/90 day ranges against the previous period, moving average, six months week by week against the first month
+- [x] Suggest distracting pages to add limits to — "Opened often, no limit yet" reuses the suggestion heuristic and its once-ever memory; loose limits get a "Set to X" suggestion
+- [x] "Come back in a few days" screen until 3 days are recorded; privacy note up front
+- [x] Entry points: bar chart icon in every popup header (new shared `PopupHeader`), and in the Settings and Info page headers
+- [x] Click through it in a real browser (Firefox and Chrome) after a few days of real data
+- [x] Release note (`whatsNew.ts`) leads with statistics and links straight to the page
+- [x] One-time popup note once 3 days are recorded ("Your statistics are ready" → opens the page); either answer, or visiting the page with enough data, retires it for good
+- [x] Same note as a dismissible strip at the bottom of the timeout and reflection pages, plus the statistics icon in their headers next to info
 
 ### Info page
 - [x] Create a basic info page that reuses the base of the timout page (background, header) and the theme and existing UI components as much as possible

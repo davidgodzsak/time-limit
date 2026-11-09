@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Settings, Info, Star } from "lucide-react";
-import Logo from "../Logo";
+import { PopupHeader } from "./PopupHeader";
 import { t } from "@/lib/utils/i18n";
 import { getRatingUrl } from "@/lib/constants/rating";
 
@@ -16,19 +16,7 @@ export function InfoPageView({ onOpenSettings }: InfoPageViewProps) {
   };
   return (
     <Card className="w-80 shadow-soft border-0 overflow-hidden">
-      <div className="gradient-mint p-4">
-        <div className="flex items-center justify-between">
-          <Logo size="sm" />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onOpenSettings}
-            className="hover:bg-white/50"
-          >
-            <Settings size={18} />
-          </Button>
-        </div>
-      </div>
+      <PopupHeader onSettings={onOpenSettings} />
 
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">

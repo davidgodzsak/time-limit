@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Переходы внутри сайта больше не расходуют открытия. Открытие засчитывается, когда вы приходите на сайт откуда-то ещё: с другой страницы, из другой вкладки или другого приложения.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Статистика"
+  },
+  "stats_subtitle": {
+    "message": "На что ушло ваше время на ограниченных сайтах и как выдержали ограничения."
+  },
+  "stats_open": {
+    "message": "Статистика"
+  },
+  "stats_openSettings": {
+    "message": "Настройки"
+  },
+  "stats_privacy_title": {
+    "message": "Это видите только вы"
+  },
+  "stats_privacy_text": {
+    "message": "Эти числа считаются и хранятся на этом компьютере, в этом браузере. Ничего не отправляется ни на какой сервер, и никто другой их не видит, даже мы."
+  },
+  "stats_loading": {
+    "message": "Загрузка статистики"
+  },
+  "stats_loadFailed": {
+    "message": "Не удалось загрузить статистику. Попробуйте перезагрузить страницу."
+  },
+  "stats_actionFailed": {
+    "message": "Не получилось. Попробуйте ещё раз."
+  },
+  "stats_range_label": {
+    "message": "Период"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ дней",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Показаны $COUNT$ дней, записанных на данный момент.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Обзор"
+  },
+  "stats_tab_sites": {
+    "message": "Сайты"
+  },
+  "stats_tab_limits": {
+    "message": "Ограничения"
+  },
+  "stats_tab_patterns": {
+    "message": "Привычки"
+  },
+  "stats_notEnough_title": {
+    "message": "Ваша статистика уже в пути"
+  },
+  "stats_notEnough_text": {
+    "message": "Подсчёт начался $DATE$. Загляните через несколько дней, когда данных хватит, чтобы показать что-то полезное.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "Подсчёт начнётся, когда вы в следующий раз откроете ограниченный сайт. Загляните через несколько дней, чтобы увидеть, на что уходит время."
+  },
+  "stats_notEnough_noRules": {
+    "message": "Статистика считается для сайтов, которые вы ограничиваете. Добавьте первый сайт в настройках и загляните через несколько дней."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Всё, что здесь считается, остаётся в этом браузере. Ничего никогда никуда не отправляется."
+  },
+  "stats_summary": {
+    "message": "За последние $DAYS$ дней вы провели $TOTAL$ на ограниченных сайтах, примерно $PERDAY$ в день.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "Это на $AMOUNT$ меньше, чем за предыдущие $DAYS$ дней.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "Это на $AMOUNT$ больше, чем за предыдущие $DAYS$ дней.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Примерно столько же, сколько в предыдущий период."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Время в день"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Открытий в день"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Раз удержались"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Заблокированные попытки и паузы, на которые вы ответили «нет»"
+  },
+  "stats_kpi_streak": {
+    "message": "Дней без продления"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Рекорд: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Лучшая серия, в днях"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Пока нет более ранних данных"
+  },
+  "stats_delta_same": {
+    "message": "Примерно так же"
+  },
+  "stats_delta_new": {
+    "message": "Новое за этот период"
+  },
+  "stats_delta_less": {
+    "message": "на $PERCENT$ меньше",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "на $PERCENT$ больше",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Каждый день, по сайтам"
+  },
+  "stats_daily_description": {
+    "message": "Каждая полоса — один сайт, они сложены друг на друга, так что верхний край — ваш итог за день. Тёмная линия — среднее за $DAYS$ дней, чтобы один плохой день не скрывал тенденцию.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "За этот период ничего не записано."
+  },
+  "stats_mode_time": {
+    "message": "Время"
+  },
+  "stats_mode_opens": {
+    "message": "Открытия"
+  },
+  "stats_chart_other": {
+    "message": "Другие сайты"
+  },
+  "stats_chart_total": {
+    "message": "Итого"
+  },
+  "stats_chart_average": {
+    "message": "Среднее за $DAYS$ дней",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Ежедневное время на ограниченных сайтах, сложенное по сайтам, со средним за $DAYS$ дней",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Ежедневные открытия ограниченных сайтов, сложенные по сайтам, со средним за $DAYS$ дней",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Что выделяется"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$: меньше на $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "В среднем $NOW$ в день против $BEFORE$ в предыдущий период.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ достигал ограничения $HITS$ из $DAYS$ дней",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Ограничение каждый день делает всю работу. Короткая пауза перед открытием сайта могла бы немного снять напряжение."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Попытки открыть заблокированный $NAME$: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Каждая попытка закончилась на странице паузы."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Против $COUNT$ в предыдущий период. Привычка ослабевает.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Против $COUNT$ в предыдущий период.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "Пауза на $NAME$ разворачивала вас в $PERCENT$ случаев",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ из $TOTAL$ отсчётов закончились другим выбором.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Ваш самый трудный час начинается в $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "$PERCENT$ открытий и попыток приходится на этот час.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Сайт или группа"
+  },
+  "stats_sites_col_time": {
+    "message": "Время"
+  },
+  "stats_sites_col_opens": {
+    "message": "Открытия"
+  },
+  "stats_sites_col_trend": {
+    "message": "Тенденция"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Как прошло"
+  },
+  "stats_sites_group": {
+    "message": "Группа"
+  },
+  "stats_sites_empty": {
+    "message": "За этот период ни один ограниченный сайт не использовался."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Никогда не открывается"
+  },
+  "stats_sites_tried": {
+    "message": "Попытки во время блокировки: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Ограничение достигнуто $HITS$ из $DAYS$ дней",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Использует меньше половины ограничения"
+  },
+  "stats_sites_turnedBack": {
+    "message": "Пауза разворачивала вас в $PERCENT$ случаев",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Часто открываются, пока без ограничения"
+  },
+  "stats_frequent_description": {
+    "message": "За последние 7 дней. Считается только название сайта, никогда не страницы, которые вы читаете. Рабочие инструменты вроде GitHub или Jira здесь никогда не появятся."
+  },
+  "stats_frequent_count": {
+    "message": "Открытий: $OPENS$ · дней: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Добавить паузу 10 с"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Это не проблема, больше не предлагать"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$ теперь ждёт 10 секунд перед открытием.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$ больше не будет предлагаться.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Попытки во время блокировки"
+  },
+  "stats_attempts_description": {
+    "message": "Каждый раз, когда сайт отправлял вас на страницу паузы. Показывает, насколько трудно соблюдать каждое ограничение."
+  },
+  "stats_attempts_none": {
+    "message": "За этот период попыток не было."
+  },
+  "stats_pause_title": {
+    "message": "Пауза"
+  },
+  "stats_pause_description": {
+    "message": "Как часто отсчёт заканчивался другим выбором."
+  },
+  "stats_pause_none": {
+    "message": "За этот период на паузы не отвечали."
+  },
+  "stats_pause_saidNo": {
+    "message": "Отказ $NO$ из $TOTAL$ раз",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Насколько подходит каждое ограничение"
+  },
+  "stats_fit_description": {
+    "message": "Одна точка на день. Линия — ограничение."
+  },
+  "stats_fit_tight": {
+    "message": "Достигается почти всегда"
+  },
+  "stats_fit_loose": {
+    "message": "Можно ужесточить"
+  },
+  "stats_fit_fits": {
+    "message": "Подходит"
+  },
+  "stats_fit_tight_text": {
+    "message": "Достигнуто $HITS$ из $DAYS$ дней. Пауза перед открытием сайта могла бы немного снять напряжение.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Никогда не больше $MAX$ из $LIMIT$. $SUGGEST$ всё равно покрыло бы 9 дней из 10.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Достигнуто $HITS$ из $DAYS$ дней, в остальные дни с запасом.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Установить $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Ограничение $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "У $NAME$ теперь дневное ограничение $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Продления и ваши причины"
+  },
+  "stats_extensions_summary": {
+    "message": "Продлений: $COUNT$, всего $AMOUNT$ дополнительно. Ваши собственные слова, если их стоит перечитать.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "За этот период продлений не было."
+  },
+  "stats_heatmap_title": {
+    "message": "Когда вас тянет"
+  },
+  "stats_heatmap_description": {
+    "message": "Открытия и попытки по часам, в среднем по дням недели."
+  },
+  "stats_heatmap_filter": {
+    "message": "Сайт или группа"
+  },
+  "stats_heatmap_all": {
+    "message": "Все ограниченные сайты"
+  },
+  "stats_heatmap_hint": {
+    "message": "Наведите на квадрат, чтобы увидеть число."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: в среднем $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Меньше"
+  },
+  "stats_heatmap_more": {
+    "message": "Больше"
+  },
+  "stats_weekly_title": {
+    "message": "Полгода, неделя за неделей"
+  },
+  "stats_weekly_description": {
+    "message": "Среднее время в день на ограниченных сайтах по сравнению с первым месяцем. Зелёное — отвоёванное время. Кольцо отмечает неделю с продлением."
+  },
+  "stats_weekly_aria": {
+    "message": "Среднее время в день за каждую неделю по сравнению с первым месяцем"
+  },
+  "stats_weekly_baseline": {
+    "message": "Первый месяц: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "Появится после $WEEKS$ недель истории. Недель на данный момент: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Неделя с $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "В день"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "По сравнению с первым месяцем"
+  },
+  "stats_weekly_extensions": {
+    "message": "Продлений: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Отвоёвано с первого месяца"
+  },
+  "stats_weekday_title": {
+    "message": "По дням недели"
+  },
+  "stats_weekday_busiest": {
+    "message": "Дороже всего обходится: $DAY$, в среднем $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Среднее время по дням недели."
+  },
+  "stats_footer_retention": {
+    "message": "История хранится $DAYS$ дней, затем удаляется.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Экспорт в CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Очистить историю"
+  },
+  "stats_clear_title": {
+    "message": "Очистить всю статистику?"
+  },
+  "stats_clear_text": {
+    "message": "Это удалит всю вашу историю из этого браузера. Ваши ограничения и сегодняшнее использование останутся без изменений. Отменить это нельзя."
+  },
+  "stats_clear_cancel": {
+    "message": "Отмена"
+  },
+  "stats_clear_confirm": {
+    "message": "Очистить историю"
+  },
+  "stats_cleared": {
+    "message": "Статистика очищена."
+  },
+  "stats_rule_removed": {
+    "message": "Удалено"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ мин",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "Открытий: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "Пауза $COUNT$ с",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Страница статистики"
+  },
+  "statsPageView_subtitle": {
+    "message": "Ваш интернет в цифрах"
+  },
+  "whatsNew_stats_title": {
+    "message": "Статистика"
+  },
+  "whatsNew_stats_body": {
+    "message": "Узнайте, на что уходит ваше время на ограниченных сайтах и как держатся ограничения. Она заполнится за несколько дней, а числа никогда не покидают ваш компьютер."
+  },
+  "whatsNew_stats_link": {
+    "message": "Открыть статистику"
+  },
+  "statsPrompt_title": {
+    "message": "Ваша статистика готова"
+  },
+  "statsPrompt_body": {
+    "message": "Несколько дней уже записано. Посмотрите, на что ушло ваше время на ограниченных сайтах и как выдержали ограничения."
+  },
+  "statsPrompt_open": {
+    "message": "Посмотреть статистику"
+  },
+  "statsPrompt_later": {
+    "message": "Не сейчас"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Больше не напоминать"
   }
 }

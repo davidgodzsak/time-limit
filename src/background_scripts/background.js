@@ -48,7 +48,19 @@ import {
   considerSuggestion,
   getPendingSuggestionForHost,
   retireSuggestion,
+  getFrequentUnlimitedHosts,
 } from './suggestion_engine.js';
+import {
+  getHistory,
+  clearHistory,
+  recordActivityHour,
+  trackedDayCount,
+} from './history_storage.js';
+import {
+  shouldShowStatsPrompt,
+  markStatsPromptHandled,
+  STATS_READY_DAYS,
+} from './stats_prompt_storage.js';
 import { getExtensions, setExtension, hasExtensionToday } from './extension_storage.js';
 import { getUsageStats } from './usage_storage.js';
 import {
@@ -2285,6 +2297,9 @@ async function handleMessage(message, _sender, _sendResponse) {
             await grantReflectionPass(limitId);
           } else {
             await clearReflectionPass(limitId);
+            // A "yes" becomes an open, which notes its own hour; a "no" is
+            // still a moment the user reached for the site.
+            await recordActivityHour(getCurrentDateString(), siteId);
           }
 
           return {
@@ -2351,6 +2366,68 @@ async function handleMessage(message, _sender, _sendResponse) {
           };
         } catch (error) {
           console.error('[Background] Error dismissing suggestion:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      // === Statistics ===
+      case 'getStatistics': {
+        try {
+          const today = getCurrentDateString();
+          const [history, sites, groups] = await Promise.all([
+            getHistory(today),
+            getDistractingSites(),
+            getGroups(),
+          ]);
+          // Finding the page once it has something to show makes the popup's
+          // "your statistics are ready" note moot.
+          if (trackedDayCount(history) >= STATS_READY_DAYS) {
+            await markStatsPromptHandled();
+          }
+          const frequentHosts = (await _suggestionsEnabled())
+            ? await getFrequentUnlimitedHosts(
+                today,
+                (host) => checkIfUrlHasLimits(`https://${host}/`).isMatch
+              )
+            : [];
+          return {
+            success: true,
+            data: { ...history, sites, groups, frequentHosts },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error reading statistics:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'getStatsPrompt': {
+        try {
+          const history = await getHistory(getCurrentDateString());
+          const shouldShow = await shouldShowStatsPrompt(trackedDayCount(history));
+          return { success: true, data: { shouldShow }, error: null };
+        } catch (error) {
+          console.error('[Background] Error reading statistics prompt:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'markStatsPromptSeen': {
+        try {
+          await markStatsPromptHandled();
+          return { success: true, data: { handled: true }, error: null };
+        } catch (error) {
+          console.error('[Background] Error saving statistics prompt:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'clearStatistics': {
+        try {
+          await clearHistory();
+          return { success: true, data: { cleared: true }, error: null };
+        } catch (error) {
+          console.error('[Background] Error clearing statistics:', error);
           return { success: false, error: categorizeError(error) };
         }
       }

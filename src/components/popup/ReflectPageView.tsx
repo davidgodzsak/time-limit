@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Info, Hourglass } from "lucide-react";
-import Logo from "../Logo";
+import { Hourglass } from "lucide-react";
+import { PopupHeader } from "./PopupHeader";
 import { t } from "@/lib/utils/i18n";
 
 interface ReflectPageViewProps {
@@ -16,32 +16,7 @@ interface ReflectPageViewProps {
 export function ReflectPageView({ onOpenSettings, onOpenInfo }: ReflectPageViewProps) {
   return (
     <Card className="w-80 shadow-soft border-0 overflow-hidden">
-      <div className="gradient-mint p-4">
-        <div className="flex items-center justify-between">
-          <Logo size="sm" />
-          <div className="flex gap-1">
-            {onOpenInfo && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={onOpenInfo}
-                className="hover:bg-white/50"
-                title={t("normalPageView_button_tooltip")}
-              >
-                <Info size={18} />
-              </Button>
-            )}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onOpenSettings}
-              className="hover:bg-white/50"
-            >
-              <Settings size={18} />
-            </Button>
-          </div>
-        </div>
-      </div>
+      <PopupHeader onSettings={onOpenSettings} onInfo={onOpenInfo} />
 
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">

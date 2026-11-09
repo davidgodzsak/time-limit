@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Clock, Quote, Loader2, FolderOpen, SlidersHorizontal } from "lucide-react";
+import { Clock, Quote, Loader2, FolderOpen, SlidersHorizontal, BarChart3 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { t } from "@/lib/utils/i18n";
 import { getRatingUrl } from "@/lib/constants/rating";
 import PageTemplate from "./PageTemplate";
+import { openStatsPage } from "@/lib/utils/navigation";
 import { RatingCard } from "./RatingCard";
 import AddSiteDialog from "./settings/AddSiteDialog";
 import CreateGroupDialog from "./settings/CreateGroupDialog";
@@ -739,6 +740,7 @@ const SettingsPage = () => {
   if (isLoading) {
     return (
       <PageTemplate
+        extraHeaderLinks={[{ icon: BarChart3, title: t("stats_open"), onClick: openStatsPage }]}
         version={version}
         onHeaderAction={handleOpenInfo}
         layout="centered"
@@ -789,6 +791,7 @@ const SettingsPage = () => {
   return (
     <>
       <PageTemplate
+        extraHeaderLinks={[{ icon: BarChart3, title: t("stats_open"), onClick: openStatsPage }]}
         version={version}
         onHeaderAction={handleOpenInfo}
         layout="normal"

@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "サイト内を移動しても回数は減らなくなりました。別のページ、別のタブ、別のアプリからサイトに来たときに1回と数えます。",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "統計"
+  },
+  "stats_subtitle": {
+    "message": "制限中のサイトで時間がどこに使われたか、制限がどれだけ守られたか。"
+  },
+  "stats_open": {
+    "message": "統計"
+  },
+  "stats_openSettings": {
+    "message": "設定"
+  },
+  "stats_privacy_title": {
+    "message": "これはあなただけが見られます"
+  },
+  "stats_privacy_text": {
+    "message": "これらの数値は、このパソコンのこのブラウザー内で数えられ保存されます。サーバーには何も送信されず、私たちを含め他の誰にも見えません。"
+  },
+  "stats_loading": {
+    "message": "統計を読み込み中"
+  },
+  "stats_loadFailed": {
+    "message": "統計を読み込めませんでした。ページを再読み込みしてください。"
+  },
+  "stats_actionFailed": {
+    "message": "うまくいきませんでした。もう一度お試しください。"
+  },
+  "stats_range_label": {
+    "message": "期間"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$日間",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "これまでに記録された$COUNT$日分を表示しています。",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "概要"
+  },
+  "stats_tab_sites": {
+    "message": "サイト"
+  },
+  "stats_tab_limits": {
+    "message": "制限"
+  },
+  "stats_tab_patterns": {
+    "message": "傾向"
+  },
+  "stats_notEnough_title": {
+    "message": "統計を準備中です"
+  },
+  "stats_notEnough_text": {
+    "message": "$DATE$から記録を始めました。役に立つ内容をお見せできるだけのデータがたまるまで、数日後にまた来てください。",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "次に制限中のサイトを開いたときから記録が始まります。数日後にまた来て、時間の使い方を確かめてください。"
+  },
+  "stats_notEnough_noRules": {
+    "message": "統計は制限しているサイトについて記録されます。設定で最初のサイトを追加して、数日後にまた来てください。"
+  },
+  "stats_notEnough_privacy": {
+    "message": "ここで数えたものはすべてこのブラウザーに残ります。どこにも送信されることはありません。"
+  },
+  "stats_summary": {
+    "message": "過去$DAYS$日間に制限中のサイトで$TOTAL$過ごしました。1日あたり約$PERDAY$です。",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "その前の$DAYS$日間より$AMOUNT$少なくなっています。",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "その前の$DAYS$日間より$AMOUNT$多くなっています。",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "前の期間とほぼ同じです。"
+  },
+  "stats_kpi_timePerDay": {
+    "message": "1日あたりの時間"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "1日あたりの表示回数"
+  },
+  "stats_kpi_heldBack": {
+    "message": "踏みとどまった回数"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "ブロックされた試行と「いいえ」と答えた一時停止"
+  },
+  "stats_kpi_streak": {
+    "message": "延長しなかった日数"
+  },
+  "stats_kpi_streak_best": {
+    "message": "最高: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "最長記録(日)"
+  },
+  "stats_delta_noEarlier": {
+    "message": "まだ以前のデータがありません"
+  },
+  "stats_delta_same": {
+    "message": "ほぼ同じ"
+  },
+  "stats_delta_new": {
+    "message": "この期間から"
+  },
+  "stats_delta_less": {
+    "message": "$PERCENT$減",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "$PERCENT$増",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "毎日のサイト別"
+  },
+  "stats_daily_description": {
+    "message": "帯はそれぞれ1つのサイトで、積み重ねているので上端が1日の合計です。濃い線は$DAYS$日間の平均で、1日だけの悪い日に傾向が隠れないようにしています。",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "この期間の記録はありません。"
+  },
+  "stats_mode_time": {
+    "message": "時間"
+  },
+  "stats_mode_opens": {
+    "message": "表示回数"
+  },
+  "stats_chart_other": {
+    "message": "その他のサイト"
+  },
+  "stats_chart_total": {
+    "message": "合計"
+  },
+  "stats_chart_average": {
+    "message": "$DAYS$日間の平均",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "制限中サイトでの1日の時間をサイト別に積み重ね、$DAYS$日間の平均を重ねたもの",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "制限中サイトの1日の表示回数をサイト別に積み重ね、$DAYS$日間の平均を重ねたもの",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "注目ポイント"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$が$PERCENT$減りました",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "1日平均$NOW$。前の期間は$BEFORE$でした。",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$は$DAYS$日中$HITS$日で上限に達しました",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "毎日、制限だけが頑張っています。サイトが開く前に短い一時停止を入れると、少し楽になるかもしれません。"
+  },
+  "stats_insight_attempts_title": {
+    "message": "ブロック中の$NAME$を開こうとした回数: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "どの試行もタイムアウトページで終わりました。"
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "前の期間は$COUNT$回でした。習慣が薄れてきています。",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "前の期間は$COUNT$回でした。",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "$NAME$の一時停止で$PERCENT$の確率で引き返しました",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "カウントダウン$TOTAL$回のうち$NO$回で別のことを選びました。",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "いちばん手強い時間帯は$HOUR$から",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "表示と試行の$PERCENT$がこの1時間に集中しています。",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "サイトまたはグループ"
+  },
+  "stats_sites_col_time": {
+    "message": "時間"
+  },
+  "stats_sites_col_opens": {
+    "message": "表示回数"
+  },
+  "stats_sites_col_trend": {
+    "message": "推移"
+  },
+  "stats_sites_col_outcome": {
+    "message": "結果"
+  },
+  "stats_sites_group": {
+    "message": "グループ"
+  },
+  "stats_sites_empty": {
+    "message": "この期間に使われた制限中のサイトはありません。"
+  },
+  "stats_sites_neverOpens": {
+    "message": "開かない"
+  },
+  "stats_sites_tried": {
+    "message": "ブロック中の試行: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "$DAYS$日中$HITS$日で上限に到達",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "上限の半分未満しか使っていません"
+  },
+  "stats_sites_turnedBack": {
+    "message": "一時停止で$PERCENT$の確率で引き返しました",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "よく開くのにまだ制限がないサイト"
+  },
+  "stats_frequent_description": {
+    "message": "過去7日間の記録です。数えるのはサイト名だけで、読んだページは記録しません。GitHubやJiraなどの仕事用ツールは表示されません。"
+  },
+  "stats_frequent_count": {
+    "message": "表示: $OPENS$回 · 日数: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "10秒の一時停止を追加"
+  },
+  "stats_frequent_dismiss": {
+    "message": "問題ないので今後は提案しない"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$は開く前に10秒待つようになりました。",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$は今後提案されません。",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "ブロック中の試行"
+  },
+  "stats_attempts_description": {
+    "message": "サイトからタイムアウトページに送られた回数です。各制限を守るのがどれだけ大変かがわかります。"
+  },
+  "stats_attempts_none": {
+    "message": "この期間に試行はありません。"
+  },
+  "stats_pause_title": {
+    "message": "一時停止"
+  },
+  "stats_pause_description": {
+    "message": "カウントダウンの後で別のことを選んだ頻度です。"
+  },
+  "stats_pause_none": {
+    "message": "この期間に回答した一時停止はありません。"
+  },
+  "stats_pause_saidNo": {
+    "message": "$TOTAL$回中$NO$回「いいえ」",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "各制限の合い具合"
+  },
+  "stats_fit_description": {
+    "message": "点は1日1つ。線が上限です。"
+  },
+  "stats_fit_tight": {
+    "message": "ほぼ毎日到達"
+  },
+  "stats_fit_loose": {
+    "message": "厳しくできます"
+  },
+  "stats_fit_fits": {
+    "message": "ちょうどよい"
+  },
+  "stats_fit_tight_text": {
+    "message": "$DAYS$日中$HITS$日で到達。サイトが開く前に一時停止を入れると、少し楽になるかもしれません。",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "上限$LIMIT$に対して最大$MAX$。$SUGGEST$でも10日中9日はまかなえました。",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "$DAYS$日中$HITS$日で到達し、ほかの日は余裕がありました。",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "$AMOUNT$に変更",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "上限 $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$の1日の上限を$AMOUNT$にしました。",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "延長とその理由"
+  },
+  "stats_extensions_summary": {
+    "message": "延長: $COUNT$回、合計$AMOUNT$追加。読み返す価値があるかもしれない、あなた自身の言葉です。",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "この期間に延長はありません。"
+  },
+  "stats_heatmap_title": {
+    "message": "手が伸びる時間帯"
+  },
+  "stats_heatmap_description": {
+    "message": "時間帯別の表示と試行を、曜日ごとに平均したものです。"
+  },
+  "stats_heatmap_filter": {
+    "message": "サイトまたはグループ"
+  },
+  "stats_heatmap_all": {
+    "message": "制限中のすべてのサイト"
+  },
+  "stats_heatmap_hint": {
+    "message": "マスにカーソルを合わせると数値が見られます。"
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$ $HOUR$: 平均$COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "少"
+  },
+  "stats_heatmap_more": {
+    "message": "多"
+  },
+  "stats_weekly_title": {
+    "message": "半年間を週ごとに"
+  },
+  "stats_weekly_description": {
+    "message": "制限中サイトでの1日平均時間を、最初の1か月と比べています。緑は取り戻した時間です。輪は延長した週の印です。"
+  },
+  "stats_weekly_aria": {
+    "message": "週ごとの1日平均時間を最初の1か月と比較したもの"
+  },
+  "stats_weekly_baseline": {
+    "message": "最初の1か月: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "$WEEKS$週分の記録がたまると表示されます。現在の週数: $SOFAR$。",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "$DATE$からの週",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "1日あたり"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "最初の1か月との差"
+  },
+  "stats_weekly_extensions": {
+    "message": "延長: $COUNT$回",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "最初の1か月から取り戻した時間"
+  },
+  "stats_weekday_title": {
+    "message": "曜日別"
+  },
+  "stats_weekday_busiest": {
+    "message": "いちばん多いのは$DAY$: 平均$AMOUNT$。",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "曜日ごとの平均時間です。"
+  },
+  "stats_footer_retention": {
+    "message": "履歴は$DAYS$日間保存され、その後削除されます。",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "CSVで書き出す"
+  },
+  "stats_footer_clear": {
+    "message": "履歴を消去"
+  },
+  "stats_clear_title": {
+    "message": "統計をすべて消去しますか?"
+  },
+  "stats_clear_text": {
+    "message": "このブラウザーから履歴がすべて削除されます。制限と今日の利用状況はそのまま残ります。元に戻すことはできません。"
+  },
+  "stats_clear_cancel": {
+    "message": "キャンセル"
+  },
+  "stats_clear_confirm": {
+    "message": "履歴を消去"
+  },
+  "stats_cleared": {
+    "message": "統計を消去しました。"
+  },
+  "stats_rule_removed": {
+    "message": "削除済み"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$分",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "$COUNT$回",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "$COUNT$秒の一時停止",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "統計ページ"
+  },
+  "statsPageView_subtitle": {
+    "message": "ブラウジングを数字で"
+  },
+  "whatsNew_stats_title": {
+    "message": "統計"
+  },
+  "whatsNew_stats_body": {
+    "message": "制限中のサイトで時間がどこに使われているか、制限がどれだけ守られているかがわかります。数日かけてデータがたまり、数値がパソコンの外に出ることはありません。"
+  },
+  "whatsNew_stats_link": {
+    "message": "統計を開く"
+  },
+  "statsPrompt_title": {
+    "message": "統計の準備ができました"
+  },
+  "statsPrompt_body": {
+    "message": "数日分の記録がたまりました。制限中のサイトで時間がどこに使われたか、制限がどれだけ守られたかを見てみましょう。"
+  },
+  "statsPrompt_open": {
+    "message": "統計を見る"
+  },
+  "statsPrompt_later": {
+    "message": "今はしない"
+  },
+  "statsPrompt_dismiss": {
+    "message": "今後は表示しない"
   }
 }

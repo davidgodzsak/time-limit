@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Az oldalon belüli kattintgatás már nem fogyasztja a megnyitásokat. Megnyitásnak az számít, amikor máshonnan érkezel az oldalra: másik oldalról, másik lapról vagy másik alkalmazásból.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Statisztika"
+  },
+  "stats_subtitle": {
+    "message": "Mire ment el az időd a korlátozott oldalakon, és hogyan tartottak a korlátok."
+  },
+  "stats_open": {
+    "message": "Statisztika"
+  },
+  "stats_openSettings": {
+    "message": "Beállítások"
+  },
+  "stats_privacy_title": {
+    "message": "Ezt csak te látod"
+  },
+  "stats_privacy_text": {
+    "message": "Ezeket a számokat ezen a számítógépen, ebben a böngészőben számoljuk és tároljuk. Semmi nem kerül el egyetlen szerverre sem, és rajtad kívül senki nem látja őket, még mi sem."
+  },
+  "stats_loading": {
+    "message": "Statisztika betöltése"
+  },
+  "stats_loadFailed": {
+    "message": "Nem sikerült betölteni a statisztikát. Töltsd újra az oldalt."
+  },
+  "stats_actionFailed": {
+    "message": "Ez nem sikerült. Próbáld újra."
+  },
+  "stats_range_label": {
+    "message": "Időszak"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ nap",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Az eddig rögzített $COUNT$ nap látható.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Áttekintés"
+  },
+  "stats_tab_sites": {
+    "message": "Oldalak"
+  },
+  "stats_tab_limits": {
+    "message": "Korlátok"
+  },
+  "stats_tab_patterns": {
+    "message": "Szokások"
+  },
+  "stats_notEnough_title": {
+    "message": "A statisztikád úton van"
+  },
+  "stats_notEnough_text": {
+    "message": "A számolás $DATE$ napján indult. Nézz vissza pár nap múlva, amikor már lesz elég adat, hogy valami hasznosat mutassunk.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "A számolás akkor indul, amikor legközelebb megnyitsz egy korlátozott oldalt. Nézz vissza pár nap múlva, és meglátod, mire megy el az időd."
+  },
+  "stats_notEnough_noRules": {
+    "message": "A statisztika a korlátozott oldalakról szól. Add hozzá az első oldaladat a Beállításokban, aztán nézz vissza pár nap múlva."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Minden, amit itt számolunk, ebben a böngészőben marad. Soha semmi nem kerül el sehová."
+  },
+  "stats_summary": {
+    "message": "Az elmúlt $DAYS$ napban $TOTAL$ időt töltöttél korlátozott oldalakon, naponta nagyjából $PERDAY$.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "Ez $AMOUNT$ kevesebb, mint az előző $DAYS$ napban.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "Ez $AMOUNT$ több, mint az előző $DAYS$ napban.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Nagyjából ugyanannyi, mint az előző időszakban."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Idő naponta"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Megnyitás naponta"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Ennyiszer fogtad vissza magad"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Blokkolt próbálkozások és szünetek, amikre nemet mondtál"
+  },
+  "stats_kpi_streak": {
+    "message": "Napok hosszabbítás nélkül"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Legjobb: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Leghosszabb sorozat, napban"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Még nincs korábbi adat"
+  },
+  "stats_delta_same": {
+    "message": "Nagyjából ugyanannyi"
+  },
+  "stats_delta_new": {
+    "message": "Új ebben az időszakban"
+  },
+  "stats_delta_less": {
+    "message": "$PERCENT$ kevesebb",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "$PERCENT$ több",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Minden nap, oldalanként"
+  },
+  "stats_daily_description": {
+    "message": "Minden sáv egy oldal, egymásra rakva, így a felső széle a napi összesen. A sötét vonal a $DAYS$ napos átlag, hogy egy rossz nap ne takarja el a trendet.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "Ebben az időszakban nincs rögzített adat."
+  },
+  "stats_mode_time": {
+    "message": "Idő"
+  },
+  "stats_mode_opens": {
+    "message": "Megnyitások"
+  },
+  "stats_chart_other": {
+    "message": "Egyéb oldalak"
+  },
+  "stats_chart_total": {
+    "message": "Összesen"
+  },
+  "stats_chart_average": {
+    "message": "$DAYS$ napos átlag",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Napi idő a korlátozott oldalakon, oldalanként egymásra rakva, $DAYS$ napos átlaggal",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "A korlátozott oldalak napi megnyitásai, oldalanként egymásra rakva, $DAYS$ napos átlaggal",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Ami kiemelkedik"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$: $PERCENT$ csökkenés",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "Átlagosan napi $NOW$, az előző időszak $BEFORE$ idejéhez képest.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ $DAYS$ napból $HITS$ napon elérte a korlátját",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Minden nap a korlát végzi az összes munkát. Egy rövid szünet az oldal megnyitása előtt levehetne valamennyit a terhéből."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Próbálkozások a zárolt $NAME$ megnyitására: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Minden próbálkozás a szünetoldalon ért véget."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Az előző időszakban $COUNT$ volt. A szokás halványul.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Az előző időszakban $COUNT$ volt.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "A szünet a $NAME$ oldalon az esetek $PERCENT$ részében visszafordított",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$TOTAL$ visszaszámlálásból $NO$ azzal ért véget, hogy mást választottál.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "A legnehezebb órád $HOUR$ órakor kezdődik",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "A megnyitások és próbálkozások $PERCENT$ része ebben az órában történik.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Oldal vagy csoport"
+  },
+  "stats_sites_col_time": {
+    "message": "Idő"
+  },
+  "stats_sites_col_opens": {
+    "message": "Megnyitások"
+  },
+  "stats_sites_col_trend": {
+    "message": "Trend"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Hogy ment"
+  },
+  "stats_sites_group": {
+    "message": "Csoport"
+  },
+  "stats_sites_empty": {
+    "message": "Ebben az időszakban egyik korlátozott oldalt sem használtad."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Soha nem nyílik meg"
+  },
+  "stats_sites_tried": {
+    "message": "Próbálkozások zárolás alatt: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "$DAYS$ napból $HITS$ napon elérte a korlátot",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "A korlátjának kevesebb mint felét használja"
+  },
+  "stats_sites_turnedBack": {
+    "message": "A szünet az esetek $PERCENT$ részében visszafordított",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Gyakran megnyitva, még korlát nélkül"
+  },
+  "stats_frequent_description": {
+    "message": "Az elmúlt 7 napból. Csak az oldal nevét számoljuk, soha nem az olvasott oldalakat. A munkaeszközök, mint a GitHub vagy a Jira, soha nem kerülnek ide."
+  },
+  "stats_frequent_count": {
+    "message": "Megnyitás: $OPENS$ · nap: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "10 mp szünet hozzáadása"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Nem gond, ne javasold újra"
+  },
+  "stats_frequent_added": {
+    "message": "A(z) $SITE$ mostantól 10 másodpercet vár megnyitás előtt.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "A(z) $SITE$ oldalt nem javasoljuk újra.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Próbálkozások zárolás alatt"
+  },
+  "stats_attempts_description": {
+    "message": "Minden alkalom, amikor egy oldal a szünetoldalra küldött. Megmutatja, mennyire nehéz betartani az egyes korlátokat."
+  },
+  "stats_attempts_none": {
+    "message": "Ebben az időszakban nem volt próbálkozás."
+  },
+  "stats_pause_title": {
+    "message": "A szünet"
+  },
+  "stats_pause_description": {
+    "message": "Milyen gyakran ért véget a visszaszámlálás azzal, hogy mást választottál."
+  },
+  "stats_pause_none": {
+    "message": "Ebben az időszakban nem válaszoltál szünetre."
+  },
+  "stats_pause_saidNo": {
+    "message": "$TOTAL$ alkalomból $NO$ alkalommal mondtál nemet",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Mennyire illik az egyes korlátokhoz"
+  },
+  "stats_fit_description": {
+    "message": "Naponta egy pont. A vonal a korlát."
+  },
+  "stats_fit_tight": {
+    "message": "Szinte mindig eléred"
+  },
+  "stats_fit_loose": {
+    "message": "Lehet szigorítani"
+  },
+  "stats_fit_fits": {
+    "message": "Illik"
+  },
+  "stats_fit_tight_text": {
+    "message": "$DAYS$ napból $HITS$ napon elérted. Egy szünet az oldal megnyitása előtt levehetne valamennyit a terhéből.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Soha nem lépte túl a(z) $MAX$ időt a(z) $LIMIT$ korlátból. $SUGGEST$ is lefedte volna a napok 9/10-ét.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "$DAYS$ napból $HITS$ napon elérted, a többin maradt tartalék.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Beállítás: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "$AMOUNT$ korlát",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$ napi korlátja mostantól $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Hosszabbítások és az indokaid"
+  },
+  "stats_extensions_summary": {
+    "message": "Hosszabbítások: $COUNT$, összesen $AMOUNT$ extra. A saját szavaid, ha érdemes újraolvasni őket.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "Ebben az időszakban nem volt hosszabbítás."
+  },
+  "stats_heatmap_title": {
+    "message": "Mikor nyúlsz utána"
+  },
+  "stats_heatmap_description": {
+    "message": "Megnyitások és próbálkozások óránként, a hét napjaira átlagolva."
+  },
+  "stats_heatmap_filter": {
+    "message": "Oldal vagy csoport"
+  },
+  "stats_heatmap_all": {
+    "message": "Minden korlátozott oldal"
+  },
+  "stats_heatmap_hint": {
+    "message": "Mutass egy négyzetre a számért."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: átlagosan $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Kevesebb"
+  },
+  "stats_heatmap_more": {
+    "message": "Több"
+  },
+  "stats_weekly_title": {
+    "message": "Hat hónap, hétről hétre"
+  },
+  "stats_weekly_description": {
+    "message": "Átlagos napi idő a korlátozott oldalakon az első hónapodhoz képest. A zöld a visszanyert idő. Egy gyűrű jelöli a hosszabbításos heteket."
+  },
+  "stats_weekly_aria": {
+    "message": "Átlagos napi idő hetente, az első hónaphoz viszonyítva"
+  },
+  "stats_weekly_baseline": {
+    "message": "Első hónap: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "$WEEKS$ hét előzmény után jelenik meg. Eddigi hetek: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "$DATE$ hete",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "Naponta"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Az első hónaphoz képest"
+  },
+  "stats_weekly_extensions": {
+    "message": "Hosszabbítások: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Visszanyerve az első hónap óta"
+  },
+  "stats_weekday_title": {
+    "message": "A hét napjai szerint"
+  },
+  "stats_weekday_busiest": {
+    "message": "A legtöbbe a(z) $DAY$ kerül: átlagosan $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Átlagos idő a hét napjaira."
+  },
+  "stats_footer_retention": {
+    "message": "Az előzményeket $DAYS$ napig őrizzük, utána töröljük.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Exportálás CSV-be"
+  },
+  "stats_footer_clear": {
+    "message": "Előzmények törlése"
+  },
+  "stats_clear_title": {
+    "message": "Törlöd az összes statisztikát?"
+  },
+  "stats_clear_text": {
+    "message": "Ez a teljes előzményedet törli ebből a böngészőből. A korlátaid és a mai használat megmarad. Ez nem vonható vissza."
+  },
+  "stats_clear_cancel": {
+    "message": "Mégse"
+  },
+  "stats_clear_confirm": {
+    "message": "Előzmények törlése"
+  },
+  "stats_cleared": {
+    "message": "Statisztika törölve."
+  },
+  "stats_rule_removed": {
+    "message": "Eltávolítva"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ perc",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "$COUNT$ megnyitás",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "$COUNT$ mp szünet",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Statisztika oldal"
+  },
+  "statsPageView_subtitle": {
+    "message": "A böngészésed számokban"
+  },
+  "whatsNew_stats_title": {
+    "message": "Statisztika"
+  },
+  "whatsNew_stats_body": {
+    "message": "Nézd meg, mire megy el az időd a korlátozott oldalakon, és hogyan tartanak a korlátaid. A következő napokban telik meg, és a számok soha nem hagyják el a számítógépedet."
+  },
+  "whatsNew_stats_link": {
+    "message": "Statisztika megnyitása"
+  },
+  "statsPrompt_title": {
+    "message": "Elkészült a statisztikád"
+  },
+  "statsPrompt_body": {
+    "message": "Már van néhány napnyi adat. Nézd meg, mire ment el az időd a korlátozott oldalakon, és hogyan tartottak a korlátaid."
+  },
+  "statsPrompt_open": {
+    "message": "Megnézem a statisztikámat"
+  },
+  "statsPrompt_later": {
+    "message": "Most nem"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Ne emlékeztess többé"
   }
 }

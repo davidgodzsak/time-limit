@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Η περιήγηση μέσα σε έναν ιστότοπο δεν καταναλώνει πια ανοίγματα. Ένα άνοιγμα μετράει όταν έρχεσαι στον ιστότοπο από αλλού: από άλλη σελίδα, άλλη καρτέλα ή άλλη εφαρμογή.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Στατιστικά"
+  },
+  "stats_subtitle": {
+    "message": "Πού πήγε ο χρόνος σου στους περιορισμένους ιστότοπους και πώς άντεξαν τα όρια."
+  },
+  "stats_open": {
+    "message": "Στατιστικά"
+  },
+  "stats_openSettings": {
+    "message": "Ρυθμίσεις"
+  },
+  "stats_privacy_title": {
+    "message": "Μόνο εσύ μπορείς να το δεις"
+  },
+  "stats_privacy_text": {
+    "message": "Αυτοί οι αριθμοί μετριούνται και αποθηκεύονται σε αυτόν τον υπολογιστή, σε αυτό το πρόγραμμα περιήγησης. Τίποτα δεν στέλνεται σε κανέναν διακομιστή και κανείς άλλος δεν μπορεί να τους δει, ούτε καν εμείς."
+  },
+  "stats_loading": {
+    "message": "Φόρτωση στατιστικών"
+  },
+  "stats_loadFailed": {
+    "message": "Δεν ήταν δυνατή η φόρτωση των στατιστικών. Δοκίμασε να ανανεώσεις τη σελίδα."
+  },
+  "stats_actionFailed": {
+    "message": "Δεν πέτυχε. Δοκίμασε ξανά."
+  },
+  "stats_range_label": {
+    "message": "Χρονικό διάστημα"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ ημέρες",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Εμφανίζονται οι $COUNT$ ημέρες που έχουν καταγραφεί ως τώρα.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Επισκόπηση"
+  },
+  "stats_tab_sites": {
+    "message": "Ιστότοποι"
+  },
+  "stats_tab_limits": {
+    "message": "Όρια"
+  },
+  "stats_tab_patterns": {
+    "message": "Συνήθειες"
+  },
+  "stats_notEnough_title": {
+    "message": "Τα στατιστικά σου έρχονται"
+  },
+  "stats_notEnough_text": {
+    "message": "Η καταμέτρηση ξεκίνησε στις $DATE$. Έλα ξανά σε λίγες μέρες, όταν θα υπάρχουν αρκετά δεδομένα για να σου δείξουμε κάτι χρήσιμο.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "Η καταμέτρηση ξεκινά την επόμενη φορά που θα ανοίξεις έναν περιορισμένο ιστότοπο. Έλα ξανά σε λίγες μέρες για να δεις πού πηγαίνει ο χρόνος σου."
+  },
+  "stats_notEnough_noRules": {
+    "message": "Τα στατιστικά μετρώνται για τους ιστότοπους που περιορίζεις. Πρόσθεσε τον πρώτο σου ιστότοπο στις Ρυθμίσεις και έλα ξανά σε λίγες μέρες."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Ό,τι μετριέται εδώ μένει σε αυτό το πρόγραμμα περιήγησης. Τίποτα δεν στέλνεται ποτέ πουθενά."
+  },
+  "stats_summary": {
+    "message": "Τις τελευταίες $DAYS$ ημέρες πέρασες $TOTAL$ σε περιορισμένους ιστότοπους, περίπου $PERDAY$ την ημέρα.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "Αυτό είναι $AMOUNT$ λιγότερο από τις $DAYS$ προηγούμενες ημέρες.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "Αυτό είναι $AMOUNT$ περισσότερο από τις $DAYS$ προηγούμενες ημέρες.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Περίπου όσο και την προηγούμενη περίοδο."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Χρόνος ανά ημέρα"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Ανοίγματα ανά ημέρα"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Φορές που συγκρατήθηκες"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Αποκλεισμένες απόπειρες και παύσεις όπου είπες όχι"
+  },
+  "stats_kpi_streak": {
+    "message": "Ημέρες χωρίς παράταση"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Ρεκόρ: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Καλύτερο σερί, σε ημέρες"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Δεν υπάρχουν ακόμη παλαιότερα δεδομένα"
+  },
+  "stats_delta_same": {
+    "message": "Περίπου το ίδιο"
+  },
+  "stats_delta_new": {
+    "message": "Νέο σε αυτή την περίοδο"
+  },
+  "stats_delta_less": {
+    "message": "$PERCENT$ λιγότερο",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "$PERCENT$ περισσότερο",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Κάθε μέρα, ανά ιστότοπο"
+  },
+  "stats_daily_description": {
+    "message": "Κάθε ζώνη είναι ένας ιστότοπος, στοιβαγμένες ώστε η πάνω άκρη να είναι το σύνολο της ημέρας. Η σκούρα γραμμή είναι ο μέσος όρος $DAYS$ ημερών, ώστε μια κακή μέρα να μην κρύβει την τάση.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "Δεν καταγράφηκε τίποτα σε αυτή την περίοδο."
+  },
+  "stats_mode_time": {
+    "message": "Χρόνος"
+  },
+  "stats_mode_opens": {
+    "message": "Ανοίγματα"
+  },
+  "stats_chart_other": {
+    "message": "Άλλοι ιστότοποι"
+  },
+  "stats_chart_total": {
+    "message": "Σύνολο"
+  },
+  "stats_chart_average": {
+    "message": "Μέσος όρος $DAYS$ ημερών",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Ημερήσιος χρόνος σε περιορισμένους ιστότοπους, στοιβαγμένος ανά ιστότοπο, με μέσο όρο $DAYS$ ημερών",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Ημερήσια ανοίγματα περιορισμένων ιστότοπων, στοιβαγμένα ανά ιστότοπο, με μέσο όρο $DAYS$ ημερών",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Τι ξεχωρίζει"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$: μείωση $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "$NOW$ την ημέρα κατά μέσο όρο, από $BEFORE$ την προηγούμενη περίοδο.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$: το όριο εξαντλήθηκε $HITS$ από $DAYS$ ημέρες",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Το όριο κάνει όλη τη δουλειά κάθε μέρα. Μια σύντομη παύση πριν ανοίξει ο ιστότοπος θα μπορούσε να μειώσει λίγο την πίεση."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Απόπειρες ανοίγματος του $NAME$ ενώ ήταν κλειστό: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Κάθε απόπειρα κατέληξε στη σελίδα παύσης."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Από $COUNT$ την προηγούμενη περίοδο. Η συνήθεια εξασθενεί.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Από $COUNT$ την προηγούμενη περίοδο.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "Η παύση στο $NAME$ σε έκανε να γυρίσεις πίσω το $PERCENT$ των φορών",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ από $TOTAL$ αντίστροφες μετρήσεις τελείωσαν με άλλη επιλογή.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Η πιο δύσκολη ώρα σου ξεκινά στις $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "Το $PERCENT$ των ανοιγμάτων και των αποπειρών γίνεται σε αυτή την ώρα.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Ιστότοπος ή ομάδα"
+  },
+  "stats_sites_col_time": {
+    "message": "Χρόνος"
+  },
+  "stats_sites_col_opens": {
+    "message": "Ανοίγματα"
+  },
+  "stats_sites_col_trend": {
+    "message": "Τάση"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Πώς πήγε"
+  },
+  "stats_sites_group": {
+    "message": "Ομάδα"
+  },
+  "stats_sites_empty": {
+    "message": "Δεν χρησιμοποιήθηκε κανένας περιορισμένος ιστότοπος σε αυτή την περίοδο."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Δεν ανοίγει ποτέ"
+  },
+  "stats_sites_tried": {
+    "message": "Απόπειρες ενώ ήταν κλειστό: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Το όριο εξαντλήθηκε $HITS$ από $DAYS$ ημέρες",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Χρησιμοποιεί λιγότερο από το μισό όριο"
+  },
+  "stats_sites_turnedBack": {
+    "message": "Η παύση σε έκανε να γυρίσεις πίσω το $PERCENT$ των φορών",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Ανοίγονται συχνά, χωρίς όριο ακόμη"
+  },
+  "stats_frequent_description": {
+    "message": "Από τις τελευταίες 7 ημέρες. Μετριέται μόνο το όνομα του ιστότοπου, ποτέ οι σελίδες που διαβάζεις. Εργαλεία δουλειάς όπως το GitHub ή το Jira δεν εμφανίζονται ποτέ."
+  },
+  "stats_frequent_count": {
+    "message": "Ανοίγματα: $OPENS$ · ημέρες: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Προσθήκη παύσης 10 δ"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Δεν είναι πρόβλημα, μην το προτείνεις ξανά"
+  },
+  "stats_frequent_added": {
+    "message": "Το $SITE$ τώρα περιμένει 10 δευτερόλεπτα πριν ανοίξει.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "Το $SITE$ δεν θα προταθεί ξανά.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Απόπειρες ενώ ήταν κλειστό"
+  },
+  "stats_attempts_description": {
+    "message": "Κάθε φορά που ένας ιστότοπος σε έστειλε στη σελίδα παύσης. Δείχνει πόσο δύσκολο είναι να τηρηθεί κάθε όριο."
+  },
+  "stats_attempts_none": {
+    "message": "Καμία απόπειρα σε αυτή την περίοδο."
+  },
+  "stats_pause_title": {
+    "message": "Η παύση"
+  },
+  "stats_pause_description": {
+    "message": "Πόσο συχνά η αντίστροφη μέτρηση τελείωσε με άλλη επιλογή."
+  },
+  "stats_pause_none": {
+    "message": "Δεν απαντήθηκε καμία παύση σε αυτή την περίοδο."
+  },
+  "stats_pause_saidNo": {
+    "message": "Όχι $NO$ από $TOTAL$ φορές",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Πόσο ταιριάζει κάθε όριο"
+  },
+  "stats_fit_description": {
+    "message": "Μία κουκκίδα ανά ημέρα. Η γραμμή είναι το όριο."
+  },
+  "stats_fit_tight": {
+    "message": "Εξαντλείται συνήθως"
+  },
+  "stats_fit_loose": {
+    "message": "Μπορεί να γίνει αυστηρότερο"
+  },
+  "stats_fit_fits": {
+    "message": "Ταιριάζει"
+  },
+  "stats_fit_tight_text": {
+    "message": "Εξαντλήθηκε $HITS$ από $DAYS$ ημέρες. Μια παύση πριν ανοίξει ο ιστότοπος θα μπορούσε να μειώσει λίγο την πίεση.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Ποτέ πάνω από $MAX$ από τα $LIMIT$. Με $SUGGEST$ θα καλύπτονταν πάλι 9 στις 10 ημέρες.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Εξαντλήθηκε $HITS$ από $DAYS$ ημέρες, με περιθώριο τις υπόλοιπες.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Ορισμός σε $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Όριο $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "Το $NAME$ έχει τώρα ημερήσιο όριο $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Παρατάσεις και οι λόγοι σου"
+  },
+  "stats_extensions_summary": {
+    "message": "Παρατάσεις: $COUNT$, συνολικά $AMOUNT$ επιπλέον. Τα δικά σου λόγια, μήπως αξίζει να τα ξαναδιαβάσεις.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "Καμία παράταση σε αυτή την περίοδο."
+  },
+  "stats_heatmap_title": {
+    "message": "Πότε απλώνεις το χέρι"
+  },
+  "stats_heatmap_description": {
+    "message": "Ανοίγματα και απόπειρες ανά ώρα, κατά μέσο όρο ανά ημέρα της εβδομάδας."
+  },
+  "stats_heatmap_filter": {
+    "message": "Ιστότοπος ή ομάδα"
+  },
+  "stats_heatmap_all": {
+    "message": "Όλοι οι περιορισμένοι ιστότοποι"
+  },
+  "stats_heatmap_hint": {
+    "message": "Δείξε ένα τετράγωνο για να δεις τον αριθμό."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: κατά μέσο όρο $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Λιγότερα"
+  },
+  "stats_heatmap_more": {
+    "message": "Περισσότερα"
+  },
+  "stats_weekly_title": {
+    "message": "Έξι μήνες, εβδομάδα με εβδομάδα"
+  },
+  "stats_weekly_description": {
+    "message": "Μέσος χρόνος ανά ημέρα σε περιορισμένους ιστότοπους, σε σύγκριση με τον πρώτο σου μήνα. Το πράσινο είναι χρόνος που κέρδισες πίσω. Ένας δακτύλιος σημειώνει εβδομάδα με παράταση."
+  },
+  "stats_weekly_aria": {
+    "message": "Μέσος χρόνος ανά ημέρα για κάθε εβδομάδα, σε σύγκριση με τον πρώτο μήνα"
+  },
+  "stats_weekly_baseline": {
+    "message": "Πρώτος μήνας: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "Εμφανίζεται μετά από $WEEKS$ εβδομάδες ιστορικού. Εβδομάδες ως τώρα: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Εβδομάδα από $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "Ανά ημέρα"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Σε σχέση με τον πρώτο μήνα"
+  },
+  "stats_weekly_extensions": {
+    "message": "Παρατάσεις: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Κερδήθηκε πίσω από τον πρώτο μήνα"
+  },
+  "stats_weekday_title": {
+    "message": "Ανά ημέρα της εβδομάδας"
+  },
+  "stats_weekday_busiest": {
+    "message": "Περισσότερο κοστίζει: $DAY$, κατά μέσο όρο $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Μέσος χρόνος ανά ημέρα της εβδομάδας."
+  },
+  "stats_footer_retention": {
+    "message": "Το ιστορικό κρατιέται για $DAYS$ ημέρες και μετά διαγράφεται.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Εξαγωγή CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Εκκαθάριση ιστορικού"
+  },
+  "stats_clear_title": {
+    "message": "Εκκαθάριση όλων των στατιστικών;"
+  },
+  "stats_clear_text": {
+    "message": "Έτσι διαγράφεται όλο το ιστορικό σου από αυτό το πρόγραμμα περιήγησης. Τα όριά σου και η σημερινή χρήση μένουν ως έχουν. Δεν αναιρείται."
+  },
+  "stats_clear_cancel": {
+    "message": "Ακύρωση"
+  },
+  "stats_clear_confirm": {
+    "message": "Εκκαθάριση ιστορικού"
+  },
+  "stats_cleared": {
+    "message": "Τα στατιστικά διαγράφηκαν."
+  },
+  "stats_rule_removed": {
+    "message": "Καταργήθηκε"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ λεπ.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "Ανοίγματα: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "Παύση $COUNT$ δ",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Σελίδα στατιστικών"
+  },
+  "statsPageView_subtitle": {
+    "message": "Η περιήγησή σου σε αριθμούς"
+  },
+  "whatsNew_stats_title": {
+    "message": "Στατιστικά"
+  },
+  "whatsNew_stats_body": {
+    "message": "Δες πού πηγαίνει ο χρόνος σου στους περιορισμένους ιστότοπους και πώς αντέχουν τα όριά σου. Γεμίζουν τις επόμενες μέρες και οι αριθμοί δεν φεύγουν ποτέ από τον υπολογιστή σου."
+  },
+  "whatsNew_stats_link": {
+    "message": "Άνοιγμα στατιστικών"
+  },
+  "statsPrompt_title": {
+    "message": "Τα στατιστικά σου είναι έτοιμα"
+  },
+  "statsPrompt_body": {
+    "message": "Έχουν καταγραφεί μερικές μέρες. Δες πού πήγε ο χρόνος σου στους περιορισμένους ιστότοπους και πώς άντεξαν τα όριά σου."
+  },
+  "statsPrompt_open": {
+    "message": "Δες τα στατιστικά μου"
+  },
+  "statsPrompt_later": {
+    "message": "Όχι τώρα"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Να μη μου το θυμίσεις ξανά"
   }
 }

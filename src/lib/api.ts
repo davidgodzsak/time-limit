@@ -1,4 +1,4 @@
-import { UISite, UIGroup, siteToStorage, groupToStorage, siteFromStorage, groupFromStorage } from './storage';
+import { UISite, UIGroup, BackendSite, BackendGroup, siteToStorage, groupToStorage, siteFromStorage, groupFromStorage } from './storage';
 
 export interface BackgroundError {
   success: false;
@@ -467,4 +467,68 @@ export function listenForBroadcasts(
   return () => {
     browser.runtime.onMessage.removeListener(handleMessage);
   };
+}
+
+/** One site's numbers for one day, as kept by background_scripts/history_storage.js. */
+export interface HistoryDaySite {
+  /** Seconds spent. */
+  t?: number;
+  /** Opens. */
+  o?: number;
+  /** Attempts to open it after its limit was spent, or while blocked. */
+  b?: number;
+  /** Pause countdowns answered "yes". */
+  pp?: number;
+  /** Pause countdowns answered "no". */
+  pd?: number;
+  /** Opens and attempts per local hour, e.g. { "22": 3 }. */
+  h?: Record<string, number>;
+  /** The group the site belonged to that day. */
+  g?: string;
+}
+
+export interface HistoryExtension {
+  /** The extended rule: a group id or a site id. */
+  id: string;
+  /** Minutes added. */
+  m: number;
+  /** Opens added. */
+  o: number;
+  /** The reason the user gave. */
+  r: string;
+}
+
+export interface HistoryDay {
+  s: Record<string, HistoryDaySite>;
+  x?: HistoryExtension[];
+}
+
+/** Everything the statistics page reads, in one message. */
+export interface StatisticsData {
+  /** Today, "YYYY-MM-DD" (local). */
+  today: string;
+  days: Record<string, HistoryDay>;
+  /** Names for every site/group ever seen, including deleted ones. */
+  names: { sites: Record<string, string>; groups: Record<string, string> };
+  sites: BackendSite[];
+  groups: BackendGroup[];
+  /** Frequently opened sites with no rule, from the 7 day visit window. */
+  frequentHosts: Array<{ host: string; opensWindow: number; activeDays: number }>;
+}
+
+export async function getStatistics(): Promise<StatisticsData> {
+  return sendMessage('getStatistics');
+}
+
+export async function clearStatistics(): Promise<void> {
+  await sendMessage('clearStatistics');
+}
+
+/** Whether the popup should say, once, that the statistics page now has something to show. */
+export async function getStatsPrompt(): Promise<{ shouldShow: boolean }> {
+  return sendMessage('getStatsPrompt');
+}
+
+export async function markStatsPromptSeen(): Promise<void> {
+  await sendMessage('markStatsPromptSeen');
 }

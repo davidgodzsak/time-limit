@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Att klicka runt inne på en webbplats förbrukar inte längre dina öppningar. En öppning räknas när du kommer till webbplatsen från något annat: en annan sida, en annan flik eller en annan app.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Statistik"
+  },
+  "stats_subtitle": {
+    "message": "Vart din tid tog vägen på begränsade webbplatser, och hur gränserna höll."
+  },
+  "stats_open": {
+    "message": "Statistik"
+  },
+  "stats_openSettings": {
+    "message": "Inställningar"
+  },
+  "stats_privacy_title": {
+    "message": "Bara du kan se det här"
+  },
+  "stats_privacy_text": {
+    "message": "De här siffrorna räknas och sparas på den här datorn, i den här webbläsaren. Inget skickas till någon server, och ingen annan kan se dem, inte ens vi."
+  },
+  "stats_loading": {
+    "message": "Läser in statistik"
+  },
+  "stats_loadFailed": {
+    "message": "Det gick inte att läsa in din statistik. Försök ladda om sidan."
+  },
+  "stats_actionFailed": {
+    "message": "Det fungerade inte. Försök igen."
+  },
+  "stats_range_label": {
+    "message": "Tidsperiod"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ dagar",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Visar de $COUNT$ dagar som registrerats hittills.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Översikt"
+  },
+  "stats_tab_sites": {
+    "message": "Webbplatser"
+  },
+  "stats_tab_limits": {
+    "message": "Gränser"
+  },
+  "stats_tab_patterns": {
+    "message": "Mönster"
+  },
+  "stats_notEnough_title": {
+    "message": "Din statistik är på väg"
+  },
+  "stats_notEnough_text": {
+    "message": "Räkningen började $DATE$. Kom tillbaka om några dagar, när det finns tillräckligt för att visa något användbart.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "Räkningen börjar nästa gång du öppnar en begränsad webbplats. Kom tillbaka om några dagar för att se vart tiden tar vägen."
+  },
+  "stats_notEnough_noRules": {
+    "message": "Statistiken räknas för de webbplatser du begränsar. Lägg till din första webbplats i Inställningar och kom tillbaka om några dagar."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Allt som räknas här stannar i den här webbläsaren. Inget skickas någonsin någonstans."
+  },
+  "stats_summary": {
+    "message": "De senaste $DAYS$ dagarna lade du $TOTAL$ på begränsade webbplatser, ungefär $PERDAY$ om dagen.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "Det är $AMOUNT$ mindre än de $DAYS$ dagarna innan.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "Det är $AMOUNT$ mer än de $DAYS$ dagarna innan.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Ungefär som perioden innan."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Tid per dag"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Öppningar per dag"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Gånger du höll igen"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Blockerade försök och pauser du sa nej till"
+  },
+  "stats_kpi_streak": {
+    "message": "Dagar utan förlängning"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Bästa: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Bästa svit, i dagar"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Inga tidigare data än"
+  },
+  "stats_delta_same": {
+    "message": "Ungefär samma"
+  },
+  "stats_delta_new": {
+    "message": "Nytt den här perioden"
+  },
+  "stats_delta_less": {
+    "message": "$PERCENT$ mindre",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "$PERCENT$ mer",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Varje dag, per webbplats"
+  },
+  "stats_daily_description": {
+    "message": "Varje band är en webbplats, staplade så att överkanten är din dagliga summa. Den mörka linjen är medelvärdet över $DAYS$ dagar, så att en dålig dag inte döljer trenden.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "Inget registrerat den här perioden."
+  },
+  "stats_mode_time": {
+    "message": "Tid"
+  },
+  "stats_mode_opens": {
+    "message": "Öppningar"
+  },
+  "stats_chart_other": {
+    "message": "Andra webbplatser"
+  },
+  "stats_chart_total": {
+    "message": "Totalt"
+  },
+  "stats_chart_average": {
+    "message": "Medel över $DAYS$ dagar",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Daglig tid på begränsade webbplatser, staplad per webbplats, med medel över $DAYS$ dagar",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Dagliga öppningar av begränsade webbplatser, staplade per webbplats, med medel över $DAYS$ dagar",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Det här sticker ut"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$ har minskat med $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "$NOW$ om dagen i snitt, från $BEFORE$ perioden innan.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ nådde sin gräns $HITS$ av $DAYS$ dagar",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Gränsen gör hela jobbet varje dag. En kort paus innan webbplatsen öppnas kan lätta på trycket."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Försök att öppna $NAME$ när den var spärrad: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Varje försök slutade på paussidan."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Från $COUNT$ perioden innan. Vanan håller på att släppa.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Från $COUNT$ perioden innan.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "Pausen på $NAME$ fick dig att vända $PERCENT$ av gångerna",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ av $TOTAL$ nedräkningar slutade med att du valde något annat.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Din svåraste timme börjar $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "$PERCENT$ av öppningarna och försöken sker under den timmen.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Webbplats eller grupp"
+  },
+  "stats_sites_col_time": {
+    "message": "Tid"
+  },
+  "stats_sites_col_opens": {
+    "message": "Öppningar"
+  },
+  "stats_sites_col_trend": {
+    "message": "Trend"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Hur det gick"
+  },
+  "stats_sites_group": {
+    "message": "Grupp"
+  },
+  "stats_sites_empty": {
+    "message": "Ingen begränsad webbplats användes den här perioden."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Öppnas aldrig"
+  },
+  "stats_sites_tried": {
+    "message": "Försök medan spärrad: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Gränsen nådd $HITS$ av $DAYS$ dagar",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Använder mindre än hälften av gränsen"
+  },
+  "stats_sites_turnedBack": {
+    "message": "Pausen fick dig att vända $PERCENT$ av gångerna",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Öppnas ofta, ingen gräns än"
+  },
+  "stats_frequent_description": {
+    "message": "Från de senaste 7 dagarna. Bara webbplatsens namn räknas, aldrig sidorna du läser. Arbetsverktyg som GitHub eller Jira listas aldrig."
+  },
+  "stats_frequent_count": {
+    "message": "Öppningar: $OPENS$ · dagar: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Lägg till 10 s paus"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Inget problem, föreslå den inte igen"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$ pausar nu i 10 sekunder innan den öppnas.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$ kommer inte att föreslås igen.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Försök medan spärrad"
+  },
+  "stats_attempts_description": {
+    "message": "Varje gång en webbplats skickade dig till paussidan. Det visar hur svårt varje gräns är att hålla."
+  },
+  "stats_attempts_none": {
+    "message": "Inga försök den här perioden."
+  },
+  "stats_pause_title": {
+    "message": "Pausen"
+  },
+  "stats_pause_description": {
+    "message": "Hur ofta nedräkningen slutade med att du valde något annat."
+  },
+  "stats_pause_none": {
+    "message": "Inga pauser besvarade den här perioden."
+  },
+  "stats_pause_saidNo": {
+    "message": "Sa nej $NO$ av $TOTAL$ gånger",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Hur väl varje gräns passar"
+  },
+  "stats_fit_description": {
+    "message": "En prick per dag. Linjen är gränsen."
+  },
+  "stats_fit_tight": {
+    "message": "Nås de flesta dagar"
+  },
+  "stats_fit_loose": {
+    "message": "Kan skärpas"
+  },
+  "stats_fit_fits": {
+    "message": "Passar"
+  },
+  "stats_fit_tight_text": {
+    "message": "Nådd $HITS$ av $DAYS$ dagar. En paus innan webbplatsen öppnas kan lätta på trycket.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Aldrig över $MAX$ av $LIMIT$. $SUGGEST$ hade ändå räckt 9 dagar av 10.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Nådd $HITS$ av $DAYS$ dagar, med marginal resten.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Ändra till $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Gräns $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$ har nu en daglig gräns på $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Förlängningar och dina skäl"
+  },
+  "stats_extensions_summary": {
+    "message": "Förlängningar: $COUNT$, $AMOUNT$ extra totalt. Dina egna ord, om de är värda att läsa igen.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "Inga förlängningar den här perioden."
+  },
+  "stats_heatmap_title": {
+    "message": "När du sträcker dig efter det"
+  },
+  "stats_heatmap_description": {
+    "message": "Öppningar och försök per timme, i snitt per veckodag."
+  },
+  "stats_heatmap_filter": {
+    "message": "Webbplats eller grupp"
+  },
+  "stats_heatmap_all": {
+    "message": "Alla begränsade webbplatser"
+  },
+  "stats_heatmap_hint": {
+    "message": "Peka på en ruta för att se siffran."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: i snitt $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Färre"
+  },
+  "stats_heatmap_more": {
+    "message": "Fler"
+  },
+  "stats_weekly_title": {
+    "message": "Sex månader, vecka för vecka"
+  },
+  "stats_weekly_description": {
+    "message": "Genomsnittlig tid per dag på begränsade webbplatser, jämfört med din första månad. Grönt är tid du vunnit tillbaka. En ring markerar en vecka med förlängning."
+  },
+  "stats_weekly_aria": {
+    "message": "Genomsnittlig tid per dag för varje vecka, jämfört med första månaden"
+  },
+  "stats_weekly_baseline": {
+    "message": "Första månaden: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "Visas efter $WEEKS$ veckors historik. Veckor hittills: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Veckan från $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "Per dag"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Mot första månaden"
+  },
+  "stats_weekly_extensions": {
+    "message": "Förlängningar: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Vunnet tillbaka sedan första månaden"
+  },
+  "stats_weekday_title": {
+    "message": "Per veckodag"
+  },
+  "stats_weekday_busiest": {
+    "message": "Dyrast är $DAY$: i snitt $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Genomsnittlig tid per veckodag."
+  },
+  "stats_footer_retention": {
+    "message": "Historiken sparas i $DAYS$ dagar och raderas sedan.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Exportera CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Rensa historik"
+  },
+  "stats_clear_title": {
+    "message": "Rensa all statistik?"
+  },
+  "stats_clear_text": {
+    "message": "Det här raderar hela din historik från den här webbläsaren. Dina gränser och dagens användning finns kvar. Det går inte att ångra."
+  },
+  "stats_clear_cancel": {
+    "message": "Avbryt"
+  },
+  "stats_clear_confirm": {
+    "message": "Rensa historik"
+  },
+  "stats_cleared": {
+    "message": "Statistiken rensad."
+  },
+  "stats_rule_removed": {
+    "message": "Borttagen"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "$COUNT$ öppningar",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "$COUNT$ s paus",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Statistiksida"
+  },
+  "statsPageView_subtitle": {
+    "message": "Ditt surfande i siffror"
+  },
+  "whatsNew_stats_title": {
+    "message": "Statistik"
+  },
+  "whatsNew_stats_body": {
+    "message": "Se vart din tid tar vägen på begränsade webbplatser och hur dina gränser håller. Den fylls på under de närmaste dagarna, och siffrorna lämnar aldrig din dator."
+  },
+  "whatsNew_stats_link": {
+    "message": "Öppna statistik"
+  },
+  "statsPrompt_title": {
+    "message": "Din statistik är klar"
+  },
+  "statsPrompt_body": {
+    "message": "Några dagar har registrerats. Se vart din tid tog vägen på begränsade webbplatser och hur dina gränser höll."
+  },
+  "statsPrompt_open": {
+    "message": "Visa min statistik"
+  },
+  "statsPrompt_later": {
+    "message": "Inte nu"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Påminn mig inte igen"
   }
 }

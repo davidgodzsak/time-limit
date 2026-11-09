@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Переходи всередині сайту більше не витрачають відкриття. Відкриття зараховується, коли ви приходите на сайт звідкись іще: з іншої сторінки, іншої вкладки чи іншої програми.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Статистика"
+  },
+  "stats_subtitle": {
+    "message": "На що пішов ваш час на обмежених сайтах і як витримали обмеження."
+  },
+  "stats_open": {
+    "message": "Статистика"
+  },
+  "stats_openSettings": {
+    "message": "Налаштування"
+  },
+  "stats_privacy_title": {
+    "message": "Це бачите лише ви"
+  },
+  "stats_privacy_text": {
+    "message": "Ці числа рахуються й зберігаються на цьому комп'ютері, у цьому браузері. Нічого не надсилається на жоден сервер, і ніхто інший їх не бачить, навіть ми."
+  },
+  "stats_loading": {
+    "message": "Завантаження статистики"
+  },
+  "stats_loadFailed": {
+    "message": "Не вдалося завантажити статистику. Спробуйте перезавантажити сторінку."
+  },
+  "stats_actionFailed": {
+    "message": "Не вдалося. Спробуйте ще раз."
+  },
+  "stats_range_label": {
+    "message": "Період"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ днів",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Показано $COUNT$ днів, записаних досі.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Огляд"
+  },
+  "stats_tab_sites": {
+    "message": "Сайти"
+  },
+  "stats_tab_limits": {
+    "message": "Обмеження"
+  },
+  "stats_tab_patterns": {
+    "message": "Звички"
+  },
+  "stats_notEnough_title": {
+    "message": "Ваша статистика вже в дорозі"
+  },
+  "stats_notEnough_text": {
+    "message": "Підрахунок почався $DATE$. Поверніться за кілька днів, коли даних буде досить, щоб показати щось корисне.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "Підрахунок почнеться, коли ви наступного разу відкриєте обмежений сайт. Поверніться за кілька днів, щоб побачити, на що йде ваш час."
+  },
+  "stats_notEnough_noRules": {
+    "message": "Статистика рахується для сайтів, які ви обмежуєте. Додайте перший сайт у налаштуваннях і поверніться за кілька днів."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Усе, що тут рахується, залишається в цьому браузері. Нічого ніколи нікуди не надсилається."
+  },
+  "stats_summary": {
+    "message": "За останні $DAYS$ днів ви провели $TOTAL$ на обмежених сайтах, приблизно $PERDAY$ на день.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "Це на $AMOUNT$ менше, ніж за попередні $DAYS$ днів.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "Це на $AMOUNT$ більше, ніж за попередні $DAYS$ днів.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Приблизно стільки ж, як у попередньому періоді."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Час на день"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Відкриттів на день"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Разів утрималися"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Заблоковані спроби й паузи, на які ви сказали ні"
+  },
+  "stats_kpi_streak": {
+    "message": "Днів без продовження"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Рекорд: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Найдовша серія, у днях"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Ще немає попередніх даних"
+  },
+  "stats_delta_same": {
+    "message": "Приблизно так само"
+  },
+  "stats_delta_new": {
+    "message": "Нове в цьому періоді"
+  },
+  "stats_delta_less": {
+    "message": "на $PERCENT$ менше",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "на $PERCENT$ більше",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Кожен день, за сайтами"
+  },
+  "stats_daily_description": {
+    "message": "Кожна смуга — один сайт, складені одна на одну, тож верхній край — ваша денна сума. Темна лінія — середнє за $DAYS$ днів, щоб один поганий день не приховав тенденцію.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "За цей період нічого не записано."
+  },
+  "stats_mode_time": {
+    "message": "Час"
+  },
+  "stats_mode_opens": {
+    "message": "Відкриття"
+  },
+  "stats_chart_other": {
+    "message": "Інші сайти"
+  },
+  "stats_chart_total": {
+    "message": "Разом"
+  },
+  "stats_chart_average": {
+    "message": "Середнє за $DAYS$ днів",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Щоденний час на обмежених сайтах, складений за сайтами, із середнім за $DAYS$ днів",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Щоденні відкриття обмежених сайтів, складені за сайтами, із середнім за $DAYS$ днів",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Що вирізняється"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$: менше на $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "У середньому $NOW$ на день проти $BEFORE$ у попередньому періоді.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ досягав обмеження $HITS$ з $DAYS$ днів",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Обмеження щодня виконує всю роботу. Коротка пауза перед відкриттям сайту могла б трохи зняти напругу."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Спроби відкрити заблокований $NAME$: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Кожна спроба закінчилася на сторінці паузи."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Проти $COUNT$ у попередньому періоді. Звичка слабшає.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Проти $COUNT$ у попередньому періоді.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "Пауза на $NAME$ повертала вас назад у $PERCENT$ випадків",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ з $TOTAL$ відліків закінчилися іншим вибором.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Ваша найважча година починається о $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "$PERCENT$ відкриттів і спроб припадає на цю годину.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Сайт або група"
+  },
+  "stats_sites_col_time": {
+    "message": "Час"
+  },
+  "stats_sites_col_opens": {
+    "message": "Відкриття"
+  },
+  "stats_sites_col_trend": {
+    "message": "Тенденція"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Як пройшло"
+  },
+  "stats_sites_group": {
+    "message": "Група"
+  },
+  "stats_sites_empty": {
+    "message": "За цей період жоден обмежений сайт не використовувався."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Ніколи не відкривається"
+  },
+  "stats_sites_tried": {
+    "message": "Спроби під час блокування: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Обмеження досягнуто $HITS$ з $DAYS$ днів",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Використовує менше половини обмеження"
+  },
+  "stats_sites_turnedBack": {
+    "message": "Пауза повертала вас назад у $PERCENT$ випадків",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Часто відкриваються, ще без обмеження"
+  },
+  "stats_frequent_description": {
+    "message": "За останні 7 днів. Рахується лише назва сайту, ніколи не сторінки, які ви читаєте. Робочі інструменти, як-от GitHub чи Jira, тут ніколи не з'являються."
+  },
+  "stats_frequent_count": {
+    "message": "Відкриттів: $OPENS$ · днів: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Додати паузу 10 с"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Це не проблема, більше не пропонувати"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$ тепер чекає 10 секунд перед відкриттям.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$ більше не пропонуватиметься.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Спроби під час блокування"
+  },
+  "stats_attempts_description": {
+    "message": "Кожного разу, коли сайт надсилав вас на сторінку паузи. Показує, наскільки важко дотримуватися кожного обмеження."
+  },
+  "stats_attempts_none": {
+    "message": "За цей період спроб не було."
+  },
+  "stats_pause_title": {
+    "message": "Пауза"
+  },
+  "stats_pause_description": {
+    "message": "Як часто відлік закінчувався іншим вибором."
+  },
+  "stats_pause_none": {
+    "message": "За цей період на паузи не відповідали."
+  },
+  "stats_pause_saidNo": {
+    "message": "Відмова $NO$ з $TOTAL$ разів",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Наскільки пасує кожне обмеження"
+  },
+  "stats_fit_description": {
+    "message": "Одна крапка на день. Лінія — обмеження."
+  },
+  "stats_fit_tight": {
+    "message": "Досягається майже щодня"
+  },
+  "stats_fit_loose": {
+    "message": "Можна посилити"
+  },
+  "stats_fit_fits": {
+    "message": "Пасує"
+  },
+  "stats_fit_tight_text": {
+    "message": "Досягнуто $HITS$ з $DAYS$ днів. Пауза перед відкриттям сайту могла б трохи зняти напругу.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Ніколи не більше $MAX$ з $LIMIT$. $SUGGEST$ все одно покрило б 9 днів із 10.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Досягнуто $HITS$ з $DAYS$ днів, в інші дні із запасом.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Встановити $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Обмеження $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$ тепер має денне обмеження $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Продовження та ваші причини"
+  },
+  "stats_extensions_summary": {
+    "message": "Продовжень: $COUNT$, разом $AMOUNT$ додатково. Ваші власні слова, якщо їх варто перечитати.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "За цей період продовжень не було."
+  },
+  "stats_heatmap_title": {
+    "message": "Коли вас тягне"
+  },
+  "stats_heatmap_description": {
+    "message": "Відкриття та спроби за годинами, усереднені за днями тижня."
+  },
+  "stats_heatmap_filter": {
+    "message": "Сайт або група"
+  },
+  "stats_heatmap_all": {
+    "message": "Усі обмежені сайти"
+  },
+  "stats_heatmap_hint": {
+    "message": "Наведіть на квадрат, щоб побачити число."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: у середньому $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Менше"
+  },
+  "stats_heatmap_more": {
+    "message": "Більше"
+  },
+  "stats_weekly_title": {
+    "message": "Пів року, тиждень за тижнем"
+  },
+  "stats_weekly_description": {
+    "message": "Середній час на день на обмежених сайтах порівняно з першим місяцем. Зелене — повернутий час. Кільце позначає тиждень із продовженням."
+  },
+  "stats_weekly_aria": {
+    "message": "Середній час на день за кожен тиждень порівняно з першим місяцем"
+  },
+  "stats_weekly_baseline": {
+    "message": "Перший місяць: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "З'явиться після $WEEKS$ тижнів історії. Тижнів досі: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Тиждень з $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "На день"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Порівняно з першим місяцем"
+  },
+  "stats_weekly_extensions": {
+    "message": "Продовжень: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Повернуто з першого місяця"
+  },
+  "stats_weekday_title": {
+    "message": "За днями тижня"
+  },
+  "stats_weekday_busiest": {
+    "message": "Найбільше коштує: $DAY$, у середньому $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Середній час за днями тижня."
+  },
+  "stats_footer_retention": {
+    "message": "Історія зберігається $DAYS$ днів, потім видаляється.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Експортувати CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Очистити історію"
+  },
+  "stats_clear_title": {
+    "message": "Очистити всю статистику?"
+  },
+  "stats_clear_text": {
+    "message": "Це видалить усю вашу історію з цього браузера. Ваші обмеження та сьогоднішнє використання залишаться без змін. Цю дію не можна скасувати."
+  },
+  "stats_clear_cancel": {
+    "message": "Скасувати"
+  },
+  "stats_clear_confirm": {
+    "message": "Очистити історію"
+  },
+  "stats_cleared": {
+    "message": "Статистику очищено."
+  },
+  "stats_rule_removed": {
+    "message": "Видалено"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ хв",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "Відкриттів: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "Пауза $COUNT$ с",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Сторінка статистики"
+  },
+  "statsPageView_subtitle": {
+    "message": "Ваш перегляд у числах"
+  },
+  "whatsNew_stats_title": {
+    "message": "Статистика"
+  },
+  "whatsNew_stats_body": {
+    "message": "Дізнайтеся, на що йде ваш час на обмежених сайтах і як тримаються обмеження. Вона заповниться за кілька днів, а числа ніколи не залишають ваш комп'ютер."
+  },
+  "whatsNew_stats_link": {
+    "message": "Відкрити статистику"
+  },
+  "statsPrompt_title": {
+    "message": "Ваша статистика готова"
+  },
+  "statsPrompt_body": {
+    "message": "Кілька днів уже записано. Подивіться, на що пішов ваш час на обмежених сайтах і як витримали обмеження."
+  },
+  "statsPrompt_open": {
+    "message": "Переглянути статистику"
+  },
+  "statsPrompt_later": {
+    "message": "Не зараз"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Більше не нагадувати"
   }
 }

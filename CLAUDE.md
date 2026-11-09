@@ -30,6 +30,7 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`reflection_storage.js`**: Reflection passes (a "yes" quiets the countdown for 20 minutes) and the daily yes/no tally
 - **`visit_tracker.js`**: Rolling per-host open counts for *unlimited* sites (hostnames only, 7 day window)
 - **`whats_new_storage.js`**: Flags that the extension was updated, so the popup can show the release note once
+- **`history_storage.js`**: A year of daily statistics: folds each finished day into monthly history before the reset deletes it, and counts what nothing else records (tries while off limits, opens per hour)
 - **`suggestion_engine.js`**: Decides when a frequently opened site is worth offering a limit for, and remembers the answer forever
 - **`site_blocker.js`**: Blocks/redirects users to timeout page when limits are reached; `resolveFullBlock` is the single source of truth for "is this page blocked outright" (site vs group)
 - **`badge_manager.js`**: Updates toolbar badge with remaining time
@@ -45,6 +46,7 @@ React components that run in isolated contexts:
 - **`pages/settings/`**: Settings page (SettingsPage.tsx) for managing sites, groups, and limits
 - **`pages/timeout/`**: Timeout page (TimeoutPage.tsx) shown when users hit their limits
 - **`pages/reflect/`**: Reflection page (ReflectionPage.tsx) — the countdown and the "do you still want to open this?" question
+- **`pages/stats/`**: Statistics page (StatisticsPage.tsx) — usage history, limits at work, patterns; tabs live in `components/stats/`, the arithmetic in `lib/stats/aggregate.ts`
 
 ### 3. Shared Libraries (`src/lib/`)
 - **`api.ts`**: Type-safe message passing wrapper for background script communication
@@ -62,6 +64,7 @@ src/components/
 ├── TimeoutPage.tsx           # Timeout page - shows when limits reached
 │
 ├── popup/                    # Popup view components (extracted from PluginPopup)
+│   ├── PopupHeader.tsx       # Shared header: logo + info / statistics / settings
 │   ├── NormalPageView.tsx    # Regular site tracking view
 │   ├── DisabledStateView.tsx # Disabled site/group view
 │   ├── UnlimitedSiteView.tsx # Unlimited sites view
@@ -300,6 +303,46 @@ either `host` or `host/path`:
   does not restart the countdown. "No" clears the pass.
 - **Answers are counted** per site per day in `reflections-YYYY-MM-DD`.
 
+### Statistics (`history_storage.js` + `lib/stats/aggregate.ts`)
+- **History is written before the reset deletes it**: `performDailyReset` calls
+  `archivePastDays` first, folding every finished day's `usageStats-*`,
+  `activity-*`, `reflections-*` and `extensions-*` into `history-YYYY-MM`.
+  Archiving is a merge: a field only changes when its source key is still
+  there, so a day archived again (reflections outlive usage by a week) keeps
+  its time. A failed archive is logged and the reset carries on — the limits
+  need the reset more than the page needs the history.
+- **Today is never archived**; `getHistory` builds it, and any day the reset
+  missed (browser closed at midnight), live from the per-day keys.
+- **Rows are rules, not sites**: each day stores the group a site was in (`g`),
+  and the page counts a grouped site towards that group, as the limits did.
+- **A "try" is arriving at a spent or blocked site** (`handlePotentialRedirect`
+  with `isOpen !== false`), never a limit running out while the user is on the
+  site. Opens, tries and pause "no"s each note their local hour for the heatmap.
+- **Privacy**: only site ids, the patterns the user typed, and counts. Never a
+  visited URL. Kept 365 days (`HISTORY_RETENTION_DAYS`, mirrored in
+  `components/stats/retention.ts`); "Clear history" removes it all but today's
+  usage, which the limits run on.
+- **Below `MIN_DAYS_FOR_STATS` (3) recorded days** the page shows a "come back
+  in a few days" screen instead of charts of nothing. Ranges are clipped to the
+  recorded span, comparisons appear only once the previous period is recorded,
+  and the six-month trend waits for five weeks (four make the baseline).
+- "Opened often, no limit yet" is `getFrequentUnlimitedHosts` in
+  `suggestion_engine.js`: the suggestion heuristic and its once-ever memory,
+  without the one-a-day pacing.
+- **The popup says once that the page has something to show**: when the
+  history spans `STATS_READY_DAYS` (3, mirrors `MIN_DAYS_FOR_STATS`),
+  `StatsReadyView` takes the popup on ordinary pages, after the release note
+  and ahead of the rating prompt. "See my statistics" and "Not now" both
+  retire it for good (`statsPromptState.handled`), and so does opening the
+  statistics page once it has enough data (`getStatistics`).
+  The same note sits as a strip at the bottom of the timeout and reflection
+  pages (`StatsReadyBanner`), sharing that state: its link or its ✕ retires
+  the note everywhere. Those two pages also carry the statistics icon in the
+  header, next to info.
+- Charts are hand-drawn SVG (no chart library) in one mint hue; sites are told
+  apart by direct labels, not colours. Durations and dates use `Intl`, so they
+  need no translation keys.
+
 ### Release Notes ("What's new")
 - `onInstalled` with `reason === 'update'` flags `whatsNewState.pending` and
   tries `browser.action.openPopup()`; a fresh install never sets it (new users
@@ -309,6 +352,7 @@ either `host` or `host/path`:
 - **The note's content lives in `src/lib/constants/whatsNew.ts`**: edit that list
   (and its `whatsNew_*` locale keys) as part of preparing a release. Whatever it
   holds is what users see after their next update.
+- A highlight may carry a `link` to an extension page (the statistics note opens the page).
 - The note also carries the rating card (only for users who have not rated) and
   a link to `pages/info/index.html#donate`.
 
@@ -424,6 +468,10 @@ Current coverage:
 - `full_block.test.js` — the full block: it outranks usage, extensions and the countdown; group vs site ownership; `isEnabled` lifts it; specificity exceptions; a block counts as a rule in site/group storage
 - `whats_new_storage.test.js` — the release-note flag is set by updates only and stays dismissed
 - `open_counter.test.js` — what counts as an open (in-site browsing, same-site tab switches, leaving and coming back, other apps and focus flicker, bursts) and the blocker's `isOpen`
+- `stats_prompt_storage.test.js` — the "statistics are ready" note waits for 3 recorded days and never returns once answered; `trackedDayCount`
+- `history_storage.test.js` — activity counters, archiving as a merge, retention, live today/missed days, clearing, the reset archiving before it deletes
+- `lib/stats/aggregate.test.ts` — rules (group ownership, deleted names), range clipping, moving average, limit fit, streaks, weekly trend, insights, CSV
+- `components/StatisticsPage.test.tsx` — smoke test: every tab renders from two months of data without console errors; the not-enough-data screen
 - `urlScope.test.ts`, `groupSuggestions.test.ts` — popup quick-add pattern and group-aware suggestions
 
 Conventions: colocate `*.test.js`/`*.test.ts` next to the module; stub
@@ -441,9 +489,13 @@ browser.storage.local keys:
 - extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
 - reflections-YYYY-MM-DD: { [siteId]: { proceeded, dismissed } } (7 day window)
 - reflectionPasses: { [siteId|groupId]: expiresAtMs } (cleared on daily reset)
+- activity-YYYY-MM-DD: { [siteId]: { b, h: { hour: n } } } (tries while off limits + opens per hour; deleted once archived)
+- history-YYYY-MM: { "YYYY-MM-DD": { s: { [siteId]: { t, o, b, pp, pd, h, g } }, x: [{ id, m, o, r }] } } (365 days)
+- historyNames: { sites: { [id]: urlPattern }, groups: { [id]: name } } (names for deleted rules)
 - viewedSiteId: string|null (the rule the user is looking at, for open counting; cleared on browser startup)
 - leftBrowserAt: ms|null (when the browser last lost focus, for open counting)
 - whatsNewState: { pending, version, previousVersion } (release note, updates only)
+- statsPromptState: { handled, handledAt } (the one-time "your statistics are ready" popup note)
 - visitTracking: { [host]: { days: { "YYYY-MM-DD": opens }, lastVisit } }
 - limitSuggestions: { handledHosts: string[], pending, lastSuggestedDate }
 - timeoutNotes: Note[] (motivational messages)

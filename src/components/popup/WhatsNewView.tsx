@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Sparkles } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import { WHATS_NEW_HIGHLIGHTS } from "@/lib/constants/whatsNew";
+import { openExtensionPage } from "@/lib/utils/navigation";
 import Logo from "../Logo";
 import { RatingCard } from "../RatingCard";
 
@@ -76,6 +77,15 @@ export function WhatsNewView({
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {t(highlight.bodyKey)}
                   </p>
+                  {highlight.link && (
+                    <button
+                      type="button"
+                      onClick={() => openExtensionPage(highlight.link!.path)}
+                      className="mt-1.5 text-xs font-medium text-emerald-700 hover:underline"
+                    >
+                      {t(highlight.link.labelKey)} →
+                    </button>
+                  )}
                 </div>
               </div>
             );

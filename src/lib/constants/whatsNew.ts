@@ -8,7 +8,8 @@
  * info page.
  */
 
-import { DoorOpen, Globe, type LucideIcon } from 'lucide-react';
+import { BarChart3, DoorOpen, type LucideIcon } from 'lucide-react';
+import { STATS_PAGE_PATH } from '@/lib/utils/navigation';
 
 export interface WhatsNewHighlight {
   icon: LucideIcon;
@@ -16,21 +17,26 @@ export interface WhatsNewHighlight {
   titleKey: string;
   /** i18n key for the sentence under it. */
   bodyKey: string;
+  /** Optional link to an extension page that shows the new thing. */
+  link?: { path: string; labelKey: string };
 }
 
 export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
-  // 1.13.1: anyone with an opens limit saw it run out within minutes (#9), so
-  // they need to hear it works now and what an open means.
+  // 1.14.0: the statistics page. It starts empty for everyone, so the note
+  // says it fills in over a few days; the popup reminds them once it has
+  // (stats_prompt_storage.js).
+  {
+    icon: BarChart3,
+    titleKey: 'whatsNew_stats_title',
+    bodyKey: 'whatsNew_stats_body',
+    link: { path: STATS_PAGE_PATH, labelKey: 'whatsNew_stats_link' },
+  },
+  // Kept from 1.13.1, three weeks old: anyone who had an opens limit run out
+  // within minutes (#9) should hear it works now. The 16-languages note from
+  // 1.13.0 is gone, it is over a month old.
   {
     icon: DoorOpen,
     titleKey: 'whatsNew_opens_title',
     bodyKey: 'whatsNew_opens_body',
-  },
-  // Kept from 1.13.0, only two weeks old. The full block note from 1.12.0 is
-  // gone — over a month has passed, so users have seen it.
-  {
-    icon: Globe,
-    titleKey: 'whatsNew_languages_title',
-    bodyKey: 'whatsNew_languages_body',
   },
 ];

@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Plus, Globe, Loader2, Info, Hourglass, Lightbulb, Ban } from "lucide-react";
+import { Plus, Globe, Loader2, Hourglass, Lightbulb, Ban } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import { UIGroup } from "@/lib/storage";
 import type { LimitSuggestion } from "@/lib/api";
-import Logo from "../Logo";
+import { PopupHeader } from "./PopupHeader";
 import { ReflectionDelayPicker } from "../ReflectionDelayPicker";
 
 /** The delay the suggestion banner offers — the lightest thing that helps. */
@@ -64,32 +64,7 @@ export function UnlimitedSiteView({
 }: UnlimitedSiteViewProps) {
   return (
     <Card className="w-80 shadow-soft border-0 overflow-hidden">
-      <div className="gradient-mint p-4">
-        <div className="flex items-center justify-between">
-          <Logo size="sm" />
-          <div className="flex gap-1">
-            {onInfo && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={onInfo}
-                className="hover:bg-white/50"
-                title={t("normalPageView_button_tooltip")}
-              >
-                <Info size={18} />
-              </Button>
-            )}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onOpenSettings}
-              className="hover:bg-white/50"
-            >
-              <Settings size={18} />
-            </Button>
-          </div>
-        </div>
-      </div>
+      <PopupHeader onSettings={onOpenSettings} onInfo={onInfo} />
 
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">

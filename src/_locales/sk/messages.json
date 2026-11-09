@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Prechádzanie v rámci stránky už nespotrebúva otvorenia. Otvorenie sa započíta, keď na stránku prídete odinakiaľ: z inej stránky, inej karty alebo inej aplikácie.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Štatistiky"
+  },
+  "stats_subtitle": {
+    "message": "Kam išiel váš čas na obmedzených stránkach a ako sa limity osvedčili."
+  },
+  "stats_open": {
+    "message": "Štatistiky"
+  },
+  "stats_openSettings": {
+    "message": "Nastavenia"
+  },
+  "stats_privacy_title": {
+    "message": "Vidíte to len vy"
+  },
+  "stats_privacy_text": {
+    "message": "Tieto čísla sa počítajú a ukladajú v tomto počítači, v tomto prehliadači. Nič sa neodosiela na žiadny server a nikto iný ich nevidí, ani my."
+  },
+  "stats_loading": {
+    "message": "Načítavajú sa štatistiky"
+  },
+  "stats_loadFailed": {
+    "message": "Štatistiky sa nepodarilo načítať. Skúste stránku obnoviť."
+  },
+  "stats_actionFailed": {
+    "message": "Nepodarilo sa to. Skúste to znova."
+  },
+  "stats_range_label": {
+    "message": "Obdobie"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ dní",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Zobrazených $COUNT$ doteraz zaznamenaných dní.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Prehľad"
+  },
+  "stats_tab_sites": {
+    "message": "Stránky"
+  },
+  "stats_tab_limits": {
+    "message": "Limity"
+  },
+  "stats_tab_patterns": {
+    "message": "Zvyky"
+  },
+  "stats_notEnough_title": {
+    "message": "Vaše štatistiky sú na ceste"
+  },
+  "stats_notEnough_text": {
+    "message": "Počítanie sa začalo $DATE$. Vráťte sa o pár dní, keď bude dosť údajov, aby sme vám ukázali niečo užitočné.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "Počítanie sa začne, keď nabudúce otvoríte obmedzenú stránku. Vráťte sa o pár dní a uvidíte, kam ide váš čas."
+  },
+  "stats_notEnough_noRules": {
+    "message": "Štatistiky sa počítajú pre stránky, ktoré obmedzujete. Pridajte prvú stránku v Nastaveniach a vráťte sa o pár dní."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Všetko, čo sa tu počíta, zostáva v tomto prehliadači. Nič sa nikdy nikam neodosiela."
+  },
+  "stats_summary": {
+    "message": "Za posledných $DAYS$ dní ste na obmedzených stránkach strávili $TOTAL$, zhruba $PERDAY$ denne.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "To je o $AMOUNT$ menej ako v predchádzajúcich $DAYS$ dňoch.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "To je o $AMOUNT$ viac ako v predchádzajúcich $DAYS$ dňoch.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Zhruba rovnako ako v predchádzajúcom období."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Čas denne"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Otvorenia denne"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Koľkokrát ste sa zastavili"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Zablokované pokusy a pauzy, na ktoré ste povedali nie"
+  },
+  "stats_kpi_streak": {
+    "message": "Dni bez predĺženia"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Najlepšie: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Najdlhšia séria v dňoch"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Zatiaľ žiadne staršie údaje"
+  },
+  "stats_delta_same": {
+    "message": "Zhruba rovnako"
+  },
+  "stats_delta_new": {
+    "message": "Nové v tomto období"
+  },
+  "stats_delta_less": {
+    "message": "o $PERCENT$ menej",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "o $PERCENT$ viac",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Každý deň, podľa stránok"
+  },
+  "stats_daily_description": {
+    "message": "Každý pás je jedna stránka, poskladané na seba, takže horný okraj je váš denný súčet. Tmavá čiara je priemer za $DAYS$ dní, aby jeden zlý deň nezakryl trend.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "V tomto období sa nič nezaznamenalo."
+  },
+  "stats_mode_time": {
+    "message": "Čas"
+  },
+  "stats_mode_opens": {
+    "message": "Otvorenia"
+  },
+  "stats_chart_other": {
+    "message": "Ostatné stránky"
+  },
+  "stats_chart_total": {
+    "message": "Spolu"
+  },
+  "stats_chart_average": {
+    "message": "Priemer za $DAYS$ dní",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Denný čas na obmedzených stránkach, poskladaný podľa stránok, s priemerom za $DAYS$ dní",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Denné otvorenia obmedzených stránok, poskladané podľa stránok, s priemerom za $DAYS$ dní",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Čo vyniká"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$: pokles o $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "Priemerne $NOW$ denne oproti $BEFORE$ v predchádzajúcom období.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ dosiahla limit v $HITS$ z $DAYS$ dní",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Limit každý deň robí všetku prácu. Krátka pauza pred otvorením stránky by mohla trochu uľaviť."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Pokusy otvoriť zablokovanú stránku $NAME$: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Každý pokus skončil na stránke s pauzou."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Oproti $COUNT$ v predchádzajúcom období. Zvyk slabne.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Oproti $COUNT$ v predchádzajúcom období.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "Pauza na $NAME$ vás v $PERCENT$ prípadov obrátila späť",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ z $TOTAL$ odpočtov skončilo inou voľbou.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Vaša najťažšia hodina sa začína o $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "$PERCENT$ otvorení a pokusov pripadá na túto hodinu.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Stránka alebo skupina"
+  },
+  "stats_sites_col_time": {
+    "message": "Čas"
+  },
+  "stats_sites_col_opens": {
+    "message": "Otvorenia"
+  },
+  "stats_sites_col_trend": {
+    "message": "Trend"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Ako to šlo"
+  },
+  "stats_sites_group": {
+    "message": "Skupina"
+  },
+  "stats_sites_empty": {
+    "message": "V tomto období sa nepoužila žiadna obmedzená stránka."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Nikdy sa neotvorí"
+  },
+  "stats_sites_tried": {
+    "message": "Pokusy pri blokovaní: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Limit dosiahnutý v $HITS$ z $DAYS$ dní",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Využíva menej ako polovicu limitu"
+  },
+  "stats_sites_turnedBack": {
+    "message": "Pauza vás v $PERCENT$ prípadov obrátila späť",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Často otvárané, zatiaľ bez limitu"
+  },
+  "stats_frequent_description": {
+    "message": "Za posledných 7 dní. Počíta sa len názov stránky, nikdy stránky, ktoré čítate. Pracovné nástroje ako GitHub alebo Jira sa tu nikdy neobjavia."
+  },
+  "stats_frequent_count": {
+    "message": "Otvorenia: $OPENS$ · dni: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Pridať pauzu 10 s"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Nie je to problém, už nenavrhovať"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$ teraz pred otvorením 10 sekúnd počká.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$ sa už nebude navrhovať.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Pokusy pri blokovaní"
+  },
+  "stats_attempts_description": {
+    "message": "Zakaždým, keď vás stránka poslala na stránku s pauzou. Ukazuje, aké ťažké je dodržať každý limit."
+  },
+  "stats_attempts_none": {
+    "message": "V tomto období žiadne pokusy."
+  },
+  "stats_pause_title": {
+    "message": "Pauza"
+  },
+  "stats_pause_description": {
+    "message": "Ako často odpočet skončil inou voľbou."
+  },
+  "stats_pause_none": {
+    "message": "V tomto období ste neodpovedali na žiadnu pauzu."
+  },
+  "stats_pause_saidNo": {
+    "message": "Nie $NO$ z $TOTAL$ krát",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Ako sedia jednotlivé limity"
+  },
+  "stats_fit_description": {
+    "message": "Jedna bodka za deň. Čiara je limit."
+  },
+  "stats_fit_tight": {
+    "message": "Väčšinou dosiahnutý"
+  },
+  "stats_fit_loose": {
+    "message": "Dá sa sprísniť"
+  },
+  "stats_fit_fits": {
+    "message": "Sedí"
+  },
+  "stats_fit_tight_text": {
+    "message": "Dosiahnutý v $HITS$ z $DAYS$ dní. Pauza pred otvorením stránky by mohla trochu uľaviť.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Nikdy nad $MAX$ z $LIMIT$. $SUGGEST$ by stále pokrylo 9 dní z 10.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Dosiahnutý v $HITS$ z $DAYS$ dní, v ostatných s rezervou.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Nastaviť na $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Limit $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$ má teraz denný limit $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Predĺženia a vaše dôvody"
+  },
+  "stats_extensions_summary": {
+    "message": "Predĺženia: $COUNT$, spolu $AMOUNT$ navyše. Vaše vlastné slová, ak stojí za to si ich prečítať znova.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "V tomto období žiadne predĺženia."
+  },
+  "stats_heatmap_title": {
+    "message": "Kedy po tom siahate"
+  },
+  "stats_heatmap_description": {
+    "message": "Otvorenia a pokusy podľa hodín, spriemerované pre dni v týždni."
+  },
+  "stats_heatmap_filter": {
+    "message": "Stránka alebo skupina"
+  },
+  "stats_heatmap_all": {
+    "message": "Všetky obmedzené stránky"
+  },
+  "stats_heatmap_hint": {
+    "message": "Ukážte na štvorec a uvidíte číslo."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: priemerne $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Menej"
+  },
+  "stats_heatmap_more": {
+    "message": "Viac"
+  },
+  "stats_weekly_title": {
+    "message": "Pol roka, týždeň po týždni"
+  },
+  "stats_weekly_description": {
+    "message": "Priemerný čas denne na obmedzených stránkach v porovnaní s prvým mesiacom. Zelená je získaný čas. Krúžok označuje týždeň s predĺžením."
+  },
+  "stats_weekly_aria": {
+    "message": "Priemerný čas denne za každý týždeň v porovnaní s prvým mesiacom"
+  },
+  "stats_weekly_baseline": {
+    "message": "Prvý mesiac: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "Zobrazí sa po $WEEKS$ týždňoch histórie. Zatiaľ týždňov: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Týždeň od $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "Denne"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Oproti prvému mesiacu"
+  },
+  "stats_weekly_extensions": {
+    "message": "Predĺženia: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Získané od prvého mesiaca"
+  },
+  "stats_weekday_title": {
+    "message": "Podľa dňa v týždni"
+  },
+  "stats_weekday_busiest": {
+    "message": "Najviac stojí: $DAY$, priemerne $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Priemerný čas podľa dňa v týždni."
+  },
+  "stats_footer_retention": {
+    "message": "História sa uchováva $DAYS$ dní, potom sa vymaže.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Exportovať CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Vymazať históriu"
+  },
+  "stats_clear_title": {
+    "message": "Vymazať všetky štatistiky?"
+  },
+  "stats_clear_text": {
+    "message": "Tým sa z tohto prehliadača vymaže celá vaša história. Vaše limity a dnešné využitie zostanú bez zmeny. Nedá sa to vrátiť."
+  },
+  "stats_clear_cancel": {
+    "message": "Zrušiť"
+  },
+  "stats_clear_confirm": {
+    "message": "Vymazať históriu"
+  },
+  "stats_cleared": {
+    "message": "Štatistiky vymazané."
+  },
+  "stats_rule_removed": {
+    "message": "Odstránené"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "Otvorenia: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "Pauza $COUNT$ s",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Stránka štatistík"
+  },
+  "statsPageView_subtitle": {
+    "message": "Vaše prehliadanie v číslach"
+  },
+  "whatsNew_stats_title": {
+    "message": "Štatistiky"
+  },
+  "whatsNew_stats_body": {
+    "message": "Pozrite sa, kam ide váš čas na obmedzených stránkach a ako sa držia vaše limity. Počas niekoľkých dní sa zaplnia a čísla nikdy neopustia váš počítač."
+  },
+  "whatsNew_stats_link": {
+    "message": "Otvoriť štatistiky"
+  },
+  "statsPrompt_title": {
+    "message": "Vaše štatistiky sú pripravené"
+  },
+  "statsPrompt_body": {
+    "message": "Pár dní je zaznamenaných. Pozrite sa, kam išiel váš čas na obmedzených stránkach a ako sa vaše limity osvedčili."
+  },
+  "statsPrompt_open": {
+    "message": "Zobraziť moje štatistiky"
+  },
+  "statsPrompt_later": {
+    "message": "Teraz nie"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Už nepripomínať"
   }
 }

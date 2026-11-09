@@ -1638,5 +1638,812 @@
   "whatsNew_opens_body": {
     "message": "Å klikke rundt inne på et nettsted bruker ikke lenger opp åpningene dine. En åpning telles når du kommer til nettstedet fra et annet sted: en annen side, en annen fane eller en annen app.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Statistikk"
+  },
+  "stats_subtitle": {
+    "message": "Hvor tiden din gikk på begrensede nettsteder, og hvordan grensene holdt."
+  },
+  "stats_open": {
+    "message": "Statistikk"
+  },
+  "stats_openSettings": {
+    "message": "Innstillinger"
+  },
+  "stats_privacy_title": {
+    "message": "Bare du kan se dette"
+  },
+  "stats_privacy_text": {
+    "message": "Disse tallene telles og lagres på denne datamaskinen, i denne nettleseren. Ingenting sendes til noen server, og ingen andre kan se dem, ikke engang vi."
+  },
+  "stats_loading": {
+    "message": "Laster inn statistikk"
+  },
+  "stats_loadFailed": {
+    "message": "Kunne ikke laste inn statistikken. Prøv å laste inn siden på nytt."
+  },
+  "stats_actionFailed": {
+    "message": "Det fungerte ikke. Prøv igjen."
+  },
+  "stats_range_label": {
+    "message": "Tidsrom"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ dager",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Viser de $COUNT$ dagene som er registrert så langt.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Oversikt"
+  },
+  "stats_tab_sites": {
+    "message": "Nettsteder"
+  },
+  "stats_tab_limits": {
+    "message": "Grenser"
+  },
+  "stats_tab_patterns": {
+    "message": "Mønstre"
+  },
+  "stats_notEnough_title": {
+    "message": "Statistikken din er på vei"
+  },
+  "stats_notEnough_text": {
+    "message": "Tellingen startet $DATE$. Kom tilbake om noen dager, når det er nok til å vise deg noe nyttig.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "Tellingen starter neste gang du åpner et begrenset nettsted. Kom tilbake om noen dager for å se hvor tiden går."
+  },
+  "stats_notEnough_noRules": {
+    "message": "Statistikken telles for nettstedene du begrenser. Legg til ditt første nettsted i Innstillinger, og kom tilbake om noen dager."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Alt som telles her, blir i denne nettleseren. Ingenting sendes noen gang noe sted."
+  },
+  "stats_summary": {
+    "message": "De siste $DAYS$ dagene brukte du $TOTAL$ på begrensede nettsteder, omtrent $PERDAY$ om dagen.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "Det er $AMOUNT$ mindre enn de $DAYS$ dagene før.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "Det er $AMOUNT$ mer enn de $DAYS$ dagene før.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Omtrent som perioden før."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Tid per dag"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Åpninger per dag"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Ganger du holdt igjen"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Blokkerte forsøk og pauser du sa nei til"
+  },
+  "stats_kpi_streak": {
+    "message": "Dager uten forlengelse"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Beste: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Beste rekke, i dager"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Ingen tidligere data ennå"
+  },
+  "stats_delta_same": {
+    "message": "Omtrent det samme"
+  },
+  "stats_delta_new": {
+    "message": "Nytt denne perioden"
+  },
+  "stats_delta_less": {
+    "message": "$PERCENT$ mindre",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "$PERCENT$ mer",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Hver dag, per nettsted"
+  },
+  "stats_daily_description": {
+    "message": "Hvert bånd er ett nettsted, stablet slik at overkanten er dagens sum. Den mørke linjen er snittet over $DAYS$ dager, så én dårlig dag ikke skjuler trenden.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "Ingenting registrert i denne perioden."
+  },
+  "stats_mode_time": {
+    "message": "Tid"
+  },
+  "stats_mode_opens": {
+    "message": "Åpninger"
+  },
+  "stats_chart_other": {
+    "message": "Andre nettsteder"
+  },
+  "stats_chart_total": {
+    "message": "Totalt"
+  },
+  "stats_chart_average": {
+    "message": "Snitt over $DAYS$ dager",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Daglig tid på begrensede nettsteder, stablet per nettsted, med snitt over $DAYS$ dager",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Daglige åpninger av begrensede nettsteder, stablet per nettsted, med snitt over $DAYS$ dager",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "Dette skiller seg ut"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$ har gått ned $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "$NOW$ om dagen i snitt, fra $BEFORE$ perioden før.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ nådde grensen $HITS$ av $DAYS$ dager",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "Grensen gjør hele jobben hver dag. En kort pause før nettstedet åpnes kan lette litt på presset."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Forsøk på å åpne $NAME$ mens det var sperret: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Hvert forsøk endte på pausesiden."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Fra $COUNT$ perioden før. Vanen slipper taket.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Fra $COUNT$ perioden før.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "Pausen på $NAME$ fikk deg til å snu $PERCENT$ av gangene",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ av $TOTAL$ nedtellinger endte med at du valgte noe annet.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Den vanskeligste timen din starter $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "$PERCENT$ av åpningene og forsøkene skjer i den timen.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Nettsted eller gruppe"
+  },
+  "stats_sites_col_time": {
+    "message": "Tid"
+  },
+  "stats_sites_col_opens": {
+    "message": "Åpninger"
+  },
+  "stats_sites_col_trend": {
+    "message": "Trend"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Hvordan det gikk"
+  },
+  "stats_sites_group": {
+    "message": "Gruppe"
+  },
+  "stats_sites_empty": {
+    "message": "Ingen begrensede nettsteder ble brukt i denne perioden."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Åpnes aldri"
+  },
+  "stats_sites_tried": {
+    "message": "Forsøk mens sperret: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Grensen nådd $HITS$ av $DAYS$ dager",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Bruker under halvparten av grensen"
+  },
+  "stats_sites_turnedBack": {
+    "message": "Pausen fikk deg til å snu $PERCENT$ av gangene",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Åpnes ofte, ingen grense ennå"
+  },
+  "stats_frequent_description": {
+    "message": "Fra de siste 7 dagene. Bare navnet på nettstedet telles, aldri sidene du leser. Arbeidsverktøy som GitHub eller Jira vises aldri."
+  },
+  "stats_frequent_count": {
+    "message": "Åpninger: $OPENS$ · dager: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Legg til 10 s pause"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Ikke noe problem, ikke foreslå det igjen"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$ tar nå en pause på 10 sekunder før det åpnes.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$ blir ikke foreslått igjen.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Forsøk mens sperret"
+  },
+  "stats_attempts_description": {
+    "message": "Hver gang et nettsted sendte deg til pausesiden. Det viser hvor vanskelig hver grense er å holde."
+  },
+  "stats_attempts_none": {
+    "message": "Ingen forsøk i denne perioden."
+  },
+  "stats_pause_title": {
+    "message": "Pausen"
+  },
+  "stats_pause_description": {
+    "message": "Hvor ofte nedtellingen endte med at du valgte noe annet."
+  },
+  "stats_pause_none": {
+    "message": "Ingen pauser besvart i denne perioden."
+  },
+  "stats_pause_saidNo": {
+    "message": "Sa nei $NO$ av $TOTAL$ ganger",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Hvor godt hver grense passer"
+  },
+  "stats_fit_description": {
+    "message": "Én prikk per dag. Linjen er grensen."
+  },
+  "stats_fit_tight": {
+    "message": "Nås de fleste dager"
+  },
+  "stats_fit_loose": {
+    "message": "Kan strammes inn"
+  },
+  "stats_fit_fits": {
+    "message": "Passer"
+  },
+  "stats_fit_tight_text": {
+    "message": "Nådd $HITS$ av $DAYS$ dager. En pause før nettstedet åpnes kan lette litt på presset.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Aldri over $MAX$ av $LIMIT$. $SUGGEST$ ville likevel dekket 9 av 10 dager.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Nådd $HITS$ av $DAYS$ dager, med god margin resten.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Sett til $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Grense $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$ har nå en daglig grense på $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Forlengelser og grunnene dine"
+  },
+  "stats_extensions_summary": {
+    "message": "Forlengelser: $COUNT$, $AMOUNT$ ekstra totalt. Dine egne ord, i tilfelle de er verdt å lese igjen.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "Ingen forlengelser i denne perioden."
+  },
+  "stats_heatmap_title": {
+    "message": "Når du strekker deg etter det"
+  },
+  "stats_heatmap_description": {
+    "message": "Åpninger og forsøk per time, i snitt per ukedag."
+  },
+  "stats_heatmap_filter": {
+    "message": "Nettsted eller gruppe"
+  },
+  "stats_heatmap_all": {
+    "message": "Alle begrensede nettsteder"
+  },
+  "stats_heatmap_hint": {
+    "message": "Pek på en rute for å se tallet."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: i snitt $COUNT$",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Færre"
+  },
+  "stats_heatmap_more": {
+    "message": "Flere"
+  },
+  "stats_weekly_title": {
+    "message": "Seks måneder, uke for uke"
+  },
+  "stats_weekly_description": {
+    "message": "Gjennomsnittlig tid per dag på begrensede nettsteder, sammenlignet med din første måned. Grønt er tid du har vunnet tilbake. En ring markerer en uke med forlengelse."
+  },
+  "stats_weekly_aria": {
+    "message": "Gjennomsnittlig tid per dag for hver uke, sammenlignet med første måned"
+  },
+  "stats_weekly_baseline": {
+    "message": "Første måned: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "Vises etter $WEEKS$ uker med historikk. Uker så langt: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Uken fra $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "Per dag"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Mot første måned"
+  },
+  "stats_weekly_extensions": {
+    "message": "Forlengelser: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Vunnet tilbake siden første måned"
+  },
+  "stats_weekday_title": {
+    "message": "Per ukedag"
+  },
+  "stats_weekday_busiest": {
+    "message": "Dyrest er $DAY$: i snitt $AMOUNT$.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Gjennomsnittlig tid per ukedag."
+  },
+  "stats_footer_retention": {
+    "message": "Historikken lagres i $DAYS$ dager og slettes så.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Eksporter CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Tøm historikk"
+  },
+  "stats_clear_title": {
+    "message": "Tømme all statistikk?"
+  },
+  "stats_clear_text": {
+    "message": "Dette sletter hele historikken din fra denne nettleseren. Grensene dine og dagens bruk forblir som de er. Dette kan ikke angres."
+  },
+  "stats_clear_cancel": {
+    "message": "Avbryt"
+  },
+  "stats_clear_confirm": {
+    "message": "Tøm historikk"
+  },
+  "stats_cleared": {
+    "message": "Statistikken er tømt."
+  },
+  "stats_rule_removed": {
+    "message": "Fjernet"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "$COUNT$ åpninger",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "$COUNT$ s pause",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Statistikkside"
+  },
+  "statsPageView_subtitle": {
+    "message": "Surfingen din i tall"
+  },
+  "whatsNew_stats_title": {
+    "message": "Statistikk"
+  },
+  "whatsNew_stats_body": {
+    "message": "Se hvor tiden din går på begrensede nettsteder, og hvordan grensene dine holder. Den fylles opp i løpet av de neste dagene, og tallene forlater aldri datamaskinen din."
+  },
+  "whatsNew_stats_link": {
+    "message": "Åpne statistikk"
+  },
+  "statsPrompt_title": {
+    "message": "Statistikken din er klar"
+  },
+  "statsPrompt_body": {
+    "message": "Noen dager er registrert. Se hvor tiden din gikk på begrensede nettsteder, og hvordan grensene dine holdt."
+  },
+  "statsPrompt_open": {
+    "message": "Se statistikken min"
+  },
+  "statsPrompt_later": {
+    "message": "Ikke nå"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Ikke minn meg på det igjen"
   }
 }

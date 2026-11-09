@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, X, BarChart3 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/utils/i18n";
 import PageTemplate from "./PageTemplate";
+import { StatsReadyBanner } from "./stats/StatsReadyBanner";
+import { openStatsPage } from "@/lib/utils/navigation";
 import CircularProgress from "./CircularProgress";
 import * as api from "@/lib/api";
 import { logError } from "@/lib/utils/errorHandler";
@@ -121,6 +123,7 @@ const ReflectionPage = () => {
     <PageTemplate
       version=""
       onHeaderAction={handleOpenInfo}
+      extraHeaderLinks={[{ icon: BarChart3, title: t("stats_open"), onClick: openStatsPage }]}
       layout="centered"
       showVersionBadge={false}
       logoSize="sm"
@@ -200,6 +203,7 @@ const ReflectionPage = () => {
             ])}
           </p>
         )}
+        <StatsReadyBanner />
       </div>
     </PageTemplate>
   );

@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Settings, Play, Pause } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
-import Logo from "../Logo";
+import { PopupHeader } from "./PopupHeader";
 
 interface DisabledStateViewProps {
   siteName: string;
@@ -43,19 +43,7 @@ export function DisabledStateView({
 
   return (
     <Card className="w-80 shadow-soft border-0 overflow-hidden">
-      <div className="gradient-mint p-4">
-        <div className="flex items-center justify-between">
-          <Logo size="sm" />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onOpenSettings}
-            className="hover:bg-white/50"
-          >
-            <Settings size={18} />
-          </Button>
-        </div>
-      </div>
+      <PopupHeader onSettings={onOpenSettings} />
 
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">
