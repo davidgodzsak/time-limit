@@ -144,3 +144,108 @@ export async function recordReflectionDecision(dateString, siteId, decision) {
     return null;
   }
 }
+
+/*
+ * Pending pauses: which tab is sitting on the countdown, and for which site.
+ *
+ * Closing the pause page, or leaving it for another page, is as much a "no" as
+ * the button — the user reached for the site and then did not go. The page
+ * cannot report that itself (a message sent while the tab closes is not
+ * reliably delivered), so the background remembers each pause it starts and
+ * settles it when the tab goes: an answer takes the entry first, and whatever
+ * is still pending when the tab closes or navigates away counts as dismissed.
+ *
+ * `pendingReflections`: { [tabId]: { siteId, url } } — `url` is the page the
+ * pause stands in front of. Tab ids do not survive a browser restart, so the
+ * map is cleared on startup.
+ */
+const PENDING_KEY = 'pendingReflections';
+
+async function _readPending() {
+  const result = await browser.storage.local.get(PENDING_KEY);
+  return result[PENDING_KEY] || {};
+}
+
+/**
+ * Remembers that a tab was just sent to the pause page.
+ *
+ * @param {number} tabId - The tab showing the countdown.
+ * @param {string} siteId - The site the user was heading to.
+ * @param {string} url - The page waiting behind the pause.
+ * @returns {Promise<boolean>} True on success.
+ */
+export async function notePendingReflection(tabId, siteId, url) {
+  if (typeof tabId !== 'number' || !siteId) return false;
+  try {
+    const pending = await _readPending();
+    pending[tabId] = { siteId, url: url || '' };
+    await browser.storage.local.set({ [PENDING_KEY]: pending });
+    return true;
+  } catch (error) {
+    console.error('[ReflectionStorage] Error noting pending pause:', error);
+    return false;
+  }
+}
+
+/**
+ * Removes and returns a tab's pending pause, if it has one.
+ *
+ * @param {number} tabId - The tab.
+ * @returns {Promise<{siteId: string, url: string}|null>} The entry, or null.
+ */
+export async function takePendingReflection(tabId) {
+  if (typeof tabId !== 'number') return null;
+  try {
+    const pending = await _readPending();
+    const entry = pending[tabId];
+    if (!entry) return null;
+    delete pending[tabId];
+    await browser.storage.local.set({ [PENDING_KEY]: pending });
+    return entry;
+  } catch (error) {
+    console.error('[ReflectionStorage] Error reading pending pause:', error);
+    return null;
+  }
+}
+
+/**
+ * Settles a pause the user walked away from: the tab closed, or moved on to a
+ * page other than the pause page and the one behind it. Counts as "dismissed".
+ *
+ * Returning to the very page behind the pause is left alone — that navigation
+ * is sent straight back through the countdown, so the pause is still open.
+ *
+ * @param {string} dateString - Day in "YYYY-MM-DD" format.
+ * @param {number} tabId - The tab that closed or navigated.
+ * @param {string} [newUrl] - Where it went; omitted when the tab closed.
+ * @returns {Promise<boolean>} True if a stop was counted.
+ */
+export async function settleAbandonedReflection(dateString, tabId, newUrl) {
+  if (typeof tabId !== 'number') return false;
+  try {
+    const pending = await _readPending();
+    const entry = pending[tabId];
+    if (!entry) return false;
+    if (newUrl !== undefined && newUrl === entry.url) return false;
+
+    delete pending[tabId];
+    await browser.storage.local.set({ [PENDING_KEY]: pending });
+    return !!(await recordReflectionDecision(dateString, entry.siteId, 'dismissed'));
+  } catch (error) {
+    console.error('[ReflectionStorage] Error settling abandoned pause:', error);
+    return false;
+  }
+}
+
+/**
+ * Forgets every pending pause. Used on browser startup, when tab ids restart.
+ *
+ * @returns {Promise<void>}
+ */
+export async function clearPendingReflections() {
+  try {
+    await browser.storage.local.remove(PENDING_KEY);
+  } catch (error) {
+    console.error('[ReflectionStorage] Error clearing pending pauses:', error);
+  }
+}

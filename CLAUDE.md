@@ -299,6 +299,13 @@ either `host` or `host/path`:
   id (group id when grouped, else site id), so clicking around inside the site
   does not restart the countdown. "No" clears the pass.
 - **Answers are counted** per site per day in `reflections-YYYY-MM-DD`.
+- **Walking away is a "no"**: closing the pause tab, or leaving it for another
+  page without answering, counts as `dismissed` ("stopped here"). The page
+  cannot report its own closing reliably, so the background notes each pause
+  in `pendingReflections` when it redirects, an answer takes the entry, and
+  `tabs.onRemoved` / a URL change in `handleTabUpdated` settle whatever is left
+  (`settleAbandonedReflection`). Going back to the page behind the pause is not
+  leaving: that navigation lands on the countdown again.
 
 ### Release Notes ("What's new")
 - `onInstalled` with `reason === 'update'` flags `whatsNewState.pending` and
@@ -419,6 +426,7 @@ Current coverage:
 - `site_storage.test.js` — pattern normalization, duplicate refusal, clearing limits (fake `browser.storage.local`)
 - `path_limits.integration.test.js` — detector + blocker together: a path limit blocks its section and leaves the rest of the domain reachable
 - `reflection_gate.test.js` — which delay applies (site vs group vs specificity), passes, and the URL round trip
+- `reflection_storage.test.js` — closing or leaving an unanswered pause counts as a stop, once, and an answered one does not
 - `suggestion_engine.test.js` — the work/distraction heuristic, thresholds, the one-a-day and once-ever rules, visit counting
 - `mindful_limits.integration.test.js` — blocker + gate together: a pause-only site never blocks, a spent limit skips the countdown, a group pause is answered once
 - `full_block.test.js` — the full block: it outranks usage, extensions and the countdown; group vs site ownership; `isEnabled` lifts it; specificity exceptions; a block counts as a rule in site/group storage
@@ -441,6 +449,7 @@ browser.storage.local keys:
 - extensions-YYYY-MM-DD: { [siteId|groupId]: ExtensionEntry } (today's limit extensions)
 - reflections-YYYY-MM-DD: { [siteId]: { proceeded, dismissed } } (7 day window)
 - reflectionPasses: { [siteId|groupId]: expiresAtMs } (cleared on daily reset)
+- pendingReflections: { [tabId]: { siteId, url } } (pauses not yet answered; cleared on browser startup)
 - viewedSiteId: string|null (the rule the user is looking at, for open counting; cleared on browser startup)
 - leftBrowserAt: ms|null (when the browser last lost focus, for open counting)
 - whatsNewState: { pending, version, previousVersion } (release note, updates only)
