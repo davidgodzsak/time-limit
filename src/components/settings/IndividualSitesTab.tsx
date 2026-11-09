@@ -7,7 +7,6 @@ import {
   MousePointerClick,
   ChevronDown,
   ChevronRight,
-  GripVertical,
   Hourglass,
   Ban,
 } from "lucide-react";
@@ -101,10 +100,6 @@ export function IndividualSitesTab({
               key={site.id}
               className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors group"
             >
-              <GripVertical
-                size={16}
-                className="text-muted-foreground/50 cursor-grab"
-              />
               <span className="text-xl">{site.favicon}</span>
               <span className="flex-1 font-medium">{site.name}</span>
               {/* A full block makes the other limits moot, so it replaces them
