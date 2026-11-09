@@ -2,17 +2,19 @@ import { BarChart3, Info, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/utils/i18n";
 import { openStatsPage } from "@/lib/utils/navigation";
+import { useStatisticsEnabled } from "@/lib/hooks/useStatisticsEnabled";
 import Logo from "../Logo";
 
 interface PopupHeaderProps {
   onSettings: () => void;
   onInfo?: () => void;
-  /** Hidden on the statistics page itself. */
+  /** Hidden on the statistics page itself, and whenever statistics are switched off. */
   showStats?: boolean;
 }
 
 /** The mint band at the top of every popup view: logo, then info, statistics and settings. */
 export function PopupHeader({ onSettings, onInfo, showStats = true }: PopupHeaderProps) {
+  const statsEnabled = useStatisticsEnabled();
   return (
     <div className="gradient-mint p-4">
       <div className="flex items-center justify-between">
@@ -23,7 +25,7 @@ export function PopupHeader({ onSettings, onInfo, showStats = true }: PopupHeade
               <Info size={18} />
             </Button>
           )}
-          {showStats && (
+          {showStats && statsEnabled && (
             <Button variant="ghost" size="icon" onClick={openStatsPage} className="hover:bg-white/50" title={t("stats_open")} aria-label={t("stats_open")}>
               <BarChart3 size={18} />
             </Button>

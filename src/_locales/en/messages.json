@@ -2426,7 +2426,7 @@
     "message": "Statistics"
   },
   "whatsNew_stats_body": {
-    "message": "See where your time goes on the sites you limit, and how your limits hold up. It fills in over the next few days, and the numbers never leave your computer."
+    "message": "See where your time goes on the sites you limit, and how your limits hold up. It fills in over the next few days, the numbers never leave your computer, and you can turn it off in Settings."
   },
   "whatsNew_stats_link": {
     "message": "Open statistics"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Don't remind me again"
+  },
+  "preferences_option_statistics": {
+    "message": "Statistics"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Count time and opens on the sites you limit, kept only in this browser. Turning this off deletes what has been counted and hides the statistics page."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statistics turned off. Their history has been deleted."
+  },
+  "stats_off_title": {
+    "message": "Statistics are turned off"
+  },
+  "stats_off_text": {
+    "message": "Nothing is being counted and no history is kept. You can turn statistics back on in Settings, under Preferences."
+  },
+  "stats_off_button": {
+    "message": "Open settings"
   }
 }

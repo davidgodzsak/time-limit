@@ -2426,7 +2426,7 @@
     "message": "Statistikk"
   },
   "whatsNew_stats_body": {
-    "message": "Se hvor tiden din går på begrensede nettsteder, og hvordan grensene dine holder. Den fylles opp i løpet av de neste dagene, og tallene forlater aldri datamaskinen din."
+    "message": "Se hvor tiden din går på begrensede nettsteder, og hvordan grensene dine holder. Den fylles opp i løpet av de neste dagene, tallene forlater aldri datamaskinen din, og du kan slå den av i Innstillinger."
   },
   "whatsNew_stats_link": {
     "message": "Åpne statistikk"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Ikke minn meg på det igjen"
+  },
+  "preferences_option_statistics": {
+    "message": "Statistikk"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Tell tid og åpninger på begrensede nettsteder, lagres bare i denne nettleseren. Å slå av sletter det som er talt og skjuler statistikksiden."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statistikken er slått av. Historikken er slettet."
+  },
+  "stats_off_title": {
+    "message": "Statistikken er slått av"
+  },
+  "stats_off_text": {
+    "message": "Ingenting telles, og ingen historikk lagres. Du kan slå statistikken på igjen i Innstillinger, under Preferanser."
+  },
+  "stats_off_button": {
+    "message": "Åpne innstillinger"
   }
 }

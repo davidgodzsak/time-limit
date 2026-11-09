@@ -2426,7 +2426,7 @@
     "message": "Statystyki"
   },
   "whatsNew_stats_body": {
-    "message": "Zobacz, na co idzie twój czas na ograniczonych stronach i jak sprawdzają się limity. Wypełnią się w ciągu kilku dni, a liczby nigdy nie opuszczają twojego komputera."
+    "message": "Zobacz, na co idzie twój czas na ograniczonych stronach i jak sprawdzają się limity. Wypełnią się w ciągu kilku dni, liczby nigdy nie opuszczają twojego komputera, a w Ustawieniach możesz je wyłączyć."
   },
   "whatsNew_stats_link": {
     "message": "Otwórz statystyki"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Nie przypominaj więcej"
+  },
+  "preferences_option_statistics": {
+    "message": "Statystyki"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Zliczaj czas i otwarcia ograniczonych stron, przechowywane tylko w tej przeglądarce. Wyłączenie usuwa to, co zliczono, i ukrywa stronę statystyk."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statystyki wyłączone. Ich historia została usunięta."
+  },
+  "stats_off_title": {
+    "message": "Statystyki są wyłączone"
+  },
+  "stats_off_text": {
+    "message": "Nic nie jest zliczane i nie jest przechowywana żadna historia. Statystyki możesz włączyć ponownie w Ustawieniach, w Preferencjach."
+  },
+  "stats_off_button": {
+    "message": "Otwórz ustawienia"
   }
 }

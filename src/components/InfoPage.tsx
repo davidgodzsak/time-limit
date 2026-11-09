@@ -8,7 +8,6 @@ import {
   Bug,
   MessageCircle,
   Settings,
-  BarChart3,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,13 +15,14 @@ import { t } from "@/lib/utils/i18n";
 import { getRatingUrl } from "@/lib/constants/rating";
 import * as api from "@/lib/api";
 import PageTemplate from "./PageTemplate";
-import { openStatsPage } from "@/lib/utils/navigation";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import { RatingCard } from "./RatingCard";
 import { getVersionFromManifest } from "@/lib/utils/manifestVersion";
 import { logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { useToast } from "@/hooks/use-toast";
 
 const InfoPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   const { toast } = useToast();
   const [version, setVersion] = useState("");
   const [hasRated, setHasRated] = useState(false);
@@ -127,7 +127,7 @@ const InfoPage = () => {
 
   return (
     <PageTemplate
-        extraHeaderLinks={[{ icon: BarChart3, title: t("stats_open"), onClick: openStatsPage }]}
+        extraHeaderLinks={statsLinks}
       version={version}
       headerAction="settings"
       onHeaderAction={handleOpenSettings}

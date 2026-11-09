@@ -4,18 +4,18 @@ import {
   ChevronRight,
   Shuffle,
   Loader2,
-  BarChart3,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { t } from "@/lib/utils/i18n";
 import PageTemplate from "./PageTemplate";
 import { StatsReadyBanner } from "./stats/StatsReadyBanner";
-import { openStatsPage } from "@/lib/utils/navigation";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import * as api from "@/lib/api";
 import { ACTIVITY_SUGGESTIONS } from "@/constants/suggestions";
 
 const TimeoutPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   // URL params
   const [blockedUrl, setBlockedUrl] = useState<string>("");
   const [siteName, setSiteName] = useState<string>("this site");
@@ -166,7 +166,7 @@ const TimeoutPage = () => {
     <PageTemplate
       version=""
       onHeaderAction={handleOpenInfo}
-      extraHeaderLinks={[{ icon: BarChart3, title: t("stats_open"), onClick: openStatsPage }]}
+      extraHeaderLinks={statsLinks}
       layout="centered"
       showVersionBadge={false}
       logoSize="sm"

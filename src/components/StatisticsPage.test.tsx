@@ -49,7 +49,7 @@ function installBrowser(data: StatisticsData) {
   vi.stubGlobal("browser", {
     runtime: {
       sendMessage: vi.fn(async ({ action }: { action: string }) =>
-        action === "getStatistics" ? { success: true, data, error: null } : { success: true, data: {}, error: null }
+        action === "getStatistics" ? { success: true, data: { enabled: true, ...data }, error: null } : { success: true, data: {}, error: null }
       ),
       getManifest: () => ({ version: "1.14.0" }),
       getURL: (p: string) => p,
@@ -103,6 +103,15 @@ afterEach(() => {
 });
 
 describe("StatisticsPage", () => {
+  it("says statistics are off, and shows no data, when the user switched them off", async () => {
+    installBrowser(sampleData(60));
+    (browser.runtime.sendMessage as ReturnType<typeof vi.fn>).mockImplementation(async () => ({ success: true, data: { enabled: false }, error: null }));
+    await render();
+    expect(container.textContent).toContain("stats_off_title");
+    expect(container.textContent).not.toContain("stats_privacy_title");
+    expect(container.querySelector('[role="tablist"]')).toBeNull();
+  });
+
   it("renders every tab from two months of history", async () => {
     const errors = vi.spyOn(console, "error").mockImplementation(() => {});
     installBrowser(sampleData(60));

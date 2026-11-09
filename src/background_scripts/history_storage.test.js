@@ -179,3 +179,20 @@ describe('daily reset', () => {
     });
   });
 });
+
+describe('the statistics switch', () => {
+  const OFF = { displayPreferences: { collectStatistics: false } };
+
+  it('records nothing while statistics are switched off', async () => {
+    const store = installFakeStorage(OFF);
+    await recordBlockedAttempt('2026-11-09', 's1');
+    await recordActivityHour('2026-11-09', 's1');
+    expect(store['activity-2026-11-09']).toBeUndefined();
+  });
+
+  it('archives nothing while switched off, so the reset just deletes the day', async () => {
+    const store = installFakeStorage({ ...OFF, 'usageStats-2026-11-08': { s1: { timeSpentSeconds: 120, opens: 2 } } });
+    expect(await archivePastDays('2026-11-09', await browser.storage.local.get(null))).toEqual([]);
+    expect(store['history-2026-11']).toBeUndefined();
+  });
+});

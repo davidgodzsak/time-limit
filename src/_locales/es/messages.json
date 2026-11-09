@@ -2426,7 +2426,7 @@
     "message": "Estadísticas"
   },
   "whatsNew_stats_body": {
-    "message": "Mira en qué se va tu tiempo en los sitios que limitas y cómo aguantan tus límites. Se irán llenando en los próximos días, y los números nunca salen de tu ordenador."
+    "message": "Mira en qué se va tu tiempo en los sitios que limitas y cómo aguantan tus límites. Se irán llenando en los próximos días, los números nunca salen de tu ordenador y puedes desactivarlas en Ajustes."
   },
   "whatsNew_stats_link": {
     "message": "Abrir estadísticas"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "No volver a recordármelo"
+  },
+  "preferences_option_statistics": {
+    "message": "Estadísticas"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Contar el tiempo y las aperturas en los sitios que limitas, guardado solo en este navegador. Al desactivarlo se borra lo contado y se oculta la página de estadísticas."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Estadísticas desactivadas. Su historial se ha borrado."
+  },
+  "stats_off_title": {
+    "message": "Las estadísticas están desactivadas"
+  },
+  "stats_off_text": {
+    "message": "No se cuenta nada ni se guarda historial. Puedes volver a activar las estadísticas en Ajustes, en Preferencias."
+  },
+  "stats_off_button": {
+    "message": "Abrir ajustes"
   }
 }

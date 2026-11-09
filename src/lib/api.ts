@@ -516,7 +516,10 @@ export interface StatisticsData {
   frequentHosts: Array<{ host: string; opensWindow: number; activeDays: number }>;
 }
 
-export async function getStatistics(): Promise<StatisticsData> {
+/** What the page gets: the data, or just `enabled: false` when statistics are switched off. */
+export type StatisticsResponse = ({ enabled: true } & StatisticsData) | { enabled: false };
+
+export async function getStatistics(): Promise<StatisticsResponse> {
   return sendMessage('getStatistics');
 }
 

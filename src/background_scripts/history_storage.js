@@ -33,6 +33,28 @@ const DAILY_PREFIXES = ['usageStats-', ACTIVITY_PREFIX, 'reflections-', 'extensi
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 /**
+ * The user's "collect statistics" switch (Settings → Preferences). On unless
+ * explicitly turned off. When off nothing is recorded or archived, and turning
+ * it off deletes what was collected (see `updateDisplayPreferences`).
+ *
+ * @param {Object} [preferences] - `displayPreferences`, when already read.
+ * @returns {boolean}
+ */
+export function statisticsEnabledIn(preferences) {
+  return preferences?.collectStatistics !== false;
+}
+
+/** Reads the switch from storage. */
+export async function isStatisticsEnabled() {
+  try {
+    const { displayPreferences } = await browser.storage.local.get('displayPreferences');
+    return statisticsEnabledIn(displayPreferences);
+  } catch {
+    return true;
+  }
+}
+
+/**
  * Adds one to a site's counter in today's activity key.
  *
  * @param {string} dateString - Local day, "YYYY-MM-DD".
@@ -42,6 +64,7 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
  */
 async function _bumpActivity(dateString, siteId, { blocked = false, now = Date.now() } = {}) {
   if (!dateString || !siteId) return;
+  if (!(await isStatisticsEnabled())) return;
   const key = `${ACTIVITY_PREFIX}${dateString}`;
   try {
     const result = await browser.storage.local.get(key);
@@ -189,6 +212,9 @@ function _mergedNames(all) {
  * @returns {Promise<string[]>} The dates that were archived.
  */
 export async function archivePastDays(todayString, all) {
+  // Switched off: the per-day keys are deleted by the reset as usual, and
+  // nothing is kept from them.
+  if (!statisticsEnabledIn(all.displayPreferences)) return [];
   const dates = _pendingDates(all, todayString);
   const cutoff = shiftDate(todayString, HISTORY_RETENTION_DAYS);
   const months = {};

@@ -55,6 +55,7 @@ import {
   clearHistory,
   recordActivityHour,
   trackedDayCount,
+  statisticsEnabledIn,
 } from './history_storage.js';
 import {
   shouldShowStatsPrompt,
@@ -1637,6 +1638,7 @@ async function handleMessage(message, _sender, _sendResponse) {
             showRandomMessage: true,
             showActivitySuggestions: true,
             showLimitSuggestions: true,
+            collectStatistics: true,
             preferredLanguage: null,
             ...(storage.displayPreferences || {}),
           };
@@ -1660,13 +1662,22 @@ async function handleMessage(message, _sender, _sendResponse) {
 
       case 'updateDisplayPreferences': {
         try {
-          const preferences = message.payload || {
-            showRandomMessage: true,
-            showActivitySuggestions: true,
-            showLimitSuggestions: true,
-            preferredLanguage: null,
-          };
+          // Merged over what is stored, so a caller that leaves a field out
+          // cannot silently reset it (statistics coming back on, say).
+          const { displayPreferences: previous = {} } =
+            await browser.storage.local.get('displayPreferences');
+          const preferences = { ...previous, ...(message.payload || {}) };
           await browser.storage.local.set({ displayPreferences: preferences });
+
+          // Turning statistics off means nothing is kept: delete what was
+          // collected, and let open pages drop their statistics links.
+          const wasOn = statisticsEnabledIn(previous);
+          const isOn = statisticsEnabledIn(preferences);
+          if (wasOn && !isOn) await clearHistory();
+          if (wasOn !== isOn) {
+            await broadcastToUIComponents('statisticsToggled', { enabled: isOn });
+          }
+
           return {
             success: true,
             data: preferences,
@@ -2374,6 +2385,10 @@ async function handleMessage(message, _sender, _sendResponse) {
       case 'getStatistics': {
         try {
           const today = getCurrentDateString();
+          const { displayPreferences } = await browser.storage.local.get('displayPreferences');
+          if (!statisticsEnabledIn(displayPreferences)) {
+            return { success: true, data: { enabled: false }, error: null };
+          }
           const [history, sites, groups] = await Promise.all([
             getHistory(today),
             getDistractingSites(),
@@ -2392,7 +2407,7 @@ async function handleMessage(message, _sender, _sendResponse) {
             : [];
           return {
             success: true,
-            data: { ...history, sites, groups, frequentHosts },
+            data: { enabled: true, ...history, sites, groups, frequentHosts },
             error: null,
           };
         } catch (error) {

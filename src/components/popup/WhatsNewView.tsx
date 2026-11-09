@@ -5,6 +5,7 @@ import { Heart, Sparkles } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
 import { WHATS_NEW_HIGHLIGHTS } from "@/lib/constants/whatsNew";
 import { openExtensionPage } from "@/lib/utils/navigation";
+import { useStatisticsEnabled } from "@/lib/hooks/useStatisticsEnabled";
 import Logo from "../Logo";
 import { RatingCard } from "../RatingCard";
 
@@ -32,6 +33,7 @@ export function WhatsNewView({
   onDonate,
   onClose,
 }: WhatsNewViewProps) {
+  const statsEnabled = useStatisticsEnabled();
   return (
     <Card className="w-80 shadow-soft border-0 overflow-hidden">
       <div className="gradient-mint p-4">
@@ -77,7 +79,7 @@ export function WhatsNewView({
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {t(highlight.bodyKey)}
                   </p>
-                  {highlight.link && (
+                  {highlight.link && (statsEnabled || !highlight.link.requiresStatistics) && (
                     <button
                       type="button"
                       onClick={() => openExtensionPage(highlight.link!.path)}

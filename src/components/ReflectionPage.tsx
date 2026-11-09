@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowRight, X, BarChart3 } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/utils/i18n";
 import PageTemplate from "./PageTemplate";
 import { StatsReadyBanner } from "./stats/StatsReadyBanner";
-import { openStatsPage } from "@/lib/utils/navigation";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import CircularProgress from "./CircularProgress";
 import * as api from "@/lib/api";
 import { logError } from "@/lib/utils/errorHandler";
@@ -36,6 +36,7 @@ function displayName(url: string | null, pattern: string): string {
 }
 
 const ReflectionPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   const params = useMemo(
     () => new URLSearchParams(window.location.search),
     []
@@ -123,7 +124,7 @@ const ReflectionPage = () => {
     <PageTemplate
       version=""
       onHeaderAction={handleOpenInfo}
-      extraHeaderLinks={[{ icon: BarChart3, title: t("stats_open"), onClick: openStatsPage }]}
+      extraHeaderLinks={statsLinks}
       layout="centered"
       showVersionBadge={false}
       logoSize="sm"

@@ -304,6 +304,15 @@ either `host` or `host/path`:
 - **Answers are counted** per site per day in `reflections-YYYY-MM-DD`.
 
 ### Statistics (`history_storage.js` + `lib/stats/aggregate.ts`)
+- **It can be switched off** (`displayPreferences.collectStatistics`, Settings →
+  Preferences; on unless set to `false`). Off means off: nothing is recorded
+  (`_bumpActivity`) or archived (`archivePastDays`), the reminder never fires,
+  `getStatistics` answers `{ enabled: false }`, and turning it off deletes the
+  history (`clearHistory`, in `updateDisplayPreferences`). Every statistics
+  link (popup header, page headers, release-note link) goes through
+  `useStatisticsEnabled`, which starts hidden and follows the
+  `statisticsToggled` broadcast. `updateDisplayPreferences` merges over the
+  stored object, so a caller that omits the field cannot switch it back on.
 - **History is written before the reset deletes it**: `performDailyReset` calls
   `archivePastDays` first, folding every finished day's `usageStats-*`,
   `activity-*`, `reflections-*` and `extensions-*` into `history-YYYY-MM`.
@@ -499,7 +508,7 @@ browser.storage.local keys:
 - visitTracking: { [host]: { days: { "YYYY-MM-DD": opens }, lastVisit } }
 - limitSuggestions: { handledHosts: string[], pending, lastSuggestedDate }
 - timeoutNotes: Note[] (motivational messages)
-- displayPreferences: { showActivitySuggestions, preferredLanguage, ... }
+- displayPreferences: { showActivitySuggestions, showLimitSuggestions, collectStatistics, preferredLanguage, ... } (merged on update)
 ```
 
 ## Building & Running

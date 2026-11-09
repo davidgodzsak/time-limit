@@ -2426,7 +2426,7 @@
     "message": "統計"
   },
   "whatsNew_stats_body": {
-    "message": "制限中のサイトで時間がどこに使われているか、制限がどれだけ守られているかがわかります。数日かけてデータがたまり、数値がパソコンの外に出ることはありません。"
+    "message": "制限中のサイトで時間がどこに使われているか、制限がどれだけ守られているかがわかります。数日かけてデータがたまり、数値がパソコンの外に出ることはなく、設定でオフにすることもできます。"
   },
   "whatsNew_stats_link": {
     "message": "統計を開く"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "今後は表示しない"
+  },
+  "preferences_option_statistics": {
+    "message": "統計"
+  },
+  "preferences_option_statistics_description": {
+    "message": "制限中のサイトの時間と表示回数を数え、このブラウザー内だけに保存します。オフにすると、これまでの記録が削除され、統計ページも非表示になります。"
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "統計をオフにしました。履歴は削除されました。"
+  },
+  "stats_off_title": {
+    "message": "統計はオフになっています"
+  },
+  "stats_off_text": {
+    "message": "何も記録されず、履歴も保存されません。統計は設定の「環境設定」でもう一度オンにできます。"
+  },
+  "stats_off_button": {
+    "message": "設定を開く"
   }
 }

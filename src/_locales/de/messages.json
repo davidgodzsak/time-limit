@@ -2426,7 +2426,7 @@
     "message": "Statistik"
   },
   "whatsNew_stats_body": {
-    "message": "Sieh, wohin deine Zeit auf begrenzten Seiten geht und wie gut deine Limits halten. Sie füllt sich in den nächsten Tagen, und die Zahlen verlassen nie deinen Computer."
+    "message": "Sieh, wohin deine Zeit auf begrenzten Seiten geht und wie gut deine Limits halten. Sie füllt sich in den nächsten Tagen, die Zahlen verlassen nie deinen Computer, und du kannst sie in den Einstellungen ausschalten."
   },
   "whatsNew_stats_link": {
     "message": "Statistik öffnen"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Nicht mehr erinnern"
+  },
+  "preferences_option_statistics": {
+    "message": "Statistik"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Zeit und Aufrufe auf begrenzten Seiten zählen, nur in diesem Browser gespeichert. Ausschalten löscht das bisher Gezählte und blendet die Statistikseite aus."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statistik ausgeschaltet. Der Verlauf wurde gelöscht."
+  },
+  "stats_off_title": {
+    "message": "Die Statistik ist ausgeschaltet"
+  },
+  "stats_off_text": {
+    "message": "Es wird nichts gezählt und kein Verlauf gespeichert. Du kannst die Statistik in den Einstellungen unter Präferenzen wieder einschalten."
+  },
+  "stats_off_button": {
+    "message": "Einstellungen öffnen"
   }
 }

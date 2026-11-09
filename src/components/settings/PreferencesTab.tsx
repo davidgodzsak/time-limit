@@ -18,6 +18,8 @@ interface PreferencesTabProps {
   onToggleActivitySuggestions: (checked: boolean) => void;
   showLimitSuggestions: boolean;
   onToggleLimitSuggestions: (checked: boolean) => void;
+  collectStatistics: boolean;
+  onToggleStatistics: (checked: boolean) => void;
   preferredLanguage: string | null;
   onChangeLanguage: (lang: string | null) => void;
   isSaving: boolean;
@@ -30,6 +32,8 @@ export function PreferencesTab({
   onToggleActivitySuggestions,
   showLimitSuggestions,
   onToggleLimitSuggestions,
+  collectStatistics,
+  onToggleStatistics,
   preferredLanguage,
   onChangeLanguage,
   isSaving,
@@ -83,6 +87,20 @@ export function PreferencesTab({
               checked={showLimitSuggestions}
               onCheckedChange={onToggleLimitSuggestions}
               disabled={isSaving}
+            />
+          </div>
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="font-medium">{t("preferences_option_statistics")}</p>
+              <p className="text-sm text-muted-foreground">
+                {t("preferences_option_statistics_description")}
+              </p>
+            </div>
+            <Switch
+              checked={collectStatistics}
+              onCheckedChange={onToggleStatistics}
+              disabled={isSaving}
+              aria-label={t("preferences_option_statistics")}
             />
           </div>
           <div className="flex items-center justify-between gap-4">

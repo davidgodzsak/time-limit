@@ -2426,7 +2426,7 @@
     "message": "Štatistiky"
   },
   "whatsNew_stats_body": {
-    "message": "Pozrite sa, kam ide váš čas na obmedzených stránkach a ako sa držia vaše limity. Počas niekoľkých dní sa zaplnia a čísla nikdy neopustia váš počítač."
+    "message": "Pozrite sa, kam ide váš čas na obmedzených stránkach a ako sa držia vaše limity. Počas niekoľkých dní sa zaplnia, čísla nikdy neopustia váš počítač a v Nastaveniach ich môžete vypnúť."
   },
   "whatsNew_stats_link": {
     "message": "Otvoriť štatistiky"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Už nepripomínať"
+  },
+  "preferences_option_statistics": {
+    "message": "Štatistiky"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Počítať čas a otvorenia obmedzených stránok, uložené len v tomto prehliadači. Vypnutím sa vymaže, čo sa napočítalo, a stránka štatistík sa skryje."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Štatistiky vypnuté. Ich história bola vymazaná."
+  },
+  "stats_off_title": {
+    "message": "Štatistiky sú vypnuté"
+  },
+  "stats_off_text": {
+    "message": "Nič sa nepočíta a žiadna história sa neukladá. Štatistiky môžete znova zapnúť v Nastaveniach v časti Predvoľby."
+  },
+  "stats_off_button": {
+    "message": "Otvoriť nastavenia"
   }
 }

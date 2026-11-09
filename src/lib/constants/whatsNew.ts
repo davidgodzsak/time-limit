@@ -18,7 +18,8 @@ export interface WhatsNewHighlight {
   /** i18n key for the sentence under it. */
   bodyKey: string;
   /** Optional link to an extension page that shows the new thing. */
-  link?: { path: string; labelKey: string };
+  /** `requiresStatistics` hides it when the user has switched statistics off. */
+  link?: { path: string; labelKey: string; requiresStatistics?: boolean };
 }
 
 export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
@@ -29,7 +30,7 @@ export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
     icon: BarChart3,
     titleKey: 'whatsNew_stats_title',
     bodyKey: 'whatsNew_stats_body',
-    link: { path: STATS_PAGE_PATH, labelKey: 'whatsNew_stats_link' },
+    link: { path: STATS_PAGE_PATH, labelKey: 'whatsNew_stats_link', requiresStatistics: true },
   },
   // Kept from 1.13.1, three weeks old: anyone who had an opens limit run out
   // within minutes (#9) should hear it works now. The 16-languages note from

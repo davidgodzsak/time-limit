@@ -125,6 +125,7 @@ stay (they cost nothing and the author speaks them).
 - [x] Release note (`whatsNew.ts`) leads with statistics and links straight to the page
 - [x] One-time popup note once 3 days are recorded ("Your statistics are ready" → opens the page); either answer, or visiting the page with enough data, retires it for good
 - [x] Same note as a dismissible strip at the bottom of the timeout and reflection pages, plus the statistics icon in their headers next to info
+- [x] Settings → Preferences switch to turn statistics off: stops collecting, deletes the history, hides every statistics icon, link and reminder; the release note says it can be turned off
 
 ### Info page
 - [x] Create a basic info page that reuses the base of the timout page (background, header) and the theme and existing UI components as much as possible

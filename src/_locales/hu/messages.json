@@ -2426,7 +2426,7 @@
     "message": "Statisztika"
   },
   "whatsNew_stats_body": {
-    "message": "Nézd meg, mire megy el az időd a korlátozott oldalakon, és hogyan tartanak a korlátaid. A következő napokban telik meg, és a számok soha nem hagyják el a számítógépedet."
+    "message": "Nézd meg, mire megy el az időd a korlátozott oldalakon, és hogyan tartanak a korlátaid. A következő napokban telik meg, a számok soha nem hagyják el a számítógépedet, és a Beállításokban ki is kapcsolhatod."
   },
   "whatsNew_stats_link": {
     "message": "Statisztika megnyitása"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Ne emlékeztess többé"
+  },
+  "preferences_option_statistics": {
+    "message": "Statisztika"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Idő és megnyitások számolása a korlátozott oldalakon, csak ebben a böngészőben tárolva. Kikapcsoláskor az eddig számoltak törlődnek, és a statisztika oldal eltűnik."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statisztika kikapcsolva. Az előzmények törölve."
+  },
+  "stats_off_title": {
+    "message": "A statisztika ki van kapcsolva"
+  },
+  "stats_off_text": {
+    "message": "Semmit nem számolunk és nem őrzünk előzményt. A statisztikát a Beállítások Preferenciák részén kapcsolhatod vissza."
+  },
+  "stats_off_button": {
+    "message": "Beállítások megnyitása"
   }
 }

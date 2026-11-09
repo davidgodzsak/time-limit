@@ -10,6 +10,8 @@
  * finding the page on one's own once it has enough to show.
  */
 
+import { isStatisticsEnabled } from './history_storage.js';
+
 const STATS_PROMPT_KEY = 'statsPromptState';
 
 /** Mirrors MIN_DAYS_FOR_STATS in src/lib/stats/aggregate.ts (background scripts are not bundled). */
@@ -36,6 +38,7 @@ export async function getStatsPromptState() {
  */
 export async function shouldShowStatsPrompt(trackedDays) {
   if (trackedDays < STATS_READY_DAYS) return false;
+  if (!(await isStatisticsEnabled())) return false;
   const { handled } = await getStatsPromptState();
   return !handled;
 }

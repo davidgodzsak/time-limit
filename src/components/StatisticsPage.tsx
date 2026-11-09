@@ -26,6 +26,7 @@ import { PatternsTab } from "./stats/PatternsTab";
 import { PrivacyNote } from "./stats/PrivacyNote";
 import { NotEnoughDataView } from "./stats/NotEnoughDataView";
 import { StatsFooter } from "./stats/StatsFooter";
+import { StatsOffView } from "./stats/StatsOffView";
 import { SegmentedControl } from "./stats/SegmentedControl";
 
 /** Remembers the chosen range per viewer; purely a convenience. */
@@ -43,13 +44,16 @@ const StatisticsPage = () => {
   const { toast } = useToast();
   const [data, setData] = useState<api.StatisticsData | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
+  const [isOff, setIsOff] = useState(false);
   const [range, setRange] = useState<RangeDays>(initialRange);
   const [isSaving, setIsSaving] = useState(false);
   const [version, setVersion] = useState("");
 
   const load = useCallback(async () => {
     try {
-      setData(await api.getStatistics());
+      const response = await api.getStatistics();
+      setIsOff(!response.enabled);
+      setData(response.enabled ? response : null);
       setLoadFailed(false);
     } catch (error) {
       logError("Error loading statistics", error);
@@ -156,9 +160,9 @@ const StatisticsPage = () => {
           )}
         </div>
 
-        <PrivacyNote />
+        {isOff ? <StatsOffView onOpenSettings={openSettingsPage} /> : <PrivacyNote />}
 
-        {!data && !loadFailed && (
+        {!data && !loadFailed && !isOff && (
           <div className="flex justify-center py-16 text-muted-foreground" aria-live="polite">
             <Loader2 className="animate-spin" aria-label={t("stats_loading")} />
           </div>

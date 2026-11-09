@@ -2426,7 +2426,7 @@
     "message": "Statistiche"
   },
   "whatsNew_stats_body": {
-    "message": "Scopri dove va il tuo tempo sui siti limitati e come reggono i tuoi limiti. Si riempiranno nei prossimi giorni, e i numeri non lasciano mai il tuo computer."
+    "message": "Scopri dove va il tuo tempo sui siti limitati e come reggono i tuoi limiti. Si riempiranno nei prossimi giorni, i numeri non lasciano mai il tuo computer e puoi disattivarle nelle Impostazioni."
   },
   "whatsNew_stats_link": {
     "message": "Apri le statistiche"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Non ricordarmelo più"
+  },
+  "preferences_option_statistics": {
+    "message": "Statistiche"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Conta tempo e aperture sui siti limitati, conservati solo in questo browser. Disattivandole si cancella quanto contato e si nasconde la pagina delle statistiche."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statistiche disattivate. La loro cronologia è stata cancellata."
+  },
+  "stats_off_title": {
+    "message": "Le statistiche sono disattivate"
+  },
+  "stats_off_text": {
+    "message": "Non viene contato nulla e non si conserva alcuna cronologia. Puoi riattivare le statistiche nelle Impostazioni, in Preferenze."
+  },
+  "stats_off_button": {
+    "message": "Apri le impostazioni"
   }
 }

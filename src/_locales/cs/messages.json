@@ -2426,7 +2426,7 @@
     "message": "Statistiky"
   },
   "whatsNew_stats_body": {
-    "message": "Podívejte se, kam jde váš čas na omezených stránkách a jak se drží vaše limity. Během několika dní se zaplní a čísla nikdy neopustí váš počítač."
+    "message": "Podívejte se, kam jde váš čas na omezených stránkách a jak se drží vaše limity. Během několika dní se zaplní, čísla nikdy neopustí váš počítač a v Nastavení je můžete vypnout."
   },
   "whatsNew_stats_link": {
     "message": "Otevřít statistiky"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Už nepřipomínat"
+  },
+  "preferences_option_statistics": {
+    "message": "Statistiky"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Počítat čas a otevření omezených stránek, uložené jen v tomto prohlížeči. Vypnutím se smaže, co se napočítalo, a stránka statistik se skryje."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statistiky vypnuty. Jejich historie byla smazána."
+  },
+  "stats_off_title": {
+    "message": "Statistiky jsou vypnuté"
+  },
+  "stats_off_text": {
+    "message": "Nic se nepočítá a žádná historie se neukládá. Statistiky můžete znovu zapnout v Nastavení v části Předvolby."
+  },
+  "stats_off_button": {
+    "message": "Otevřít nastavení"
   }
 }

@@ -43,3 +43,10 @@ describe('trackedDayCount', () => {
     expect(trackedDayCount({ today: '2026-11-09', days: { '2026-11-09': { s: {} } } })).toBe(0);
   });
 });
+
+describe('stats prompt with statistics switched off', () => {
+  it('never shows', async () => {
+    installFakeStorage({ displayPreferences: { collectStatistics: false } });
+    expect(await shouldShowStatsPrompt(30)).toBe(false);
+  });
+});

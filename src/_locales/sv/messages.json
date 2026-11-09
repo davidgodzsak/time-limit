@@ -2426,7 +2426,7 @@
     "message": "Statistik"
   },
   "whatsNew_stats_body": {
-    "message": "Se vart din tid tar vägen på begränsade webbplatser och hur dina gränser håller. Den fylls på under de närmaste dagarna, och siffrorna lämnar aldrig din dator."
+    "message": "Se vart din tid tar vägen på begränsade webbplatser och hur dina gränser håller. Den fylls på under de närmaste dagarna, siffrorna lämnar aldrig din dator, och du kan stänga av den i Inställningar."
   },
   "whatsNew_stats_link": {
     "message": "Öppna statistik"
@@ -2445,5 +2445,23 @@
   },
   "statsPrompt_dismiss": {
     "message": "Påminn mig inte igen"
+  },
+  "preferences_option_statistics": {
+    "message": "Statistik"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Räkna tid och öppningar på begränsade webbplatser, sparas bara i den här webbläsaren. Att stänga av raderar det som räknats och döljer statistiksidan."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Statistiken är avstängd. Historiken har raderats."
+  },
+  "stats_off_title": {
+    "message": "Statistiken är avstängd"
+  },
+  "stats_off_text": {
+    "message": "Inget räknas och ingen historik sparas. Du kan slå på statistiken igen i Inställningar, under Preferenser."
+  },
+  "stats_off_button": {
+    "message": "Öppna inställningar"
   }
 }
