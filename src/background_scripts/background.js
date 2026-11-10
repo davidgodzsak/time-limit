@@ -32,12 +32,17 @@ import { updateBadge } from './badge_manager.js';
 import {
   checkReflectionRequired,
   buildReflectionUrl,
+  isReflectionPage,
 } from './reflection_gate.js';
 import {
   grantReflectionPass,
   clearReflectionPass,
   recordReflectionDecision,
   getReflectionStats,
+  notePendingReflection,
+  takePendingReflection,
+  settleAbandonedReflection,
+  clearPendingReflections,
 } from './reflection_storage.js';
 import {
   getVisitHost,
@@ -395,6 +400,8 @@ async function handleBeforeNavigate(details) {
       await browser.tabs.update(tabId, {
         url: buildReflectionUrl(url, reflection),
       });
+      // Closing the pause or leaving it unanswered counts as a "no".
+      await notePendingReflection(tabId, reflection.siteId, url);
       // Answering "yes" brings the tab back to the site: that is the open.
       if (isFront) await forgetView();
       await stopTracking();
@@ -506,6 +513,16 @@ async function handleTabUpdated(tabId, changeInfo, tab) {
     return;
   }
 
+  // A tab leaving an unanswered pause for another page stopped there. Checked
+  // for every tab, front or not, before the background-tab early return.
+  if (changeInfo.url && !isReflectionPage(changeInfo.url)) {
+    await settleAbandonedReflection(
+      getCurrentDateString(),
+      tabId,
+      changeInfo.url
+    );
+  }
+
   const newUrl = changeInfo.url || tab.url;
   if (!newUrl) {
     return;
@@ -549,6 +566,14 @@ async function handleTabUpdated(tabId, changeInfo, tab) {
       error
     );
   }
+}
+
+/**
+ * Handles a tab closing. Closing an unanswered pause counts as a "no".
+ * @param {number} tabId - The closed tab.
+ */
+async function handleTabRemoved(tabId) {
+  await settleAbandonedReflection(getCurrentDateString(), tabId);
 }
 
 /**
@@ -731,11 +756,11 @@ async function handleTabActivity(tabId, url, shouldTrack) {
  * @param {Object} message - The message object sent from UI
  * @param {string} message.action - The action to perform
  * @param {Object} [message.payload] - Data associated with the action
- * @param {Object} _sender - Information about the message sender
+ * @param {Object} sender - Information about the message sender
  * @param {Function} _sendResponse - Function to send response back
  * @returns {Promise<any>|boolean} Response data or boolean indicating async response
  */
-async function handleMessage(message, _sender, _sendResponse) {
+async function handleMessage(message, sender, _sendResponse) {
 
   // Validate basic message structure
   if (!message || typeof message !== 'object') {
@@ -2298,6 +2323,9 @@ async function handleMessage(message, _sender, _sendResponse) {
             groups.find((g) => g.id === site.groupId && g.isEnabled !== false);
           const limitId = group ? group.id : site.id;
 
+          // Answered: the tab leaving the pause next is not an abandonment.
+          if (sender && sender.tab) await takePendingReflection(sender.tab.id);
+
           await recordReflectionDecision(
             getCurrentDateString(),
             siteId,
@@ -2978,7 +3006,11 @@ try {
   browser.webNavigation.onCommitted.addListener(handleNavigationCommitted);
   browser.tabs.onActivated.addListener(handleTabActivated);
   browser.tabs.onUpdated.addListener(handleTabUpdated);
-  browser.runtime.onStartup.addListener(() => forgetView());
+  browser.tabs.onRemoved.addListener(handleTabRemoved);
+  browser.runtime.onStartup.addListener(() => {
+    forgetView();
+    clearPendingReflections();
+  });
   browser.windows.onFocusChanged.addListener(handleWindowFocusChanged);
   browser.runtime.onMessage.addListener(handleMessage);
   browser.action.onClicked.addListener(handleActionClick);
