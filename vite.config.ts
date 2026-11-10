@@ -123,11 +123,8 @@ export default defineConfig(() => ({
   build: {
     outDir: "../dist",
     emptyOutDir: true,
-    minify: 'esbuild' as const,
-    esbuild: {
-      drop: ['console'],
-    },
-    rollupOptions: {
+    minify: 'oxc' as const,
+    rolldownOptions: {
       input: {
         popup: resolve (__dirname , 'src/pages/popup/index.html'),
         settings: resolve (__dirname , 'src/pages/settings/index.html'),
@@ -136,6 +133,8 @@ export default defineConfig(() => ({
         info: resolve (__dirname , 'src/pages/info/index.html')
       },
       output: {
+        // Same as the old esbuild `drop: ['console']`: nothing logs in the shipped pages.
+        minify: { compress: { dropConsole: true } },
         entryFileNames: "assets/[name].js",
         chunkFileNames: "assets/[name].js",
         assetFileNames: "assets/[name].[ext]",
