@@ -306,7 +306,7 @@ RATING_URLS = {
 }
 ```
 
-The active URL is determined by the `__BROWSER_TARGET__` Vite variable.
+The active URL is decided at runtime from the extension's own URL: `moz-extension://` means Firefox, anything else (Chrome, Brave, Edge, Opera) gets the Chrome Web Store. It cannot be a build flag, because CI ships one bundle to both stores (issue #33).
 
 ---
 
