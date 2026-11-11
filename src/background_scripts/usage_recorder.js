@@ -6,6 +6,7 @@
  */
 
 import { getUsageStats, updateUsageStats } from './usage_storage.js';
+import { recordActivityHour } from './history_storage.js';
 
 // Session storage keys for tracking state - using local storage with session prefix
 const SESSION_KEYS = {
@@ -380,6 +381,7 @@ export async function recordSiteOpen(siteId) {
 
   try {
     const result = await _updateUsageStatsInStorage(siteId, 0, true); // 0 time, but increment open count
+    await recordActivityHour(_getCurrentDateString(), siteId);
     return result !== undefined; // _updateUsageStatsInStorage returns time or 0, so check if it succeeded
   } catch (error) {
     console.error('[UsageRecorder] Error recording site open:', error);

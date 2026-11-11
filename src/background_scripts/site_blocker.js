@@ -3,6 +3,7 @@ import { getGroups } from './group_storage.js';
 import { getUsageStats } from './usage_storage.js';
 import { getExtensions } from './extension_storage.js';
 import { findMatchingSite } from './url_matcher.js';
+import { recordBlockedAttempt } from './history_storage.js';
 
 /**
  * Works out whether a full block covers a site, and who set it.
@@ -314,6 +315,11 @@ export async function handlePotentialRedirect(tabId, url, options) {
 
     if (result.shouldBlock && result.siteId) {
       await browser.tabs.update(tabId, { url: buildTimeoutUrl(url, result) });
+      // Only arriving counts as an attempt: a limit running out while the
+      // user is already on the site, or a background tab, is not a try.
+      if (options?.isOpen !== false) {
+        await recordBlockedAttempt(_getCurrentDateString(), result.siteId);
+      }
       return true;
     }
 

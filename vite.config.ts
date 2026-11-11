@@ -130,7 +130,8 @@ export default defineConfig(() => ({
         settings: resolve (__dirname , 'src/pages/settings/index.html'),
         timeout: resolve (__dirname , 'src/pages/timeout/index.html'),
         reflect: resolve (__dirname , 'src/pages/reflect/index.html'),
-        info: resolve (__dirname , 'src/pages/info/index.html')
+        info: resolve (__dirname , 'src/pages/info/index.html'),
+        stats: resolve (__dirname , 'src/pages/stats/index.html')
       },
       output: {
         // Same as the old esbuild `drop: ['console']`: nothing logs in the shipped pages.

@@ -1,12 +1,20 @@
 import { ReactNode } from "react";
-import { Info, Settings } from "lucide-react";
+import { Info, Settings, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { t } from "@/lib/utils/i18n";
 import Logo from "./Logo";
 
+/** An extra header button, shown before the main one (e.g. the statistics link). */
+export interface HeaderLink {
+  icon: LucideIcon;
+  title: string;
+  onClick: () => void;
+}
+
 interface PageTemplateProps {
   children: ReactNode;
+  extraHeaderLinks?: HeaderLink[];
   version?: string;
   /**
    * Which page the header shortcut leads to. The info page points back at
@@ -29,6 +37,7 @@ const PageTemplate = ({
   showVersionBadge = true,
   logoSize = "md",
   headerStyle = "minimal",
+  extraHeaderLinks = [],
 }: PageTemplateProps) => {
   const isCentered = layout === "centered";
   const isMinimal = headerStyle === "minimal";
@@ -40,16 +49,24 @@ const PageTemplate = ({
 
   // One definition for all three header layouts, so the icon and its target
   // cannot drift apart per layout.
-  const headerButton = (
+  const iconButton = (Icon: LucideIcon, title: string, onClick: () => void) => (
     <Button
+      key={title}
       variant="ghost"
       size="icon"
-      onClick={onHeaderAction}
+      onClick={onClick}
       className="hover:bg-white/20 text-foreground"
-      title={headerTitle}
+      title={title}
+      aria-label={title}
     >
-      <HeaderIcon size={20} />
+      <Icon size={20} />
     </Button>
+  );
+  const headerButton = (
+    <div className="flex items-center gap-1">
+      {extraHeaderLinks.map((link) => iconButton(link.icon, link.title, link.onClick))}
+      {iconButton(HeaderIcon, headerTitle, onHeaderAction)}
+    </div>
   );
 
   return (

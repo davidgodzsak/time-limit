@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/utils/i18n";
 import PageTemplate from "./PageTemplate";
+import { StatsReadyBanner } from "./stats/StatsReadyBanner";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import CircularProgress from "./CircularProgress";
 import * as api from "@/lib/api";
 import { logError } from "@/lib/utils/errorHandler";
@@ -34,6 +36,7 @@ function displayName(url: string | null, pattern: string): string {
 }
 
 const ReflectionPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   const params = useMemo(
     () => new URLSearchParams(window.location.search),
     []
@@ -121,6 +124,7 @@ const ReflectionPage = () => {
     <PageTemplate
       version=""
       onHeaderAction={handleOpenInfo}
+      extraHeaderLinks={statsLinks}
       layout="centered"
       showVersionBadge={false}
       logoSize="sm"
@@ -200,6 +204,7 @@ const ReflectionPage = () => {
             ])}
           </p>
         )}
+        <StatsReadyBanner />
       </div>
     </PageTemplate>
   );

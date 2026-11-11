@@ -17,8 +17,11 @@ import { DisabledStateView } from "./popup/DisabledStateView";
 import { TimeoutPageView } from "./popup/TimeoutPageView";
 import { SettingsPageView } from "./popup/SettingsPageView";
 import { InfoPageView } from "./popup/InfoPageView";
+import { StatsPageView } from "./popup/StatsPageView";
 import { FirstInstallView } from "./popup/FirstInstallView";
 import { RatingPromptView } from "./popup/RatingPromptView";
+import { StatsReadyView } from "./popup/StatsReadyView";
+import { openStatsPage } from "@/lib/utils/navigation";
 import { ReflectPageView } from "./popup/ReflectPageView";
 import { WhatsNewView } from "./popup/WhatsNewView";
 
@@ -51,7 +54,7 @@ const PluginPopup = () => {
   // Set when the timeout page we are looking at is a full block rather than a
   // spent allowance, so the popup does not offer an extension that cannot work.
   const [timeoutIsFullBlock, setTimeoutIsFullBlock] = useState(false);
-  const [pageType, setPageType] = useState<'normal' | 'timeout' | 'settings' | 'info' | 'reflect'>('normal');
+  const [pageType, setPageType] = useState<'normal' | 'timeout' | 'settings' | 'info' | 'reflect' | 'stats'>('normal');
 
   // A site the extension noticed being opened again and again; the banner in
   // the unlimited view turns it into one click.
@@ -78,6 +81,17 @@ const PluginPopup = () => {
 
   // Rating prompt state
   const [showRatingPrompt, setShowRatingPrompt] = useState(false);
+  // One-time "your statistics are ready" note (see stats_prompt_storage.js).
+  const [showStatsPrompt, setShowStatsPrompt] = useState(false);
+
+  useEffect(() => {
+    api
+      .getStatsPrompt()
+      .then(({ shouldShow }) => setShowStatsPrompt(shouldShow))
+      .catch(() => {
+        /* non-critical */
+      });
+  }, []);
 
   // Release note, shown once after an update ahead of everything else
   const [whatsNew, setWhatsNew] = useState<api.WhatsNewState | null>(null);
@@ -124,6 +138,12 @@ const PluginPopup = () => {
           if (pageInfo.url.includes('settings.html') || pageInfo.url.includes('settings/index.html')) {
             setSiteName('Settings Page');
             setPageType('settings');
+            setIsLimited(false);
+            return;
+          }
+          if (pageInfo.url.includes('stats/index.html')) {
+            setSiteName('Statistics Page');
+            setPageType('stats');
             setIsLimited(false);
             return;
           }
@@ -661,6 +681,16 @@ const PluginPopup = () => {
     }
   };
 
+  const closeStatsPrompt = async (open: boolean) => {
+    setShowStatsPrompt(false);
+    if (open) openStatsPage();
+    try {
+      await api.markStatsPromptSeen();
+    } catch (error) {
+      logError("Error saving statistics prompt", error);
+    }
+  };
+
   const handleDismissRating = async () => {
     try {
       await api.declineRating();
@@ -711,6 +741,12 @@ const PluginPopup = () => {
         onClose={handleCloseWhatsNew}
       />
     );
+  }
+
+  // Once statistics have a few days in them, say so, once. After the release
+  // note, ahead of the rating prompt, and only on ordinary pages.
+  if (showStatsPrompt && pageType === 'normal') {
+    return <StatsReadyView onOpen={() => closeStatsPrompt(true)} onLater={() => closeStatsPrompt(false)} />;
   }
 
   // Show UI for disabled sites/groups (turn-on option)
@@ -775,6 +811,10 @@ const PluginPopup = () => {
 
     if (pageType === 'info') {
       return <InfoPageView onOpenSettings={handleOpenSettings} />;
+    }
+
+    if (pageType === 'stats') {
+      return <StatsPageView onOpenSettings={handleOpenSettings} onOpenInfo={handleOpenInfo} />;
     }
 
     // Unlimited site - show quick add UI

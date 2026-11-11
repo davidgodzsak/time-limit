@@ -7,6 +7,7 @@
  */
 
 import { getWindowDates, pruneOldVisits } from './visit_tracker.js';
+import { archivePastDays } from './history_storage.js';
 
 
 // Name for the daily reset alarm - updated to match background.js
@@ -98,6 +99,21 @@ export async function performDailyReset() {
   try {
     // Get all storage keys to find usage statistics and extensions
     const allStorage = await browser.storage.local.get(null);
+
+    // Fold finished days into the statistics history before their keys go.
+    // A failure here must not stop the reset: the limits depend on it.
+    try {
+      await archivePastDays(currentDateString, allStorage);
+    } catch (error) {
+      console.error('[DailyReset] Error archiving statistics history:', error);
+    }
+
+    const activityKeysToRemove = Object.keys(allStorage).filter(
+      (key) => key.startsWith('activity-') && key !== `activity-${currentDateString}`
+    );
+    if (activityKeysToRemove.length > 0) {
+      await browser.storage.local.remove(activityKeysToRemove);
+    }
     const usageStatsKeys = Object.keys(allStorage).filter((key) =>
       key.startsWith('usageStats-')
     );

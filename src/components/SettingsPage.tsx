@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { t } from "@/lib/utils/i18n";
 import { getRatingUrl } from "@/lib/constants/rating";
 import PageTemplate from "./PageTemplate";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import { RatingCard } from "./RatingCard";
 import AddSiteDialog from "./settings/AddSiteDialog";
 import CreateGroupDialog from "./settings/CreateGroupDialog";
@@ -27,6 +28,7 @@ import { getVersionFromManifest } from "@/lib/utils/manifestVersion";
 import type { UISite, UIGroup, Message } from "@/lib/storage";
 
 const SettingsPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -51,6 +53,7 @@ const SettingsPage = () => {
   const [showActivitySuggestions, setShowActivitySuggestions] = useState(true);
   const [preferredLanguage, setPreferredLanguage] = useState<string | null>(null);
   const [showLimitSuggestions, setShowLimitSuggestions] = useState(true);
+  const [collectStatistics, setCollectStatistics] = useState(true);
 
   // Message editing using custom hook to reduce state duplication
   const messageEditor = useEditMode<{ id: string; text: string }>(null, (msg) => msg.id);
@@ -99,6 +102,7 @@ const SettingsPage = () => {
             setShowRandomMessage(preferencesData.showRandomMessage !== false);
             setShowActivitySuggestions(preferencesData.showActivitySuggestions !== false);
             setShowLimitSuggestions(preferencesData.showLimitSuggestions !== false);
+            setCollectStatistics(preferencesData.collectStatistics !== false);
             setPreferredLanguage(
               (preferencesData.preferredLanguage as string | null | undefined) ?? null
             );
@@ -340,6 +344,7 @@ const SettingsPage = () => {
       showRandomMessage,
       showActivitySuggestions,
       showLimitSuggestions,
+      collectStatistics,
       preferredLanguage,
       ...changes,
     });
@@ -376,6 +381,20 @@ const SettingsPage = () => {
       logError("Error updating preferences", error);
       toast(getErrorToastProps(t("toast_preferenceSaveFailed")));
       setShowLimitSuggestions(!checked);
+    }
+  };
+
+  // Off means off: the background deletes the history collected so far and
+  // every statistics link and reminder disappears (statisticsToggled).
+  const handleToggleStatistics = async (checked: boolean) => {
+    setCollectStatistics(checked);
+    try {
+      await savePreferences({ collectStatistics: checked });
+      if (!checked) toast(getSuccessToastProps(t("preferences_option_statistics_offToast")));
+    } catch (error) {
+      logError("Error updating preferences", error);
+      toast(getErrorToastProps(t("toast_preferenceSaveFailed")));
+      setCollectStatistics(!checked);
     }
   };
 
@@ -739,6 +758,7 @@ const SettingsPage = () => {
   if (isLoading) {
     return (
       <PageTemplate
+        extraHeaderLinks={statsLinks}
         version={version}
         onHeaderAction={handleOpenInfo}
         layout="centered"
@@ -789,6 +809,7 @@ const SettingsPage = () => {
   return (
     <>
       <PageTemplate
+        extraHeaderLinks={statsLinks}
         version={version}
         onHeaderAction={handleOpenInfo}
         layout="normal"
@@ -914,6 +935,8 @@ const SettingsPage = () => {
               onToggleActivitySuggestions={handleToggleActivitySuggestions}
               showLimitSuggestions={showLimitSuggestions}
               onToggleLimitSuggestions={handleToggleLimitSuggestions}
+              collectStatistics={collectStatistics}
+              onToggleStatistics={handleToggleStatistics}
               preferredLanguage={preferredLanguage}
               onChangeLanguage={handleChangeLanguage}
               isSaving={isSaving}

@@ -15,12 +15,14 @@ import { t } from "@/lib/utils/i18n";
 import { getRatingUrl } from "@/lib/constants/rating";
 import * as api from "@/lib/api";
 import PageTemplate from "./PageTemplate";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import { RatingCard } from "./RatingCard";
 import { getVersionFromManifest } from "@/lib/utils/manifestVersion";
 import { logError, getErrorToastProps, getSuccessToastProps } from "@/lib/utils/errorHandler";
 import { useToast } from "@/hooks/use-toast";
 
 const InfoPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   const { toast } = useToast();
   const [version, setVersion] = useState("");
   const [hasRated, setHasRated] = useState(false);
@@ -125,6 +127,7 @@ const InfoPage = () => {
 
   return (
     <PageTemplate
+        extraHeaderLinks={statsLinks}
       version={version}
       headerAction="settings"
       onHeaderAction={handleOpenSettings}

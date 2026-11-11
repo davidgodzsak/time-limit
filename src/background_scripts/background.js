@@ -53,7 +53,20 @@ import {
   considerSuggestion,
   getPendingSuggestionForHost,
   retireSuggestion,
+  getFrequentUnlimitedHosts,
 } from './suggestion_engine.js';
+import {
+  getHistory,
+  clearHistory,
+  recordActivityHour,
+  trackedDayCount,
+  statisticsEnabledIn,
+} from './history_storage.js';
+import {
+  shouldShowStatsPrompt,
+  markStatsPromptHandled,
+  STATS_READY_DAYS,
+} from './stats_prompt_storage.js';
 import { getExtensions, setExtension, hasExtensionToday } from './extension_storage.js';
 import { getUsageStats } from './usage_storage.js';
 import {
@@ -1650,6 +1663,7 @@ async function handleMessage(message, sender, _sendResponse) {
             showRandomMessage: true,
             showActivitySuggestions: true,
             showLimitSuggestions: true,
+            collectStatistics: true,
             preferredLanguage: null,
             ...(storage.displayPreferences || {}),
           };
@@ -1673,13 +1687,22 @@ async function handleMessage(message, sender, _sendResponse) {
 
       case 'updateDisplayPreferences': {
         try {
-          const preferences = message.payload || {
-            showRandomMessage: true,
-            showActivitySuggestions: true,
-            showLimitSuggestions: true,
-            preferredLanguage: null,
-          };
+          // Merged over what is stored, so a caller that leaves a field out
+          // cannot silently reset it (statistics coming back on, say).
+          const { displayPreferences: previous = {} } =
+            await browser.storage.local.get('displayPreferences');
+          const preferences = { ...previous, ...(message.payload || {}) };
           await browser.storage.local.set({ displayPreferences: preferences });
+
+          // Turning statistics off means nothing is kept: delete what was
+          // collected, and let open pages drop their statistics links.
+          const wasOn = statisticsEnabledIn(previous);
+          const isOn = statisticsEnabledIn(preferences);
+          if (wasOn && !isOn) await clearHistory();
+          if (wasOn !== isOn) {
+            await broadcastToUIComponents('statisticsToggled', { enabled: isOn });
+          }
+
           return {
             success: true,
             data: preferences,
@@ -2313,6 +2336,9 @@ async function handleMessage(message, sender, _sendResponse) {
             await grantReflectionPass(limitId);
           } else {
             await clearReflectionPass(limitId);
+            // A "yes" becomes an open, which notes its own hour; a "no" is
+            // still a moment the user reached for the site.
+            await recordActivityHour(getCurrentDateString(), siteId);
           }
 
           return {
@@ -2379,6 +2405,72 @@ async function handleMessage(message, sender, _sendResponse) {
           };
         } catch (error) {
           console.error('[Background] Error dismissing suggestion:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      // === Statistics ===
+      case 'getStatistics': {
+        try {
+          const today = getCurrentDateString();
+          const { displayPreferences } = await browser.storage.local.get('displayPreferences');
+          if (!statisticsEnabledIn(displayPreferences)) {
+            return { success: true, data: { enabled: false }, error: null };
+          }
+          const [history, sites, groups] = await Promise.all([
+            getHistory(today),
+            getDistractingSites(),
+            getGroups(),
+          ]);
+          // Finding the page once it has something to show makes the popup's
+          // "your statistics are ready" note moot.
+          if (trackedDayCount(history) >= STATS_READY_DAYS) {
+            await markStatsPromptHandled();
+          }
+          const frequentHosts = (await _suggestionsEnabled())
+            ? await getFrequentUnlimitedHosts(
+                today,
+                (host) => checkIfUrlHasLimits(`https://${host}/`).isMatch
+              )
+            : [];
+          return {
+            success: true,
+            data: { enabled: true, ...history, sites, groups, frequentHosts },
+            error: null,
+          };
+        } catch (error) {
+          console.error('[Background] Error reading statistics:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'getStatsPrompt': {
+        try {
+          const history = await getHistory(getCurrentDateString());
+          const shouldShow = await shouldShowStatsPrompt(trackedDayCount(history));
+          return { success: true, data: { shouldShow }, error: null };
+        } catch (error) {
+          console.error('[Background] Error reading statistics prompt:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'markStatsPromptSeen': {
+        try {
+          await markStatsPromptHandled();
+          return { success: true, data: { handled: true }, error: null };
+        } catch (error) {
+          console.error('[Background] Error saving statistics prompt:', error);
+          return { success: false, error: categorizeError(error) };
+        }
+      }
+
+      case 'clearStatistics': {
+        try {
+          await clearHistory();
+          return { success: true, data: { cleared: true }, error: null };
+        } catch (error) {
+          console.error('[Background] Error clearing statistics:', error);
           return { success: false, error: categorizeError(error) };
         }
       }

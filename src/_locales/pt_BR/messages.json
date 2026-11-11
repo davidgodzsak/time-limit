@@ -1638,5 +1638,830 @@
   "whatsNew_opens_body": {
     "message": "Navegar dentro de um site não gasta mais suas aberturas. Uma abertura conta quando você chega ao site vindo de outro lugar: outra página, outra aba ou outro aplicativo.",
     "description": "Release note body: what counts as an open now"
+  },
+  "stats_title": {
+    "message": "Estatísticas"
+  },
+  "stats_subtitle": {
+    "message": "Para onde foi seu tempo nos sites limitados e como os limites se saíram."
+  },
+  "stats_open": {
+    "message": "Estatísticas"
+  },
+  "stats_openSettings": {
+    "message": "Configurações"
+  },
+  "stats_privacy_title": {
+    "message": "Só você pode ver isto"
+  },
+  "stats_privacy_text": {
+    "message": "Esses números são contados e guardados neste computador, neste navegador. Nada é enviado a nenhum servidor e ninguém mais pode vê-los, nem mesmo nós."
+  },
+  "stats_loading": {
+    "message": "Carregando estatísticas"
+  },
+  "stats_loadFailed": {
+    "message": "Não foi possível carregar suas estatísticas. Tente recarregar a página."
+  },
+  "stats_actionFailed": {
+    "message": "Não deu certo. Tente de novo."
+  },
+  "stats_range_label": {
+    "message": "Período"
+  },
+  "stats_range_days": {
+    "message": "$COUNT$ dias",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_range_clipped": {
+    "message": "Mostrando os $COUNT$ dias registrados até agora.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_tab_overview": {
+    "message": "Visão geral"
+  },
+  "stats_tab_sites": {
+    "message": "Sites"
+  },
+  "stats_tab_limits": {
+    "message": "Limites"
+  },
+  "stats_tab_patterns": {
+    "message": "Hábitos"
+  },
+  "stats_notEnough_title": {
+    "message": "Suas estatísticas estão a caminho"
+  },
+  "stats_notEnough_text": {
+    "message": "A contagem começou em $DATE$. Volte em alguns dias, quando houver dados suficientes para mostrar algo útil.",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_notEnough_noData": {
+    "message": "A contagem começa na próxima vez que você abrir um site limitado. Volte em alguns dias para ver para onde vai seu tempo."
+  },
+  "stats_notEnough_noRules": {
+    "message": "As estatísticas são contadas para os sites que você limita. Adicione seu primeiro site nas Configurações e volte em alguns dias."
+  },
+  "stats_notEnough_privacy": {
+    "message": "Tudo o que é contado aqui fica neste navegador. Nada é enviado para lugar nenhum."
+  },
+  "stats_summary": {
+    "message": "Nos últimos $DAYS$ dias você passou $TOTAL$ em sites limitados, cerca de $PERDAY$ por dia.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      },
+      "perday": {
+        "content": "$3",
+        "example": "45 min"
+      }
+    }
+  },
+  "stats_summary_less": {
+    "message": "São $AMOUNT$ a menos que nos $DAYS$ dias anteriores.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_more": {
+    "message": "São $AMOUNT$ a mais que nos $DAYS$ dias anteriores.",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_summary_same": {
+    "message": "Mais ou menos igual ao período anterior."
+  },
+  "stats_kpi_timePerDay": {
+    "message": "Tempo por dia"
+  },
+  "stats_kpi_opensPerDay": {
+    "message": "Aberturas por dia"
+  },
+  "stats_kpi_heldBack": {
+    "message": "Vezes que você se segurou"
+  },
+  "stats_kpi_heldBack_hint": {
+    "message": "Tentativas bloqueadas e pausas em que você disse não"
+  },
+  "stats_kpi_streak": {
+    "message": "Dias sem estender"
+  },
+  "stats_kpi_streak_best": {
+    "message": "Recorde: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_streak_best": {
+    "message": "Melhor sequência, em dias"
+  },
+  "stats_delta_noEarlier": {
+    "message": "Ainda sem dados anteriores"
+  },
+  "stats_delta_same": {
+    "message": "Mais ou menos igual"
+  },
+  "stats_delta_new": {
+    "message": "Novo neste período"
+  },
+  "stats_delta_less": {
+    "message": "$PERCENT$ a menos",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_delta_more": {
+    "message": "$PERCENT$ a mais",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_daily_title": {
+    "message": "Todo dia, por site"
+  },
+  "stats_daily_description": {
+    "message": "Cada faixa é um site, empilhadas para que a borda de cima seja seu total do dia. A linha escura é a média de $DAYS$ dias, para que um dia ruim não esconda a tendência.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_daily_empty": {
+    "message": "Nada registrado neste período."
+  },
+  "stats_mode_time": {
+    "message": "Tempo"
+  },
+  "stats_mode_opens": {
+    "message": "Aberturas"
+  },
+  "stats_chart_other": {
+    "message": "Outros sites"
+  },
+  "stats_chart_total": {
+    "message": "Total"
+  },
+  "stats_chart_average": {
+    "message": "Média de $DAYS$ dias",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_time": {
+    "message": "Tempo diário em sites limitados, empilhado por site, com média de $DAYS$ dias",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_chart_daily_aria_opens": {
+    "message": "Aberturas diárias de sites limitados, empilhadas por site, com média de $DAYS$ dias",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insights_title": {
+    "message": "O que se destaca"
+  },
+  "stats_insight_drop_title": {
+    "message": "$NAME$ caiu $PERCENT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_drop_text": {
+    "message": "$NOW$ por dia em média, contra $BEFORE$ no período anterior.",
+    "placeholders": {
+      "now": {
+        "content": "$1",
+        "example": "22 min"
+      },
+      "before": {
+        "content": "$2",
+        "example": "29 min"
+      }
+    }
+  },
+  "stats_insight_tight_title": {
+    "message": "$NAME$ atingiu o limite em $HITS$ de $DAYS$ dias",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "hits": {
+        "content": "$2",
+        "example": "5"
+      },
+      "days": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_tight_text": {
+    "message": "O limite faz todo o trabalho todo dia. Uma pausa curta antes de o site abrir pode aliviar a pressão."
+  },
+  "stats_insight_attempts_title": {
+    "message": "Tentativas de abrir $NAME$ enquanto bloqueado: $COUNT$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "count": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_text": {
+    "message": "Cada tentativa terminou na página de pausa."
+  },
+  "stats_insight_attempts_fewer": {
+    "message": "Contra $COUNT$ no período anterior. O hábito está enfraquecendo.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_attempts_more": {
+    "message": "Contra $COUNT$ no período anterior.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_insight_pause_title": {
+    "message": "A pausa em $NAME$ fez você desistir $PERCENT$ das vezes",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "percent": {
+        "content": "$2",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_insight_pause_text": {
+    "message": "$NO$ de $TOTAL$ contagens regressivas terminaram com outra escolha.",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_insight_peak_title": {
+    "message": "Sua hora mais difícil começa às $HOUR$",
+    "placeholders": {
+      "hour": {
+        "content": "$1",
+        "example": "22:00"
+      }
+    }
+  },
+  "stats_insight_peak_text": {
+    "message": "$PERCENT$ das aberturas e tentativas acontecem nessa hora.",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_sites_col_rule": {
+    "message": "Site ou grupo"
+  },
+  "stats_sites_col_time": {
+    "message": "Tempo"
+  },
+  "stats_sites_col_opens": {
+    "message": "Aberturas"
+  },
+  "stats_sites_col_trend": {
+    "message": "Tendência"
+  },
+  "stats_sites_col_outcome": {
+    "message": "Como foi"
+  },
+  "stats_sites_group": {
+    "message": "Grupo"
+  },
+  "stats_sites_empty": {
+    "message": "Nenhum site limitado foi usado neste período."
+  },
+  "stats_sites_neverOpens": {
+    "message": "Nunca abre"
+  },
+  "stats_sites_tried": {
+    "message": "Tentativas enquanto bloqueado: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_reached": {
+    "message": "Limite atingido em $HITS$ de $DAYS$ dias",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_sites_underHalf": {
+    "message": "Usa menos da metade do limite"
+  },
+  "stats_sites_turnedBack": {
+    "message": "A pausa fez você desistir $PERCENT$ das vezes",
+    "placeholders": {
+      "percent": {
+        "content": "$1",
+        "example": "18%"
+      }
+    }
+  },
+  "stats_frequent_title": {
+    "message": "Aberto com frequência, ainda sem limite"
+  },
+  "stats_frequent_description": {
+    "message": "Dos últimos 7 dias. Só o nome do site é contado, nunca as páginas que você lê. Ferramentas de trabalho como GitHub ou Jira nunca aparecem."
+  },
+  "stats_frequent_count": {
+    "message": "Aberturas: $OPENS$ · dias: $DAYS$",
+    "placeholders": {
+      "opens": {
+        "content": "$1",
+        "example": "31"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_frequent_addPause": {
+    "message": "Adicionar pausa de 10 s"
+  },
+  "stats_frequent_dismiss": {
+    "message": "Não é problema, não sugerir de novo"
+  },
+  "stats_frequent_added": {
+    "message": "$SITE$ agora faz uma pausa de 10 segundos antes de abrir.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_frequent_dismissed": {
+    "message": "$SITE$ não será mais sugerido.",
+    "placeholders": {
+      "site": {
+        "content": "$1",
+        "example": "twitch.tv"
+      }
+    }
+  },
+  "stats_attempts_title": {
+    "message": "Tentativas enquanto bloqueado"
+  },
+  "stats_attempts_description": {
+    "message": "Cada vez que um site mandou você para a página de pausa. Mostra o quanto é difícil manter cada limite."
+  },
+  "stats_attempts_none": {
+    "message": "Nenhuma tentativa neste período."
+  },
+  "stats_pause_title": {
+    "message": "A pausa"
+  },
+  "stats_pause_description": {
+    "message": "Com que frequência a contagem regressiva terminou com outra escolha."
+  },
+  "stats_pause_none": {
+    "message": "Nenhuma pausa respondida neste período."
+  },
+  "stats_pause_saidNo": {
+    "message": "Disse não $NO$ de $TOTAL$ vezes",
+    "placeholders": {
+      "no": {
+        "content": "$1",
+        "example": "5"
+      },
+      "total": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "stats_fit_title": {
+    "message": "Quão bem cada limite se encaixa"
+  },
+  "stats_fit_description": {
+    "message": "Um ponto por dia. A linha é o limite."
+  },
+  "stats_fit_tight": {
+    "message": "Atingido quase sempre"
+  },
+  "stats_fit_loose": {
+    "message": "Dá para apertar"
+  },
+  "stats_fit_fits": {
+    "message": "Encaixa"
+  },
+  "stats_fit_tight_text": {
+    "message": "Atingido em $HITS$ de $DAYS$ dias. Uma pausa antes de o site abrir pode aliviar a pressão.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_loose_text": {
+    "message": "Nunca acima de $MAX$ de $LIMIT$. $SUGGEST$ ainda teria coberto 9 de cada 10 dias.",
+    "placeholders": {
+      "max": {
+        "content": "$1",
+        "example": "8 min"
+      },
+      "limit": {
+        "content": "$2",
+        "example": "20 min"
+      },
+      "suggest": {
+        "content": "$3",
+        "example": "10 min"
+      }
+    }
+  },
+  "stats_fit_fits_text": {
+    "message": "Atingido em $HITS$ de $DAYS$ dias, com folga nos demais.",
+    "placeholders": {
+      "hits": {
+        "content": "$1",
+        "example": "5"
+      },
+      "days": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "stats_fit_setTo": {
+    "message": "Definir em $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_limitLabel": {
+    "message": "Limite de $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_fit_updated": {
+    "message": "$NAME$ agora tem um limite diário de $AMOUNT$.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "youtube.com"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_title": {
+    "message": "Extensões e seus motivos"
+  },
+  "stats_extensions_summary": {
+    "message": "Extensões: $COUNT$, $AMOUNT$ a mais no total. Suas próprias palavras, caso valha a pena relê-las.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_extensions_none": {
+    "message": "Nenhuma extensão neste período."
+  },
+  "stats_heatmap_title": {
+    "message": "Quando bate a vontade"
+  },
+  "stats_heatmap_description": {
+    "message": "Aberturas e tentativas por hora, em média por dia da semana."
+  },
+  "stats_heatmap_filter": {
+    "message": "Site ou grupo"
+  },
+  "stats_heatmap_all": {
+    "message": "Todos os sites limitados"
+  },
+  "stats_heatmap_hint": {
+    "message": "Aponte para um quadrado para ver o número."
+  },
+  "stats_heatmap_cell": {
+    "message": "$DAY$, $HOUR$: $COUNT$ em média",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "hour": {
+        "content": "$2",
+        "example": "22:00"
+      },
+      "count": {
+        "content": "$3",
+        "example": "7"
+      }
+    }
+  },
+  "stats_heatmap_fewer": {
+    "message": "Menos"
+  },
+  "stats_heatmap_more": {
+    "message": "Mais"
+  },
+  "stats_weekly_title": {
+    "message": "Seis meses, semana a semana"
+  },
+  "stats_weekly_description": {
+    "message": "Tempo médio por dia em sites limitados, comparado ao seu primeiro mês. Verde é tempo recuperado. Um anel marca uma semana com extensão."
+  },
+  "stats_weekly_aria": {
+    "message": "Tempo médio por dia em cada semana, comparado ao primeiro mês"
+  },
+  "stats_weekly_baseline": {
+    "message": "Primeiro mês: $AMOUNT$",
+    "placeholders": {
+      "amount": {
+        "content": "$1",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekly_notYet": {
+    "message": "Aparece depois de $WEEKS$ semanas de histórico. Semanas até agora: $SOFAR$.",
+    "placeholders": {
+      "weeks": {
+        "content": "$1",
+        "example": "5"
+      },
+      "sofar": {
+        "content": "$2",
+        "example": "3"
+      }
+    }
+  },
+  "stats_weekly_weekOf": {
+    "message": "Semana de $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1",
+        "example": "Nov 9"
+      }
+    }
+  },
+  "stats_weekly_perDay": {
+    "message": "Por dia"
+  },
+  "stats_weekly_vsBaseline": {
+    "message": "Em relação ao primeiro mês"
+  },
+  "stats_weekly_extensions": {
+    "message": "Extensões: $COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_weekly_reclaimed": {
+    "message": "Recuperado desde o primeiro mês"
+  },
+  "stats_weekday_title": {
+    "message": "Por dia da semana"
+  },
+  "stats_weekday_busiest": {
+    "message": "O dia que mais custa: $DAY$, $AMOUNT$ em média.",
+    "placeholders": {
+      "day": {
+        "content": "$1",
+        "example": "Saturday"
+      },
+      "amount": {
+        "content": "$2",
+        "example": "20 min"
+      }
+    }
+  },
+  "stats_weekday_description": {
+    "message": "Tempo médio por dia da semana."
+  },
+  "stats_footer_retention": {
+    "message": "O histórico é guardado por $DAYS$ dias e depois apagado.",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_footer_export": {
+    "message": "Exportar CSV"
+  },
+  "stats_footer_clear": {
+    "message": "Limpar histórico"
+  },
+  "stats_clear_title": {
+    "message": "Limpar todas as estatísticas?"
+  },
+  "stats_clear_text": {
+    "message": "Isso apaga todo o seu histórico deste navegador. Seus limites e o uso de hoje continuam como estão. Não é possível desfazer."
+  },
+  "stats_clear_cancel": {
+    "message": "Cancelar"
+  },
+  "stats_clear_confirm": {
+    "message": "Limpar histórico"
+  },
+  "stats_cleared": {
+    "message": "Estatísticas apagadas."
+  },
+  "stats_rule_removed": {
+    "message": "Removido"
+  },
+  "stats_rule_minutes": {
+    "message": "$COUNT$ min",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_opens": {
+    "message": "$COUNT$ aberturas",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "stats_rule_pause": {
+    "message": "Pausa de $COUNT$ s",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "7"
+      }
+    }
+  },
+  "statsPageView_title": {
+    "message": "Página de estatísticas"
+  },
+  "statsPageView_subtitle": {
+    "message": "Sua navegação em números"
+  },
+  "whatsNew_stats_title": {
+    "message": "Estatísticas"
+  },
+  "whatsNew_stats_body": {
+    "message": "Veja para onde vai seu tempo nos sites limitados e como seus limites se saem. Elas se preenchem nos próximos dias, os números nunca saem do seu computador e você pode desativá-las nas Configurações."
+  },
+  "whatsNew_stats_link": {
+    "message": "Abrir estatísticas"
+  },
+  "statsPrompt_title": {
+    "message": "Suas estatísticas estão prontas"
+  },
+  "statsPrompt_body": {
+    "message": "Alguns dias já foram registrados. Veja para onde foi seu tempo nos sites limitados e como seus limites se saíram."
+  },
+  "statsPrompt_open": {
+    "message": "Ver minhas estatísticas"
+  },
+  "statsPrompt_later": {
+    "message": "Agora não"
+  },
+  "statsPrompt_dismiss": {
+    "message": "Não me lembrar de novo"
+  },
+  "preferences_option_statistics": {
+    "message": "Estatísticas"
+  },
+  "preferences_option_statistics_description": {
+    "message": "Contar tempo e aberturas nos sites limitados, guardados só neste navegador. Desativar apaga o que foi contado e esconde a página de estatísticas."
+  },
+  "preferences_option_statistics_offToast": {
+    "message": "Estatísticas desativadas. O histórico foi apagado."
+  },
+  "stats_off_title": {
+    "message": "As estatísticas estão desativadas"
+  },
+  "stats_off_text": {
+    "message": "Nada é contado e nenhum histórico é guardado. Você pode reativar as estatísticas nas Configurações, em Preferências."
+  },
+  "stats_off_button": {
+    "message": "Abrir configurações"
   }
 }

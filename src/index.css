@@ -146,3 +146,23 @@
     box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.3);
   }
 }
+
+/* Statistics page motion: bars and bands grow from the baseline, lines draw,
+   cells pop in. Everything rests in its final state for reduced motion. */
+@keyframes stats-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes stats-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes stats-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes stats-fade-up { from { opacity: 0.001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes stats-pop { from { opacity: 0.001; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+
+@layer utilities {
+  .stats-grow { transform-box: fill-box; transform-origin: bottom; animation: stats-grow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .stats-grow-x { transform-origin: left; animation: stats-grow-x 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .stats-draw { stroke-dasharray: 1; animation: stats-draw 1.1s ease-out 0.35s both; }
+  .stats-fade-up { animation: stats-fade-up 0.45s ease-out both; }
+  .stats-pop { transform-box: fill-box; transform-origin: center; animation: stats-pop 0.35s ease-out both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-grow, .stats-grow-x, .stats-draw, .stats-fade-up, .stats-pop { animation: none !important; }
+}

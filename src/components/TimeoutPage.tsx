@@ -9,10 +9,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { t } from "@/lib/utils/i18n";
 import PageTemplate from "./PageTemplate";
+import { StatsReadyBanner } from "./stats/StatsReadyBanner";
+import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
 import * as api from "@/lib/api";
 import { ACTIVITY_SUGGESTIONS } from "@/constants/suggestions";
 
 const TimeoutPage = () => {
+  const statsLinks = useStatsHeaderLinks();
   // URL params
   const [blockedUrl, setBlockedUrl] = useState<string>("");
   const [siteName, setSiteName] = useState<string>("this site");
@@ -163,6 +166,7 @@ const TimeoutPage = () => {
     <PageTemplate
       version=""
       onHeaderAction={handleOpenInfo}
+      extraHeaderLinks={statsLinks}
       layout="centered"
       showVersionBadge={false}
       logoSize="sm"
@@ -324,6 +328,7 @@ const TimeoutPage = () => {
                 t("timeout_blocked_hint", siteName)
               : t("timeout_resetTime", [siteName, resetTime])}
           </p>
+        <StatsReadyBanner />
       </div>
     </PageTemplate>
   );
