@@ -60,6 +60,17 @@ const SettingsPage = () => {
 
   // Onboarding flow
   const onboarding = useOnboarding();
+  const [activeTab, setActiveTab] = useState("limits");
+
+  // "Next" skips the current step. The steps after a tab step point at
+  // something inside that tab, so skipping one has to open the tab too —
+  // otherwise the next spotlight has no target and the tour vanishes.
+  const handleOnboardingNext = () => {
+    if (onboarding.currentStep === ONBOARDING_STEPS.GROUPS_TAB) setActiveTab("groups");
+    if (onboarding.currentStep === ONBOARDING_STEPS.MESSAGES_TAB) setActiveTab("messages");
+    if (onboarding.currentStep === ONBOARDING_STEPS.MESSAGES_LIST) setActiveTab("preferences");
+    onboarding.nextStep();
+  };
 
   // Rating banner state
   const [showRatingBanner, setShowRatingBanner] = useState(false);
@@ -826,9 +837,10 @@ const SettingsPage = () => {
           </div>
         )}
         <Tabs
-          defaultValue="limits"
+          value={activeTab}
           className="w-full max-w-4xl space-y-6"
           onValueChange={(value) => {
+            setActiveTab(value);
             // Auto-advance when user clicks on specific tabs during onboarding
             if (
               value === "groups" &&
@@ -987,8 +999,9 @@ const SettingsPage = () => {
           targetSelector='[data-testid="add-site-button"]'
           title="Add Your First Limit"
           message="Click here to add your first site. Specify time spent OR number of opens (or both) to create your first limit!"
-          onSkip={onboarding.skipOnboarding}
-          hideNextButton={true}
+          onSkipOnboarding={onboarding.skipOnboarding}
+          onContinue={handleOnboardingNext}
+          isActionStep
           showSuccess={onboarding.showSuccessMessage}
           successMessage={onboarding.successMessage}
         />
@@ -999,8 +1012,9 @@ const SettingsPage = () => {
           targetSelector='[data-testid="groups-tab"]'
           title="Limit Related Sites Together"
           message="Click Groups to limit related sites together and prevent time-wasting alternatives. For example, if you limit Instagram but not TikTok, you might just switch to TikTok instead. We've created 'Social Media' as an example."
-          onSkip={onboarding.skipOnboarding}
-          hideNextButton={true}
+          onSkipOnboarding={onboarding.skipOnboarding}
+          onContinue={handleOnboardingNext}
+          isActionStep
           showSuccess={onboarding.showSuccessMessage}
           successMessage={onboarding.successMessage}
         />
@@ -1008,11 +1022,12 @@ const SettingsPage = () => {
 
       {onboarding.isVisible && onboarding.currentStep === ONBOARDING_STEPS.ADD_TO_GROUP && (
         <SpotlightOverlay
-          targetSelector='[data-testid="social-media-add-site"]'
+          targetSelector='[data-testid="onboarding-group-add-site"]'
           title="Add Sites to Groups"
           message="You can add individual sites to groups. Try adding Facebook, TikTok, or Instagram to the Social Media group to manage them together!"
-          onSkip={onboarding.skipOnboarding}
-          hideNextButton={true}
+          onSkipOnboarding={onboarding.skipOnboarding}
+          onContinue={handleOnboardingNext}
+          isActionStep
           showSuccess={onboarding.showSuccessMessage}
           successMessage={onboarding.successMessage}
         />
@@ -1023,8 +1038,9 @@ const SettingsPage = () => {
           targetSelector='[data-testid="messages-tab"]'
           title="Customize Motivational Messages"
           message="Click Messages to manage the motivational text shown when you hit your limits on the timeout page. We've added some examples you can use or customize!"
-          onSkip={onboarding.skipOnboarding}
-          hideNextButton={true}
+          onSkipOnboarding={onboarding.skipOnboarding}
+          onContinue={handleOnboardingNext}
+          isActionStep
           showSuccess={onboarding.showSuccessMessage}
           successMessage={onboarding.successMessage}
         />
@@ -1035,15 +1051,28 @@ const SettingsPage = () => {
           targetSelector='[data-testid="messages-list"]'
           title="Edit Your Messages"
           message="Here you can edit, add, or remove motivational messages. Click any message to customize it to match your interests or use the edit button. These messages will appear when you hit your time limits!"
-          onSkip={onboarding.skipOnboarding}
-          onContinue={onboarding.nextStep}
+          onSkipOnboarding={onboarding.skipOnboarding}
+          onContinue={handleOnboardingNext}
           showSuccess={onboarding.showSuccessMessage}
           successMessage={onboarding.successMessage}
         />
       )}
 
+      {onboarding.isVisible && onboarding.currentStep === ONBOARDING_STEPS.STATISTICS && (
+        <SpotlightOverlay
+          targetSelector='[data-testid="statistics-preference"]'
+          title={t("onboarding_statistics_title")}
+          message={t("onboarding_statistics_message")}
+          onSkipOnboarding={onboarding.skipOnboarding}
+          onContinue={onboarding.nextStep}
+        />
+      )}
+
       {onboarding.isVisible && onboarding.currentStep === ONBOARDING_STEPS.COMPLETION && (
-        <CompletionScreen onClose={onboarding.completeOnboarding} />
+        <CompletionScreen
+          onClose={onboarding.completeOnboarding}
+          hasLimit={individualSites.length > 0 || groups.some((g) => g.sites.length > 0)}
+        />
       )}
 
       {onboarding.isVisible && onboarding.currentStep === ONBOARDING_STEPS.TOOLBAR_ICON && (
@@ -1051,7 +1080,7 @@ const SettingsPage = () => {
           targetSelector='[data-testid="toolbar-icon"]'
           title="Quick Access"
           message="You can also click the Time Limit icon in your toolbar to quickly add limits to any site you're currently viewing!"
-          onSkip={onboarding.skipOnboarding}
+          onSkipOnboarding={onboarding.skipOnboarding}
           onFinish={onboarding.completeOnboarding}
           isLastStep={true}
           showSuccess={onboarding.showSuccessMessage}

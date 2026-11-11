@@ -1055,13 +1055,17 @@
     "message": "設定にかかるのは2分ほどです",
     "description": "Text about time required to complete setup"
   },
-  "onboarding_welcome_button_skip": {
-    "message": "スキップ",
-    "description": "Button to skip onboarding"
-  },
   "onboarding_welcome_button_start": {
     "message": "はじめる",
     "description": "Button to begin onboarding process"
+  },
+  "onboarding_statistics_title": {
+    "message": "統計",
+    "description": "Title of the onboarding step that points at the statistics switch"
+  },
+  "onboarding_statistics_message": {
+    "message": "Time Limit は制限中のサイトでの時間と開いた回数を記録し、このブラウザ内だけに保存します。数日後、このページ上部またはツールバーのポップアップにあるグラフのアイコンから確認できます。不要な場合は、このスイッチをオフにしてください。",
+    "description": "Onboarding step: where statistics appear once ready, and that this switch turns them off"
   },
   "onboarding_completion_title": {
     "message": "準備ができました",
@@ -1091,13 +1095,17 @@
     "message": "使いはじめる",
     "description": "Button to close completion screen and begin using extension"
   },
-  "spotlight_button_skip": {
-    "message": "スキップ",
-    "description": "Button to skip current spotlight tutorial step"
-  },
   "spotlight_button_next": {
     "message": "次へ",
     "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_skip_step": {
+    "message": "このステップをスキップ",
+    "description": "Button on an onboarding step that asks the user to do something: moves on without doing it"
+  },
+  "spotlight_button_skip_onboarding": {
+    "message": "ガイドをスキップ",
+    "description": "Button to leave the onboarding tour; it still ends on the completion screen"
   },
   "spotlight_button_finish": {
     "message": "完了",

@@ -1055,13 +1055,17 @@
     "message": "Die Einrichtung dauert nur 2 Minuten",
     "description": "Text about time required to complete setup"
   },
-  "onboarding_welcome_button_skip": {
-    "message": "Überspringen",
-    "description": "Button to skip onboarding"
-  },
   "onboarding_welcome_button_start": {
     "message": "Start",
     "description": "Button to begin onboarding process"
+  },
+  "onboarding_statistics_title": {
+    "message": "Deine Statistiken",
+    "description": "Title of the onboarding step that points at the statistics switch"
+  },
+  "onboarding_statistics_message": {
+    "message": "Time Limit zählt deine Zeit und Aufrufe auf begrenzten Seiten – gespeichert nur in diesem Browser. Nach ein paar Tagen findest du sie über das Diagramm-Symbol oben auf dieser Seite oder im Popup der Symbolleiste. Möchtest du das nicht? Schalte diesen Schalter aus.",
+    "description": "Onboarding step: where statistics appear once ready, and that this switch turns them off"
   },
   "onboarding_completion_title": {
     "message": "Alles bereit!",
@@ -1091,13 +1095,17 @@
     "message": "Surfen beginnen",
     "description": "Button to close completion screen and begin using extension"
   },
-  "spotlight_button_skip": {
-    "message": "Überspringen",
-    "description": "Button to skip current spotlight tutorial step"
-  },
   "spotlight_button_next": {
     "message": "Weiter",
     "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_skip_step": {
+    "message": "Schritt überspringen",
+    "description": "Button on an onboarding step that asks the user to do something: moves on without doing it"
+  },
+  "spotlight_button_skip_onboarding": {
+    "message": "Einführung überspringen",
+    "description": "Button to leave the onboarding tour; it still ends on the completion screen"
   },
   "spotlight_button_finish": {
     "message": "Fertig",
