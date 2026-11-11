@@ -111,9 +111,6 @@ export default defineConfig(() => ({
     host: "::",
     port: 8080,
   },
-  define: {
-    __BROWSER_TARGET__: JSON.stringify(process.env.BROWSER_TARGET ?? 'firefox'),
-  },
   plugins: [react(), copyExtensionFilesPlugin()],
   resolve: {
     alias: {
