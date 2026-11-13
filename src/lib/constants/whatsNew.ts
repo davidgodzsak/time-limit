@@ -8,7 +8,7 @@
  * info page.
  */
 
-import { BarChart3, DoorOpen, type LucideIcon } from 'lucide-react';
+import { BarChart3, type LucideIcon } from 'lucide-react';
 import { STATS_PAGE_PATH } from '@/lib/utils/navigation';
 
 export interface WhatsNewHighlight {
@@ -25,19 +25,12 @@ export interface WhatsNewHighlight {
 export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
   // 1.14.0: the statistics page. It starts empty for everyone, so the note
   // says it fills in over a few days; the popup reminds them once it has
-  // (stats_prompt_storage.js).
+  // (stats_prompt_storage.js). The 1.13.1 opens-limit note was dropped in
+  // 1.14.1, a month old by then.
   {
     icon: BarChart3,
     titleKey: 'whatsNew_stats_title',
     bodyKey: 'whatsNew_stats_body',
     link: { path: STATS_PAGE_PATH, labelKey: 'whatsNew_stats_link', requiresStatistics: true },
-  },
-  // Kept from 1.13.1, three weeks old: anyone who had an opens limit run out
-  // within minutes (#9) should hear it works now. The 16-languages note from
-  // 1.13.0 is gone, it is over a month old.
-  {
-    icon: DoorOpen,
-    titleKey: 'whatsNew_opens_title',
-    bodyKey: 'whatsNew_opens_body',
   },
 ];
