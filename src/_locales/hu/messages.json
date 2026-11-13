@@ -1055,13 +1055,17 @@
     "message": "A beállítás mindössze 2 percet vesz igénybe",
     "description": "Text about time required to complete setup"
   },
-  "onboarding_welcome_button_skip": {
-    "message": "Kihagyás",
-    "description": "Button to skip onboarding"
-  },
   "onboarding_welcome_button_start": {
     "message": "Start",
     "description": "Button to begin onboarding process"
+  },
+  "onboarding_statistics_title": {
+    "message": "Statisztikáid",
+    "description": "Title of the onboarding step that points at the statistics switch"
+  },
+  "onboarding_statistics_message": {
+    "message": "A Time Limit számolja a korlátozott oldalakon töltött idődet és a megnyitásokat, kizárólag ebben a böngészőben tárolva. Néhány nap múlva megnézheted őket az oldal tetején vagy az eszköztár felugró ablakában lévő diagram ikonnal. Nem kéred? Kapcsold ki ezt a kapcsolót.",
+    "description": "Onboarding step: where statistics appear once ready, and that this switch turns them off"
   },
   "onboarding_completion_title": {
     "message": "Minden kész!",
@@ -1091,13 +1095,17 @@
     "message": "Böngészés megkezdése",
     "description": "Button to close completion screen and begin using extension"
   },
-  "spotlight_button_skip": {
-    "message": "Kihagyás",
-    "description": "Button to skip current spotlight tutorial step"
-  },
   "spotlight_button_next": {
     "message": "Következő",
     "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_skip_step": {
+    "message": "Lépés kihagyása",
+    "description": "Button on an onboarding step that asks the user to do something: moves on without doing it"
+  },
+  "spotlight_button_skip_onboarding": {
+    "message": "Bemutató kihagyása",
+    "description": "Button to leave the onboarding tour; it still ends on the completion screen"
   },
   "spotlight_button_finish": {
     "message": "Befejezés",

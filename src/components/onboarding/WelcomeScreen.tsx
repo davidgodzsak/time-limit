@@ -77,7 +77,7 @@ export function WelcomeScreen({ onStart, onSkip }: WelcomeScreenProps) {
             onClick={onSkip}
             className="flex-1 rounded-lg"
           >
-            {t("onboarding_welcome_button_skip")}
+            {t("spotlight_button_skip_onboarding")}
           </Button>
           <Button
             onClick={onStart}

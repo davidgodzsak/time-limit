@@ -17,9 +17,12 @@ export const ONBOARDING_STEPS = {
   ADD_TO_GROUP: 3,
   MESSAGES_TAB: 4,
   MESSAGES_LIST: 5,
-  COMPLETION: 6,
-  TOOLBAR_ICON: 7,
+  STATISTICS: 6,
+  COMPLETION: 7,
+  TOOLBAR_ICON: 8,
 };
+
+const LAST_STEP = Math.max(...Object.values(ONBOARDING_STEPS));
 
 export const useOnboarding = () => {
   const [state, setState] = useState<OnboardingState>({
@@ -60,7 +63,7 @@ export const useOnboarding = () => {
   const nextStep = () => {
     setState((prev) => ({
       ...prev,
-      currentStep: Math.min(prev.currentStep + 1, 7), // 8 steps (0-7)
+      currentStep: Math.min(prev.currentStep + 1, LAST_STEP),
       showSuccessMessage: false,
     }));
   };
@@ -81,7 +84,7 @@ export const useOnboarding = () => {
   const goToStep = (step: number) => {
     setState((prev) => ({
       ...prev,
-      currentStep: Math.min(Math.max(step, 0), 7),
+      currentStep: Math.min(Math.max(step, 0), LAST_STEP),
       showSuccessMessage: false,
     }));
   };
@@ -99,8 +102,11 @@ export const useOnboarding = () => {
     }
   };
 
-  const skipOnboarding = async () => {
-    await completeOnboarding();
+  // Skipping still ends on the completion screen, which shows where the
+  // toolbar icon is — the one thing a user who skipped everything still needs.
+  // Closing that screen is what marks the onboarding complete.
+  const skipOnboarding = () => {
+    goToStep(ONBOARDING_STEPS.COMPLETION);
   };
 
   const restartOnboarding = () => {

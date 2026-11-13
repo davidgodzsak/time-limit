@@ -1055,13 +1055,17 @@
     "message": "Konfiguracja zajmuje tylko 2 minuty",
     "description": "Text about time required to complete setup"
   },
-  "onboarding_welcome_button_skip": {
-    "message": "Pomiń",
-    "description": "Button to skip onboarding"
-  },
   "onboarding_welcome_button_start": {
     "message": "Start",
     "description": "Button to begin onboarding process"
+  },
+  "onboarding_statistics_title": {
+    "message": "Twoje statystyki",
+    "description": "Title of the onboarding step that points at the statistics switch"
+  },
+  "onboarding_statistics_message": {
+    "message": "Time Limit liczy Twój czas i otwarcia na ograniczonych stronach, przechowywane tylko w tej przeglądarce. Po kilku dniach zobaczysz je pod ikoną wykresu na górze tej strony lub w okienku na pasku narzędzi. Wolisz ich nie mieć? Wyłącz ten przełącznik.",
+    "description": "Onboarding step: where statistics appear once ready, and that this switch turns them off"
   },
   "onboarding_completion_title": {
     "message": "Wszystko gotowe!",
@@ -1091,13 +1095,17 @@
     "message": "Zacznij przeglądać",
     "description": "Button to close completion screen and begin using extension"
   },
-  "spotlight_button_skip": {
-    "message": "Pomiń",
-    "description": "Button to skip current spotlight tutorial step"
-  },
   "spotlight_button_next": {
     "message": "Dalej",
     "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_skip_step": {
+    "message": "Pomiń krok",
+    "description": "Button on an onboarding step that asks the user to do something: moves on without doing it"
+  },
+  "spotlight_button_skip_onboarding": {
+    "message": "Pomiń wprowadzenie",
+    "description": "Button to leave the onboarding tour; it still ends on the completion screen"
   },
   "spotlight_button_finish": {
     "message": "Zakończ",

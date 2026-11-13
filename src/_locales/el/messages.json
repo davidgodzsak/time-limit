@@ -1055,13 +1055,17 @@
     "message": "Η ρύθμιση παίρνει μόλις 2 λεπτά",
     "description": "Text about time required to complete setup"
   },
-  "onboarding_welcome_button_skip": {
-    "message": "Παράλειψη",
-    "description": "Button to skip onboarding"
-  },
   "onboarding_welcome_button_start": {
     "message": "Έναρξη",
     "description": "Button to begin onboarding process"
+  },
+  "onboarding_statistics_title": {
+    "message": "Τα στατιστικά σου",
+    "description": "Title of the onboarding step that points at the statistics switch"
+  },
+  "onboarding_statistics_message": {
+    "message": "Το Time Limit μετρά τον χρόνο και τα ανοίγματά σου στους περιορισμένους ιστότοπους και τα κρατά μόνο σε αυτό το πρόγραμμα περιήγησης. Σε λίγες μέρες θα τα βρεις από το εικονίδιο γραφήματος στην κορυφή αυτής της σελίδας ή στο αναδυόμενο παράθυρο της γραμμής εργαλείων. Δεν τα θέλεις; Απενεργοποίησε αυτόν τον διακόπτη.",
+    "description": "Onboarding step: where statistics appear once ready, and that this switch turns them off"
   },
   "onboarding_completion_title": {
     "message": "Όλα έτοιμα!",
@@ -1091,13 +1095,17 @@
     "message": "Ξεκινήστε την περιήγηση",
     "description": "Button to close completion screen and begin using extension"
   },
-  "spotlight_button_skip": {
-    "message": "Παράλειψη",
-    "description": "Button to skip current spotlight tutorial step"
-  },
   "spotlight_button_next": {
     "message": "Επόμενο",
     "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_skip_step": {
+    "message": "Παράλειψη βήματος",
+    "description": "Button on an onboarding step that asks the user to do something: moves on without doing it"
+  },
+  "spotlight_button_skip_onboarding": {
+    "message": "Παράλειψη εισαγωγής",
+    "description": "Button to leave the onboarding tour; it still ends on the completion screen"
   },
   "spotlight_button_finish": {
     "message": "Τέλος",

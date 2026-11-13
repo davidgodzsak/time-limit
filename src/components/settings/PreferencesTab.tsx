@@ -89,7 +89,10 @@ export function PreferencesTab({
               disabled={isSaving}
             />
           </div>
-          <div className="flex items-center justify-between gap-4">
+          <div
+            className="flex items-center justify-between gap-4 rounded-xl"
+            data-testid="statistics-preference"
+          >
             <div className="min-w-0">
               <p className="font-medium">{t("preferences_option_statistics")}</p>
               <p className="text-sm text-muted-foreground">

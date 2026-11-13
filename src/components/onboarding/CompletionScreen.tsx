@@ -11,9 +11,12 @@ import { t } from "@/lib/utils/i18n";
 
 interface CompletionScreenProps {
   onClose: () => void;
+  /** False when the user skipped ahead without creating a limit, so the
+   *  "you set up your first limit" line would not be true. */
+  hasLimit: boolean;
 }
 
-export function CompletionScreen({ onClose }: CompletionScreenProps) {
+export function CompletionScreen({ onClose, hasLimit }: CompletionScreenProps) {
   return (
     <Dialog open={true}>
       <DialogContent hideCloseButton className="sm:max-w-md rounded-2xl">
@@ -26,13 +29,15 @@ export function CompletionScreen({ onClose }: CompletionScreenProps) {
 
         <div className="space-y-6 py-4">
           {/* Completion message */}
-          <div className="flex items-start gap-3">
-            <div>
-              <p className="text-xs text-muted-foreground">
-                {t("onboarding_completion_message")}
-              </p>
+          {hasLimit && (
+            <div className="flex items-start gap-3">
+              <div>
+                <p className="text-xs text-muted-foreground">
+                  {t("onboarding_completion_message")}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Toolbar icon explanation */}
           <div className="space-y-3">

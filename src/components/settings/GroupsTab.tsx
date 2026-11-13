@@ -36,6 +36,10 @@ export function GroupsTab({
   onAddSiteToGroup,
   onRemoveSiteFromGroup,
 }: GroupsTabProps) {
+  // The onboarding's "add sites to groups" step points here: the default
+  // Social Media group if the user still has it, otherwise their first group.
+  const onboardingGroupId = (groups.find((g) => g.name === "Social Media") ?? groups[0])?.id;
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -96,7 +100,7 @@ export function GroupsTab({
                       className="rounded-full h-6 text-xs"
                       onClick={() => onAddSiteToGroup(group)}
                       disabled={isSaving}
-                      data-testid={group.name === "Social Media" ? "social-media-add-site" : undefined}
+                      data-testid={group.id === onboardingGroupId ? "onboarding-group-add-site" : undefined}
                     >
                       <Plus size={12} className="mr-1" />
                       {t("groups_badge_add")}

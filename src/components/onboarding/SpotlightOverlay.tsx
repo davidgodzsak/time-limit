@@ -12,34 +12,45 @@ interface SpotlightOverlayProps {
   targetSelector: string;
   title: string;
   message: string;
-  onSkip: () => void;
+  /** Leave the tour (it still ends on the completion screen). */
+  onSkipOnboarding: () => void;
+  /** Move to the next step, whether or not this one was done. */
   onContinue?: () => void;
+  /**
+   * The step asks the user to do something (click a tab, add a site). Its
+   * button then reads "Skip step" in gray, so it does not pull the eye away
+   * from the thing the bubble asks for. Steps that only explain keep "Next".
+   */
+  isActionStep?: boolean;
   onFinish?: () => void;
   isLastStep?: boolean;
   successMessage?: string;
   showSuccess?: boolean;
-  hideNextButton?: boolean;
 }
 
 export function SpotlightOverlay({
   targetSelector,
   title,
   message,
-  onSkip,
+  onSkipOnboarding,
   onContinue,
+  isActionStep,
   onFinish,
   isLastStep,
   successMessage,
   showSuccess,
-  hideNextButton,
 }: SpotlightOverlayProps) {
   const [targetRect, setTargetRect] = useState<DOMRect | null>(null);
   const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
   const [bubblePosition, setBubblePosition] = useState<{
     top: number;
     left: number;
-    direction: "right" | "bottom";
+    direction: "right" | "bottom" | "center";
   }>({ top: 0, left: 0, direction: "right" });
+  // The target may not be on screen yet (a tab still rendering) or at all
+  // (e.g. the user deleted every group). Rather than render nothing — which
+  // looks like the tour ended — fall back to a centered bubble.
+  const [targetMissing, setTargetMissing] = useState(false);
 
   useEffect(() => {
     const updatePosition = () => {
@@ -80,7 +91,20 @@ export function SpotlightOverlay({
     window.addEventListener("resize", updatePosition);
     window.addEventListener("scroll", updatePosition);
 
+    let attempts = 0;
+    const retry = window.setInterval(() => {
+      if (document.querySelector(targetSelector)) {
+        window.clearInterval(retry);
+        setTargetMissing(false);
+        updatePosition();
+      } else if (++attempts >= 10) {
+        window.clearInterval(retry);
+        setTargetMissing(true);
+      }
+    }, 100);
+
     return () => {
+      window.clearInterval(retry);
       window.removeEventListener("resize", updatePosition);
       window.removeEventListener("scroll", updatePosition);
 
@@ -92,7 +116,10 @@ export function SpotlightOverlay({
     };
   }, [targetSelector, targetElement]);
 
-  if (!targetRect) return null;
+  if (!targetRect && !targetMissing) return null;
+  const position = targetRect
+    ? bubblePosition
+    : { top: window.innerHeight / 2, left: window.innerWidth / 2, direction: "center" as const };
 
   return (
     <>
@@ -100,12 +127,14 @@ export function SpotlightOverlay({
       <div
         className="fixed z-50 pointer-events-auto w-96"
         style={{
-          top: `${bubblePosition.top}px`,
-          left: `${bubblePosition.left}px`,
+          top: `${position.top}px`,
+          left: `${position.left}px`,
           transform:
-            bubblePosition.direction === "right"
-              ? "translateY(-50%)"
-              : "translateY(0)",
+            position.direction === "center"
+              ? "translate(-50%, -50%)"
+              : position.direction === "right"
+                ? "translateY(-50%)"
+                : "translateY(0)",
         }}
       >
         <Card className="border border-emerald-500 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg rounded-3xl">
@@ -134,37 +163,33 @@ export function SpotlightOverlay({
               </p>
 
               {/* Buttons */}
-              <div className="flex gap-2 justify-end pt-2">
+              <div className="flex gap-2 justify-between items-center pt-2">
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="sm"
-                  onClick={onSkip}
-                  className="rounded-lg"
+                  onClick={onSkipOnboarding}
+                  className="rounded-lg text-muted-foreground"
                 >
-                  {t("spotlight_button_skip")}
+                  {t("spotlight_button_skip_onboarding")}
                 </Button>
-                {!hideNextButton && (
-                  <>
-                    {isLastStep ? (
-                      <Button
-                        size="sm"
-                        onClick={onFinish}
-                        className="rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white gap-1"
-                      >
-                        {t("spotlight_button_finish")}
-                        <ChevronRight size={16} />
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        onClick={onContinue}
-                        className="rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white gap-1"
-                      >
-                        {t("spotlight_button_next")}
-                        <ChevronRight size={16} />
-                      </Button>
-                    )}
-                  </>
+                {isActionStep && !isLastStep ? (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={onContinue}
+                    className="rounded-lg text-muted-foreground"
+                  >
+                    {t("spotlight_button_skip_step")}
+                  </Button>
+                ) : (
+                  <Button
+                    size="sm"
+                    onClick={isLastStep ? onFinish : onContinue}
+                    className="rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white gap-1"
+                  >
+                    {t(isLastStep ? "spotlight_button_finish" : "spotlight_button_next")}
+                    <ChevronRight size={16} />
+                  </Button>
                 )}
               </div>
             </div>
@@ -172,7 +197,7 @@ export function SpotlightOverlay({
         </Card>
 
         {/* Arrow pointer */}
-        <div
+        {position.direction !== "center" && <div
           className={`transform absolute w-3 h-3 ${bubblePosition.direction === "right" ? "border-b border-l" : "border-l border-t"} rotate-45 border-emerald-500 bg-emerald-50`}
           style={{
             top:
@@ -184,7 +209,7 @@ export function SpotlightOverlay({
                 ? "-5.5px"
                 : "calc(50% - 6px)"
           }}
-        />
+        />}
       </div>
     </>
   );

@@ -1055,13 +1055,17 @@
     "message": "Nastavenie trvá len 2 minúty",
     "description": "Text about time required to complete setup"
   },
-  "onboarding_welcome_button_skip": {
-    "message": "Preskočiť",
-    "description": "Button to skip onboarding"
-  },
   "onboarding_welcome_button_start": {
     "message": "Začať",
     "description": "Button to begin onboarding process"
+  },
+  "onboarding_statistics_title": {
+    "message": "Tvoje štatistiky",
+    "description": "Title of the onboarding step that points at the statistics switch"
+  },
+  "onboarding_statistics_message": {
+    "message": "Time Limit počíta tvoj čas a otvorenia na obmedzených stránkach, uložené len v tomto prehliadači. O pár dní ich nájdeš pod ikonou grafu v hornej časti tejto stránky alebo vo vyskakovacom okne na paneli nástrojov. Nechceš ich? Vypni tento prepínač.",
+    "description": "Onboarding step: where statistics appear once ready, and that this switch turns them off"
   },
   "onboarding_completion_title": {
     "message": "Všetko je pripravené!",
@@ -1091,13 +1095,17 @@
     "message": "Začať prehliadať",
     "description": "Button to close completion screen and begin using extension"
   },
-  "spotlight_button_skip": {
-    "message": "Preskočiť",
-    "description": "Button to skip current spotlight tutorial step"
-  },
   "spotlight_button_next": {
     "message": "Ďalej",
     "description": "Button to advance to next spotlight step"
+  },
+  "spotlight_button_skip_step": {
+    "message": "Preskočiť krok",
+    "description": "Button on an onboarding step that asks the user to do something: moves on without doing it"
+  },
+  "spotlight_button_skip_onboarding": {
+    "message": "Preskočiť úvod",
+    "description": "Button to leave the onboarding tour; it still ends on the completion screen"
   },
   "spotlight_button_finish": {
     "message": "Dokončiť",
