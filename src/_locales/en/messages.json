@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Open settings"
+  },
+  "whatsNew_icons_title": {
+    "message": "Site icons"
+  },
+  "whatsNew_icons_body": {
+    "message": "Every site you limit now shows its own icon, in Settings, the popup and the pause and timeout pages, so you can find it at a glance."
   }
 }

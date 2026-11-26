@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Abrir ajustes"
+  },
+  "whatsNew_icons_title": {
+    "message": "Iconos de sitios"
+  },
+  "whatsNew_icons_body": {
+    "message": "Cada sitio que limitas muestra ahora su propio icono en Ajustes, en la ventana emergente y en las páginas de pausa y de límite, para que lo encuentres de un vistazo."
   }
 }

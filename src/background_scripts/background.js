@@ -99,6 +99,11 @@ import {
   repairOrphanedGroupMembers,
 } from './site_storage.js';
 import {
+  needsIconRecording,
+  recordSiteIcon,
+  pruneSiteIcons,
+} from './site_icon_storage.js';
+import {
   getTimeoutNotes,
   addTimeoutNote,
   updateTimeoutNote,
@@ -508,6 +513,11 @@ async function handleTabActivated(activeInfo) {
  * @param {Object} tab - The updated tab object
  */
 async function handleTabUpdated(tabId, changeInfo, tab) {
+  // Any tab, front or not: a limited site showing its icon is all we need.
+  if (changeInfo.favIconUrl) {
+    await _rememberSiteIcon(tab?.url, changeInfo.favIconUrl);
+  }
+
   // Only respond to URL changes or page load completion
   if (!changeInfo.url && changeInfo.status !== 'complete') {
     return;
@@ -2692,6 +2702,32 @@ async function handleActionClick(tab) {
  *
  * @private
  */
+/**
+ * Keeps the icon a limited site showed in its tab, for the extension's own
+ * pages (Firefox only; see site_icon_storage.js). Sites without a rule are
+ * never recorded.
+ */
+async function _rememberSiteIcon(url, iconUrl) {
+  if (!url || !needsIconRecording()) return;
+  try {
+    const match = checkIfUrlHasLimits(url);
+    if (match.isMatch && match.matchingPattern) {
+      await recordSiteIcon(match.matchingPattern, iconUrl);
+    }
+  } catch (error) {
+    console.warn('[Background] Error recording site icon:', error);
+  }
+}
+
+async function _pruneSiteIcons() {
+  if (!needsIconRecording()) return;
+  try {
+    await pruneSiteIcons(await getDistractingSites());
+  } catch (error) {
+    console.warn('[Background] Error pruning site icons:', error);
+  }
+}
+
 async function _repairGroupMembership() {
   try {
     const groups = await getGroups();
@@ -3032,4 +3068,5 @@ try {
   // site would otherwise have to wait for the next extension update to get it
   // back. A no-op when there is nothing to repair.
   await _repairGroupMembership();
+  await _pruneSiteIcons();
 })();

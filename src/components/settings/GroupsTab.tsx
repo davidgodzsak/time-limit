@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import type { UISite, UIGroup } from "@/lib/storage";
 
 type Site = UISite;
@@ -81,7 +82,7 @@ export function GroupsTab({
                         variant="secondary"
                         className="rounded-full gap-1.5 pr-1"
                       >
-                        <span>{site.favicon}</span>
+                        <SiteIcon site={site.name} size={14} className="rounded-sm" />
                         {site.name}
                         <button
                           className="ml-1 hover:bg-background rounded-full p-0.5 disabled:opacity-50 disabled:cursor-not-allowed"

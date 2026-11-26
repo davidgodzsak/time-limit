@@ -29,6 +29,7 @@ Non-persistent event handlers that manage the extension's core logic:
 - **`reflection_gate.js`**: Decides whether a navigation gets a countdown before the page opens, and documents how the delay sits next to the hard limits
 - **`reflection_storage.js`**: Reflection passes (a "yes" quiets the countdown for 20 minutes) and the daily yes/no tally
 - **`visit_tracker.js`**: Rolling per-host open counts for *unlimited* sites (hostnames only, 7 day window)
+- **`site_icon_storage.js`**: Firefox only — remembers the favicon each limited site showed in its tab, so extension pages can draw it
 - **`whats_new_storage.js`**: Flags that the extension was updated, so the popup can show the release note once
 - **`history_storage.js`**: A year of daily statistics: folds each finished day into monthly history before the reset deletes it, and counts what nothing else records (tries while off limits, opens per hour)
 - **`suggestion_engine.js`**: Decides when a frequently opened site is worth offering a limit for, and remembers the answer forever
@@ -359,6 +360,22 @@ either `host` or `host/path`:
   apart by direct labels, not colours. Durations and dates use `Intl`, so they
   need no translation keys.
 
+### Site Icons (`components/SiteIcon.tsx`, `lib/siteIcons.ts`)
+- Shown in settings rows, the popup site views, and the timeout and reflection
+  pages. **No image bytes are downloaded or stored by us**; every source is
+  already in a browser cache.
+- **Chromium**: `_favicon/?pageUrl=…` reads the browser's local favicon
+  database. Needs the `favicon` permission, which `vite.config.ts` adds to
+  the Chrome manifest only (no install warning; Firefox does not know it).
+- **Firefox**: `handleTabUpdated` hands `changeInfo.favIconUrl` to
+  `site_icon_storage.js`, which stores it under the matching rule's host in
+  `siteIcons`. Only hosts with a rule, only when it changed, small `data:` icons
+  only (16 KB), pruned on startup. The page falls back to
+  `https://host/favicon.ico`, then to the first letter.
+- The popup tries the active tab's own `favIconUrl` first.
+- Pages read `siteIcons` once and share it across every icon. A source that
+  failed is not retried on the same page.
+
 ### Release Notes ("What's new")
 - `onInstalled` with `reason === 'update'` flags `whatsNewState.pending` and
   tries `browser.action.openPopup()`; a fresh install never sets it (new users
@@ -483,6 +500,7 @@ Current coverage:
 - `suggestion_engine.test.js` — the work/distraction heuristic, thresholds, the one-a-day and once-ever rules, visit counting
 - `mindful_limits.integration.test.js` — blocker + gate together: a pause-only site never blocks, a spent limit skips the countdown, a group pause is answered once
 - `full_block.test.js` — the full block: it outranks usage, extensions and the countdown; group vs site ownership; `isEnabled` lifts it; specificity exceptions; a block counts as a rule in site/group storage
+- `site_icon_storage.test.js`, `lib/siteIcons.test.ts` — which icons are recorded and under which host, pruning, Chromium vs Firefox sources, one storage read per page
 - `whats_new_storage.test.js` — the release-note flag is set by updates only and stays dismissed
 - `open_counter.test.js` — what counts as an open (in-site browsing, same-site tab switches, leaving and coming back, other apps and focus flicker, bursts) and the blocker's `isOpen`
 - `stats_prompt_storage.test.js` — the "statistics are ready" note waits for 3 recorded days and never returns once answered; `trackedDayCount`
@@ -512,6 +530,7 @@ browser.storage.local keys:
 - pendingReflections: { [tabId]: { siteId, url } } (pauses not yet answered; cleared on browser startup)
 - viewedSiteId: string|null (the rule the user is looking at, for open counting; cleared on browser startup)
 - leftBrowserAt: ms|null (when the browser last lost focus, for open counting)
+- siteIcons: { [ruleHost]: favIconUrl } (Firefox only; icons of limited sites, pruned on startup)
 - whatsNewState: { pending, version, previousVersion } (release note, updates only)
 - statsPromptState: { handled, handledAt } (the one-time "your statistics are ready" popup note)
 - visitTracking: { [host]: { days: { "YYYY-MM-DD": opens }, lastVisit } }

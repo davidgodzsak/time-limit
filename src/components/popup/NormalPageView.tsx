@@ -4,11 +4,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { MousePointerClick, Zap, Hourglass, Ban } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import { PopupHeader } from "./PopupHeader";
 import CircularProgress from "../CircularProgress";
 
 interface NormalPageViewProps {
   siteName: string;
+  /** The tab's own icon, tried before any cached one. */
+  siteIconUrl?: string;
   groupName: string | null;
   timeUsed: number;
   timeLimit: number;
@@ -29,6 +32,7 @@ interface NormalPageViewProps {
 
 export function NormalPageView({
   siteName,
+  siteIconUrl,
   groupName,
   timeUsed,
   timeLimit,
@@ -49,10 +53,10 @@ export function NormalPageView({
 
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-            <span className="text-lg">📘</span>
+          <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center shrink-0">
+            <SiteIcon site={siteName} src={siteIconUrl} size={24} />
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="font-medium text-foreground">{siteName}</p>
             {groupName && (
               <p className="text-sm text-primary font-medium">{groupName}</p>

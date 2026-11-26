@@ -3,6 +3,7 @@ import { ArrowRight, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import PageTemplate from "./PageTemplate";
 import { StatsReadyBanner } from "./stats/StatsReadyBanner";
 import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
@@ -156,6 +157,7 @@ const ReflectionPage = () => {
         </CircularProgress>
 
         <div className="mt-8 mb-2 flex items-center gap-2">
+          <SiteIcon site={siteLabel || originalUrl} size={28} />
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground break-all">
             {siteLabel}
           </h1>

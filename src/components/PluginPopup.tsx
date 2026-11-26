@@ -39,6 +39,9 @@ const PluginPopup = () => {
   // The pattern a quick limit from the popup is stored under: always the whole
   // site. Narrower rules (youtube.com/shorts) are a settings-page job.
   const [sitePattern, setSitePattern] = useState<string>("");
+  // The icon the tab is showing right now: exact, and already in the browser's
+  // cache, so it beats any recorded one.
+  const [siteIconUrl, setSiteIconUrl] = useState<string | undefined>(undefined);
   const [groupName, setGroupName] = useState<string | null>(null);
   const [siteId, setSiteId] = useState<string | null>(null);
   const [groupId, setGroupId] = useState<string | null>(null);
@@ -97,6 +100,13 @@ const PluginPopup = () => {
   const [whatsNew, setWhatsNew] = useState<api.WhatsNewState | null>(null);
 
   // Load current page info on mount
+  useEffect(() => {
+    browser.tabs
+      .query({ active: true, currentWindow: true })
+      .then((tabs) => setSiteIconUrl(tabs?.[0]?.favIconUrl || undefined))
+      .catch(() => {});
+  }, []);
+
   useEffect(() => {
     const loadPageInfo = async () => {
       try {
@@ -754,6 +764,7 @@ const PluginPopup = () => {
     return (
       <DisabledStateView
         siteName={siteName}
+        siteIconUrl={siteIconUrl}
         disabledReason={disabledReason}
         groupName={groupName}
         isSaving={isSaving}
@@ -821,6 +832,7 @@ const PluginPopup = () => {
     return (
       <UnlimitedSiteView
         siteName={siteName}
+        siteIconUrl={siteIconUrl}
         sitePattern={sitePattern || siteName}
         selectedTimeLimit={selectedTimeLimit}
         selectedOpensLimit={selectedOpensLimit}
@@ -861,6 +873,7 @@ const PluginPopup = () => {
   return (
     <NormalPageView
       siteName={siteName}
+      siteIconUrl={siteIconUrl}
       groupName={groupName}
       timeUsed={timeUsed}
       timeLimit={timeLimit}

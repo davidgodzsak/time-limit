@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import PageTemplate from "./PageTemplate";
 import { StatsReadyBanner } from "./stats/StatsReadyBanner";
 import { useStatsHeaderLinks } from "./stats/useStatsHeaderLinks";
@@ -316,6 +317,12 @@ const TimeoutPage = () => {
 
         {/* Limit info - Bottom of page */}
         <div className="text-center text-muted-foreground">
+          {blockedUrl && (
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <SiteIcon site={blockedUrl} size={20} />
+              <span className="text-sm text-foreground break-all">{siteName}</span>
+            </div>
+          )}
           <p className="text-sm font-medium text-foreground mb-2">
             {blockingReason}
           </p>

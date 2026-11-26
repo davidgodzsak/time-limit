@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Otvoriť nastavenia"
+  },
+  "whatsNew_icons_title": {
+    "message": "Ikony stránok"
+  },
+  "whatsNew_icons_body": {
+    "message": "Každá obmedzená stránka teraz zobrazuje vlastnú ikonu – v Nastaveniach, vo vyskakovacom okne aj na stránkach pauzy a limitu –, takže ju nájdeš na prvý pohľad."
   }
 }

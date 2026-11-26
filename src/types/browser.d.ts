@@ -13,7 +13,7 @@ declare const browser: {
   };
   tabs: {
     get(tabId: number): Promise<{ id?: number; url?: string }>;
-    query(options: Record<string, unknown>): Promise<Array<{ id?: number; url?: string }>>;
+    query(options: Record<string, unknown>): Promise<Array<{ id?: number; url?: string; favIconUrl?: string }>>;
     update(tabId: number, updateProperties: Record<string, unknown>): Promise<unknown>;
     create(options: Record<string, unknown>): Promise<{ id?: number; url?: string }>;
     onActivated: {
@@ -47,6 +47,11 @@ declare const browser: {
     local: {
       get(keys?: string | string[]): Promise<Record<string, unknown>>;
       set(items: Record<string, unknown>): Promise<void>;
+    };
+    onChanged: {
+      addListener(
+        callback: (changes: Record<string, { oldValue?: unknown; newValue?: unknown }>, areaName: string) => void
+      ): void;
     };
   };
   action: {

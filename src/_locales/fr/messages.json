@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Ouvrir les paramètres"
+  },
+  "whatsNew_icons_title": {
+    "message": "Icônes des sites"
+  },
+  "whatsNew_icons_body": {
+    "message": "Chaque site que vous limitez affiche désormais sa propre icône, dans les Paramètres, la fenêtre contextuelle et les pages de pause et de limite atteinte, pour le repérer d'un coup d'œil."
   }
 }

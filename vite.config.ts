@@ -66,6 +66,11 @@ function copyExtensionFilesPlugin(): Plugin {
           type: 'module'
         };
       }
+      // Lets extension pages read the browser's own favicon cache through
+      // `_favicon/` (site icons in settings, popup, timeout and reflection).
+      // Chrome shows no install warning for it. Firefox has no such permission
+      // and records icons itself instead (site_icon_storage.js).
+      chromeManifest.permissions = [...(chromeManifest.permissions ?? []), 'favicon'];
       writeFileSync(
         resolve(distDir, 'manifest.chrome.json'),
         JSON.stringify(chromeManifest, null, 2)
