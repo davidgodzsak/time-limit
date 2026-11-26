@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Åpne innstillinger"
+  },
+  "whatsNew_icons_title": {
+    "message": "Nettstedsikoner"
+  },
+  "whatsNew_icons_body": {
+    "message": "Hvert nettsted du begrenser viser nå sitt eget ikon, i Innstillinger, i popup-vinduet og på pause- og tidsgrensesidene, så du finner det med ett blikk."
   }
 }

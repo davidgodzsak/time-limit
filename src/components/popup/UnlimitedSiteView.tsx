@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Plus, Globe, Loader2, Hourglass, Lightbulb, Ban } from "lucide-react";
+import { Plus, Loader2, Hourglass, Lightbulb, Ban } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import { UIGroup } from "@/lib/storage";
 import type { LimitSuggestion } from "@/lib/api";
 import { PopupHeader } from "./PopupHeader";
@@ -12,6 +13,8 @@ const SUGGESTED_REFLECTION_SECONDS = 10;
 
 interface UnlimitedSiteViewProps {
   siteName: string;
+  /** The tab's own icon, tried before any cached one. */
+  siteIconUrl?: string;
   /** Pattern a new limit will be stored under, e.g. `youtube.com`. */
   sitePattern: string;
   selectedTimeLimit: number | null;
@@ -40,6 +43,7 @@ interface UnlimitedSiteViewProps {
 
 export function UnlimitedSiteView({
   siteName,
+  siteIconUrl,
   sitePattern,
   selectedTimeLimit,
   selectedOpensLimit,
@@ -69,7 +73,7 @@ export function UnlimitedSiteView({
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">
           <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
-            <Globe size={20} className="text-muted-foreground" />
+            <SiteIcon site={siteName} src={siteIconUrl} size={24} />
           </div>
           <div className="min-w-0">
             <p className="font-medium text-foreground truncate">{siteName}</p>

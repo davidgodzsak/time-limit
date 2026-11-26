@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Einstellungen öffnen"
+  },
+  "whatsNew_icons_title": {
+    "message": "Website-Symbole"
+  },
+  "whatsNew_icons_body": {
+    "message": "Jede begrenzte Website zeigt jetzt ihr eigenes Symbol – in den Einstellungen, im Popup und auf den Pausen- und Zeitlimit-Seiten –, damit du sie auf einen Blick findest."
   }
 }

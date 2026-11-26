@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Beállítások megnyitása"
+  },
+  "whatsNew_icons_title": {
+    "message": "Oldalikonok"
+  },
+  "whatsNew_icons_body": {
+    "message": "Minden korlátozott oldal saját ikonnal jelenik meg a Beállításokban, a felugró ablakban, valamint a szünet- és időkorlát-oldalakon, így egy pillantással megtalálod."
   }
 }

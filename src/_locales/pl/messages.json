@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Otwórz ustawienia"
+  },
+  "whatsNew_icons_title": {
+    "message": "Ikony stron"
+  },
+  "whatsNew_icons_body": {
+    "message": "Każda ograniczona strona ma teraz własną ikonę – w Ustawieniach, w okienku rozszerzenia oraz na stronach pauzy i limitu – więc znajdziesz ją od razu."
   }
 }

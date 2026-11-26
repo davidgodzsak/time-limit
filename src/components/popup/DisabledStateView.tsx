@@ -2,10 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, Pause } from "lucide-react";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import { PopupHeader } from "./PopupHeader";
 
 interface DisabledStateViewProps {
   siteName: string;
+  /** The tab's own icon, tried before any cached one. */
+  siteIconUrl?: string;
   disabledReason: "site" | "group" | "both" | null;
   groupName: string | null;
   isSaving: boolean;
@@ -15,6 +18,7 @@ interface DisabledStateViewProps {
 
 export function DisabledStateView({
   siteName,
+  siteIconUrl,
   disabledReason,
   groupName,
   isSaving,
@@ -47,10 +51,13 @@ export function DisabledStateView({
 
       <CardContent className="p-5">
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center">
-            <Pause size={20} className="text-yellow-600" />
+          <div className="relative w-10 h-10 rounded-xl bg-muted flex items-center justify-center shrink-0">
+            <SiteIcon site={siteName} src={siteIconUrl} size={24} className="opacity-60 grayscale" />
+            <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-yellow-100 ring-2 ring-card flex items-center justify-center">
+              <Pause size={11} className="text-yellow-600" />
+            </span>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="font-medium text-foreground">{siteName}</p>
             <p className="text-sm text-muted-foreground">{getLabel()}</p>
           </div>

@@ -28,7 +28,6 @@ export interface BackendSite {
 export interface UISite {
   id: string;
   name: string;
-  favicon?: string;
   timeLimit?: number;
   opensLimit?: number;
   /** Reflection delay in seconds (same unit as storage — it is always short). */
@@ -87,10 +86,7 @@ export interface Message {
  * - dailyOpenLimit -> opensLimit
  * - urlPattern -> name
  */
-export function siteFromStorage(
-  storageSite: BackendSite,
-  faviconMap?: Record<string, string>
-): UISite {
+export function siteFromStorage(storageSite: BackendSite): UISite {
   const site: UISite = {
     id: storageSite.id || '',
     name: storageSite.urlPattern,
@@ -121,9 +117,6 @@ export function siteFromStorage(
   if (storageSite.groupId) {
     site.groupId = storageSite.groupId;
   }
-
-  // Add favicon emoji
-  site.favicon = faviconMap?.[storageSite.urlPattern] || '🌐';
 
   return site;
 }
@@ -186,14 +179,13 @@ export function siteToStorage(uiSite: UISite): BackendSite {
  */
 export function groupFromStorage(
   storageGroup: BackendGroup,
-  sitesMap: Map<string, BackendSite>,
-  faviconMap?: Record<string, string>
+  sitesMap: Map<string, BackendSite>
 ): UIGroup {
   const siteIds = storageGroup.siteIds || [];
   const sites: UISite[] = siteIds
     .map((siteId) => sitesMap.get(siteId))
     .filter((site): site is BackendSite => site !== undefined)
-    .map((site) => siteFromStorage(site, faviconMap));
+    .map((site) => siteFromStorage(site));
 
   const group: UIGroup = {
     id: storageGroup.id,
@@ -255,21 +247,3 @@ export function groupToStorage(uiGroup: UIGroup): BackendGroup {
 
   return storageGroup;
 }
-
-/**
- * Creates a default favicon map for common sites
- */
-export const getDefaultFaviconMap = (): Record<string, string> => ({
-  'facebook.com': '📘',
-  'instagram.com': '📸',
-  'twitter.com': '🐦',
-  'reddit.com': '🤖',
-  'youtube.com': '▶️',
-  'netflix.com': '🎬',
-  'twitch.tv': '💜',
-  'tiktok.com': '🎵',
-  'linkedin.com': '💼',
-  'pinterest.com': '📌',
-  'snapchat.com': '👻',
-  'news.ycombinator.com': '🟧',
-});

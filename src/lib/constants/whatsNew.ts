@@ -8,7 +8,7 @@
  * info page.
  */
 
-import { BarChart3, type LucideIcon } from 'lucide-react';
+import { BarChart3, Image, type LucideIcon } from 'lucide-react';
 import { STATS_PAGE_PATH } from '@/lib/utils/navigation';
 
 export interface WhatsNewHighlight {
@@ -23,7 +23,13 @@ export interface WhatsNewHighlight {
 }
 
 export const WHATS_NEW_HIGHLIGHTS: WhatsNewHighlight[] = [
-  // 1.14.0: the statistics page. It starts empty for everyone, so the note
+  // 1.15.0: site icons everywhere a site is named.
+  {
+    icon: Image,
+    titleKey: 'whatsNew_icons_title',
+    bodyKey: 'whatsNew_icons_body',
+  },
+  // 1.14.0, kept in 1.15.0 (two weeks old): the statistics page. It starts empty for everyone, so the note
   // says it fills in over a few days; the popup reminds them once it has
   // (stats_prompt_storage.js). The 1.13.1 opens-limit note was dropped in
   // 1.14.1, a month old by then.

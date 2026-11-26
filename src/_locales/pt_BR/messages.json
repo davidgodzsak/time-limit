@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Abrir configurações"
+  },
+  "whatsNew_icons_title": {
+    "message": "Ícones dos sites"
+  },
+  "whatsNew_icons_body": {
+    "message": "Cada site que você limita agora mostra o próprio ícone, nas Configurações, no pop-up e nas páginas de pausa e de limite, para você encontrá-lo num relance."
   }
 }

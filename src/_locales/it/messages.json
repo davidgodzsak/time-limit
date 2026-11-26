@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Apri le impostazioni"
+  },
+  "whatsNew_icons_title": {
+    "message": "Icone dei siti"
+  },
+  "whatsNew_icons_body": {
+    "message": "Ogni sito che limiti ora mostra la sua icona, nelle Impostazioni, nel popup e nelle pagine di pausa e di limite raggiunto, così lo trovi a colpo d'occhio."
   }
 }

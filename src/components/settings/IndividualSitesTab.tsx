@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { t } from "@/lib/utils/i18n";
+import { SiteIcon } from "@/components/SiteIcon";
 import type { UISite, UIGroup } from "@/lib/storage";
 
 type Site = UISite;
@@ -100,7 +101,7 @@ export function IndividualSitesTab({
               key={site.id}
               className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors group"
             >
-              <span className="text-xl">{site.favicon}</span>
+              <SiteIcon site={site.name} size={24} />
               <span className="flex-1 font-medium">{site.name}</span>
               {/* A full block makes the other limits moot, so it replaces them
                   rather than sitting next to numbers that never count down. */}
@@ -243,7 +244,7 @@ export function IndividualSitesTab({
                         key={site.id}
                         className="flex items-center gap-3 p-2 rounded-xl hover:bg-card transition-colors group"
                       >
-                        <span className="text-lg">{site.favicon}</span>
+                        <SiteIcon site={site.name} size={18} />
                         <span className="flex-1 text-sm">{site.name}</span>
                         {site.isBlocked && (
                           <Badge

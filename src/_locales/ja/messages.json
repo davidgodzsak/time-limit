@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "設定を開く"
+  },
+  "whatsNew_icons_title": {
+    "message": "サイトのアイコン"
+  },
+  "whatsNew_icons_body": {
+    "message": "制限中のサイトに、それぞれのアイコンが表示されるようになりました。設定、ポップアップ、一時停止ページ、制限ページで、ひと目で見分けられます。"
   }
 }

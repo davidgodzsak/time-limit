@@ -2471,5 +2471,11 @@
   },
   "stats_off_button": {
     "message": "Öppna inställningar"
+  },
+  "whatsNew_icons_title": {
+    "message": "Webbplatsikoner"
+  },
+  "whatsNew_icons_body": {
+    "message": "Varje webbplats du begränsar visar nu sin egen ikon, i Inställningar, i popup-fönstret och på paus- och tidsgränssidorna, så att du hittar den direkt."
   }
 }
